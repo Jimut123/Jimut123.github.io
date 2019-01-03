@@ -3,8 +3,8 @@
 <style>
    #profile-img {
     display: inline-block;
-    width: 280px;
-    height: 280px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     border-style: solid;
     border-width: medium;
@@ -20,7 +20,7 @@
     align-items:center;
   }
   #upper-section{
-    border-bottom: 6px solid red;
+    border-bottom: 6px solid #22eedd;
   }
   #about-section{
     margin-bottom:20px; /* space from border to next element */
@@ -33,6 +33,16 @@
   #cert-sepc{
     color: red;
   }
+  #jbp{
+    color:#000066; 
+    font-family: "My Custom Font", Verdana, Tahoma;
+  }
+
+  @font-face {
+      font-family: "My Custom Font";
+      src: url(http://www.example.org/mycustomfont.ttf) format("truetype");
+  }
+
 </style>
   <head>
 
@@ -89,7 +99,7 @@
     <header class="masthead bg-primary text-white text-center">
       <div class="container">
         <img id = "profile-img" class="img-fluid mb-5 d-block mx-auto"  src="img/jimut.jpeg" alt="">
-        <h1 class="text-uppercase mb-0">JIMUT BAHAN PAL</h1>
+        <h1 class="text-uppercase mb-0" id="jbp">JIMUT BAHAN PAL</h1>
         <hr id="upper-section">
         <h2 class="font-weight-light mb-0">Python Programmer - Web Developer - Student - Hobbiest</h2>
       </div>
@@ -317,7 +327,7 @@
         <br>
         <br>
 
-        <h4>Kinda Achievements:</h4>
+        <h4>Achievements:</h4>
 
         <b><i class="fa fa-trophy" aria-hidden="true"></i><a id = "sucess-link"href="https://drive.google.com/file/d/0B51qRUWxSiZRdmNmQmRyRE5HVUU/view" target="_blank">Rank : 3rd</a>. class - 11. Central Modern School. Kolkata. 2015  </b>
         <br>
