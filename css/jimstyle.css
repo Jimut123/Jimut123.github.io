@@ -1,0 +1,53 @@
+#pad-container {
+    padding-top: 1%;
+    padding-right: 5%;
+    padding-bottom: 1%;
+    padding-left: 5%;
+  }
+
+#publication-font
+{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15pt;
+}
+
+#cert-sub-heading
+{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 30pt;
+}
+
+#specilization-font{
+  font-family: 'Concert One', cursive;
+  font-size: 15pt;
+}
+#course-cert-font
+{
+  font-family: 'Work Sans', sans-serif;
+  font-size: 15pt;
+}
+#achievement-font
+{
+  font-family: 'Spectral', serif;
+  font-size: 15pt;
+}
+#cert-of-part
+{
+  font-family: 'Cormorant', serif;
+  font-size: 15pt;
+
+}
+
+#exp-font{
+  font-family: 'Cardo', serif;
+  font-size: 15pt;
+}
+
+#proj-page{
+  font-family: 'Archivo', sans-serif;
+  font-size: 15pt;
+}
+#proj-content
+{
+  font-family: 'Karla', sans-serif;
+}
