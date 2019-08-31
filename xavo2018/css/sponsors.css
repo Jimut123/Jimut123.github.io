@@ -1,0 +1,45 @@
+.sponTab{
+	padding:10px;
+	border-radius:10px;
+	/* box-shadow:0 0 5px 2px rgba(0,0,0,.5); */
+	margin-bottom:5px;
+	font-weight:600;
+	font-size:18px;
+	letter-spacing:2px;
+	text-align:center;
+}
+
+.sponBack{
+	background:linear-gradient(to right, transparent 0%, rgba(25,35,65,1) 50%, transparent 100%);
+	min-height:160px;
+	max-height:170px;
+	position:relative;
+}
+
+.sponImg{
+	max-height:150px;
+	margin:auto auto;
+	margin-bottom:10px;
+	display:block;
+	padding:10px;
+	vertical-align:middle;
+	position: absolute;
+	top: 0; 
+	bottom: 0;
+	margin:auto;
+	left:50%;
+	transform:translateX(-50%);
+}
+
+.sponTabPartners{
+	padding:10px -10px 10px -10px;
+	border-radius:10px;
+	/* box-shadow:0 0 5px 2px rgba(0,0,0,.5); */
+	margin-bottom:5px;
+	margin-top:10px;
+	font-weight:500;
+	font-size:18px;
+	letter-spacing:2px;
+	text-align:center;
+	width:100%;
+}

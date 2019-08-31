@@ -1,0 +1,245 @@
+﻿/*body {
+  height:100%;
+  line-height:1.5;
+  font-family: sans-serif;
+  font-weight:300;
+  font-size:100%;
+}
+
+h2 {
+    text-align:center;
+    line-height:3.5;
+    }*/
+  .tile h1 {font-size: 2.5em;} 
+  .tile p{font-size: 1.5em;} 
+  .tile a{font-size: 1.8em;}
+
+@media screen and (min-width: 43.75em){
+  .col1,.col2{
+    float:left;
+    margin-right:0.4%;
+    margin-left:0.4%;
+    width:49%;    
+  }
+    .col3{
+        float: right;
+        margin-right: 0.4%;
+        margin-left: 0.4%;
+        width: 49%;
+    }
+}
+@media screen and (min-width: 64em){
+  .col1,.col2{
+    float:left;
+    margin-right:0.4%;
+    margin-left:0.4%;
+    width:32%;
+  }
+    .col3{
+        float: right;
+        margin-right: 0.4%;
+        margin-left: 0.4%;
+        width: 32%;
+    }
+  /*.col3{margin-right: 0;}
+  .col1{margin-left:2em;}   */
+}
+
+img {max-width: 100%;}
+
+
+li {
+list-style: none;
+}
+.tile {
+    margin-top:2px;
+  display: block;
+  height:20%;
+  width:100%;
+  overflow:hidden;
+  color:#fff;
+  position:relative;
+  /*mix-blend-mode:luminosity;*/
+  }
+.tile div 
+{
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+    }
+	.tile img
+	{
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+	max-width: 100%;
+	}
+.tile img.left
+{
+  display: block;
+  margin: 0 auto;
+  margin-top:0em;
+  margin-bottom:0em;
+    }
+.tile img.center
+{
+  display: block;
+  margin: auto auto auto auto;
+  object-fit: cover;
+  opacity: 0.9;
+  transition: .6s;
+
+    }
+.tile img.center:hover{
+    opacity:1;
+}
+    
+.tile img.top
+{
+  display: block;
+ 
+  margin:2.188em 0 0.313em 2.188em;
+  float:left;
+    }
+
+.tile-content:hover 
+{
+    cursor:pointer;
+    }       
+.tile .tile-content, .tile .tile-content-static {
+  display: block;
+  height: 9.063em;
+  width: 100%;
+  position: relative;
+  }
+        
+.tile .tile-content .content, .tile .tile-content-static .content {
+   display: block;
+   height: 9.063em;
+   width: 100%;
+   position: absolute;
+   }
+        
+.tile .tile-content .content.one, .tile .tile-content-static .content.one {
+   top: 0;
+   display: block;
+   height: 9.063em;
+   width: 100%;
+  }
+        
+.tile .tile-content .content.two {
+   top: 9.063em;
+   display: block;
+   height: 9.063em;
+   width: 100%;
+  }
+        
+/*.tile .tile-content h1, .tile .tile-content-static h1*/
+.tile h1 {
+   color: #fff;
+   font-family: 'segoe ui', sans-serif;
+   font-weight: normal;
+   text-align: center;
+   margin-top: 1.2em;        
+   font-weight: 100;
+   opacity:0.8;
+   transition:0.5s;
+   /*font-size: 2.5em;*/
+   }
+.tile h1:hover{
+    opacity:1;
+}
+ 
+ .tile p {
+   color: #fff;
+   font-family: 'segoe ui', sans-serif;
+   font-weight: normal;
+   text-align: center;
+   margin-top: 12%;        
+   font-weight: 100;
+   /*font-size: 1.5em;*/
+   line-height:1.1em;
+   }
+   
+ .tile a {
+   color: #fff;
+   font-family: 'segoe ui', sans-serif;
+   font-weight: normal;
+   text-align: center;
+   margin-top: 12%;        
+   font-weight: 100;
+   /*font-size: 1.8em;*/
+   line-height:1.1em;
+   display:block;
+   }
+
+
+	/* The Modal (background) */
+/* .modal { */
+    /* display: none; /* Hidden by default */ */
+    /* position: fixed; /* Stay in place */ */
+    /* z-index: 1; /* Sit on top */ */
+    /* padding-top: 100px; /* Location of the box */ */
+    /* left: 0; */
+    /* top: 0; */
+    /* width: 100%; /* Full width */ */
+    /* height: 100%; /* Full height */ */
+    /* overflow: auto; /* Enable scroll if needed */ */
+    /* background-color: rgb(0,0,0); /* Fallback color */ */
+    /* background-color: rgba(0,0,0,0.9); /* Black w/ opacity */ */
+/* } */
+
+/* Modal Content (image) */
+/* .modal-content { */
+    /* margin: auto; */
+    /* display: block; */
+    /* width: 80%; */
+    /* max-width: 700px; */
+/* } */
+    
+	/* Add Animation */
+/* .modal-content, #caption {     */
+    /* -webkit-animation-name: zoom; */
+    /* -webkit-animation-duration: 0.6s; */
+    /* animation-name: zoom; */
+    /* animation-duration: 0.6s; */
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+/* .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens *//*
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+ */
+        
