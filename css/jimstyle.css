@@ -25,6 +25,10 @@
   font-size: 30pt;
 }
 
+#bold_id{
+    font-weight:bold;
+}
+
 #specilization-font{
   font-family: 'Concert One', cursive;
   font-size: 15pt;
