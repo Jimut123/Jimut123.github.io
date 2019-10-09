@@ -1,0 +1,3628 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.3.4/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.3.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>#map_f882eed1c1d64f31add063e504e10309 {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <center>
+    <h1 ><i style="color:#c6ae0d; font face=Arial,Helvetica "> WISP v2.0 </i><i style="font-size:10px">JJCluster inside</i></h1> 
+    </center>
+    
+    <div id="legend-html" style="position: fixed; background-color: white; 
+    bottom: 50px; left: 50px;  
+    border:2px solid grey; z-index:9999; font-size:14px;" >&nbsp; 
+    <b>Legend <b>
+    <br>
+            &nbsp; mall &nbsp;
+            <svg height="10" width="10">
+            <circle cx="5" cy="5" r="4" stroke="#976139" stroke-width="3" fill="#70206a" />
+            </svg><br/> 
+            &nbsp; pizza &nbsp;
+            <svg height="10" width="10">
+            <circle cx="5" cy="5" r="4" stroke="#bf95f8" stroke-width="3" fill="#6955a2" />
+            </svg><br/> 
+            &nbsp; museum &nbsp;
+            <svg height="10" width="10">
+            <circle cx="5" cy="5" r="4" stroke="#fc61b4" stroke-width="3" fill="#57070e" />
+            </svg><br/> 
+            &nbsp; cyber cafe &nbsp;
+            <svg height="10" width="10">
+            <circle cx="5" cy="5" r="4" stroke="#8eac6a" stroke-width="3" fill="#40e4e2" />
+            </svg><br/> 
+    </div>
+    <div style="position: fixed; 
+    bottom: 50px; right: 50px;  
+    z-index:9999; font-size:10px;
+    "> 
+    <b style="color:#f90404" style="align: justified">
+        WISP <br/> 
+        version: 2.0 <br/>
+        <a href="https://jimut123.github.io" target="_blank">&copyJimut Bahan Pal</a> <br/> 
+        Author : jimutbahanpal@yahoo.com 
+    </b>
+    </div>
+    <div style="position: fixed; 
+    top: 70px; left: 50px;  
+    z-index:9999; font-size:15px;
+    "> 
+    <b style="color:#16842c" style="align: justified">
+        Location: vadodara <br/>
+        Lat, Lon: 22.297076,73.1957373 <br/>
+        Radius: 9000 <br/>
+        Date: 2019-10-09T15:46:21 <br/>
+    </b>
+    </div> 
+    
+    
+    <div class="folium-map" id="map_f882eed1c1d64f31add063e504e10309" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_f882eed1c1d64f31add063e504e10309 = L.map(
+        'map_f882eed1c1d64f31add063e504e10309', {
+        center: [22.297076, 73.1957373],
+        zoom: 11,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+    
+    
+    var tile_layer_2e7dec15a2714830905dbed22c1dde3e = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "opacity": 1,
+        "subdomains": "abc",
+        "tms": false
+}).addTo(map_f882eed1c1d64f31add063e504e10309);
+    
+            var circle_marker_484532fcb91c486294bdadade3b3dbce = L.circleMarker(
+                [22.306408379533192, 73.18735599517822],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_0c5f4f1af88c41a4b2be5c0a6233678e = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_72e5c1c2da864695be1f6ea7db423515 = $(`<div id="html_72e5c1c2da864695be1f6ea7db423515" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : The Body Shop Centre Square Mall  and Location : Shop No. G 1 B, Ground Floor (Centre Square Mall), Vadodara 390007, Gujarāt, India</div>`)[0];
+                popup_0c5f4f1af88c41a4b2be5c0a6233678e.setContent(html_72e5c1c2da864695be1f6ea7db423515);
+            
+
+            circle_marker_484532fcb91c486294bdadade3b3dbce.bindPopup(popup_0c5f4f1af88c41a4b2be5c0a6233678e)
+            ;
+
+            
+        
+    
+            var circle_marker_a90685a9562d474da96b05e86af480c2 = L.circleMarker(
+                [22.305940628051758, 73.17964172363281],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_74f9ea517eef4ebe86c91ac30d431bc1 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_6613d6b0c78a4bb88e633fe610e0471a = $(`<div id="html_6613d6b0c78a4bb88e633fe610e0471a" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : IndiaBulls Mega Mall  and Location : Nr Dinesh Mills (Jetalpur Road), Vadodara, Gujarāt, India</div>`)[0];
+                popup_74f9ea517eef4ebe86c91ac30d431bc1.setContent(html_6613d6b0c78a4bb88e633fe610e0471a);
+            
+
+            circle_marker_a90685a9562d474da96b05e86af480c2.bindPopup(popup_74f9ea517eef4ebe86c91ac30d431bc1)
+            ;
+
+            
+        
+    
+            var circle_marker_400850e296e2496c979462db84236849 = L.circleMarker(
+                [22.273413, 73.188816],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_638b691eee624ef79f6d285b76dec9c1 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_aaf72a4c33ae41dbb5da01ebb3d894c9 = $(`<div id="html_aaf72a4c33ae41dbb5da01ebb3d894c9" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Eva Mall AC  and Location : Majhalpur, Vadodara 390013, Gujarāt, India</div>`)[0];
+                popup_638b691eee624ef79f6d285b76dec9c1.setContent(html_aaf72a4c33ae41dbb5da01ebb3d894c9);
+            
+
+            circle_marker_400850e296e2496c979462db84236849.bindPopup(popup_638b691eee624ef79f6d285b76dec9c1)
+            ;
+
+            
+        
+    
+            var circle_marker_7fecc3b804f24292a4ca6633827285b9 = L.circleMarker(
+                [22.2803922868095, 73.20327371028579],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_d1e5b602feea4cd5b23752610d63eddb = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_be842a4c2b3340bbb6be79ad5565b11f = $(`<div id="html_be842a4c2b3340bbb6be79ad5565b11f" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Reliance Mega Mall  and Location : OP Road, Vadodara 390007, Gujarāt, India</div>`)[0];
+                popup_d1e5b602feea4cd5b23752610d63eddb.setContent(html_be842a4c2b3340bbb6be79ad5565b11f);
+            
+
+            circle_marker_7fecc3b804f24292a4ca6633827285b9.bindPopup(popup_d1e5b602feea4cd5b23752610d63eddb)
+            ;
+
+            
+        
+    
+            var circle_marker_a5c8177ce0114a28b4c27a673f0d6de9 = L.circleMarker(
+                [22.323095271274, 73.18686637181354],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_50d362a68f114f78b4eeb995cdeaaa75 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_6dda4f5e6ea14de8a936ac9acfa13a5c = $(`<div id="html_6dda4f5e6ea14de8a936ac9acfa13a5c" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : 7 Seas Mall  and Location : near ipcl circle (fatehgunj), Vadodara 390002, Gujarāt, India</div>`)[0];
+                popup_50d362a68f114f78b4eeb995cdeaaa75.setContent(html_6dda4f5e6ea14de8a936ac9acfa13a5c);
+            
+
+            circle_marker_a5c8177ce0114a28b4c27a673f0d6de9.bindPopup(popup_50d362a68f114f78b4eeb995cdeaaa75)
+            ;
+
+            
+        
+    
+            var circle_marker_7f795069942f4ca0a8e192ef5eb7fea5 = L.circleMarker(
+                [22.322225559955474, 73.16572815628187],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_8fe84dbd33db4f9ca4e049124cfdfda3 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_eb8b8622469742d68dc49e0b79b76dc2 = $(`<div id="html_eb8b8622469742d68dc49e0b79b76dc2" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Inorbit mall  and Location : Gorwa (Alembic gorwa road), Vadodara 390023, Gujarāt, India</div>`)[0];
+                popup_8fe84dbd33db4f9ca4e049124cfdfda3.setContent(html_eb8b8622469742d68dc49e0b79b76dc2);
+            
+
+            circle_marker_7f795069942f4ca0a8e192ef5eb7fea5.bindPopup(popup_8fe84dbd33db4f9ca4e049124cfdfda3)
+            ;
+
+            
+        
+    
+            var circle_marker_057d33983605484cacdabc95eb58fdc9 = L.circleMarker(
+                [22.270035311609444, 73.18250509086519],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_6a8e81a200744a7ba0bb6edceb909960 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_ad1426102b964957864bec18b0e97dfa = $(`<div id="html_ad1426102b964957864bec18b0e97dfa" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Galleria Mall  and Location : India</div>`)[0];
+                popup_6a8e81a200744a7ba0bb6edceb909960.setContent(html_ad1426102b964957864bec18b0e97dfa);
+            
+
+            circle_marker_057d33983605484cacdabc95eb58fdc9.bindPopup(popup_6a8e81a200744a7ba0bb6edceb909960)
+            ;
+
+            
+        
+    
+            var circle_marker_15c78e260c9c4e12a9bd710ea80108a6 = L.circleMarker(
+                [22.285221, 73.16355],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_097af56f52bb428cb3f5f9b747f19eb8 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_9e6ac12d494f426ea5d9a4c63944b795 = $(`<div id="html_9e6ac12d494f426ea5d9a4c63944b795" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Reliance Mega Mall  and Location : Old Padra Rd, Dev Deep Nagar, (Muj Mahuda,), Vadodara 390015, Gujarāt, India</div>`)[0];
+                popup_097af56f52bb428cb3f5f9b747f19eb8.setContent(html_9e6ac12d494f426ea5d9a4c63944b795);
+            
+
+            circle_marker_15c78e260c9c4e12a9bd710ea80108a6.bindPopup(popup_097af56f52bb428cb3f5f9b747f19eb8)
+            ;
+
+            
+        
+    
+            var circle_marker_68ca4644b6994c058525bc469d576942 = L.circleMarker(
+                [22.318144463490782, 73.16955568636352],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_d30ec6a16a8c440786498fae9bd4caa1 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_9c14b7f73dd84406b620b10dedc2a0c0 = $(`<div id="html_9c14b7f73dd84406b620b10dedc2a0c0" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Centre Square Mall  and Location : Alkapuri, opposite Vadodara Central Mall (Genda circle), Vadodara 390007, Gujarāt, India</div>`)[0];
+                popup_d30ec6a16a8c440786498fae9bd4caa1.setContent(html_9c14b7f73dd84406b620b10dedc2a0c0);
+            
+
+            circle_marker_68ca4644b6994c058525bc469d576942.bindPopup(popup_d30ec6a16a8c440786498fae9bd4caa1)
+            ;
+
+            
+        
+    
+            var circle_marker_738d86aa13254c658d69abcc19914ec8 = L.circleMarker(
+                [22.270291, 73.190991],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_5a0afc0599be402d8bd8ddcd50d5a1c4 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_62c701f55c1046108e51b3e4da4306ea = $(`<div id="html_62c701f55c1046108e51b3e4da4306ea" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : PVR Eva Mall  and Location : Manjalpur, Vadodara, Gujarāt, India</div>`)[0];
+                popup_5a0afc0599be402d8bd8ddcd50d5a1c4.setContent(html_62c701f55c1046108e51b3e4da4306ea);
+            
+
+            circle_marker_738d86aa13254c658d69abcc19914ec8.bindPopup(popup_5a0afc0599be402d8bd8ddcd50d5a1c4)
+            ;
+
+            
+        
+    
+            var circle_marker_51566e6e29c7448197ca8df41f056086 = L.circleMarker(
+                [22.323661, 73.185446],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_1d5ba5401918435ca4ebfcf870ebc97e = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_4a9a63a5a7d640bf9620fa250320b004 = $(`<div id="html_4a9a63a5a7d640bf9620fa250320b004" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : shopping mall  and Location : seven seas mall (fategunj), Vadodara, Gujarāt, India</div>`)[0];
+                popup_1d5ba5401918435ca4ebfcf870ebc97e.setContent(html_4a9a63a5a7d640bf9620fa250320b004);
+            
+
+            circle_marker_51566e6e29c7448197ca8df41f056086.bindPopup(popup_1d5ba5401918435ca4ebfcf870ebc97e)
+            ;
+
+            
+        
+    
+            var circle_marker_86919f55e00d4cc5b49f46307de93976 = L.circleMarker(
+                [22.322329, 73.16543],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_f9e4addad2f74d82b3d56e6ba40cadfd = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_a800a9c8e4b440dd98d90640a40a73e5 = $(`<div id="html_a800a9c8e4b440dd98d90640a40a73e5" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Inorbit Mall Food Court  and Location : India</div>`)[0];
+                popup_f9e4addad2f74d82b3d56e6ba40cadfd.setContent(html_a800a9c8e4b440dd98d90640a40a73e5);
+            
+
+            circle_marker_86919f55e00d4cc5b49f46307de93976.bindPopup(popup_f9e4addad2f74d82b3d56e6ba40cadfd)
+            ;
+
+            
+        
+    
+            var circle_marker_a267adb6fef5407da32a14c3ee20c688 = L.circleMarker(
+                [22.33668379591419, 73.19010415063248],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_a1983c01f54d4637b9410cf86e8c3b15 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_531752ab602b4951bf44ab0513f2dd63 = $(`<div id="html_531752ab602b4951bf44ab0513f2dd63" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : center square mall  and Location : India</div>`)[0];
+                popup_a1983c01f54d4637b9410cf86e8c3b15.setContent(html_531752ab602b4951bf44ab0513f2dd63);
+            
+
+            circle_marker_a267adb6fef5407da32a14c3ee20c688.bindPopup(popup_a1983c01f54d4637b9410cf86e8c3b15)
+            ;
+
+            
+        
+    
+            var circle_marker_9e468b14351c4c80b1ad834221ea1fb8 = L.circleMarker(
+                [22.32545617605124, 73.20439706219608],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_fa8b274465d84cc59db9e372fe5e8c9e = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_f678d1bf3b7d4019a0109c07109a9972 = $(`<div id="html_f678d1bf3b7d4019a0109c07109a9972" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Seven seas mall  and Location : Fatehgunj (Fatehgun Main Road), Vadodara 390002, Gujarāt, India</div>`)[0];
+                popup_fa8b274465d84cc59db9e372fe5e8c9e.setContent(html_f678d1bf3b7d4019a0109c07109a9972);
+            
+
+            circle_marker_9e468b14351c4c80b1ad834221ea1fb8.bindPopup(popup_fa8b274465d84cc59db9e372fe5e8c9e)
+            ;
+
+            
+        
+    
+            var circle_marker_f4559761f349436f9e2b1ac412b8720d = L.circleMarker(
+                [22.280523, 73.149364],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_e09f5fe355404e96b9d79753465662db = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_08ad1476a84647e8a3c94a6547d37385 = $(`<div id="html_08ad1476a84647e8a3c94a6547d37385" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Southwest Central Mall  and Location : Vadodara 390012, Gujarāt, India</div>`)[0];
+                popup_e09f5fe355404e96b9d79753465662db.setContent(html_08ad1476a84647e8a3c94a6547d37385);
+            
+
+            circle_marker_f4559761f349436f9e2b1ac412b8720d.bindPopup(popup_e09f5fe355404e96b9d79753465662db)
+            ;
+
+            
+        
+    
+            var circle_marker_d699df9d948f4460a5bd898bcd6eb014 = L.circleMarker(
+                [22.30589869426554, 73.15649697245941],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_aed0a78b2477409098ed6d4e724e4b18 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_732961f8df7741309310b780c1d823c4 = $(`<div id="html_732961f8df7741309310b780c1d823c4" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Sharnam Fortune Mall  and Location : Opposite Westside, Near Inox, India</div>`)[0];
+                popup_aed0a78b2477409098ed6d4e724e4b18.setContent(html_732961f8df7741309310b780c1d823c4);
+            
+
+            circle_marker_d699df9d948f4460a5bd898bcd6eb014.bindPopup(popup_aed0a78b2477409098ed6d4e724e4b18)
+            ;
+
+            
+        
+    
+            var circle_marker_64976e75854d4b03b9a7df00fc276ff5 = L.circleMarker(
+                [22.31109335783233, 73.15890312194824],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_fb7a712513874f9f83cb472d81e4bcbb = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_a5dad26b46fc45e4bece2025869ca78e = $(`<div id="html_a5dad26b46fc45e4bece2025869ca78e" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Cine Mall  and Location : Race Course Circle, Vadodara, Gujarāt, India</div>`)[0];
+                popup_fb7a712513874f9f83cb472d81e4bcbb.setContent(html_a5dad26b46fc45e4bece2025869ca78e);
+            
+
+            circle_marker_64976e75854d4b03b9a7df00fc276ff5.bindPopup(popup_fb7a712513874f9f83cb472d81e4bcbb)
+            ;
+
+            
+        
+    
+            var circle_marker_a18d49be7bfb4557874d5d27ab98a3a9 = L.circleMarker(
+                [22.32435489450522, 73.16592915005053],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_956a889fb70d4c9eb7fa72ffa45d1708 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_c6543faf35944fe5afb1a3db590a4321 = $(`<div id="html_c6543faf35944fe5afb1a3db590a4321" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Stearling Health Mall  and Location : Vadodara, Gujarāt, India</div>`)[0];
+                popup_956a889fb70d4c9eb7fa72ffa45d1708.setContent(html_c6543faf35944fe5afb1a3db590a4321);
+            
+
+            circle_marker_a18d49be7bfb4557874d5d27ab98a3a9.bindPopup(popup_956a889fb70d4c9eb7fa72ffa45d1708)
+            ;
+
+            
+        
+    
+            var circle_marker_12c51b2891c54475ba1b8bcdf41120b8 = L.circleMarker(
+                [22.316546223408942, 73.15882480353976],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_9ff3ff084c2749f2982bf7ff1fb3ed17 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_306ae8f7479f4b73bf8dd46fd65fa67a = $(`<div id="html_306ae8f7479f4b73bf8dd46fd65fa67a" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : ShreemShalini Mall  and Location : India</div>`)[0];
+                popup_9ff3ff084c2749f2982bf7ff1fb3ed17.setContent(html_306ae8f7479f4b73bf8dd46fd65fa67a);
+            
+
+            circle_marker_12c51b2891c54475ba1b8bcdf41120b8.bindPopup(popup_9ff3ff084c2749f2982bf7ff1fb3ed17)
+            ;
+
+            
+        
+    
+            var circle_marker_3c78d3fa8392431eb990d4abc2bc471c = L.circleMarker(
+                [22.309129062440842, 73.16577934455734],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_ae3d9a700e3c40eb819fc3c18ed4ceb3 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_64f8f6f367e047cf8c88ededf4b098d7 = $(`<div id="html_64f8f6f367e047cf8c88ededf4b098d7" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Sterling Health Mall  and Location : Old Padra Road, Vadodara 390020, Gujarāt, India</div>`)[0];
+                popup_ae3d9a700e3c40eb819fc3c18ed4ceb3.setContent(html_64f8f6f367e047cf8c88ededf4b098d7);
+            
+
+            circle_marker_3c78d3fa8392431eb990d4abc2bc471c.bindPopup(popup_ae3d9a700e3c40eb819fc3c18ed4ceb3)
+            ;
+
+            
+        
+    
+            var circle_marker_2e0570c76e394032a23563b9ae12ae2f = L.circleMarker(
+                [22.301719, 73.138786],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_78c491caa4d748da8abaadfedea9e278 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_cdb3962b54c64153891f3b771fb99279 = $(`<div id="html_cdb3962b54c64153891f3b771fb99279" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Nilamber Triumph Mall  and Location : Vasna-Bhyali Road (Nilamber Circle), Vadodara 390015, Gujarāt, India</div>`)[0];
+                popup_78c491caa4d748da8abaadfedea9e278.setContent(html_cdb3962b54c64153891f3b771fb99279);
+            
+
+            circle_marker_2e0570c76e394032a23563b9ae12ae2f.bindPopup(popup_78c491caa4d748da8abaadfedea9e278)
+            ;
+
+            
+        
+    
+            var circle_marker_ca386103b12b464f9e977a58cfcbdf94 = L.circleMarker(
+                [22.31083798882526, 73.1587306920101],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#976139",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#70206a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_e0e66dd20dbe41a39499cd2d1a72a10e = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_d05a1c04af534ff29dc36d8830feb251 = $(`<div id="html_d05a1c04af534ff29dc36d8830feb251" style="width: 100.0%; height: 100.0%;">cat : mall  , Name : Cinemax  and Location : Cine Mall, Race Course Circle (Race Course Road), Vadodara 390007, Gujarāt, India</div>`)[0];
+                popup_e0e66dd20dbe41a39499cd2d1a72a10e.setContent(html_d05a1c04af534ff29dc36d8830feb251);
+            
+
+            circle_marker_ca386103b12b464f9e977a58cfcbdf94.bindPopup(popup_e0e66dd20dbe41a39499cd2d1a72a10e)
+            ;
+
+            
+        
+    
+            var circle_marker_04e1f3aeef404c5c89141f827cfcddbc = L.circleMarker(
+                [22.298321613653094, 73.16480560643512],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_5a205efd75e247e8a8eb1b910b256a74 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_09be9ea57f934bf9b59fc8183d0cbace = $(`<div id="html_09be9ea57f934bf9b59fc8183d0cbace" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza on the Rock  and Location : 1 Maryland Complex, Opposite Avishkar Complex, O.P.Road (O P Road), Vadodara 390007, Gujarāt, India</div>`)[0];
+                popup_5a205efd75e247e8a8eb1b910b256a74.setContent(html_09be9ea57f934bf9b59fc8183d0cbace);
+            
+
+            circle_marker_04e1f3aeef404c5c89141f827cfcddbc.bindPopup(popup_5a205efd75e247e8a8eb1b910b256a74)
+            ;
+
+            
+        
+    
+            var circle_marker_cde2aadd01d542bba138c51a36352f0f = L.circleMarker(
+                [22.311780438919442, 73.16498992366765],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_c76aaaf042874815b9f5b5855adddca2 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_61358d4b68dd4ddc9ee40df5525724db = $(`<div id="html_61358d4b68dd4ddc9ee40df5525724db" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Hut  and Location : Alkapuri, Vadodara, Gujarāt, India</div>`)[0];
+                popup_c76aaaf042874815b9f5b5855adddca2.setContent(html_61358d4b68dd4ddc9ee40df5525724db);
+            
+
+            circle_marker_cde2aadd01d542bba138c51a36352f0f.bindPopup(popup_c76aaaf042874815b9f5b5855adddca2)
+            ;
+
+            
+        
+    
+            var circle_marker_f5c69b575a424a62a594787532cdb15f = L.circleMarker(
+                [22.322989849387326, 73.1872224579926],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_167c80f3dee1483fa2bb3fcf60af62db = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_6ecc56cc29f5463a851c749d04b291ac = $(`<div id="html_6ecc56cc29f5463a851c749d04b291ac" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Domino's Pizza  and Location : SHOP NO.7,NO.2,RUSSEL STREET,KOLKATA - 700071 PH.NO. 033-22176079/ 6085/ 6086/ 6090/ 32525002, Vadodara 390002, Gujarāt, India</div>`)[0];
+                popup_167c80f3dee1483fa2bb3fcf60af62db.setContent(html_6ecc56cc29f5463a851c749d04b291ac);
+            
+
+            circle_marker_f5c69b575a424a62a594787532cdb15f.bindPopup(popup_167c80f3dee1483fa2bb3fcf60af62db)
+            ;
+
+            
+        
+    
+            var circle_marker_4755805aa9954f1fac10f00f63e73da9 = L.circleMarker(
+                [22.318020715209297, 73.16964341334786],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_faf52163b7d54b62b218f826ffb72062 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_5e5887a830d744eda3674e30d1214171 = $(`<div id="html_5e5887a830d744eda3674e30d1214171" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Papa Jones Pizza  and Location : Centre Square, Vadodara, Gujarāt, India</div>`)[0];
+                popup_faf52163b7d54b62b218f826ffb72062.setContent(html_5e5887a830d744eda3674e30d1214171);
+            
+
+            circle_marker_4755805aa9954f1fac10f00f63e73da9.bindPopup(popup_faf52163b7d54b62b218f826ffb72062)
+            ;
+
+            
+        
+    
+            var circle_marker_f3baa2a11fa04745a249ed79e39b1ddf = L.circleMarker(
+                [22.308801651000977, 73.1841049194336],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_23235db001a8416ebb54ec7e366ba237 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_c9dbd78a222d4c2fbe1a803c1ccfcd8a = $(`<div id="html_c9dbd78a222d4c2fbe1a803c1ccfcd8a" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Mêo  and Location : India</div>`)[0];
+                popup_23235db001a8416ebb54ec7e366ba237.setContent(html_c9dbd78a222d4c2fbe1a803c1ccfcd8a);
+            
+
+            circle_marker_f3baa2a11fa04745a249ed79e39b1ddf.bindPopup(popup_23235db001a8416ebb54ec7e366ba237)
+            ;
+
+            
+        
+    
+            var circle_marker_f4112cd6293c449483023fdefdcfa4b1 = L.circleMarker(
+                [22.341, 73.174],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_3b5c79cc486d4748a7c417ebd36378f1 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_a9de701aa5e0494e823bf11591bcc155 = $(`<div id="html_a9de701aa5e0494e823bf11591bcc155" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Domino's Pizza  and Location : Vadodara 390002, Gujarāt, India</div>`)[0];
+                popup_3b5c79cc486d4748a7c417ebd36378f1.setContent(html_a9de701aa5e0494e823bf11591bcc155);
+            
+
+            circle_marker_f4112cd6293c449483023fdefdcfa4b1.bindPopup(popup_3b5c79cc486d4748a7c417ebd36378f1)
+            ;
+
+            
+        
+    
+            var circle_marker_f7dbc0e6c59c4075bc757337c85022ce = L.circleMarker(
+                [22.30769969165975, 73.17181181810805],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_23925d2aae294748abca813b52073dd4 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_10c81c9f8cf84124ab9eed7e3f2af20f = $(`<div id="html_10c81c9f8cf84124ab9eed7e3f2af20f" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Bell  and Location : Jetalpur Rd., Vadodara 390020, Gujarāt, India</div>`)[0];
+                popup_23925d2aae294748abca813b52073dd4.setContent(html_10c81c9f8cf84124ab9eed7e3f2af20f);
+            
+
+            circle_marker_f7dbc0e6c59c4075bc757337c85022ce.bindPopup(popup_23925d2aae294748abca813b52073dd4)
+            ;
+
+            
+        
+    
+            var circle_marker_d0796f267f2c4aba8b4d25d710dbfe99 = L.circleMarker(
+                [22.305259704589844, 73.1720962524414],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_e38a658a5c1848d58fa28c2c459f551d = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_ebde55f383714fc4b913d4973e3b77c5 = $(`<div id="html_ebde55f383714fc4b913d4973e3b77c5" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Heaven  and Location : Inox, Vadodara, Gujarāt, India</div>`)[0];
+                popup_e38a658a5c1848d58fa28c2c459f551d.setContent(html_ebde55f383714fc4b913d4973e3b77c5);
+            
+
+            circle_marker_d0796f267f2c4aba8b4d25d710dbfe99.bindPopup(popup_e38a658a5c1848d58fa28c2c459f551d)
+            ;
+
+            
+        
+    
+            var circle_marker_708bf93fbd7f4760823dc5d25fd530c2 = L.circleMarker(
+                [22.307756440811005, 73.17190976525268],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_5db429d4ce33440b99da7a249b8d97b2 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_62adc086dd584dffabc9549a0047471f = $(`<div id="html_62adc086dd584dffabc9549a0047471f" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Inn  and Location : B301 Productivity Rd., Vadodara 390020, Gujarāt, India</div>`)[0];
+                popup_5db429d4ce33440b99da7a249b8d97b2.setContent(html_62adc086dd584dffabc9549a0047471f);
+            
+
+            circle_marker_708bf93fbd7f4760823dc5d25fd530c2.bindPopup(popup_5db429d4ce33440b99da7a249b8d97b2)
+            ;
+
+            
+        
+    
+            var circle_marker_9dbcd0c01c4f45fd8c5187e9f8b9dc46 = L.circleMarker(
+                [22.308894803921824, 73.17328678238123],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_0010cd3f5a8e45b39420afcea7e35a15 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_63fcebc6ff814caa8b45e8ff399fb579 = $(`<div id="html_63fcebc6ff814caa8b45e8ff399fb579" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Meo  and Location : India</div>`)[0];
+                popup_0010cd3f5a8e45b39420afcea7e35a15.setContent(html_63fcebc6ff814caa8b45e8ff399fb579);
+            
+
+            circle_marker_9dbcd0c01c4f45fd8c5187e9f8b9dc46.bindPopup(popup_0010cd3f5a8e45b39420afcea7e35a15)
+            ;
+
+            
+        
+    
+            var circle_marker_e68d4d768e07494f89c76fc3fa31c541 = L.circleMarker(
+                [22.2734, 73.1880276],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_68556e7c82ed421facbbe5df9320dc23 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_747d0d0389d7403ea506c83f81664526 = $(`<div id="html_747d0d0389d7403ea506c83f81664526" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Hut  and Location : SN TF 11, 3rd Flr, Eva Mall, Near Saraswati Cplx (Manjalpur), Vadodara 390011, Gujarāt, India</div>`)[0];
+                popup_68556e7c82ed421facbbe5df9320dc23.setContent(html_747d0d0389d7403ea506c83f81664526);
+            
+
+            circle_marker_e68d4d768e07494f89c76fc3fa31c541.bindPopup(popup_68556e7c82ed421facbbe5df9320dc23)
+            ;
+
+            
+        
+    
+            var circle_marker_2d3bd98ce3cc438b863958ebf03cfb9a = L.circleMarker(
+                [22.27297, 73.1868],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_997a0ba0fceb4a068715b7ddb0082f3f = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_9d4c7f5f06bf48b29a0acd3b6219cdca = $(`<div id="html_9d4c7f5f06bf48b29a0acd3b6219cdca" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : pizza zone  and Location : Vadodara 390011, Gujarāt, India</div>`)[0];
+                popup_997a0ba0fceb4a068715b7ddb0082f3f.setContent(html_9d4c7f5f06bf48b29a0acd3b6219cdca);
+            
+
+            circle_marker_2d3bd98ce3cc438b863958ebf03cfb9a.bindPopup(popup_997a0ba0fceb4a068715b7ddb0082f3f)
+            ;
+
+            
+        
+    
+            var circle_marker_ff452e70f13a469da2e28ee698d23b82 = L.circleMarker(
+                [22.3226479123576, 73.1974725163814],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_ec55faebce2b47809e8eeae5ed4ec2e5 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_cc2e2745178245aea8464182d587333c = $(`<div id="html_cc2e2745178245aea8464182d587333c" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Bel Karelibag Vadodara  and Location : India</div>`)[0];
+                popup_ec55faebce2b47809e8eeae5ed4ec2e5.setContent(html_cc2e2745178245aea8464182d587333c);
+            
+
+            circle_marker_ff452e70f13a469da2e28ee698d23b82.bindPopup(popup_ec55faebce2b47809e8eeae5ed4ec2e5)
+            ;
+
+            
+        
+    
+            var circle_marker_579e9a2212f44ebea1557cda503a2c6c = L.circleMarker(
+                [22.286665, 73.168589],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_16b96d9bfbba454f95a291d138fcc305 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_bd607c62992d4b9f9c4da3386ab1eccd = $(`<div id="html_bd607c62992d4b9f9c4da3386ab1eccd" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : pizza king akota  and Location : India</div>`)[0];
+                popup_16b96d9bfbba454f95a291d138fcc305.setContent(html_bd607c62992d4b9f9c4da3386ab1eccd);
+            
+
+            circle_marker_579e9a2212f44ebea1557cda503a2c6c.bindPopup(popup_16b96d9bfbba454f95a291d138fcc305)
+            ;
+
+            
+        
+    
+            var circle_marker_e6f4a115ee114608912290cc03703395 = L.circleMarker(
+                [22.323667273565235, 73.18543182504162],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_e4ddf35912a7406cb7ff1e0e463f3e8c = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_ce96d5d40b66461c9c1ed95bf7c7b6c4 = $(`<div id="html_ce96d5d40b66461c9c1ed95bf7c7b6c4" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Hut Fatehgunj  and Location : Fatehgunj, India</div>`)[0];
+                popup_e4ddf35912a7406cb7ff1e0e463f3e8c.setContent(html_ce96d5d40b66461c9c1ed95bf7c7b6c4);
+            
+
+            circle_marker_e6f4a115ee114608912290cc03703395.bindPopup(popup_e4ddf35912a7406cb7ff1e0e463f3e8c)
+            ;
+
+            
+        
+    
+            var circle_marker_2e780fd9e0c940aba15a6a1b7831f0b5 = L.circleMarker(
+                [22.269828469239023, 73.19817535022989],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_fec62aef6714423ea8adf82b26ba3581 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_755ce9e2f64d4bafb352099f2e1f6f8a = $(`<div id="html_755ce9e2f64d4bafb352099f2e1f6f8a" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Hut  and Location : Lodhika, Rajkot, Gujarāt, India</div>`)[0];
+                popup_fec62aef6714423ea8adf82b26ba3581.setContent(html_755ce9e2f64d4bafb352099f2e1f6f8a);
+            
+
+            circle_marker_2e780fd9e0c940aba15a6a1b7831f0b5.bindPopup(popup_fec62aef6714423ea8adf82b26ba3581)
+            ;
+
+            
+        
+    
+            var circle_marker_eb95225a0cf642348a8a4a7472b8a43e = L.circleMarker(
+                [22.268997, 73.198708],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_484163aa13124cb289b744973b98f42a = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_263542b8b7c9405cadd09fa620947707 = $(`<div id="html_263542b8b7c9405cadd09fa620947707" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Hut  and Location : Akashganga Complex (Race course Rd), Vadodara 390007, Gujarāt, India</div>`)[0];
+                popup_484163aa13124cb289b744973b98f42a.setContent(html_263542b8b7c9405cadd09fa620947707);
+            
+
+            circle_marker_eb95225a0cf642348a8a4a7472b8a43e.bindPopup(popup_484163aa13124cb289b744973b98f42a)
+            ;
+
+            
+        
+    
+            var circle_marker_0a8adb8bee024adfa401fc7b3502c2dc = L.circleMarker(
+                [22.323858646212337, 73.18544334754203],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_4f668ac352ad43268afc585c61c9a2be = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_b52ce8a89d2e4deb90a2b073c9539ba9 = $(`<div id="html_b52ce8a89d2e4deb90a2b073c9539ba9" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Mania  and Location : Pansheel Hotel, Vadodara, Gujarāt, India</div>`)[0];
+                popup_4f668ac352ad43268afc585c61c9a2be.setContent(html_b52ce8a89d2e4deb90a2b073c9539ba9);
+            
+
+            circle_marker_0a8adb8bee024adfa401fc7b3502c2dc.bindPopup(popup_4f668ac352ad43268afc585c61c9a2be)
+            ;
+
+            
+        
+    
+            var circle_marker_59cfcc70a5c346859d2a3af741bdccc2 = L.circleMarker(
+                [22.287025451660156, 73.16488647460938],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_bf88d11117ae48f5a8e9e5e64a3e5ac8 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_0d35ac6ad4ba404499d2999b6ec3d81d = $(`<div id="html_0d35ac6ad4ba404499d2999b6ec3d81d" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : pizza hut (delivery PHD)  and Location : F7&9 Jai Laxmi Society, Opp Devdeep Nagar (Old Padra), Vadodara 390020, Gujarāt, India</div>`)[0];
+                popup_bf88d11117ae48f5a8e9e5e64a3e5ac8.setContent(html_0d35ac6ad4ba404499d2999b6ec3d81d);
+            
+
+            circle_marker_59cfcc70a5c346859d2a3af741bdccc2.bindPopup(popup_bf88d11117ae48f5a8e9e5e64a3e5ac8)
+            ;
+
+            
+        
+    
+            var circle_marker_7fe60c86a4da42c5a20e36cb7129ce62 = L.circleMarker(
+                [22.28838910407895, 73.15334290266036],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_1b2ff2105f6a4a86a1107376686d117d = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_fcbab449110b48a3af4dfda6a2968f8e = $(`<div id="html_fcbab449110b48a3af4dfda6a2968f8e" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Da Dhaba Cafe  and Location : 112A/114 Pancham Icon, Near D-Mart (Vasna Road), Vadodara 390007, Gujarāt, India</div>`)[0];
+                popup_1b2ff2105f6a4a86a1107376686d117d.setContent(html_fcbab449110b48a3af4dfda6a2968f8e);
+            
+
+            circle_marker_7fe60c86a4da42c5a20e36cb7129ce62.bindPopup(popup_1b2ff2105f6a4a86a1107376686d117d)
+            ;
+
+            
+        
+    
+            var circle_marker_6705527af27d4d55b3fc3e7f8540ab25 = L.circleMarker(
+                [22.316301428482852, 73.16438499636516],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_15df72e189d24f6aa490e7df2e28ebf5 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_cbced85c54784842916484c06d2f5c5a = $(`<div id="html_cbced85c54784842916484c06d2f5c5a" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Planet  and Location : Old Padra Road, Vadodara, Gujarāt, India</div>`)[0];
+                popup_15df72e189d24f6aa490e7df2e28ebf5.setContent(html_cbced85c54784842916484c06d2f5c5a);
+            
+
+            circle_marker_6705527af27d4d55b3fc3e7f8540ab25.bindPopup(popup_15df72e189d24f6aa490e7df2e28ebf5)
+            ;
+
+            
+        
+    
+            var circle_marker_0e2896d076ba4e5ab8af688d92d66316 = L.circleMarker(
+                [22.295, 73.153],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_aac230672f0e4de98d8324e3d084662a = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_4d984fa3db474faeb6156012540d5c26 = $(`<div id="html_4d984fa3db474faeb6156012540d5c26" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Domino's Pizza  and Location : Pancham Icon, Shop No. GF - 1, 3 and Part of 2, Ground Floor, Vasna Road, Near D - Mart,Gujarat -390015, PH.NO. 0265-2251146, Vadodara 390015, Gujarāt, India</div>`)[0];
+                popup_aac230672f0e4de98d8324e3d084662a.setContent(html_4d984fa3db474faeb6156012540d5c26);
+            
+
+            circle_marker_0e2896d076ba4e5ab8af688d92d66316.bindPopup(popup_aac230672f0e4de98d8324e3d084662a)
+            ;
+
+            
+        
+    
+            var circle_marker_333cbe0b1008471293cee410089b68cb = L.circleMarker(
+                [22.318, 73.188],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_d9021eb0a698432290851576c2ee1584 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_a7b19b7a8c864ea6838b87831793c976 = $(`<div id="html_a7b19b7a8c864ea6838b87831793c976" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Domino's Pizza  and Location : Shop No. GF - 1, Ground Floor, AG Chamber, Narhari Hospital Circle, Near Sayaji Baug, Fatehgunj, Vadodara- 390002, Vadodara 390002, Gujarāt, India</div>`)[0];
+                popup_d9021eb0a698432290851576c2ee1584.setContent(html_a7b19b7a8c864ea6838b87831793c976);
+            
+
+            circle_marker_333cbe0b1008471293cee410089b68cb.bindPopup(popup_d9021eb0a698432290851576c2ee1584)
+            ;
+
+            
+        
+    
+            var circle_marker_941e41fe4ac441d08b28399aad259d4e = L.circleMarker(
+                [22.310083389282227, 73.15884399414062],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_e8f577a7fe774a68850022ff879b09e4 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_f4962d3a84d348ef98ae86a5ea782f18 = $(`<div id="html_f4962d3a84d348ef98ae86a5ea782f18" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza Heaven  and Location : Trivia Complex (Near Natubhai Circle), Vadodara, Gujarāt, India</div>`)[0];
+                popup_e8f577a7fe774a68850022ff879b09e4.setContent(html_f4962d3a84d348ef98ae86a5ea782f18);
+            
+
+            circle_marker_941e41fe4ac441d08b28399aad259d4e.bindPopup(popup_e8f577a7fe774a68850022ff879b09e4)
+            ;
+
+            
+        
+    
+            var circle_marker_2bca644c80dc4192b7a7301f5344b739 = L.circleMarker(
+                [22.3, 73.231],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_511def244ea34abda839a47374cecd19 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_50daf81cdff7446aa0bf6f92d4c2e99d = $(`<div id="html_50daf81cdff7446aa0bf6f92d4c2e99d" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Domino's Pizza  and Location : Ground Floor and First Floor,B - 33, Uma Colony, Uma Co-operative Housing Society Limited B Vibhag, aghodia Road,F.P. No. 430,, Vadodara 390019, Gujarāt, India</div>`)[0];
+                popup_511def244ea34abda839a47374cecd19.setContent(html_50daf81cdff7446aa0bf6f92d4c2e99d);
+            
+
+            circle_marker_2bca644c80dc4192b7a7301f5344b739.bindPopup(popup_511def244ea34abda839a47374cecd19)
+            ;
+
+            
+        
+    
+            var circle_marker_a410817d54be4fb48068e11614afb19d = L.circleMarker(
+                [22.295107, 73.158691],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_c35cd514d72c4743a6fe18fda117cb41 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_babc56d283874748929a29961b1a70bb = $(`<div id="html_babc56d283874748929a29961b1a70bb" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Octant Pizza  and Location : Vasna Road (Opp. CCD, Taksh Complex), Vadodara 390020, Gujarāt, India</div>`)[0];
+                popup_c35cd514d72c4743a6fe18fda117cb41.setContent(html_babc56d283874748929a29961b1a70bb);
+            
+
+            circle_marker_a410817d54be4fb48068e11614afb19d.bindPopup(popup_c35cd514d72c4743a6fe18fda117cb41)
+            ;
+
+            
+        
+    
+            var circle_marker_c5280589134f40a188c21ca27e1d90b2 = L.circleMarker(
+                [22.32216192659801, 73.16570444177357],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_855cf0384bb64482832cf70931e44ccf = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_9876ac4b68f44faf84c7ef3b1e39a4e0 = $(`<div id="html_9876ac4b68f44faf84c7ef3b1e39a4e0" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Pizza hut  and Location : 2nd Floor, Inorbit mall (Gorwa Road), Vadodara, Gujarāt, India</div>`)[0];
+                popup_855cf0384bb64482832cf70931e44ccf.setContent(html_9876ac4b68f44faf84c7ef3b1e39a4e0);
+            
+
+            circle_marker_c5280589134f40a188c21ca27e1d90b2.bindPopup(popup_855cf0384bb64482832cf70931e44ccf)
+            ;
+
+            
+        
+    
+            var circle_marker_5a029b59019744f1bf61bb75c10cc86e = L.circleMarker(
+                [22.28223655662493, 73.17633748054504],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_7dd61e98b818467a83b684d905414ed1 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_6e1976c7e0514e9d9993966b60bdc3fc = $(`<div id="html_6e1976c7e0514e9d9993966b60bdc3fc" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : mondos pizza  and Location : 25, Sampatrao Colony,Opp-Circuit House, (Alkapuri), Vadodara 390007, Gujarāt, India</div>`)[0];
+                popup_7dd61e98b818467a83b684d905414ed1.setContent(html_6e1976c7e0514e9d9993966b60bdc3fc);
+            
+
+            circle_marker_5a029b59019744f1bf61bb75c10cc86e.bindPopup(popup_7dd61e98b818467a83b684d905414ed1)
+            ;
+
+            
+        
+    
+            var circle_marker_fd1c8a1ff1134d6dad8ef4f05c5802d5 = L.circleMarker(
+                [22.31043010317503, 73.17629429688853],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_d66d3dd40cba4a2082e4946adec84fac = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_b23fcacac55a4b9585c151c5aa2538d4 = $(`<div id="html_b23fcacac55a4b9585c151c5aa2538d4" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : sam's pizza  and Location : India</div>`)[0];
+                popup_d66d3dd40cba4a2082e4946adec84fac.setContent(html_b23fcacac55a4b9585c151c5aa2538d4);
+            
+
+            circle_marker_fd1c8a1ff1134d6dad8ef4f05c5802d5.bindPopup(popup_d66d3dd40cba4a2082e4946adec84fac)
+            ;
+
+            
+        
+    
+            var circle_marker_830cf29a7879464cb684c79c5bcaf4c8 = L.circleMarker(
+                [22.294498, 73.164564],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#bf95f8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6955a2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_6d305cdf2e884cf2b36d5fae7ae4bf0d = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_780e47e8c7f345ac860707b08f51d3ed = $(`<div id="html_780e47e8c7f345ac860707b08f51d3ed" style="width: 100.0%; height: 100.0%;">cat : pizza  , Name : Da Pizza planet  and Location : India</div>`)[0];
+                popup_6d305cdf2e884cf2b36d5fae7ae4bf0d.setContent(html_780e47e8c7f345ac860707b08f51d3ed);
+            
+
+            circle_marker_830cf29a7879464cb684c79c5bcaf4c8.bindPopup(popup_6d305cdf2e884cf2b36d5fae7ae4bf0d)
+            ;
+
+            
+        
+    
+            var circle_marker_40bd6f115c3844e7b3a1f49dfc32d763 = L.circleMarker(
+                [22.289819808424074, 73.19293284811512],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#fc61b4",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#57070e",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_c39615b49f324adca2f7c73d055968f8 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_ab31fa0a9d4b4347843c4eebdd87872d = $(`<div id="html_ab31fa0a9d4b4347843c4eebdd87872d" style="width: 100.0%; height: 100.0%;">cat : museum  , Name : Maharaja Fatesingh Museum  and Location : Vadodara, Gujarat, Vadodara, Gujarāt, India</div>`)[0];
+                popup_c39615b49f324adca2f7c73d055968f8.setContent(html_ab31fa0a9d4b4347843c4eebdd87872d);
+            
+
+            circle_marker_40bd6f115c3844e7b3a1f49dfc32d763.bindPopup(popup_c39615b49f324adca2f7c73d055968f8)
+            ;
+
+            
+        
+    
+            var circle_marker_ec5df2f234f64f7d8bf8d9ef3e2ec2b6 = L.circleMarker(
+                [22.31252908937699, 73.18821449178087],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#fc61b4",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#57070e",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_2658f52be0184262a148a53175ee08ba = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_7c2646fb50454c8bb481a5aafb79f414 = $(`<div id="html_7c2646fb50454c8bb481a5aafb79f414" style="width: 100.0%; height: 100.0%;">cat : museum  , Name : Baroda Museum  and Location : India</div>`)[0];
+                popup_2658f52be0184262a148a53175ee08ba.setContent(html_7c2646fb50454c8bb481a5aafb79f414);
+            
+
+            circle_marker_ec5df2f234f64f7d8bf8d9ef3e2ec2b6.bindPopup(popup_2658f52be0184262a148a53175ee08ba)
+            ;
+
+            
+        
+    
+            var circle_marker_2c0dad99d9a74c8d8ada902c486e0d1c = L.circleMarker(
+                [22.299703606372084, 73.25768930578813],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#fc61b4",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#57070e",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_7a04e54222d84803adf07d694fc95c37 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_687ce5025dfe42ed92c38c46dfd12072 = $(`<div id="html_687ce5025dfe42ed92c38c46dfd12072" style="width: 100.0%; height: 100.0%;">cat : museum  , Name : Sayaji Museum  and Location : India</div>`)[0];
+                popup_7a04e54222d84803adf07d694fc95c37.setContent(html_687ce5025dfe42ed92c38c46dfd12072);
+            
+
+            circle_marker_2c0dad99d9a74c8d8ada902c486e0d1c.bindPopup(popup_7a04e54222d84803adf07d694fc95c37)
+            ;
+
+            
+        
+    
+            var circle_marker_9edfb1f1cf1b4f50bda2fab365eef67b = L.circleMarker(
+                [22.30910406025825, 73.18354131516021],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_8168614179a5424aa2adc0367b788470 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_89874ee33ea34c58b4f23cf4717bd7f6 = $(`<div id="html_89874ee33ea34c58b4f23cf4717bd7f6" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : New Speedy Cyber Cafe  and Location : India</div>`)[0];
+                popup_8168614179a5424aa2adc0367b788470.setContent(html_89874ee33ea34c58b4f23cf4717bd7f6);
+            
+
+            circle_marker_9edfb1f1cf1b4f50bda2fab365eef67b.bindPopup(popup_8168614179a5424aa2adc0367b788470)
+            ;
+
+            
+        
+    
+            var circle_marker_45f7cc67cc304397bd8bf592e0c1b132 = L.circleMarker(
+                [22.31049048735181, 73.17051545484343],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_1bfb42f790444af3be6b56a35a2d2d40 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_64ad4e2b13304b9dab2ca62bf994acb5 = $(`<div id="html_64ad4e2b13304b9dab2ca62bf994acb5" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : HB' Cyber Cafe  and Location : India</div>`)[0];
+                popup_1bfb42f790444af3be6b56a35a2d2d40.setContent(html_64ad4e2b13304b9dab2ca62bf994acb5);
+            
+
+            circle_marker_45f7cc67cc304397bd8bf592e0c1b132.bindPopup(popup_1bfb42f790444af3be6b56a35a2d2d40)
+            ;
+
+            
+        
+    
+            var circle_marker_06753ddc843e4ab3ade23792c7fc7585 = L.circleMarker(
+                [22.34078407287598, 73.193603515625],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_5655ffb637a144978eb4eec30a1f2701 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_1f89c384313847a3be54ff5b28878301 = $(`<div id="html_1f89c384313847a3be54ff5b28878301" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Om sai cyber cafe  and Location : India</div>`)[0];
+                popup_5655ffb637a144978eb4eec30a1f2701.setContent(html_1f89c384313847a3be54ff5b28878301);
+            
+
+            circle_marker_06753ddc843e4ab3ade23792c7fc7585.bindPopup(popup_5655ffb637a144978eb4eec30a1f2701)
+            ;
+
+            
+        
+    
+            var circle_marker_617d0b597e34480082c4718d65602c5a = L.circleMarker(
+                [22.30402, 73.18927],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_37212346c2744215ae79c58a62545d03 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_bc2e0ed60d9b4ad0818d276bcccefc88 = $(`<div id="html_bc2e0ed60d9b4ad0818d276bcccefc88" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : CAFE COFFEE DAY  and Location : CHANDRAKUTI, Vadodara, Gujarāt, India</div>`)[0];
+                popup_37212346c2744215ae79c58a62545d03.setContent(html_bc2e0ed60d9b4ad0818d276bcccefc88);
+            
+
+            circle_marker_617d0b597e34480082c4718d65602c5a.bindPopup(popup_37212346c2744215ae79c58a62545d03)
+            ;
+
+            
+        
+    
+            var circle_marker_3b79eb25771a4a1aa4677e7db0f86ff7 = L.circleMarker(
+                [22.308973582148074, 73.18430837842341],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_9dac469874224d76a3734248c6c079f7 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_3446a167fd574e6a98d64f8a5cc3efde = $(`<div id="html_3446a167fd574e6a98d64f8a5cc3efde" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Cafe Coffee Day  and Location : Nside Crossword Book Store (Opp . Sardar patel statue,), Vadodara 390005, Gujarāt, India</div>`)[0];
+                popup_9dac469874224d76a3734248c6c079f7.setContent(html_3446a167fd574e6a98d64f8a5cc3efde);
+            
+
+            circle_marker_3b79eb25771a4a1aa4677e7db0f86ff7.bindPopup(popup_9dac469874224d76a3734248c6c079f7)
+            ;
+
+            
+        
+    
+            var circle_marker_1e91fc54c7b24c96bc3c6254b6bcdc16 = L.circleMarker(
+                [22.309949461520215, 73.18603099428178],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_66cfec8ade574738b20b475a391f4c16 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_a5534f4724ca458c881fcc268c603824 = $(`<div id="html_a5534f4724ca458c881fcc268c603824" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : cafe coffee day  and Location : Shoppers Stop (Crossword,Arunodaya society), Vadodara, Gujarāt, India</div>`)[0];
+                popup_66cfec8ade574738b20b475a391f4c16.setContent(html_a5534f4724ca458c881fcc268c603824);
+            
+
+            circle_marker_1e91fc54c7b24c96bc3c6254b6bcdc16.bindPopup(popup_66cfec8ade574738b20b475a391f4c16)
+            ;
+
+            
+        
+    
+            var circle_marker_14da80beb0e44afc9b59bfa6c53fb18f = L.circleMarker(
+                [22.299593, 73.211967],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_b00601c8258147909068da98264d6f1f = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_19047a1819c0466089a7486d7e43bb58 = $(`<div id="html_19047a1819c0466089a7486d7e43bb58" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Cafe Karnataka  and Location : India</div>`)[0];
+                popup_b00601c8258147909068da98264d6f1f.setContent(html_19047a1819c0466089a7486d7e43bb58);
+            
+
+            circle_marker_14da80beb0e44afc9b59bfa6c53fb18f.bindPopup(popup_b00601c8258147909068da98264d6f1f)
+            ;
+
+            
+        
+    
+            var circle_marker_c9ab4c1fcb3d49e78f3f27c1f7d01a85 = L.circleMarker(
+                [22.314085110960082, 73.18548943753777],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_14d622cc34b043259e892aa10017ce46 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_10a4a27fbec0419dac43fb787813ec0e = $(`<div id="html_10a4a27fbec0419dac43fb787813ec0e" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Café Madras  and Location : Opp Railway Station, Vadodara, Gujarāt, India</div>`)[0];
+                popup_14d622cc34b043259e892aa10017ce46.setContent(html_10a4a27fbec0419dac43fb787813ec0e);
+            
+
+            circle_marker_c9ab4c1fcb3d49e78f3f27c1f7d01a85.bindPopup(popup_14d622cc34b043259e892aa10017ce46)
+            ;
+
+            
+        
+    
+            var circle_marker_f9fb80ae4c724b3184a7d0f69bbb0dfe = L.circleMarker(
+                [22.297969259036204, 73.171944334823],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_4e6e56a4978844c180858666095ccb6b = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_3b5f1c00e9164694a3ff7cc2a16c513f = $(`<div id="html_3b5f1c00e9164694a3ff7cc2a16c513f" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Amigos Cafe  and Location : Akota (Near Akota Stadium), Vadodara, Gujarāt, India</div>`)[0];
+                popup_4e6e56a4978844c180858666095ccb6b.setContent(html_3b5f1c00e9164694a3ff7cc2a16c513f);
+            
+
+            circle_marker_f9fb80ae4c724b3184a7d0f69bbb0dfe.bindPopup(popup_4e6e56a4978844c180858666095ccb6b)
+            ;
+
+            
+        
+    
+            var circle_marker_a7ad5dc43b934f2db75e6ae2d5e2e0a9 = L.circleMarker(
+                [22.29979840072757, 73.1695779243338],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_1577032724904b178da586db257e3107 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_572e53810b0c4dde915f6acb11125f2a = $(`<div id="html_572e53810b0c4dde915f6acb11125f2a" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : cafe bistro  and Location : Akota (Opposite galleria mall (D-mart)), Vadodara, Gujarāt, India</div>`)[0];
+                popup_1577032724904b178da586db257e3107.setContent(html_572e53810b0c4dde915f6acb11125f2a);
+            
+
+            circle_marker_a7ad5dc43b934f2db75e6ae2d5e2e0a9.bindPopup(popup_1577032724904b178da586db257e3107)
+            ;
+
+            
+        
+    
+            var circle_marker_4697dcb17bc14a7aa9e2ad8b1f880183 = L.circleMarker(
+                [22.311596, 73.179403],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_8fa0bfdc84664bdcaf72a43375038093 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_12a874b0cce5467781450bd9d53e6eee = $(`<div id="html_12a874b0cce5467781450bd9d53e6eee" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Charmant, The Heritage Cafe  and Location : Contractor’s Bungalow (Faramji Road, B/h Railway station), Vadodara 390007, Gujarāt, India</div>`)[0];
+                popup_8fa0bfdc84664bdcaf72a43375038093.setContent(html_12a874b0cce5467781450bd9d53e6eee);
+            
+
+            circle_marker_4697dcb17bc14a7aa9e2ad8b1f880183.bindPopup(popup_8fa0bfdc84664bdcaf72a43375038093)
+            ;
+
+            
+        
+    
+            var circle_marker_956bcf7560164f428691c747496a031f = L.circleMarker(
+                [22.301706, 73.166206],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_c0e147d36cc84b68b35644b7dd162cfa = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_7d0fb5dad25d4d27afd34b0c52efa50b = $(`<div id="html_7d0fb5dad25d4d27afd34b0c52efa50b" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : 7 Monk's Cafe  and Location : G-4 Aditya Complex Beside Havemore Complex (O.P Road), Vadodara 390007, Gujarāt, India</div>`)[0];
+                popup_c0e147d36cc84b68b35644b7dd162cfa.setContent(html_7d0fb5dad25d4d27afd34b0c52efa50b);
+            
+
+            circle_marker_956bcf7560164f428691c747496a031f.bindPopup(popup_c0e147d36cc84b68b35644b7dd162cfa)
+            ;
+
+            
+        
+    
+            var circle_marker_c31da8ebd7b642168802eb265694a046 = L.circleMarker(
+                [22.30026773635738, 73.22141371508077],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_6eea2f8d529e4220ae6f0a113b481481 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_3bc4dd10931648d68a6c7c49f0cc70e3 = $(`<div id="html_3bc4dd10931648d68a6c7c49f0cc70e3" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Cafe Karnatak  and Location : Vadodara, Gujarāt, India</div>`)[0];
+                popup_6eea2f8d529e4220ae6f0a113b481481.setContent(html_3bc4dd10931648d68a6c7c49f0cc70e3);
+            
+
+            circle_marker_c31da8ebd7b642168802eb265694a046.bindPopup(popup_6eea2f8d529e4220ae6f0a113b481481)
+            ;
+
+            
+        
+    
+            var circle_marker_5e049edf38364799a6b22210c9486756 = L.circleMarker(
+                [22.292706110588565, 73.16498422143395],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_295a3ec2c5404264a2c955db62b84f56 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_8b6d659ffdae4c08866ae184234184ed = $(`<div id="html_8b6d659ffdae4c08866ae184234184ed" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : cafe appetito  and Location : 22,23 Gajanand Complex (Old Padra Road Near Tube Company), Vadodara, Gujarāt, India</div>`)[0];
+                popup_295a3ec2c5404264a2c955db62b84f56.setContent(html_8b6d659ffdae4c08866ae184234184ed);
+            
+
+            circle_marker_5e049edf38364799a6b22210c9486756.bindPopup(popup_295a3ec2c5404264a2c955db62b84f56)
+            ;
+
+            
+        
+    
+            var circle_marker_2933ad49255047f192240ac288b8435e = L.circleMarker(
+                [22.270402568849317, 73.1969943576711],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_5af0e126ed4a402496507493bfc0c511 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_19ffff0735fb4ecfb56ef1aeceb53218 = $(`<div id="html_19ffff0735fb4ecfb56ef1aeceb53218" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : cafe coffee day  and Location : Tulsidham, Manjalpur, Vadodara, Gujarāt, India</div>`)[0];
+                popup_5af0e126ed4a402496507493bfc0c511.setContent(html_19ffff0735fb4ecfb56ef1aeceb53218);
+            
+
+            circle_marker_2933ad49255047f192240ac288b8435e.bindPopup(popup_5af0e126ed4a402496507493bfc0c511)
+            ;
+
+            
+        
+    
+            var circle_marker_aba96fdb9df3447689fd476731ed6169 = L.circleMarker(
+                [22.298843495093177, 73.17203075872565],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_66840dc38807478dad3215a6f63c941d = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_b192b7b159814d3d8131c27894a3e088 = $(`<div id="html_b192b7b159814d3d8131c27894a3e088" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Clothes Cafe  and Location : Productivity Road, Vadodara, Gujarāt, India</div>`)[0];
+                popup_66840dc38807478dad3215a6f63c941d.setContent(html_b192b7b159814d3d8131c27894a3e088);
+            
+
+            circle_marker_aba96fdb9df3447689fd476731ed6169.bindPopup(popup_66840dc38807478dad3215a6f63c941d)
+            ;
+
+            
+        
+    
+            var circle_marker_c41e69e0612a407ea70da435b679f85c = L.circleMarker(
+                [22.314997407216996, 73.17529755801083],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_3cd071389b3644a3820479d1bb6ffe74 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_23626a168e2f4e5cadcb9a54176e109c = $(`<div id="html_23626a168e2f4e5cadcb9a54176e109c" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : cafe coffee day  and Location : Alembic road (Inside inorbit mall), Vadodara 390023, Gujarāt, India</div>`)[0];
+                popup_3cd071389b3644a3820479d1bb6ffe74.setContent(html_23626a168e2f4e5cadcb9a54176e109c);
+            
+
+            circle_marker_c41e69e0612a407ea70da435b679f85c.bindPopup(popup_3cd071389b3644a3820479d1bb6ffe74)
+            ;
+
+            
+        
+    
+            var circle_marker_3ac0d68088ab49498665ecf207a7ca7b = L.circleMarker(
+                [22.309606, 73.175207],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_3cc176e3337049d7ad73d87221525303 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_4c540089db1d4ea7bd058ca465f57029 = $(`<div id="html_4c540089db1d4ea7bd058ca465f57029" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Cafe Choco Craze  and Location : RC Dutt Road, Vadodara, Gujarāt, India</div>`)[0];
+                popup_3cc176e3337049d7ad73d87221525303.setContent(html_4c540089db1d4ea7bd058ca465f57029);
+            
+
+            circle_marker_3ac0d68088ab49498665ecf207a7ca7b.bindPopup(popup_3cc176e3337049d7ad73d87221525303)
+            ;
+
+            
+        
+    
+            var circle_marker_07f905fb8af2447b94a453af81f9163e = L.circleMarker(
+                [22.309267139726874, 73.18467709998203],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_636982acf0bd42c2a98ece9a7e2bb164 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_a27596495061403d9ef85c66a987f11c = $(`<div id="html_a27596495061403d9ef85c66a987f11c" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Chandu Chaiwala  and Location : Vadodara, Gujarāt, India</div>`)[0];
+                popup_636982acf0bd42c2a98ece9a7e2bb164.setContent(html_a27596495061403d9ef85c66a987f11c);
+            
+
+            circle_marker_07f905fb8af2447b94a453af81f9163e.bindPopup(popup_636982acf0bd42c2a98ece9a7e2bb164)
+            ;
+
+            
+        
+    
+            var circle_marker_3045ffa002944e28a5c7852c2bda9425 = L.circleMarker(
+                [22.319561004638672, 73.1872787475586],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_4bc02eb13bd54b978adf19b07f5135f6 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_5b5a4466bbdb4d2cbffc29dbd635c231 = $(`<div id="html_5b5a4466bbdb4d2cbffc29dbd635c231" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Cafe Royal  and Location : GF-6 Sai Vihar Apartments, Opp. Emperor Complex (Fatehgunj Main Road), Vadodara 390002, Gujarāt, India</div>`)[0];
+                popup_4bc02eb13bd54b978adf19b07f5135f6.setContent(html_5b5a4466bbdb4d2cbffc29dbd635c231);
+            
+
+            circle_marker_3045ffa002944e28a5c7852c2bda9425.bindPopup(popup_4bc02eb13bd54b978adf19b07f5135f6)
+            ;
+
+            
+        
+    
+            var circle_marker_ef9dff8be9a34c4f9830d87710ab6917 = L.circleMarker(
+                [22.322496265968468, 73.19466115901747],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_0bf21f8c67ec4243b5955aef67b923ef = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_c51e9c16cc2846188e19767c780ea00d = $(`<div id="html_c51e9c16cc2846188e19767c780ea00d" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : cafe mocha  and Location : Fatehgunj Main Road Opposite Mr.puff, India</div>`)[0];
+                popup_0bf21f8c67ec4243b5955aef67b923ef.setContent(html_c51e9c16cc2846188e19767c780ea00d);
+            
+
+            circle_marker_ef9dff8be9a34c4f9830d87710ab6917.bindPopup(popup_0bf21f8c67ec4243b5955aef67b923ef)
+            ;
+
+            
+        
+    
+            var circle_marker_1eb8073c766b4cee93424f46ed3b4046 = L.circleMarker(
+                [22.318847841478487, 73.1877354903522],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_652759da78e34875ae9e75f7f9cf30dd = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_00cb0f084df44b53a4c3c48d96a47715 = $(`<div id="html_00cb0f084df44b53a4c3c48d96a47715" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Cafe coffee day  and Location : The plaza shop no 1, coffee n u opposite saffron complex (Fategunj main road), Vadodara 390002, Gujarāt, India</div>`)[0];
+                popup_652759da78e34875ae9e75f7f9cf30dd.setContent(html_00cb0f084df44b53a4c3c48d96a47715);
+            
+
+            circle_marker_1eb8073c766b4cee93424f46ed3b4046.bindPopup(popup_652759da78e34875ae9e75f7f9cf30dd)
+            ;
+
+            
+        
+    
+            var circle_marker_4dcaa19739924bcb871d788d0ebc2349 = L.circleMarker(
+                [22.3007, 73.169044],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_7854cfe1207743dd9e82619cfa173c05 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_e57c36efb45c40c591450e2f4fab93a2 = $(`<div id="html_e57c36efb45c40c591450e2f4fab93a2" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Cafe Coffee Day  and Location : Vadodara 390020, Gujarāt, India</div>`)[0];
+                popup_7854cfe1207743dd9e82619cfa173c05.setContent(html_e57c36efb45c40c591450e2f4fab93a2);
+            
+
+            circle_marker_4dcaa19739924bcb871d788d0ebc2349.bindPopup(popup_7854cfe1207743dd9e82619cfa173c05)
+            ;
+
+            
+        
+    
+            var circle_marker_518ffe4f197a4c71864910e0d8116bc5 = L.circleMarker(
+                [22.308845479402066, 73.18435562089073],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_00cbff1afda649958315014aaa21d4b9 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_99ecd311a70c4e2abaa1f87a1864c544 = $(`<div id="html_99ecd311a70c4e2abaa1f87a1864c544" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Kalyan Cafe  and Location : Sayajigunj, Vadodara, Gujarāt, India</div>`)[0];
+                popup_00cbff1afda649958315014aaa21d4b9.setContent(html_99ecd311a70c4e2abaa1f87a1864c544);
+            
+
+            circle_marker_518ffe4f197a4c71864910e0d8116bc5.bindPopup(popup_00cbff1afda649958315014aaa21d4b9)
+            ;
+
+            
+        
+    
+            var circle_marker_9310a0996c0749009c1f6626e8313712 = L.circleMarker(
+                [22.318213773872046, 73.16940345732118],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_ea8943e125f04cc0b4693f93956d09c8 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_f63b8ce07cbe48148be27969c7cccfe2 = $(`<div id="html_f63b8ce07cbe48148be27969c7cccfe2" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Café Kaffeine  and Location : Ground Floor, Centre Square Mall (Genda Circle,), Vadodara 390023, Gujarāt, India</div>`)[0];
+                popup_ea8943e125f04cc0b4693f93956d09c8.setContent(html_f63b8ce07cbe48148be27969c7cccfe2);
+            
+
+            circle_marker_9310a0996c0749009c1f6626e8313712.bindPopup(popup_ea8943e125f04cc0b4693f93956d09c8)
+            ;
+
+            
+        
+    
+            var circle_marker_83f16dd8e05a49b0bd4a2ecd5abce935 = L.circleMarker(
+                [22.313717594435, 73.19885513825496],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_3d8ac0580aa34dba99ab0081254aeed8 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_a86aac36ef4a4f3899d08f89ac1e06e4 = $(`<div id="html_a86aac36ef4a4f3899d08f89ac1e06e4" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Green Chillies  and Location : India</div>`)[0];
+                popup_3d8ac0580aa34dba99ab0081254aeed8.setContent(html_a86aac36ef4a4f3899d08f89ac1e06e4);
+            
+
+            circle_marker_83f16dd8e05a49b0bd4a2ecd5abce935.bindPopup(popup_3d8ac0580aa34dba99ab0081254aeed8)
+            ;
+
+            
+        
+    
+            var circle_marker_bd2cd641f01848bcb192c28ec5c76234 = L.circleMarker(
+                [22.308042389251213, 73.16239140924213],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_70e98adbb03545b2b20e77c3cdf97b8b = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_c2437f8f3bc24f44ab37985a798096c3 = $(`<div id="html_c2437f8f3bc24f44ab37985a798096c3" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Fitoor Cafe  and Location : Landmark Complex (Racecourse), Vadodara, Gujarāt, India</div>`)[0];
+                popup_70e98adbb03545b2b20e77c3cdf97b8b.setContent(html_c2437f8f3bc24f44ab37985a798096c3);
+            
+
+            circle_marker_bd2cd641f01848bcb192c28ec5c76234.bindPopup(popup_70e98adbb03545b2b20e77c3cdf97b8b)
+            ;
+
+            
+        
+    
+            var circle_marker_8941f757a76143c0a9c31e7a5d69a3bd = L.circleMarker(
+                [22.304312067359888, 73.16568715651226],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_94af8c072c9344d9a8f9049bcb5c3932 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_1dcc1c35b3a44801bf83565251fdfb66 = $(`<div id="html_1dcc1c35b3a44801bf83565251fdfb66" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Cafe Coffee Day  and Location : Sarkar Complex Ground Floor (Old Padra Road Opp Malhar Point), Vadodara 390015, Gujarāt, India</div>`)[0];
+                popup_94af8c072c9344d9a8f9049bcb5c3932.setContent(html_1dcc1c35b3a44801bf83565251fdfb66);
+            
+
+            circle_marker_8941f757a76143c0a9c31e7a5d69a3bd.bindPopup(popup_94af8c072c9344d9a8f9049bcb5c3932)
+            ;
+
+            
+        
+    
+            var circle_marker_868312cdb57844a898f670ee314de9a8 = L.circleMarker(
+                [22.319419134126253, 73.18790338788904],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_452530c0829943208118c566c7e6c99a = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_a1479322d8a24ea59c8bf778b89c2186 = $(`<div id="html_a1479322d8a24ea59c8bf778b89c2186" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : KALYAN CAF'E 1  and Location : Vadodara, Gujarāt, India</div>`)[0];
+                popup_452530c0829943208118c566c7e6c99a.setContent(html_a1479322d8a24ea59c8bf778b89c2186);
+            
+
+            circle_marker_868312cdb57844a898f670ee314de9a8.bindPopup(popup_452530c0829943208118c566c7e6c99a)
+            ;
+
+            
+        
+    
+            var circle_marker_17fb8fd4218245e8a80ec3ef29e80937 = L.circleMarker(
+                [22.309238709751053, 73.16551430382653],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#8eac6a",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#40e4e2",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+            var popup_fe93d652b5b74487b76590ccbbf307c6 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_c52abb8c5ca6464e8c0694e48a1bdff5 = $(`<div id="html_c52abb8c5ca6464e8c0694e48a1bdff5" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Cafe Chokolade  and Location : M Cube mall (Jetalpur road), Vadodara, Gujarāt, India</div>`)[0];
+                popup_fe93d652b5b74487b76590ccbbf307c6.setContent(html_c52abb8c5ca6464e8c0694e48a1bdff5);
+            
+
+            circle_marker_17fb8fd4218245e8a80ec3ef29e80937.bindPopup(popup_fe93d652b5b74487b76590ccbbf307c6)
+            ;
+
+            
+        
+    
+                var poly_line_8ed1b76ba3364971bd704eeeafbe5ae1 = L.polyline(
+                    [[22.305940628051758, 73.17964172363281], [22.305940628051758, 73.17964172363281]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_fdfa3a844678472e906fad60254237b3 = L.polyline(
+                    [[22.305940628051758, 73.17964172363281], [22.308801651000977, 73.1841049194336]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_0e5d750d91db45c585e29b20d0c0edeb = L.polyline(
+                    [[22.305940628051758, 73.17964172363281], [22.31252908937699, 73.18821449178087]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_f87fbb588b4346228b2d874182ce24ce = L.polyline(
+                    [[22.305940628051758, 73.17964172363281], [22.308973582148074, 73.18430837842341]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_1f6af2b37e0e42139dc7a2ad405c758c = L.polyline(
+                    [[22.308801651000977, 73.1841049194336], [22.305940628051758, 73.17964172363281]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_4a5dfafc5a2c4d6591df8281c41e7405 = L.polyline(
+                    [[22.308801651000977, 73.1841049194336], [22.308801651000977, 73.1841049194336]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_6f51b5c81dab4655aaa6f54b2c1f885f = L.polyline(
+                    [[22.308801651000977, 73.1841049194336], [22.31252908937699, 73.18821449178087]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_8ca427b08fa54648b66ea1fa2ee42951 = L.polyline(
+                    [[22.308801651000977, 73.1841049194336], [22.308973582148074, 73.18430837842341]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_4a1f02586d1d439c9c0123c61f3b1388 = L.polyline(
+                    [[22.31252908937699, 73.18821449178087], [22.305940628051758, 73.17964172363281]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_0caef28140f0417093035913e7b3ba22 = L.polyline(
+                    [[22.31252908937699, 73.18821449178087], [22.308801651000977, 73.1841049194336]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_fec9b7d0d6784057ab029222fd885b57 = L.polyline(
+                    [[22.31252908937699, 73.18821449178087], [22.31252908937699, 73.18821449178087]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_b010d6192d09490d91d92501a8b30029 = L.polyline(
+                    [[22.31252908937699, 73.18821449178087], [22.308973582148074, 73.18430837842341]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_de2e26ec12b7455e86a21ac26b2d2a9f = L.polyline(
+                    [[22.308973582148074, 73.18430837842341], [22.305940628051758, 73.17964172363281]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_37703011a8a843629d66f482d08d8bb1 = L.polyline(
+                    [[22.308973582148074, 73.18430837842341], [22.308801651000977, 73.1841049194336]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_72f1b7c1ccba49b3ba2efb1a64b3a5a2 = L.polyline(
+                    [[22.308973582148074, 73.18430837842341], [22.31252908937699, 73.18821449178087]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+    
+                var poly_line_180e798ac0364359bf21d172ef1edac3 = L.polyline(
+                    [[22.308973582148074, 73.18430837842341], [22.308973582148074, 73.18430837842341]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_f882eed1c1d64f31add063e504e10309);
+            
+</script>
