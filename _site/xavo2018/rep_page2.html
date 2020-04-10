@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
+    <meta name="description" content="Xavotsav 2018 Official Site : Sounds of the Multiverse">
+    <meta name="author" content="Akash Manna">
+
+    <title>Xavotsav 2018</title>
+    <link rel="shortcut icon" href="img/logo.png"/>
+
+    <!-- Bootstrap Core CSS -->s
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/loader.css" rel="stylesheet">
+    <link href="css/fluid_grid.css" rel="stylesheet">
+    <link href="css/demo-styles.css" rel="stylesheet">
+    <link href="css/contactTiles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Jura:300,400" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    html, body {
+  padding: 0;
+  margin: 0; }
+
+html {
+  line-height: 1.5;
+  font-size: 14px; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: rgba(0, 0, 0, 0.8); }
+
+ul {
+  padding: 0; }
+
+ul li {
+  list-style-type: none; }
+
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 0px 30px;
+  font-family: "Quicksand"; }
+  .title h1 {
+    text-transform: uppercase;
+    font-size: 4rem;
+    text-shadow: 1px 2px 2px #0b2740;
+    color: #1E4A6F; }
+
+.collapsible {
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  margin: 0.5rem 0 1rem 0;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
+  .collapsible.popout {
+    border: none;
+    box-shadow: none; }
+    .collapsible.popout > li {
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      transform: scaleX(0.9) translate3d(0, 0, 0);
+      transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+      .collapsible.popout > li:hover {
+        will-change: margin, transform; }
+    .collapsible.popout > li.active {
+      box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+      margin: 16px 0;
+      transform: scaleX(1) translate3d(0, 0, 0); }
+
+.collapsible-header {
+  display: block;
+  cursor: pointer;
+  height: 3rem;
+  line-height: 3rem;
+  padding: 0 1rem;
+  background-color: #ddd;
+  border-bottom: 1px solid #ddd; }
+  .collapsible-header i {
+    width: 2rem;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 1rem; }
+
+.collapsible-body {
+  overflow: hidden;
+  display: none;
+  border-bottom: 1px solid #000;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+  .collapsible-body p {
+    margin: 0;
+    padding: 2rem; }
+
+/*# sourceMappingURL=style.css.map */
+
+    </style>
+</head>
+
+<body id="page-top" class="team" onload="myFunction();" style="overflow-x:hidden;">
+    <div id="loader">
+      <div id='back'></div>
+      <div id='back2'></div>
+      <div id='back3'></div>
+      <img src="img/logo.png" class="loadImg"/>
+    </div>
+    <!-- Navigation -->
+    <div id="totality" class="animate-bottom" style="overflow-x:hidden;">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand page-scroll" href="index.html#page-top"><img src="img/others/xavotextsmall.png" style="width:100px;margin-top:-4px;@media (max-width:768px){margin-top:0px;}"/></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="hidden">
+              <a href="#page-top"></a>
+            </li>
+            <li>
+              <a class="page-scroll" href="about.html#page-top">About Us</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#events">Event Details</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#rep_page2.html#page-top">Colleges</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#sponsors">Sponsors</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#starnite">Star Nite</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="team.html#page-top">Team</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="past lineup.html#page-top">Past Line-up</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#login">Coming Soon</a>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+      <div id='stars'></div>
+      <div id='stars2'></div>
+      <div id='stars3'></div>
+      <div id='title'>
+        <span>
+          Colleges
+        </span>
+      </div>
+    </header>
+
+
+<center>
+<div class="rule"></div>
+    <section id="team">
+<div class="container">
+  <ul class="collapsible popout" data-collapsible="accordion">
+
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #FEC503;color: black;font-size: 20px;">Amtiy University</div>
+      <div class="collapsible-body"><p><a href="tel:9477399512">Faizan</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8697464516">Abhra</a></p></div>
+   </li>
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #2A9FD6;color: black;font-size: 20px;">Ashutosh College</div>
+       <div class="collapsible-body"><p><a href="tel:9051872653">Sudipta Ghosh</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:9836556942">Somnath</a></p></div>
+    </li>
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #FEC503;color: black;font-size: 20px;">Bethune College</div>
+      <div class="collapsible-body"><p><a href="tel:8917501618">Sabarna Mustari</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:7602392595">Yukta Acharya</a></p></div>
+    </li>
+
+     <li class="">
+      <div class="collapsible-header" style="background-color: #2A9FD6;color: black;font-size: 20px;">Calcutta National Medical College</div>
+      <div class="collapsible-body"><p><a href="tel:9804115599">Anismita</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8697229128">Shounak</a></p></div>
+    </li>
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #FEC503;color: black;font-size: 20px;">Calcutta University</div>
+     <div class="collapsible-body"><p>Priyanka</p></div>
+   </li>
+
+    <li class="">
+       <div class="collapsible-header" style="background-color: #2A9FD6;color: black;font-size: 20px;">City College</div>
+        <div class="collapsible-body"><p><a href="tel:8017974878">Sourav Nandy</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:9836401600">Sampurna Podder</a></p></div>
+    </li>
+
+     <li class="">
+      <div class="collapsible-header"  style="background-color: #FEC503;color: black;font-size: 20px;">EICASA</div>
+        <div class="collapsible-body"><p><a href="tel:7044267137">Debraj Das</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8820818989">Vidhi Choudhary</a></p></div>
+    </li>
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #2A9FD6;color: black;font-size: 20px;">Goenka College of Commerce</div>
+       <div class="collapsible-body"><p><a href="tel:8961771202">Anam Rahman</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:9234949265">Advait</a></p></div>
+    </li>
+
+    <li class="">
+       <div class="collapsible-header" style="background-color: #FEC503;color: black;font-size: 20px;">Gokhale Memorial Girl's College</div>
+       <div class="collapsible-body"><p><a href="tel:9831877270">Sanchita Guha</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:7890314246">Tanwishta Sarkar</a></p></div>
+    </li>
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #2A9FD6;color: black;font-size: 20px;">Heritage Law College</div>
+       <div class="collapsible-body"><p><a href="tel:8272938697">Soham</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8961759856">Sreejita</a></p></div>
+    </li>
+
+    <li class="">
+       <div class="collapsible-header" style="background-color: #FEC503;color: black;font-size: 20px;">JCC Law College</div>
+        <div class="collapsible-body"><p><a href="tel:8981289400">Sayan</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8697045732">Shankarit</a></p></div>
+    </li>
+
+    <li class="">
+      <div class="collapsible-header" style="background-color: #2A9FD6;color: black;font-size: 20px;">JDBI BBA</div>
+      <div class="collapsible-body"><p><a href="tel:9007840964">Nandita</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:9830531313">Riddhi</a></p></div>
+    </li>
+
+     <li class="">
+      <div class="collapsible-header" style="background-color: #FEC503;color: black;font-size: 20px;">JDBI Bcom</div>
+        <div class="collapsible-body"><p><a href="tel:9748121475">Agnes Anto</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8420642096">Aditi Nevatia</a></p></div>
+    </li>
+
+     <li class="">
+      <div class="collapsible-header" style="background-color: #2A9FD6;color: black;font-size: 20px;">Kishor Bharati</div>
+        <div class="collapsible-body"><p><a href="tel:8777516500">Anik</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8981468591">Mohanmoy</a></p></div>
+    </li>
+
+     <li class="">
+       <div class="collapsible-header" style="background-color: #FEC503;color: black;font-size: 20px;">Lady Brabourne</div>
+       <div class="collapsible-body"><p><a href="tel:9748845933">Dipaly Banerjee</a></p></div>
+        <div class="collapsible-body"><p>Bedbani Bhattacharya</p></div>
+    </li>
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #2A9FD6;color: black;font-size: 20px;">Loreto College</div>
+      <div class="collapsible-body"><p><a href="tel:9831222970">Mehr</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:9007190391">Sakshi</a></p></div>
+    </li>
+
+     <li class="">
+      <div class="collapsible-header" style="background-color: #FEC503;color: black;font-size: 20px;">Maulana Azad College</div>
+       <div class="collapsible-body"><p><a href="tel:9038483709">Shahkar Shibli</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8013093778">Mohammed Zeeshan</a></p></div>
+    </li>
+
+    <li class="">
+       <div class="collapsible-header" style="background-color: #2A9FD6;color: black;font-size: 20px;">MCKV Institute of Engineering</div>
+       <div class="collapsible-body"><p><a href="tel:9874332465">Ayush</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8420330243">Ashutosh</a></p></div>
+    </li>
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #FEC503;color: black;font-size: 20px;">Medical College, Kolkata</div>
+        <div class="collapsible-body"><p><a href="tel:7688071003">Sourabdeep</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:89618 35790">Deepanjan</a></p></div>
+    </li>
+
+   <li class="">
+      <div class="collapsible-header" style="background-color: #2A9FD6;color: black;font-size: 20px;">Narula University</div>
+       <div class="collapsible-body"><p><a href="tel:7278971827">Ahmer Masoor</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8017530943">Sayan Das</a></p></div>
+    </li>
+
+     <li class="">
+      <div class="collapsible-header"  style="background-color: #FEC503;color: black;font-size: 20px;">NSHM</div>
+      <div class="collapsible-body"><p><a href="tel:9836645045">Ankit</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8697480349">Smriti</a></p></div>
+    </li>
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #2A9FD6;color: black;font-size: 20px;">Presidency University</div>
+        <div class="collapsible-body"><p><a href="tel:8337013367">Shafaque</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:9477305105">Arkatapa</a></p></div>
+    </li>
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #FEC503;color: black;font-size: 20px;">Rani Birla College</div>
+       <div class="collapsible-body"><p><a href="tel:8583846303">Adrita Ghosh</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8100933347">Sania Gous</a></p></div>
+    </li>
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #2A9FD6;color: black;font-size: 20px;">Scottish Church College</div>
+      <div class="collapsible-body"><p><a href="tel:7679184205">Sushant</a></p></div>
+      <div class="collapsible-body"><p><a href="tel:8013384747">Pratick</a></p></div>
+   </li>
+
+    <li class="">
+      <div class="collapsible-header" style="background-color: #FEC503;color: black;font-size: 20px;">Shri Shikshayatan College</div>
+      <div class="collapsible-body"><p><a href="tel:7686061453">Warsha Goel</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:7980900397">Ashmita Ghosh</a></p></div>
+    </li>
+
+     <li class="">
+       <div class="collapsible-header" style="background-color: #2A9FD6;color: black;font-size: 20px;">Sivanath Sastri College</div>
+        <div class="collapsible-body"><p><a href="tel:8017872114">Silbhi Sarkar</a></p></div>
+         <div class="collapsible-body"><p><a href="tel:98834 09920">Divya Sharma</a></p></div>
+    </li>
+
+     <li class="">
+      <div class="collapsible-header" style="background-color: #FEC503;color: black;font-size: 20px;">South Calcutta Girls College</div>
+      <div class="collapsible-body"><p><a href="tel:9874887795">Sanchari</a></p></div>
+      <div class="collapsible-body"><p><a href="tel:9830754753">Sheik Zakiya</a></p></div>
+    </li>
+
+     <li class="">
+      <div class="collapsible-header"  style="background-color: #2A9FD6;color: black;font-size: 20px;">Surendernath College</div>
+      <div class="collapsible-body"><p><a href="tel:9800066417">Suprin</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:7003990462">Aishwarya</a></p></div>
+    </li>
+
+     <li class="">
+      <div class="collapsible-header"  style="background-color: #FEC503;color: black;font-size: 20px;">Syamaprasad</div>
+      <div class="collapsible-body"><p><a href="tel:8981234539">Souvik</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:7003801290">Ahmed</a></p></div>
+    </li>
+
+    <li class="">
+       <div class="collapsible-header" style="background-color: #2A9FD6;color: black;font-size: 20px;">T.H.K Jain College</div>
+        <div class="collapsible-body"><p><a href="tel:7278777619">Chetan Dutt</a></p></div>
+        <div class="collapsible-body"><p>Tania Das</p></div>
+    </li>
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #FEC503;color: black;font-size: 20px;">Techno India</div>
+      <div class="collapsible-body"><p><a href="tel:8420325959">Pooja Punjabi</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8820455178">Hitesh Agarwal</a></p></div>
+    </li>
+
+     <li class="">
+       <div class="collapsible-header" style="background-color: #2A9FD6;color: black;font-size: 20px;">Techno India Salt lake College</div>
+       <div class="collapsible-body"><p><a href="tel:9674305738">Agnib</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:8013076257">Pabitra</a></p></div>
+    </li>
+
+    <li class="">
+       <div class="collapsible-header" style="background-color: #FEC503;color: black;font-size: 20px;">The Heritage Academy</div>
+       <div class="collapsible-body"><p>Hitesh</p></div>
+    </li>
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #2A9FD6;color: black;font-size: 20px;">UEM</div>
+       <div class="collapsible-body"><p><a href="tel:9831792971">Anubhabh</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:9163811132">Subham</a></p></div>
+    </li>
+
+    <li class="">
+       <div class="collapsible-header" style="background-color: #FEC503;color: black;font-size: 20px;">University of Calcutta</div>
+        <div class="collapsible-body"><p><a href="tel:7686867667">Avijit Sen</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:9874859250">Debadisha</a></p></div>
+    </li>
+
+    <li class="">
+       <div class="collapsible-header" style="background-color: #2A9FD6;color: black;font-size: 20px;">Vidyasagar Evening</div>
+      <div class="collapsible-body"><p><a href="tel:7685955238">Palashish</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:9804802126">Gourav</a></p></div>
+    </li>
+
+    <li class="">
+      <div class="collapsible-header"  style="background-color: #FEC503;color: black;font-size: 20px;">Women's Christian College</div>
+     <div class="collapsible-body"><p><a href="tel:7003636255">Angela Chakraborty</a></p></div>
+        <div class="collapsible-body"><p><a href="tel:7980491548">Ayantika Sanyal</a></p></div>
+   </li>
+
+
+  </ul>
+</div>
+    </section>
+        </center>
+        <script>
+        $(".collapsible li").click(function(){
+  $(this).siblings().removeClass("active"); //comment this line to make the accordion expansible
+  $(this).toggleClass("active");
+  if($(this).hasClass("active")){
+    $(this).siblings().find('.collapsible-body').slideUp(300);
+    $(this).find('.collapsible-body').slideDown(300);
+  }else{
+    $(this).find('.collapsible-body').slideUp(300);
+  }
+  //$(this).find('.collapsible-body').slideToggle(500); //change display property
+});
+        </script>
+
+
+    
+  <!-- Contact Section -->
+    <section id="contact" style="background-attachment:fixed;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 text-center" style="text-decoration:none;text-transform:uppercase;letter-spacing:1px;font-weight:400;font-family:'Jura',sans-serif;color:#CCC;">
+            <h5>Contact</h5>
+            <p>e-mail : <a href="mailto:gsec@sxccal.edu">gsec@sxccal.edu</a></p>
+            <p>phone : <a href="tel:+919038634869">+91 90386 34869</a></p>
+            <h6>For events :</h6>
+            <p>e-mail : <a href="mailto:eventsxavo18@gmail.com?subject=Ref-Xavotsav%20Website">eventsxavo18@gmail.com</a></p>
+            <h6>For PR :</h6>
+            <p>e-mail : <a href="mailto:pr.xavo18@gmail.com?subject=Ref-Xavotsav%20Website">pr.xavo18@gmail.com</a></p>
+          </div>
+          
+          <div class="col-md-4" id="googleMap">
+          </div>
+          
+          <div class="col-md-4 text-center" style="text-decoration:none;text-transform:uppercase;letter-spacing:1px;font-weight:400;font-family:'Jura',sans-serif;color:#CCC;">
+            <h5>Useful Links:</h5>
+            <p><a href="#events">Event Details</a></p>
+            <p><a href="#college">College Details</a></p>
+            <p><a href="#login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Log-in</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; SXCSC 2017-18</span>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+              <li><a href="https://www.facebook.com/Xavotsav/" alt="Connect with us on Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="https://www.youtube.com/channel/UCUIc-Qc9Jnsh1oE8ZEITsHA" alt="SXCSC on YouTube" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+              <li><a href="https://www.instagram.com/sxcsc/" alt="SXCSC on Instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="https://twitter.com/gensec2016" alt="SXCXC Twitter Handle" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li>Designed and Developed by Team SXCSC
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    </div>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+    <script src="js/contactTiles.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/spacex.js"></script>
+    
+    
+    <!-- LOADER -->
+    <script>
+      var myVar;
+      function myFunction() {
+        myVar = setTimeout(showPage, 200);
+      }
+      function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("totality").style.display = "block";
+      }
+    </script>
+    
+    
+      
+    <!-- Google Maps API -->
+    <script type="text/javascript">
+      function myMap(){
+        $(document).ready(function(){
+          setTimeout(myMap2, 6000);
+        });
+        $('.contactButton').fadeIn();
+      }
+      function myMap2() {
+        var location = new google.maps.LatLng(22.548844,88.355837);
+        var mapCanvas = document.getElementById('googleMap');
+        
+        var mapOptions = {
+          center:new google.maps.LatLng(22.548844,88.355837),//22.557821,88.345999),
+          zoom:14,
+          panControl: false,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+          
+        var map = new google.maps.Map(mapCanvas,mapOptions);
+        
+                
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map,
+          title: "St. Xavier's College (Autonomous), Kolkata"
+        });
+        
+        $('section#contact').on('load', function(){
+          google.maps.event.trigger(map, 'resize');
+          // Recenter the map now that it's been redrawn               
+          var reCenter = new google.maps.LatLng(22.548844,88.355837);
+          map.setCenter(reCenter);
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK_nsGp6o6i0sYC73mB6BHzlGXVynPNxU&callback=myMap" type="text/javascript"></script>
+
+  </body>
+</html>

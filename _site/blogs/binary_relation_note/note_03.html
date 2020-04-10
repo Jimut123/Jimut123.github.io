@@ -1,0 +1,1231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>Binary Relation</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="note_03.tex"> 
+<link rel="stylesheet" type="text/css" href="note_03.css"> 
+</head><body 
+>
+   <div class="maketitle">
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+
+<h2 class="titleHead">Binary Relation</h2> <a href="/files/notes/note_03.pdf" target="_blank"> Download PDF</a>
+     <div class="author" > <span 
+class="cmr-12">Edited by : Jimut Bahan Pal</span>
+<br /><span 
+class="cmr-12">Department of Computer Science, M.Sc,</span>
+<br />       <span 
+class="cmr-12">RKMVERI, Belur, India.</span>
+<br />    <span 
+class="cmr-12">Under : Dr. Joydeep Mukherjee </span></div><br />
+<div class="date" ><span 
+class="cmr-12">July 28, 2019</span></div>
+   </div>
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>What is Binary Relation ?</h3>
+<!--l. 30--><p class="noindent" >Given a set <span 
+class="msbm-10">S</span>, <span 
+class="cmbxti-10">R</span> <span 
+class="cmsy-10">&#x2286; </span><span 
+class="msbm-10">S </span><span 
+class="cmsy-10">&#x00D7; </span><span 
+class="msbm-10">S </span>is said to be a Binary Relation. In other words a binary
+relation should be a subset of cartesian product of the ground set.<br 
+class="newline" />
+<!--l. 32--><p class="noindent" >Example: less than or equal to <span 
+class="cmsy-10">&#x2264; </span>, divisibility, etc. <br 
+class="newline" />
+<!--l. 35--><p class="noindent" ><span 
+class="msbm-10">S </span>= <span 
+class="cmsy-10">{</span>1,2,3,4,5,6,7,8<span 
+class="cmsy-10">}</span><br 
+class="newline" />
+<!--l. 38--><p class="noindent" ><span 
+class="msbm-10">S </span><span 
+class="cmsy-10">&#x00D7; </span><span 
+class="msbm-10">S </span>= <br 
+class="newline" /><span 
+class="cmsy-10">{{</span>1, 1 <span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 5<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 6<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 7<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 8<span 
+class="cmsy-10">}</span>,<br 
+class="newline" /><span 
+class="cmsy-10">{</span>2, 1 <span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 5<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 6<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 7<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 8<span 
+class="cmsy-10">}</span>,<br 
+class="newline" /><span 
+class="cmsy-10">{</span>3, 1 <span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3, 5<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3, 6<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3, 7<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3, 8<span 
+class="cmsy-10">}</span>,<br 
+class="newline" /><span 
+class="cmsy-10">{</span>4, 1 <span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>4, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>4, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>4, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>4, 5<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>4, 6<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>4, 7<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>4, 8<span 
+class="cmsy-10">}</span>,<br 
+class="newline" /><span 
+class="cmsy-10">{</span>5, 1 <span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>5, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>5, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>5, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>5, 5<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>5, 6<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>5, 7<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>5, 8<span 
+class="cmsy-10">}</span>,<br 
+class="newline" /><span 
+class="cmsy-10">{</span>6, 1 <span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>6, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>6, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>6, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>6, 5<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>6, 6<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>6, 7<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>6, 8<span 
+class="cmsy-10">}</span>,<br 
+class="newline" /><span 
+class="cmsy-10">{</span>7, 1 <span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>7, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>7, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>7, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>7, 5<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>7, 6<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>7, 7<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>7, 8<span 
+class="cmsy-10">}</span>,<br 
+class="newline" /><span 
+class="cmsy-10">{</span>8, 1 <span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>8, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>8, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>8, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>8, 5<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>8, 6<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>8, 7<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>8, 8<span 
+class="cmsy-10">}}</span><br 
+class="newline" />
+<!--l. 49--><p class="noindent" >If a <span 
+class="cmsy-10">&#x2264; </span>b defines a relation on set <span 
+class="msbm-10">S </span><span 
+class="cmsy-10">&#x00D7; </span><span 
+class="msbm-10">S</span>, then,
+<!--l. 52--><p class="noindent" >(a,b) <span 
+class="cmsy-10">&#x2190;</span> <span 
+class="cmmi-10">R</span><sub><span 
+class="cmr-7">(</span><span 
+class="cmsy-7">&#x2264;</span><span 
+class="cmr-7">)</span></sub> <span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x21D0;&#x21D2;</span><span style="margin-left:2.77695pt" class="tmspace"></span> a <span 
+class="cmsy-10">&#x2264; </span>b, and the set containing R is
+<!--l. 55--><p class="noindent" ><span 
+class="cmmi-10">R</span><sub><span 
+class="cmr-7">(</span><span 
+class="cmmi-7">s</span><span 
+class="cmr-7">)</span></sub> = <span 
+class="cmsy-10">{{</span>1, 1<span 
+class="cmsy-10">}</span>,<span 
+class="cmsy-10">{</span>1, 2<span 
+class="cmsy-10">}</span>,<span 
+class="cmsy-10">{</span>1, 3<span 
+class="cmsy-10">}</span>,..., <span 
+class="cmsy-10">{</span>2,3<span 
+class="cmsy-10">}</span>,..., <span 
+class="cmsy-10">{</span>5,6<span 
+class="cmsy-10">}</span>,...<span 
+class="cmsy-10">}</span>.<br 
+class="newline" />
+<!--l. 58--><p class="noindent" >Let R be the relation that a divides b, then, (a,b) <span 
+class="cmsy-10">&#x2190;</span> <span 
+class="cmmi-10">R</span><sub><span 
+class="cmr-7">1</span></sub> <span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x21D0;&#x21D2;</span><span style="margin-left:2.77695pt" class="tmspace"></span> a <span 
+class="cmsy-10">&#x2223;</span> b.
+<!--l. 62--><p class="noindent" ><span 
+class="cmmi-10">R</span><sub><span 
+class="cmr-7">1</span></sub> = <span 
+class="cmsy-10">{{</span>1, 1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2<span 
+class="cmsy-10">}</span>, ... <span 
+class="cmsy-10">{</span>1, 8<span 
+class="cmsy-10">}</span>,<br 
+class="newline" /><span 
+class="cmsy-10">{</span>2, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 4<span 
+class="cmsy-10">}</span>, ...<br 
+class="newline" /><span 
+class="cmsy-10">{</span>3, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3, 6 <span 
+class="cmsy-10">}</span>, ...<br 
+class="newline" /><span 
+class="cmsy-10">{</span>4, 8<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>5, 5<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>6, 6<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>7, 7<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>8,8<span 
+class="cmsy-10">}}</span>
+<!--l. 68--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-2000"></a>Types of Relation</h3>
+<!--l. 70--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-3000"></a>Reflexive Relation</h4>
+<!--l. 72--><p class="noindent" >For all a, (a, a) <span 
+class="cmsy-10">&#x2208;</span> <span 
+class="cmbxti-10">R</span>.
+<!--l. 74--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-4000"></a>Symmetric Relation</h4>
+<!--l. 76--><p class="noindent" >If (a, b) <span 
+class="cmsy-10">&#x2208;</span> <span 
+class="cmbxti-10">R</span> <img 
+src="note_030x.png" alt="=&#x21D2;"  class="Longrightarrow" > (b, a) <span 
+class="cmsy-10">&#x2208;</span> <span 
+class="cmbxti-10">R</span>.
+<!--l. 78--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-5000"></a>AntiSymmetric Relation</h4>
+<!--l. 80--><p class="noindent" >If (a, b) <span 
+class="cmsy-10">&#x2208;</span> <span 
+class="cmbxti-10">R</span> <span 
+class="cmsy-10">&#x2227; </span>(b, a) <span 
+class="cmsy-10">&#x2208;</span> <span 
+class="cmbxti-10">R</span> <img 
+src="note_031x.png" alt="=&#x21D2;"  class="Longrightarrow" > a = b.
+<!--l. 82--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-6000"></a>Contrapositive Relation</h4>
+<!--l. 84--><p class="noindent" >If p <img 
+src="note_032x.png" alt="= &#x21D2;"  class="Longrightarrow" > q ,Then, <span 
+class="cmsy-10">� </span>q = <span 
+class="cmsy-10">� </span>p.
+<!--l. 86--><p class="noindent" >
+   <h5 class="likesubsubsectionHead"><a 
+ id="x1-7000"></a>Demorgan&#8217;s law</h5>
+<!--l. 88--><p class="noindent" ><span 
+class="cmsy-10">�</span>(<span 
+class="cmmi-10">a </span><span 
+class="cmsy-10">&#x2227; </span><span 
+class="cmmi-10">b</span>) = <span class="bar-css"><span 
+class="cmmi-10">a</span></span> <span 
+class="cmsy-10">&#x2228;</span><span class="bar-css"><span 
+class="cmmi-10">b</span></span>. <br 
+class="newline" /><span 
+class="cmsy-10">�</span>(<span 
+class="cmmi-10">a </span><span 
+class="cmsy-10">&#x2228; </span><span 
+class="cmmi-10">b</span>) = <span class="bar-css"><span 
+class="cmmi-10">a</span></span> <span 
+class="cmsy-10">&#x2227;</span><span class="bar-css"><span 
+class="cmmi-10">b</span></span>. <br 
+class="newline" />
+<!--l. 91--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-8000"></a>Transitive Relation</h4>
+<!--l. 93--><p class="noindent" >If (a, b) <span 
+class="cmsy-10">&#x2208;</span> <span 
+class="cmbxti-10">R</span> <span 
+class="cmsy-10">&#x2227; </span>(b, c) <span 
+class="cmsy-10">&#x2208;</span> <span 
+class="cmbxti-10">R</span> <span 
+class="cmsy-10">-&#x2192;</span> (a, c) <span 
+class="cmsy-10">&#x2208;</span> <span 
+class="cmbxti-10">R</span>.
+                                                                  
+
+                                                                  
+<!--l. 96--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-9000"></a>Partial Order Binary Relation</h4>
+<!--l. 98--><p class="noindent" >A partial order is a binary relation which is reflexive, antisymmetric and transitive.
+E.g. divisibility (<span 
+class="cmsy-10">&#x2264;</span>) subset containment.
+<!--l. 100--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-10000"></a>Strict Partial Order Binary Relation</h4>
+<!--l. 102--><p class="noindent" >A strict partial order is a binary relation which is irreflexive, antisymmetric and
+transitive. E.g. less than (<span 
+class="cmmi-10">&#x003C;</span>). <br 
+class="newline" />
+<!--l. 104--><p class="noindent" >We denote a partial order on a ground set X by (X, <span 
+class="cmmi-10">&#x003C; </span>) where <br 
+class="newline" />a <span 
+class="cmmi-10">&#x003C; </span>b <span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x21D0;&#x21D2;</span><span style="margin-left:2.77695pt" class="tmspace"></span> (a, b) <span 
+class="cmsy-10">&#x2208;</span> <span 
+class="cmbxti-10">R</span>.
+<!--l. 108--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-11000"></a>Covering of elements</h4>
+<!--l. 110--><p class="noindent" >An element <span 
+class="cmbx-10">a</span> is covered by <span 
+class="cmbx-10">b</span> in a partial order (X, <span 
+class="cmmi-10">&#x003C;</span>) <br 
+class="newline" />if <span 
+class="msbm-10">&#x2204; </span>y <span 
+class="cmsy-10">&#x2208; </span>X such that a <span 
+class="cmmi-10">&#x003C; </span>y <span 
+class="cmmi-10">&#x003C; </span>b. <br 
+class="newline" />E.g. 3 is covered by 6, but 2 is not covered by 8 under relation <span 
+class="cmsy-10">| </span>for set
+S.
+<!--l. 114--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-12000"></a>Hasse Diagrams</h3>
+<!--l. 116--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-13000"></a>Conditions for drawing Hasse Diagrams</h4>
+<!--l. 118--><p class="noindent" >A Hasse diagram for a partial order (X,<span 
+class="cmmi-10">&#x003C;</span>) is drawn such that the following
+conditions are satisfied:
+     <ul class="itemize1">
+     <li class="itemize">Each element in X is represented by a point on the plane.
+     </li>
+     <li class="itemize">If a <span 
+class="cmmi-10">&#x003C; </span>b, then point representing a is below the point representing b.
+     </li>
+     <li class="itemize">We put an edge between two elements a, b iff a <span 
+class="cmmi-10">&#x003C;</span> <sub><span 
+class="cmmi-7">c</span></sub><span 
+class="cmmi-10">b</span><sub></sub>.</li></ul>
+                                                                  
+
+                                                                  
+<!--l. 126--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-14000"></a>Drawing Hasse Diagrams</h4>
+<!--l. 128--><p class="noindent" >Draw the Hasse diagram for <span 
+class="cmmi-10">R</span><sub><span 
+class="cmsy-7">|</span></sub>, given A = <span 
+class="cmsy-10">{</span>1,2,3,4,5,6,7,8<span 
+class="cmsy-10">}</span>. <br 
+class="newline" />
+<!--l. 130--><p class="noindent" >The hasse diagram is drawn as shown in Figure &#x00A0;<a 
+href="#x1-140011">1<!--tex4ht:ref: fig:hasse_8 --></a>.
+<!--l. 133--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-140011"></a>
+                                                                  
+
+                                                                  
+<!--l. 135--><p class="noindent" ><img 
+src="hasse_8_div.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;1: </span><span  
+class="content">Hasse Diagram for <span 
+class="cmmi-10">R</span><sub><span 
+class="cmsy-7">|</span></sub></span></div><!--tex4ht:label?: x1-140011 -->
+                                                                  
+
+                                                                  
+<!--l. 138--><p class="indent" >   </div><hr class="endfigure">
+   <h3 class="likesectionHead"><a 
+ id="x1-15000"></a>Linear Order</h3>
+<!--l. 142--><p class="noindent" >A linear order is a partial order (X, <span 
+class="cmmi-10">&#x003C;</span>) such that <br 
+class="newline" />a <span 
+class="cmmi-10">&#x003C; </span>b or b <span 
+class="cmmi-10">&#x003C; </span>a <span 
+class="cmsy-10">&#x2200; </span>(a, b) <span 
+class="cmsy-10">&#x2190; </span>X <span 
+class="cmsy-10">&#x00D7; </span>X, a <span 
+class="cmmi-10">&#x2260;</span> b.
+<!--l. 145--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-16000"></a>Questions</h3>
+<!--l. 147--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-17000"></a>1. X is a subset of a finite set. Prove that this induces a POSET (Partial order
+set) over a ground set <br 
+class="newline" />OR <br 
+class="newline" />Prove that (2<sup><span 
+class="cmmi-7">S</span></sup>,<span 
+class="cmsy-10">&#x2286;</span>) is a POSET. </h4>
+<!--l. 149--><p class="noindent" >For a set to be POSET it has to be Reflexive, Antisymmetric and Transitive.<br 
+class="newline" />
+<!--l. 151--><p class="noindent" >S <span 
+class="cmsy-10">&#x00D7; </span>S = <span 
+class="cmsy-10">{{</span>1, 1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 3<span 
+class="cmsy-10">}</span>, ... <span 
+class="cmsy-10">{</span>n, n<span 
+class="cmsy-10">}}</span>. <br 
+class="newline" />2<sup><span 
+class="cmmi-7">S</span></sup> = <span 
+class="cmsy-10">{ </span><span 
+class="cmmi-10">&#x03D5;</span>, <span 
+class="cmsy-10">{</span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2<span 
+class="cmsy-10">}</span>, ... <span 
+class="cmsy-10">{</span>n<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 3<span 
+class="cmsy-10">}</span>, ... , <span 
+class="cmsy-10">{</span>1, n<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 3<span 
+class="cmsy-10">}</span>, ...<span 
+class="cmsy-10">}</span><br 
+class="newline" />
+<!--l. 157--><p class="noindent" >From the power set we found out that:
+     <ul class="itemize1">
+     <li class="itemize">2<sup><span 
+class="cmmi-7">S</span></sup> <span 
+class="msbm-10">&#x21CF; </span>Reflexive, so is Irreflexive.
+     </li>
+     <li class="itemize">2<sup><span 
+class="cmmi-7">S</span></sup> <span 
+class="msbm-10">&#x21CF; </span>Symmetric, so is Antisymmetric.
+     </li>
+     <li class="itemize">2<sup><span 
+class="cmmi-7">S</span></sup> <span 
+class="cmsy-10">&#x21D2; </span>Transitive: If <span 
+class="cmsy-10">{</span>a, b<span 
+class="cmsy-10">}&#x2286; </span>2<sup><span 
+class="cmmi-7">S</span></sup> and <span 
+class="cmsy-10">{</span>b, c<span 
+class="cmsy-10">}&#x2286; </span>2<sup><span 
+class="cmmi-7">S</span></sup>, then <span 
+class="cmsy-10">{</span>a, c<span 
+class="cmsy-10">}&#x2286; </span>2<sup><span 
+class="cmmi-7">S</span></sup>, <span 
+class="cmsy-10">&#x2200; </span>a,b,c
+     <span 
+class="cmsy-10">&#x2208;{</span>1, 2, 3, ... n<span 
+class="cmsy-10">}</span></li></ul>
+<!--l. 166--><p class="noindent" >
+   <h5 class="likesubsubsectionHead"><a 
+ id="x1-18000"></a>Reflexive</h5>
+<!--l. 168--><p class="noindent" ><span 
+class="cmsy-10">&#x2200; </span>a where a <span 
+class="cmsy-10">&#x2208; </span>2<sup><span 
+class="cmmi-7">S</span></sup>. (a, a) <span 
+class="cmsy-10">&#x2208; </span>R [As a <span 
+class="cmsy-10">&#x2286; </span>a]
+                                                                  
+
+                                                                  
+<!--l. 171--><p class="noindent" >
+   <h5 class="likesubsubsectionHead"><a 
+ id="x1-19000"></a>Antisymmetric</h5>
+<!--l. 173--><p class="noindent" >If a <span 
+class="cmsy-10">&#x2208; </span>2<sup><span 
+class="cmmi-7">S</span></sup>, b <span 
+class="cmsy-10">&#x2208; </span>2<sup><span 
+class="cmmi-7">S</span></sup> <br 
+class="newline" />if (a, b) <span 
+class="cmsy-10">&#x2208; </span>R <span 
+class="cmsy-10">&#x2227; </span>(b, a) <span 
+class="cmsy-10">&#x2208; </span>R. <br 
+class="newline" /><span 
+class="cmsy-10">&#x21D2; </span>a <span 
+class="cmsy-10">&#x2286; </span>b                                    [As a <span 
+class="cmsy-10">&#x2286; </span>b and b <span 
+class="cmsy-10">&#x2286; </span>a] <br 
+class="newline" /><span 
+class="cmsy-10">&#x21D2; </span>a = b
+<!--l. 178--><p class="noindent" >
+   <h5 class="likesubsubsectionHead"><a 
+ id="x1-20000"></a>Transitive</h5>
+<!--l. 180--><p class="noindent" >If a,b <span 
+class="cmsy-10">&#x2208; </span>2<sup><span 
+class="cmmi-7">S</span></sup> <br 
+class="newline" />If (a, b) <span 
+class="cmsy-10">&#x2208; </span>R <span 
+class="cmsy-10">&#x2227; </span>(b, c) <span 
+class="cmsy-10">&#x2208; </span>R. <br 
+class="newline" /><span 
+class="cmsy-10">&#x21D2; </span>a <span 
+class="cmsy-10">&#x2286; </span>c <br 
+class="newline" /><span 
+class="cmsy-10">&#x21D2; </span>(a, c) <span 
+class="cmsy-10">&#x2208; </span>R
+<!--l. 185--><p class="noindent" >
+   <h5 class="likesubsubsectionHead"><a 
+ id="x1-21000"></a>Hence, (2<sup><span 
+class="cmmi-7">S</span></sup>,<span 
+class="cmsy-10">&#x2286;</span>) is a POSET</h5>
+<!--l. 187--><p class="noindent" >
+<!--l. 189--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-22000"></a>2. A note on <span 
+class="cmmi-10">R</span><sub><span 
+class="msam-7">&#x2264;</span></sub> </h4>
+<!--l. 191--><p class="noindent" >Let S = <span 
+class="cmsy-10">{</span>1, 2, 3, 4<span 
+class="cmsy-10">}</span>.
+<!--l. 193--><p class="noindent" >2<sup><span 
+class="cmmi-7">S</span></sup> = <span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">&#x03D5;</span>, <span 
+class="cmsy-10">{</span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2,
+3, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 3, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2, 3, 4<span 
+class="cmsy-10">}}</span>.
+<!--l. 196--><p class="indent" >   A relation is defined on the ground set.
+<!--l. 198--><p class="indent" >   <span 
+class="msam-10">&#x2264;</span><span 
+class="cmsy-10">&#x2286; </span>(X <span 
+class="cmsy-10">&#x00D7; </span>X), then this relation is a subset of (X <span 
+class="cmsy-10">&#x00D7; </span>X).
+<!--l. 200--><p class="indent" >   <span 
+class="cmmi-10">P</span><sub><span 
+class="msam-7">&#x2264;</span></sub> <span 
+class="cmsy-10">&#x2286; </span>(2<sup><span 
+class="cmmi-7">S</span></sup> <span 
+class="cmsy-10">&#x00D7; </span>2<sup><span 
+class="cmmi-7">S</span></sup>). (a, b) where a, b <span 
+class="cmsy-10">&#x2208; </span>2<sup><span 
+class="cmmi-7">S</span></sup>
+     <ul class="itemize1">
+     <li class="itemize">2<sup><span 
+class="cmmi-7">S</span></sup> <span 
+class="msbm-10">&#x21CF; </span>Reflexive, so is Irreflexive.
+     </li>
+     <li class="itemize">2<sup><span 
+class="cmmi-7">S</span></sup> <span 
+class="msbm-10">&#x21CF; </span>Symmetric, so is Antisymmetric.
+     </li>
+     <li class="itemize">2<sup><span 
+class="cmmi-7">S</span></sup> <span 
+class="cmsy-10">&#x21D2; </span>Transitive: If <span 
+class="cmsy-10">{</span>a, b<span 
+class="cmsy-10">}&#x2286; </span>2<sup><span 
+class="cmmi-7">S</span></sup> and <span 
+class="cmsy-10">{</span>b, c<span 
+class="cmsy-10">}&#x2286; </span>2<sup><span 
+class="cmmi-7">S</span></sup>, then <span 
+class="cmsy-10">{</span>a, c<span 
+class="cmsy-10">}&#x2286; </span>2<sup><span 
+class="cmmi-7">S</span></sup>, <span 
+class="cmsy-10">&#x2200; </span>a,b,c
+     <span 
+class="cmsy-10">&#x2208;{</span>1, 2, 3, ... n<span 
+class="cmsy-10">}</span></li></ul>
+                                                                  
+
+                                                                  
+<!--l. 211--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-23000"></a>3. R denotes any binary relation on 2<sup><span 
+class="cmmi-7">S</span></sup>. Suppose R denotes the disjointness
+relation. Which means if a <span 
+class="cmsy-10">&#x2229; </span>b = <span 
+class="cmmi-10">&#x03D5; </span>for some (a, b) <span 
+class="cmsy-10">&#x2208;</span><sub><span 
+class="cmr-7">2</span></sub><span 
+class="cmmi-10">S </span>[we say a and b have
+disjointness relation]. List all the elements of <span 
+class="cmmi-10">R</span><sub><span 
+class="cmmi-7">d</span></sub> </h4>
+<!--l. 213--><p class="noindent" ><span 
+class="cmmi-10">R</span><sub><span 
+class="cmmi-7">d</span></sub> = <span 
+class="cmsy-10">{ </span>(<span 
+class="cmsy-10">{ </span><span 
+class="cmmi-10">&#x03D5;</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{ </span><span 
+class="cmmi-10">&#x03D5; </span><span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{ </span><span 
+class="cmmi-10">&#x03D5;</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{ </span>1<span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{ </span><span 
+class="cmmi-10">&#x03D5;</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{ </span>2<span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{ </span><span 
+class="cmmi-10">&#x03D5;</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{ </span>3<span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{ </span><span 
+class="cmmi-10">&#x03D5;</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{ </span>4<span 
+class="cmsy-10">}</span>), ... (<span 
+class="cmsy-10">{ </span><span 
+class="cmmi-10">&#x03D5;</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>
+n<span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{ </span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{ </span>2<span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{ </span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{ </span>3<span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{ </span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{ </span>4<span 
+class="cmsy-10">}</span>), ... (<span 
+class="cmsy-10">{ </span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{ </span>n<span 
+class="cmsy-10">}</span>), ... (<span 
+class="cmsy-10">{ </span>1, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{ </span>3, 4<span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{ </span>1,
+2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{ </span>4, 5<span 
+class="cmsy-10">}</span>), ... <span 
+class="cmsy-10">}</span>
+<!--l. 215--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-24000"></a>4. List all the elements of <span 
+class="cmmi-10">R</span><sub><span 
+class="cmmi-7">d</span></sub>. Consider <span 
+class="cmmi-10">R</span><sub><span 
+class="cmmi-7">c</span></sub> a binary relation on 2<sup><span 
+class="cmmi-7">S</span></sup> <span 
+class="cmsy-10">&#x00D7; </span>2<sup><span 
+class="cmmi-7">S</span></sup> where,
+(a, b) <span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">R</span><sub><span 
+class="cmmi-7">c</span></sub> <span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x21D0;&#x21D2;</span><span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x2223;</span> a <span 
+class="cmsy-10">&#x2223;</span> <span 
+class="cmmi-10">&#x003C;</span> <img 
+src="note_033x.png" alt="| b |
+---
+ 2" >, (a, b) <span 
+class="cmsy-10">&#x2208; </span>2<sup><span 
+class="cmmi-7">S</span></sup>. </h4>
+<!--l. 217--><p class="noindent" >Elements of 2<sup><span 
+class="cmmi-7">S</span></sup> = <span 
+class="cmsy-10">{{ </span><span 
+class="cmmi-10">&#x03D5;</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3<span 
+class="cmsy-10">}</span>, ... <span 
+class="cmsy-10">{</span>n <span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 3<span 
+class="cmsy-10">}</span>, .. <span 
+class="cmsy-10">{</span>1, n<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2,
+1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 2<span 
+class="cmsy-10">}</span>, ... <span 
+class="cmsy-10">{</span>2, n<span 
+class="cmsy-10">}</span>, ... <span 
+class="cmsy-10">}</span>
+<!--l. 219--><p class="noindent" >For simplicity, Let us consider the set S = <span 
+class="cmsy-10">{</span>1, 2, 3, 4<span 
+class="cmsy-10">}</span>. <br 
+class="newline" />
+<!--l. 222--><p class="noindent" >2<sup><span 
+class="cmmi-7">S</span></sup> = <span 
+class="cmsy-10">{{</span><span 
+class="cmmi-10">&#x03D5;</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3<span 
+class="cmsy-10">}</span>, ... <span 
+class="cmsy-10">{</span>1, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 3<span 
+class="cmsy-10">} </span>..., <span 
+class="cmsy-10">{</span>3, 1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3, 2<span 
+class="cmsy-10">}</span>, ...
+<span 
+class="cmsy-10">{</span>4, 1<span 
+class="cmsy-10">}</span>,... <span 
+class="cmsy-10">{</span>1, 2, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 3, 4<span 
+class="cmsy-10">}</span>... <span 
+class="cmsy-10">{</span>1, 2, 3, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">}</span><br 
+class="newline" />
+<!--l. 225--><p class="noindent" >(a, b) <span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">R</span><sub><span 
+class="cmmi-7">c</span></sub> <span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x21D0;&#x21D2;</span><span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x2223;</span> a <span 
+class="cmsy-10">&#x2223;</span> <span 
+class="cmmi-10">&#x003C;</span> <img 
+src="note_034x.png" alt="| b |
+ 2" >
+<!--l. 228--><p class="noindent" >Elements of the relation = <span 
+class="cmsy-10">{ </span>(<span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">&#x03D5;</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1<span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">&#x03D5;</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2<span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">&#x03D5;</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3<span 
+class="cmsy-10">}</span>), ... (<span 
+class="cmsy-10">{</span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 3<span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{</span>1<span 
+class="cmsy-10">}</span>,
+<span 
+class="cmsy-10">{</span>3, 4<span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{</span>2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 3<span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{</span>2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 4<span 
+class="cmsy-10">}</span>), ..., (<span 
+class="cmsy-10">{</span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 3, 4<span 
+class="cmsy-10">}</span>), (<span 
+class="cmsy-10">{</span>2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 3, 4<span 
+class="cmsy-10">}</span>), ... <span 
+class="cmsy-10">}</span>
+<br 
+class="newline" />
+<!--l. 232--><p class="noindent" >
+   <h5 class="likesubsubsectionHead"><a 
+ id="x1-25000"></a>A note on the above relation</h5>
+     <ul class="itemize1">
+     <li class="itemize">2<sup><span 
+class="cmmi-7">S</span></sup> <span 
+class="msbm-10">&#x21CF; </span>Reflexive, so is Irreflexive.
+     </li>
+     <li class="itemize">2<sup><span 
+class="cmmi-7">S</span></sup> <span 
+class="msbm-10">&#x21CF; </span>Symmetric, so is Antisymmetric.
+     </li>
+     <li class="itemize">2<sup><span 
+class="cmmi-7">S</span></sup> <span 
+class="cmsy-10">&#x21D2; </span>Transitive: <br 
+class="newline" />(a, b) <span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">R</span><sub><span 
+class="cmmi-7">c</span></sub> <span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x21D0;&#x21D2;</span><span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x2223;</span> a <span 
+class="cmsy-10">&#x2223;</span> <span 
+class="cmmi-10">&#x003C;</span> <img 
+src="note_035x.png" alt="|-b |
+ 2" > ..... (i)<br 
+class="newline" />(b, c) <span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">R</span><sub><span 
+class="cmmi-7">c</span></sub> <span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x21D0;&#x21D2;</span><span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x2223;</span> b <span 
+class="cmsy-10">&#x2223;</span> <span 
+class="cmmi-10">&#x003C;</span> <img 
+src="note_036x.png" alt="|-c |
+ 2" > ..... (ii)<br 
+class="newline" />(a, c) <span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">R</span><sub><span 
+class="cmmi-7">c</span></sub> <span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x21D0;&#x21D2;</span><span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x2223;</span> a <span 
+class="cmsy-10">&#x2223;</span> <span 
+class="cmmi-10">&#x003C;</span> <img 
+src="note_037x.png" alt="| c |
+---
+ 4" > ..... (iii)<br 
+class="newline" />From Eq. (iii) we get to know that <img 
+src="note_038x.png" alt="| b |
+-2-" > <span 
+class="cmmi-10">&#x003C;</span> <img 
+src="note_039x.png" alt="| c |
+-4-" >, <br 
+class="newline" />Hence <span 
+class="cmsy-10">&#x2223;</span> a <span 
+class="cmsy-10">&#x2223;</span> <span 
+class="cmmi-10">&#x003C;</span> <img 
+src="note_0310x.png" alt="| c |
+ 4" ></li></ul>
+<!--l. 246--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-26000"></a>Maximal and Minimal Subsets</h3>
+<!--l. 248--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-27000"></a>Let S = <span 
+class="cmsy-10">{</span>1, 2, 3, 4<span 
+class="cmsy-10">}</span></h4>
+<!--l. 250--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-28000"></a> 2<sup><span 
+class="cmmi-7">S</span></sup> = <span 
+class="cmsy-10">{ </span><span 
+class="cmmi-10">&#x03D5;</span>, <span 
+class="cmsy-10">{</span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3, 4<span 
+class="cmsy-10">}</span>,<span 
+class="cmsy-10">{</span>1, 2, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2,
+4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 3, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 3, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2, 3, 4<span 
+class="cmsy-10">}}</span></h4>
+<!--l. 253--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-29000"></a>Maximal Family of Subset</h4>
+<!--l. 255--><p class="noindent" >Maximal family of the subset of 2<sup><span 
+class="cmmi-7">S</span></sup>, so that any two elements of the subset are not
+related. [No two elements of the subset are comparable.]
+<!--l. 257--><p class="noindent" >We define the binary relation of S by the subset relation.
+<!--l. 260--><p class="noindent" >(A, B) <span 
+class="cmsy-10">&#x2190; </span>R if A <span 
+class="cmsy-10">&#x2286; </span>B.
+<!--l. 263--><p class="noindent" >
+   <h5 class="likesubsubsectionHead"><a 
+ id="x1-30000"></a>Find the maximal subset of 2<sup><span 
+class="cmmi-7">S</span></sup>.</h5>
+<!--l. 265--><p class="noindent" >Maximal subset = <span 
+class="cmsy-10">{{</span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>4<span 
+class="cmsy-10">}}</span>, which is an <span 
+class="cmbx-10">anti-chain</span>.
+<!--l. 268--><p class="noindent" >
+<!--l. 270--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-31000"></a>Q. Find a maximal subset of 2<sup><span 
+class="cmmi-7">S</span></sup>, such that every two elements of the subset are
+comparable or related. (2 elements are comparable)</h4>
+<!--l. 272--><p class="noindent" ><span 
+class="cmsy-10">{ </span><span 
+class="cmmi-10">&#x03D5;</span>, <span 
+class="cmsy-10">{</span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 2, 3, 4<span 
+class="cmsy-10">}} </span>which is a <span 
+class="cmbx-10">chain</span>.
+<!--l. 274--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-32000"></a>Chains and Anti-Chains</h3>
+<!--l. 276--><p class="noindent" >Consider a partial order set (X, <span 
+class="msam-10">&#x2264;</span>). Any subset of X is called a <span 
+class="cmbx-10">chain</span> if any two
+elements of the subsets are <span 
+class="cmbx-10">related</span>. Any subset of X is called an <span 
+class="cmbx-10">anti-chain</span> if any
+two elements of the subsets are <span 
+class="cmbx-10">not related</span>
+                                                                  
+
+                                                                  
+<!--l. 278--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-33000"></a>Theorem 1: Let (X, <span 
+class="msam-10">&#x2264;</span>) be a finite partially ordered set, and let r be the
+size of a largest chain. Then r can be partitioned into at least r antichains.
+</h4>
+<!--l. 280--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-34000"></a>Q. Partition 2<sup><span 
+class="cmmi-7">S</span></sup> into 5 antichains. </h4>
+<!--l. 282--><p class="noindent" ><span 
+class="cmsy-10">{{ </span><span 
+class="cmmi-10">&#x03D5;</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{{</span>1<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>4<span 
+class="cmsy-10">}}</span>, <span 
+class="cmsy-10">{{</span>1, 2<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 3<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>3, 4<span 
+class="cmsy-10">}}</span>, <span 
+class="cmsy-10">{{</span>1, 2, 3<span 
+class="cmsy-10">}</span>,
+<span 
+class="cmsy-10">{</span>1, 2, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>1, 3, 4<span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span>2, 3, 4<span 
+class="cmsy-10">}}</span>, <span 
+class="cmsy-10">{{</span>1, 2, 3, 4<span 
+class="cmsy-10">}}}</span>
+<!--l. 284--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-35000"></a>Q. Suppose A is an antichain on X, C is a chain on X. Then prove that <span 
+class="cmsy-10">&#x2223;</span> A <span 
+class="cmsy-10">&#x2229; </span>B <span 
+class="cmsy-10">&#x2223;</span>
+<span 
+class="msam-10">&#x2264; </span>1</h4>
+<!--l. 286--><p class="noindent" >Suppose for contradiction <span 
+class="cmsy-10">&#x2223;</span> A <span 
+class="cmsy-10">&#x2229; </span>B <span 
+class="cmsy-10">&#x2223;</span><span 
+class="msam-10">&#x2265; </span>2 is true. Therefore, there exists 2 elements
+which belongs to both A and C. Since the pair belongs to A, the elements are
+not related but at the same time they belongs to C and they should be
+related, so this forms a contradiction. If it belongs to C then the elements are
+comparable but if it doesn&#8217;t belongs to C then the elements are not comparable.
+<br 
+class="newline" />Hence <span 
+class="cmsy-10">&#x2223;</span> A <span 
+class="cmsy-10">&#x2229; </span>B <span 
+class="cmsy-10">&#x2223;</span><span 
+class="msam-10">&#x2264; </span>1 is true.
+<!--l. 290--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-36000"></a>Partition the set X into maximal chains.</h4>
+<!--l. 292--><p class="noindent" >A minimal element <span 
+class="cmmi-10">&#x03B1; </span>of a chain C <span 
+class="cmsy-10">&#x2286; </span>X is that element which satisfies the following, <span 
+class="cmmi-10">&#x03B1;</span>
+<span 
+class="cmsy-10">&#x2264; </span><span 
+class="cmmi-10">x</span>, <span 
+class="cmsy-10">&#x2200; </span><span 
+class="cmmi-10">x </span><span 
+class="cmsy-10">&#x2208; </span>C.
+<!--l. 295--><p class="noindent" ><span 
+class="cmmi-10">&#x03B1; </span><span 
+class="cmsy-10">| </span><span 
+class="cmmi-10">x</span> <span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x21D0;&#x21D2;</span><span style="margin-left:2.77695pt" class="tmspace"></span> <span 
+class="cmmi-10">&#x03B1; </span><span 
+class="cmsy-10">&#x2264; </span><span 
+class="cmmi-10">x </span><br 
+class="newline" /><span 
+class="cmmi-10">x </span><span 
+class="cmsy-10">| </span><span 
+class="cmmi-10">&#x03B1;</span> <span style="margin-left:2.77695pt" class="tmspace"></span><span 
+class="cmsy-10">&#x21D0;&#x21D2;</span><span style="margin-left:2.77695pt" class="tmspace"></span> <span 
+class="cmmi-10">x </span><span 
+class="cmsy-10">&#x2264; </span><span 
+class="cmmi-10">&#x03B1; </span>(<span 
+class="cmsy-10">&#x2264; </span>is a binary relation) <br 
+class="newline" />Minimum element of C is <span 
+class="cmsy-10">{ </span><span 
+class="cmmi-10">&#x03D5;</span><span 
+class="cmsy-10">} </span>Consider the set with the divisibility relation. <span 
+class="cmmi-10">D </span>= <span 
+class="cmsy-10">{</span>3,
+9, 18, 24, 21, 30<span 
+class="cmsy-10">}</span>. <span 
+class="cmmi-10">&#x03B1; </span><span 
+class="cmsy-10">&#x2282; </span>X. A maximal element <span 
+class="cmmi-10">&#x03B1; </span>of a chain <span 
+class="cmmi-10">C </span><span 
+class="cmsy-10">&#x2286; </span>X is that element
+which satisfies the following:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmmi-10">x </span><span 
+class="cmsy-10">&#x2264; </span><span 
+class="cmmi-10">&#x03B1;</span>. <span 
+class="cmsy-10">&#x2200; </span><span 
+class="cmmi-10">x </span><span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">C</span>.
+     </li>
+     <li class="itemize">Maximal element of <span 
+class="cmmi-10">C </span>is <span 
+class="cmsy-10">{</span>1, 2, 3, 4<span 
+class="cmsy-10">}</span>.
+     </li>
+     <li class="itemize">Consider the set with divisibility relation. <span 
+class="cmmi-10">D </span>= <span 
+class="cmsy-10">{</span>3, -9, 27, -81<span 
+class="cmsy-10">}</span>. Note that
+     <span 
+class="cmmi-10">D </span>is a chain under divisibility and -81 is the maximal element.</li></ul>
+                                                                  
+
+                                                                  
+<!--l. 310--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-37000"></a>Can Hasse diagrams always be planar ?</h3>
+<!--l. 312--><p class="noindent" >No.
+<!--l. 314--><p class="noindent" >Consider the subset relation where elements are: <span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">A</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">B</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">C</span><span 
+class="cmsy-10">}</span>, <span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">A,B,C,P</span><span 
+class="cmsy-10">}</span>,
+<span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">A,B,C,Q</span><span 
+class="cmsy-10">} </span>and <span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">A,B,C,R</span><span 
+class="cmsy-10">}</span>, The Hasse diagram for this type of relation is K-33 as
+shown in Figure &#x00A0;<a 
+href="#x1-370012">2<!--tex4ht:ref: fig:hasse_sset --></a> .
+<!--l. 318--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-370012"></a>
+                                                                  
+
+                                                                  
+<!--l. 320--><p class="noindent" ><img 
+src="hasse_sset.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;2: </span><span  
+class="content">Hasse Diagram for <span 
+class="cmmi-10">R</span><sub><span 
+class="cmsy-7">&#x2282;</span></sub></span></div><!--tex4ht:label?: x1-370012 -->
+                                                                  
+
+                                                                  
+<!--l. 323--><p class="indent" >   </div><hr class="endfigure">
+<!--l. 325--><p class="noindent" >Consider the divisibility relation where elements are: 1, 2, 3, 12, 18 and 30,
+The Hasse diagram for this type of relation is K-33 as shown in Figure &#x00A0;<a 
+href="#x1-370023">3<!--tex4ht:ref: fig:hasse_div --></a>
+.
+<!--l. 328--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-370023"></a>
+                                                                  
+
+                                                                  
+<!--l. 330--><p class="noindent" ><img 
+src="hasse_div.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;3: </span><span  
+class="content">Hasse Diagram for <span 
+class="cmmi-10">R</span><sub><span 
+class="cmsy-7">|</span></sub></span></div><!--tex4ht:label?: x1-370023 -->
+                                                                  
+
+                                                                  
+<!--l. 333--><p class="indent" >   </div><hr class="endfigure">
+<!--l. 336--><p class="noindent" >Hence we can see that the Hasse diagram can not always be planar.
+    
+</body></html> 
+
+                                                                  
+
+

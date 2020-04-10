@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.3.4/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.3.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>#map_680461a53d6c478d83aedd261ec477a8 {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <center>
+    <h1 ><i style="color:#c6ae0d; font face=Arial,Helvetica "> WISP v2.0 </i><i style="font-size:10px">JJCluster inside</i></h1> 
+    </center>
+    
+    <div id="legend-html" style="position: fixed; background-color: white; 
+    bottom: 50px; left: 50px;  
+    border:2px solid grey; z-index:9999; font-size:14px;" >&nbsp; 
+    <b>Legend <b>
+    <br>
+            &nbsp; training camp &nbsp;
+            <svg height="10" width="10">
+            <circle cx="5" cy="5" r="4" stroke="#62130f" stroke-width="3" fill="#7307f1" />
+            </svg><br/> 
+            &nbsp; cyber cafe &nbsp;
+            <svg height="10" width="10">
+            <circle cx="5" cy="5" r="4" stroke="#b3cfb8" stroke-width="3" fill="#a3e191" />
+            </svg><br/> 
+    </div>
+    <div style="position: fixed; 
+    bottom: 50px; right: 50px;  
+    z-index:9999; font-size:10px;
+    "> 
+    <b style="color:#f90404" style="align: justified">
+        WISP <br/> 
+        version: 2.0 <br/>
+        <a href="https://jimut123.github.io" target="_blank">&copyJimut Bahan Pal</a> <br/> 
+        Author : jimutbahanpal@yahoo.com 
+    </b>
+    </div>
+    <div style="position: fixed; 
+    top: 70px; left: 50px;  
+    z-index:9999; font-size:15px;
+    "> 
+    <b style="color:#16842c" style="align: justified">
+        Location: Islamabad <br/>
+        Lat, Lon: 33.63573935,72.9230467027632 <br/>
+        Radius: 6000 <br/>
+        Date: 2019-10-09T15:41:04 <br/>
+    </b>
+    </div> 
+    
+    
+    <div class="folium-map" id="map_680461a53d6c478d83aedd261ec477a8" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_680461a53d6c478d83aedd261ec477a8 = L.map(
+        'map_680461a53d6c478d83aedd261ec477a8', {
+        center: [33.63573935, 72.9230467027632],
+        zoom: 11,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+    
+    
+    var tile_layer_75bd3cab82024f1b94fa1f1f93f903d1 = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "opacity": 1,
+        "subdomains": "abc",
+        "tms": false
+}).addTo(map_680461a53d6c478d83aedd261ec477a8);
+    
+            var circle_marker_d1a3269cb2fc40e8903600ebcc4e7a01 = L.circleMarker(
+                [33.6341716901524, 72.96747386455536],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#62130f",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#7307f1",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_680461a53d6c478d83aedd261ec477a8);
+            
+    
+            var popup_df45d02181e74d6ab3542f73cfe765a7 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_d191416407ff44229905e7a4e7fece59 = $(`<div id="html_d191416407ff44229905e7a4e7fece59" style="width: 100.0%; height: 100.0%;">cat : training camp  , Name : PETROLEUM TRAINING ACADEMY  and Location : 33-C, Street No. 10, Sector I-9/2 (industrial area), Islamabad-Pakistan, Isalamabad-45710, پاکستان</div>`)[0];
+                popup_df45d02181e74d6ab3542f73cfe765a7.setContent(html_d191416407ff44229905e7a4e7fece59);
+            
+
+            circle_marker_d1a3269cb2fc40e8903600ebcc4e7a01.bindPopup(popup_df45d02181e74d6ab3542f73cfe765a7)
+            ;
+
+            
+        
+    
+            var circle_marker_b7e815df99a84bf6aa5a9400deb50a4a = L.circleMarker(
+                [33.631976, 72.922256],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#b3cfb8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#a3e191",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_680461a53d6c478d83aedd261ec477a8);
+            
+    
+            var popup_8c7bd4bd8b5143d39bbfc0f59a110c5e = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_19ecf74241414c7a900de035bec968bd = $(`<div id="html_19ecf74241414c7a900de035bec968bd" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Mojo Cafe  and Location : G15 (Main markaz), اسلام آباد, پاکستان</div>`)[0];
+                popup_8c7bd4bd8b5143d39bbfc0f59a110c5e.setContent(html_19ecf74241414c7a900de035bec968bd);
+            
+
+            circle_marker_b7e815df99a84bf6aa5a9400deb50a4a.bindPopup(popup_8c7bd4bd8b5143d39bbfc0f59a110c5e)
+            ;
+
+            
+        
+    
+            var circle_marker_5d4e57fc1a81401b8d4fe142f6c2189f = L.circleMarker(
+                [33.62300792862162, 72.95787622701475],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#b3cfb8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#a3e191",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_680461a53d6c478d83aedd261ec477a8);
+            
+    
+            var popup_037e46f0bcf7412da689da156aa53e21 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_be3bea21fa5a4d9586bc458df6a2beae = $(`<div id="html_be3bea21fa5a4d9586bc458df6a2beae" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : EME Cafe  and Location : پاکستان</div>`)[0];
+                popup_037e46f0bcf7412da689da156aa53e21.setContent(html_be3bea21fa5a4d9586bc458df6a2beae);
+            
+
+            circle_marker_5d4e57fc1a81401b8d4fe142f6c2189f.bindPopup(popup_037e46f0bcf7412da689da156aa53e21)
+            ;
+
+            
+        
+    
+            var circle_marker_5e8b3f977fa849588ace7c9946526eef = L.circleMarker(
+                [33.642599171363536, 72.98566006240831],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#b3cfb8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#a3e191",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_680461a53d6c478d83aedd261ec477a8);
+            
+    
+            var popup_e85f4db57e794a24be91f174bb4183c3 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_6c41a7ea4a4948ff92eb7ffc5a5bbbf4 = $(`<div id="html_6c41a7ea4a4948ff92eb7ffc5a5bbbf4" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : NBS Cafe - NUST  and Location : Indus Loop, H-12, اسلام آباد, پاکستان</div>`)[0];
+                popup_e85f4db57e794a24be91f174bb4183c3.setContent(html_6c41a7ea4a4948ff92eb7ffc5a5bbbf4);
+            
+
+            circle_marker_5e8b3f977fa849588ace7c9946526eef.bindPopup(popup_e85f4db57e794a24be91f174bb4183c3)
+            ;
+
+            
+        
+    
+            var circle_marker_0a5d89e338ed4a7fae483244bb476a15 = L.circleMarker(
+                [33.64252882187612, 72.98564449736512],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#b3cfb8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#a3e191",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_680461a53d6c478d83aedd261ec477a8);
+            
+    
+            var popup_910fcd1671f643cb95984e5ce7cb023d = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_6364a70d093646ec8e89172b89189a16 = $(`<div id="html_6364a70d093646ec8e89172b89189a16" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : SEECS Cafe (Concordia 2) - NUST  and Location : Indus Loop, H-12 (near SEECS), اسلام آباد, پاکستان</div>`)[0];
+                popup_910fcd1671f643cb95984e5ce7cb023d.setContent(html_6364a70d093646ec8e89172b89189a16);
+            
+
+            circle_marker_0a5d89e338ed4a7fae483244bb476a15.bindPopup(popup_910fcd1671f643cb95984e5ce7cb023d)
+            ;
+
+            
+        
+    
+            var circle_marker_9784f3561e4b4bc4bf7a00b5bfd2c781 = L.circleMarker(
+                [33.642433166503906, 72.98594665527344],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#b3cfb8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#a3e191",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_680461a53d6c478d83aedd261ec477a8);
+            
+    
+            var popup_3de633b06b9246dea7c0c2f790c0dc34 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_06d6bed0eada42159766b219777f212e = $(`<div id="html_06d6bed0eada42159766b219777f212e" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : cafe 442  and Location : پاکستان</div>`)[0];
+                popup_3de633b06b9246dea7c0c2f790c0dc34.setContent(html_06d6bed0eada42159766b219777f212e);
+            
+
+            circle_marker_9784f3561e4b4bc4bf7a00b5bfd2c781.bindPopup(popup_3de633b06b9246dea7c0c2f790c0dc34)
+            ;
+
+            
+        
+    
+            var circle_marker_19e835a33c584d789891d500714e60ad = L.circleMarker(
+                [33.650955, 72.97558],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#b3cfb8",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#a3e191",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_680461a53d6c478d83aedd261ec477a8);
+            
+    
+            var popup_7be7ad7433104073808ec5d0d6d8dc3c = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_65124376257f418f94793fcadd9af64e = $(`<div id="html_65124376257f418f94793fcadd9af64e" style="width: 100.0%; height: 100.0%;">cat : cyber cafe  , Name : Queta Shah Jee Cafe  and Location : Bostan Plaza, Meher Abadi (G-12/1), اسلام آباد, پاکستان</div>`)[0];
+                popup_7be7ad7433104073808ec5d0d6d8dc3c.setContent(html_65124376257f418f94793fcadd9af64e);
+            
+
+            circle_marker_19e835a33c584d789891d500714e60ad.bindPopup(popup_7be7ad7433104073808ec5d0d6d8dc3c)
+            ;
+
+            
+        
+    
+                var poly_line_2d1cba9d16bf4c108e1ce36628b51c42 = L.polyline(
+                    [[33.6341716901524, 72.96747386455536], [33.6341716901524, 72.96747386455536]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_680461a53d6c478d83aedd261ec477a8);
+            
+    
+                var poly_line_e4124cb1fd57489ba161bbded7944087 = L.polyline(
+                    [[33.6341716901524, 72.96747386455536], [33.62300792862162, 72.95787622701475]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_680461a53d6c478d83aedd261ec477a8);
+            
+    
+                var poly_line_c86bd300c9ce43c793e2a6111c0811c5 = L.polyline(
+                    [[33.62300792862162, 72.95787622701475], [33.6341716901524, 72.96747386455536]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_680461a53d6c478d83aedd261ec477a8);
+            
+    
+                var poly_line_585eeab5e22b4643b36b278dea3a55a2 = L.polyline(
+                    [[33.62300792862162, 72.95787622701475], [33.62300792862162, 72.95787622701475]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_680461a53d6c478d83aedd261ec477a8);
+            
+</script>

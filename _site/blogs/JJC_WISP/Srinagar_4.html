@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.3.4/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.3.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>#map_37e58510fb7642ca95872284fca9b50a {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <center>
+    <h1 ><i style="color:#c6ae0d; font face=Arial,Helvetica "> WISP v2.0 </i><i style="font-size:10px">JJCluster inside</i></h1> 
+    </center>
+    
+    <div id="legend-html" style="position: fixed; background-color: white; 
+    bottom: 50px; left: 50px;  
+    border:2px solid grey; z-index:9999; font-size:14px;" >&nbsp; 
+    <b>Legend <b>
+    <br>
+            &nbsp; mountain &nbsp;
+            <svg height="10" width="10">
+            <circle cx="5" cy="5" r="4" stroke="#e65429" stroke-width="3" fill="#33825a" />
+            </svg><br/> 
+            &nbsp; club &nbsp;
+            <svg height="10" width="10">
+            <circle cx="5" cy="5" r="4" stroke="#86ffcf" stroke-width="3" fill="#6890cd" />
+            </svg><br/> 
+            &nbsp; park &nbsp;
+            <svg height="10" width="10">
+            <circle cx="5" cy="5" r="4" stroke="#23f84c" stroke-width="3" fill="#3fac52" />
+            </svg><br/> 
+    </div>
+    <div style="position: fixed; 
+    bottom: 50px; right: 50px;  
+    z-index:9999; font-size:10px;
+    "> 
+    <b style="color:#f90404" style="align: justified">
+        WISP <br/> 
+        version: 2.0 <br/>
+        <a href="https://jimut123.github.io" target="_blank">&copyJimut Bahan Pal</a> <br/> 
+        Author : jimutbahanpal@yahoo.com 
+    </b>
+    </div>
+    <div style="position: fixed; 
+    top: 70px; left: 50px;  
+    z-index:9999; font-size:15px;
+    "> 
+    <b style="color:#16842c" style="align: justified">
+        Location: Srinagar <br/>
+        Lat, Lon: 34.0747444,74.8204443 <br/>
+        Radius: 6000 <br/>
+        Date: 2019-10-09T15:39:43 <br/>
+    </b>
+    </div> 
+    
+    
+    <div class="folium-map" id="map_37e58510fb7642ca95872284fca9b50a" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_37e58510fb7642ca95872284fca9b50a = L.map(
+        'map_37e58510fb7642ca95872284fca9b50a', {
+        center: [34.0747444, 74.8204443],
+        zoom: 11,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+    
+    
+    var tile_layer_fa23fa83a0214c63a2d6bec5b025348e = L.tileLayer(
+        'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "opacity": 1,
+        "subdomains": "abc",
+        "tms": false
+}).addTo(map_37e58510fb7642ca95872284fca9b50a);
+    
+            var circle_marker_d710bab8a6954765b780f92ab6d0a624 = L.circleMarker(
+                [34.06950142994322, 74.82740126591631],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#e65429",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#33825a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_1aebce38e359487ebc87e9e75ba99915 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_713c6faa999849baa356e6ed402f5a32 = $(`<div id="html_713c6faa999849baa356e6ed402f5a32" style="width: 100.0%; height: 100.0%;">cat : mountain  , Name : Hotel New Mountain View  and Location : Rajbagh (Opposite hotel The Pride Inn), Srinagar 190008, Jammu and Kashmīr, India</div>`)[0];
+                popup_1aebce38e359487ebc87e9e75ba99915.setContent(html_713c6faa999849baa356e6ed402f5a32);
+            
+
+            circle_marker_d710bab8a6954765b780f92ab6d0a624.bindPopup(popup_1aebce38e359487ebc87e9e75ba99915)
+            ;
+
+            
+        
+    
+            var circle_marker_f5f94a2ea1c149729193c9a4ec662048 = L.circleMarker(
+                [34.0664, 74.8282],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#e65429",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#33825a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_2869e2525b4a4a95acbc2fabc5808de3 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_e23efb73e1b34e8a8510d55318e14382 = $(`<div id="html_e23efb73e1b34e8a8510d55318e14382" style="width: 100.0%; height: 100.0%;">cat : mountain  , Name : Hotel New Mountain View  and Location : Rajbagh (Opposite hotel The Pride Inn), Srinagar 190008, Jammu and Kashmīr, India</div>`)[0];
+                popup_2869e2525b4a4a95acbc2fabc5808de3.setContent(html_e23efb73e1b34e8a8510d55318e14382);
+            
+
+            circle_marker_f5f94a2ea1c149729193c9a4ec662048.bindPopup(popup_2869e2525b4a4a95acbc2fabc5808de3)
+            ;
+
+            
+        
+    
+            var circle_marker_aab82648452c4565a60aaab59f1ac82d = L.circleMarker(
+                [34.09261860791691, 74.84758049782312],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#e65429",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#33825a",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_990413db69634fb591399b6a2922d6e9 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_c2ba2bf5554b4e6b9a37959d4dea0527 = $(`<div id="html_c2ba2bf5554b4e6b9a37959d4dea0527" style="width: 100.0%; height: 100.0%;">cat : mountain  , Name : Himalaya Mountain  and Location : India</div>`)[0];
+                popup_990413db69634fb591399b6a2922d6e9.setContent(html_c2ba2bf5554b4e6b9a37959d4dea0527);
+            
+
+            circle_marker_aab82648452c4565a60aaab59f1ac82d.bindPopup(popup_990413db69634fb591399b6a2922d6e9)
+            ;
+
+            
+        
+    
+            var circle_marker_4de81e70bb3f4a709df608a69acb6015 = L.circleMarker(
+                [34.071775, 74.837049],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#86ffcf",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6890cd",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_6073c5d3b2b44d5884c2b7d4420e5cbb = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_2386e1087dd84cff9a7fd02fcc172cf1 = $(`<div id="html_2386e1087dd84cff9a7fd02fcc172cf1" style="width: 100.0%; height: 100.0%;">cat : club  , Name : Amar Singh Club  and Location : Ram Munshi Bagh (Sonwar), Srinagar 190001, Jammu and Kashmīr, India</div>`)[0];
+                popup_6073c5d3b2b44d5884c2b7d4420e5cbb.setContent(html_2386e1087dd84cff9a7fd02fcc172cf1);
+            
+
+            circle_marker_4de81e70bb3f4a709df608a69acb6015.bindPopup(popup_6073c5d3b2b44d5884c2b7d4420e5cbb)
+            ;
+
+            
+        
+    
+            var circle_marker_28e3b413ec3a4c479d96a5c66e7270b6 = L.circleMarker(
+                [34.117332458496094, 74.83287048339844],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#86ffcf",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6890cd",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_e5d06c4a20b34ccf866b3aa2201f2962 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_78a93cbc76da4ef4a6910fd8fcd34ca3 = $(`<div id="html_78a93cbc76da4ef4a6910fd8fcd34ca3" style="width: 100.0%; height: 100.0%;">cat : club  , Name : nigeen club  and Location : Nigeen, India</div>`)[0];
+                popup_e5d06c4a20b34ccf866b3aa2201f2962.setContent(html_78a93cbc76da4ef4a6910fd8fcd34ca3);
+            
+
+            circle_marker_28e3b413ec3a4c479d96a5c66e7270b6.bindPopup(popup_e5d06c4a20b34ccf866b3aa2201f2962)
+            ;
+
+            
+        
+    
+            var circle_marker_a73f17407b6647c4987257ec8d3f9ddc = L.circleMarker(
+                [34.11921423246943, 74.83027437207951],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#86ffcf",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6890cd",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_a41b00351fa54ba49857d18bd3c85cc8 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_f9ae664ffd3a4972bd57ef0aca9ffbfe = $(`<div id="html_f9ae664ffd3a4972bd57ef0aca9ffbfe" style="width: 100.0%; height: 100.0%;">cat : club  , Name : Nigeen Lake  and Location : Nigeen, Srinagar, Jammu & Kashmir, India</div>`)[0];
+                popup_a41b00351fa54ba49857d18bd3c85cc8.setContent(html_f9ae664ffd3a4972bd57ef0aca9ffbfe);
+            
+
+            circle_marker_a73f17407b6647c4987257ec8d3f9ddc.bindPopup(popup_a41b00351fa54ba49857d18bd3c85cc8)
+            ;
+
+            
+        
+    
+            var circle_marker_67befad9777043e0b5e3dad1b43d00ba = L.circleMarker(
+                [34.071884, 74.82025],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_30f02da2d83148158f9936f1c32c644f = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_6335bec77a644a23a3d5e1b1568169d8 = $(`<div id="html_6335bec77a644a23a3d5e1b1568169d8" style="width: 100.0%; height: 100.0%;">cat : park  , Name : Jehlum View Park  and Location : The Bund, Srinagar 190001, Jammu and Kashmīr, India</div>`)[0];
+                popup_30f02da2d83148158f9936f1c32c644f.setContent(html_6335bec77a644a23a3d5e1b1568169d8);
+            
+
+            circle_marker_67befad9777043e0b5e3dad1b43d00ba.bindPopup(popup_30f02da2d83148158f9936f1c32c644f)
+            ;
+
+            
+        
+    
+            var circle_marker_38dc639c6075498eb9782f5d5e81c9b1 = L.circleMarker(
+                [34.07239865619411, 74.81430315543791],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_7867b6410a61429999469121c54798c6 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_2e29feacdbe04a28ae669734b70f1c20 = $(`<div id="html_2e29feacdbe04a28ae669734b70f1c20" style="width: 100.0%; height: 100.0%;">cat : park  , Name : Sri Pratap Park  and Location : Lalchowk, Srinagar 190001, Jammu and Kashmīr, India</div>`)[0];
+                popup_7867b6410a61429999469121c54798c6.setContent(html_2e29feacdbe04a28ae669734b70f1c20);
+            
+
+            circle_marker_38dc639c6075498eb9782f5d5e81c9b1.bindPopup(popup_7867b6410a61429999469121c54798c6)
+            ;
+
+            
+        
+    
+            var circle_marker_94dd3c73bff640919804f9fc64581657 = L.circleMarker(
+                [34.06817755684361, 74.81294930141436],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_388e891fb1004e74b35ff539c7c4cdef = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_e0b2bd41a06b417e875d5243d0650df7 = $(`<div id="html_e0b2bd41a06b417e875d5243d0650df7" style="width: 100.0%; height: 100.0%;">cat : park  , Name : Jhelum Park  and Location : India</div>`)[0];
+                popup_388e891fb1004e74b35ff539c7c4cdef.setContent(html_e0b2bd41a06b417e875d5243d0650df7);
+            
+
+            circle_marker_94dd3c73bff640919804f9fc64581657.bindPopup(popup_388e891fb1004e74b35ff539c7c4cdef)
+            ;
+
+            
+        
+    
+            var circle_marker_880601c57059421c9cdcfebd237889b6 = L.circleMarker(
+                [34.06224436226023, 74.81772487233542],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_5f0ca146e3d842bc9d027264fe280d18 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_eb3f6f91dd484ccbb5b25b4d52cc3348 = $(`<div id="html_eb3f6f91dd484ccbb5b25b4d52cc3348" style="width: 100.0%; height: 100.0%;">cat : park  , Name : joggers park  and Location : India</div>`)[0];
+                popup_5f0ca146e3d842bc9d027264fe280d18.setContent(html_eb3f6f91dd484ccbb5b25b4d52cc3348);
+            
+
+            circle_marker_880601c57059421c9cdcfebd237889b6.bindPopup(popup_5f0ca146e3d842bc9d027264fe280d18)
+            ;
+
+            
+        
+    
+            var circle_marker_e59abce698ba4ea191d98412e03c46ca = L.circleMarker(
+                [34.0675756462837, 74.83586050747095],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_270e9d1e067649a2bfc6686b64dc8aa7 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_ab5c25c1c3124c0bacf07b4d4340e03c = $(`<div id="html_ab5c25c1c3124c0bacf07b4d4340e03c" style="width: 100.0%; height: 100.0%;">cat : park  , Name : Chinar Park, Dalgate  and Location : India</div>`)[0];
+                popup_270e9d1e067649a2bfc6686b64dc8aa7.setContent(html_ab5c25c1c3124c0bacf07b4d4340e03c);
+            
+
+            circle_marker_e59abce698ba4ea191d98412e03c46ca.bindPopup(popup_270e9d1e067649a2bfc6686b64dc8aa7)
+            ;
+
+            
+        
+    
+            var circle_marker_adf4d5d65a094561bf9d602f2bdfaf3a = L.circleMarker(
+                [34.081111, 74.803889],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_e5f4bb59b25841119444f5b4a5710851 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_baa5a080f4cc4684b4a9c918be2c4a02 = $(`<div id="html_baa5a080f4cc4684b4a9c918be2c4a02" style="width: 100.0%; height: 100.0%;">cat : park  , Name : Salim Ali National Park  and Location : Sri Nagar, Jammu and Kashmīr, India</div>`)[0];
+                popup_e5f4bb59b25841119444f5b4a5710851.setContent(html_baa5a080f4cc4684b4a9c918be2c4a02);
+            
+
+            circle_marker_adf4d5d65a094561bf9d602f2bdfaf3a.bindPopup(popup_e5f4bb59b25841119444f5b4a5710851)
+            ;
+
+            
+        
+    
+            var circle_marker_37fad869aacd4adab7118d74702c6665 = L.circleMarker(
+                [34.0649, 74.8053],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_4c00de63839f4b2e80a07da1790e2d3a = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_cd55bfa34a9b4e8b82e565fd3ff59128 = $(`<div id="html_cd55bfa34a9b4e8b82e565fd3ff59128" style="width: 100.0%; height: 100.0%;">cat : park  , Name : IQBAL PARK  and Location : India</div>`)[0];
+                popup_4c00de63839f4b2e80a07da1790e2d3a.setContent(html_cd55bfa34a9b4e8b82e565fd3ff59128);
+            
+
+            circle_marker_37fad869aacd4adab7118d74702c6665.bindPopup(popup_4c00de63839f4b2e80a07da1790e2d3a)
+            ;
+
+            
+        
+    
+            var circle_marker_0bac31f8123c4ec38e31bafbb58c2b3a = L.circleMarker(
+                [34.084541, 74.837576],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_94a56355f4f042adb3809e5e40d2c003 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_f56e15caf5f043018e02044f86439808 = $(`<div id="html_f56e15caf5f043018e02044f86439808" style="width: 100.0%; height: 100.0%;">cat : park  , Name : New Park  and Location : India</div>`)[0];
+                popup_94a56355f4f042adb3809e5e40d2c003.setContent(html_f56e15caf5f043018e02044f86439808);
+            
+
+            circle_marker_0bac31f8123c4ec38e31bafbb58c2b3a.bindPopup(popup_94a56355f4f042adb3809e5e40d2c003)
+            ;
+
+            
+        
+    
+            var circle_marker_ef51ba7bc4ec479b820ea95df5fc1a62 = L.circleMarker(
+                [34.091395598229994, 74.84559866696698],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_e0d8e3cef7474b968fb06a5bf89160d5 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_34e42ed0d13742b292f9422d3a8d8b54 = $(`<div id="html_34e42ed0d13742b292f9422d3a8d8b54" style="width: 100.0%; height: 100.0%;">cat : park  , Name : Nehru Park  and Location : India</div>`)[0];
+                popup_e0d8e3cef7474b968fb06a5bf89160d5.setContent(html_34e42ed0d13742b292f9422d3a8d8b54);
+            
+
+            circle_marker_ef51ba7bc4ec479b820ea95df5fc1a62.bindPopup(popup_e0d8e3cef7474b968fb06a5bf89160d5)
+            ;
+
+            
+        
+    
+            var circle_marker_870e6337cfa34c5b97077946ff95e8f1 = L.circleMarker(
+                [34.086377921248875, 74.84980523586273],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_988e7a49eca14f5daf148b4c62651f9b = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_ca091befe6744702a7e25254446fbc1e = $(`<div id="html_ca091befe6744702a7e25254446fbc1e" style="width: 100.0%; height: 100.0%;">cat : park  , Name : Zabarwan Park  and Location : Boulevard Road, Srinagar, Jammu and Kashmīr, India</div>`)[0];
+                popup_988e7a49eca14f5daf148b4c62651f9b.setContent(html_ca091befe6744702a7e25254446fbc1e);
+            
+
+            circle_marker_870e6337cfa34c5b97077946ff95e8f1.bindPopup(popup_988e7a49eca14f5daf148b4c62651f9b)
+            ;
+
+            
+        
+    
+            var circle_marker_59b2a46daee94694babd28ab9b7e2059 = L.circleMarker(
+                [34.101419, 74.881854],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_b2d65fb5102b419ba35282bdf5eccf9f = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_88c4befed8944952a8de8728d26018b6 = $(`<div id="html_88c4befed8944952a8de8728d26018b6" style="width: 100.0%; height: 100.0%;">cat : park  , Name : Park @Vivanta  and Location : Kraldangri, Brien, Srinagar 191121, Jammu and Kashmīr, India</div>`)[0];
+                popup_b2d65fb5102b419ba35282bdf5eccf9f.setContent(html_88c4befed8944952a8de8728d26018b6);
+            
+
+            circle_marker_59b2a46daee94694babd28ab9b7e2059.bindPopup(popup_b2d65fb5102b419ba35282bdf5eccf9f)
+            ;
+
+            
+        
+    
+            var circle_marker_4f2544edc9a644c59d249995edbcdd20 = L.circleMarker(
+                [34.1116, 74.82111],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_53d73c8be18040dc997f5de79a5f39de = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_f8e0ccbb7bbf4b79837da947ebf9d027 = $(`<div id="html_f8e0ccbb7bbf4b79837da947ebf9d027" style="width: 100.0%; height: 100.0%;">cat : park  , Name : Badamwari Park  and Location : Muma Khan Khatidarwaza (Rainawari), Srinagar 190003, Jammu and Kashmīr, India</div>`)[0];
+                popup_53d73c8be18040dc997f5de79a5f39de.setContent(html_f8e0ccbb7bbf4b79837da947ebf9d027);
+            
+
+            circle_marker_4f2544edc9a644c59d249995edbcdd20.bindPopup(popup_53d73c8be18040dc997f5de79a5f39de)
+            ;
+
+            
+        
+    
+            var circle_marker_b906c33c2cf047d38f42a9cc8c08dc63 = L.circleMarker(
+                [34.117153, 74.822035],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_b556edf351fa487e95401e7c972dc7a5 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_522e02707a6a4536811a9af16b8de64a = $(`<div id="html_522e02707a6a4536811a9af16b8de64a" style="width: 100.0%; height: 100.0%;">cat : park  , Name : cherry park  and Location : nawabagh (baghwanpora), srinagar 190011, jandk, India</div>`)[0];
+                popup_b556edf351fa487e95401e7c972dc7a5.setContent(html_522e02707a6a4536811a9af16b8de64a);
+            
+
+            circle_marker_b906c33c2cf047d38f42a9cc8c08dc63.bindPopup(popup_b556edf351fa487e95401e7c972dc7a5)
+            ;
+
+            
+        
+    
+            var circle_marker_b5f39dd81bf64da786488edbbe6efb20 = L.circleMarker(
+                [34.10638253437661, 74.7801449665885],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_56e0d4bd02a14473a2fd9659f753406b = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_4b8489e5e7bf43dc8d534618dd2d609b = $(`<div id="html_4b8489e5e7bf43dc8d534618dd2d609b" style="width: 100.0%; height: 100.0%;">cat : park  , Name : iqbal park  and Location : India</div>`)[0];
+                popup_56e0d4bd02a14473a2fd9659f753406b.setContent(html_4b8489e5e7bf43dc8d534618dd2d609b);
+            
+
+            circle_marker_b5f39dd81bf64da786488edbbe6efb20.bindPopup(popup_56e0d4bd02a14473a2fd9659f753406b)
+            ;
+
+            
+        
+    
+            var circle_marker_d763b81ccc2e4df6b901a2b40fdf7906 = L.circleMarker(
+                [34.097408861510374, 74.87369617806016],
+                {
+  "bubblingMouseEvents": true,
+  "color": "#23f84c",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3fac52",
+  "fillOpacity": 0.7,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+            var popup_39945da8067945db8bfbcd1746aa42f9 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_e76ffc84809a4be4a9dc58b84516619c = $(`<div id="html_e76ffc84809a4be4a9dc58b84516619c" style="width: 100.0%; height: 100.0%;">cat : park  , Name : Makkai Park  and Location : Srinagar, Jammu and Kashmīr, India</div>`)[0];
+                popup_39945da8067945db8bfbcd1746aa42f9.setContent(html_e76ffc84809a4be4a9dc58b84516619c);
+            
+
+            circle_marker_d763b81ccc2e4df6b901a2b40fdf7906.bindPopup(popup_39945da8067945db8bfbcd1746aa42f9)
+            ;
+
+            
+        
+    
+                var poly_line_8d021627ce4b4b629e23f861fdc9c7f6 = L.polyline(
+                    [[34.06950142994322, 74.82740126591631], [34.06950142994322, 74.82740126591631]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+                var poly_line_72d903322d0043fbb588862e58201204 = L.polyline(
+                    [[34.06950142994322, 74.82740126591631], [34.071775, 74.837049]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+                var poly_line_18819acdc5ba484ebb79efa4e427a6b5 = L.polyline(
+                    [[34.06950142994322, 74.82740126591631], [34.0675756462837, 74.83586050747095]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+                var poly_line_61355f4eef2143d197467d1f5be616d4 = L.polyline(
+                    [[34.071775, 74.837049], [34.06950142994322, 74.82740126591631]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+                var poly_line_c0c02052f7684256bdcd6a477a4d9c2e = L.polyline(
+                    [[34.071775, 74.837049], [34.071775, 74.837049]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+                var poly_line_b4a6f4b68bbb44ea98697a6f86ed74c8 = L.polyline(
+                    [[34.071775, 74.837049], [34.0675756462837, 74.83586050747095]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+                var poly_line_f12356c100b147ef8db12b125f5fe400 = L.polyline(
+                    [[34.0675756462837, 74.83586050747095], [34.06950142994322, 74.82740126591631]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+                var poly_line_76c4bd8232da408092143b0c7705fa8b = L.polyline(
+                    [[34.0675756462837, 74.83586050747095], [34.071775, 74.837049]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+    
+                var poly_line_1cea832fb6044bb8b352a4ea4fc98d76 = L.polyline(
+                    [[34.0675756462837, 74.83586050747095], [34.0675756462837, 74.83586050747095]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 1.5
+}
+                    )
+                    .addTo(map_37e58510fb7642ca95872284fca9b50a);
+            
+</script>
