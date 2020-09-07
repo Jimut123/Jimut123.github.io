@@ -36,6 +36,14 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
+<!-- Lazy loading of Gallery and stuffs!-->
+
+<script src="../js/jimjs.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" /> 
+
+
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -59,7 +67,10 @@
     <title> Gallery Page </title>
   </head>
 
-  
+  <body onload = "myFunction()">
+    <div id="loading"> </div>
+    
+    
 <!------ Include the above in your HEAD tag ---------->
 
 <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -226,9 +237,9 @@
 
 
 
-  <div align="center">
+    <div align="center">
     
-    <body>
+   
     
       
       <link href="https://fonts.googleapis.com/css?family=Playfair+Display&amp;display=swap" rel="stylesheet" />
@@ -254,10 +265,10 @@ https://ctrlq.org/google/photos/
 <div id="pad-container">
     <div class="jumbotron jumbotron-fluid" align="center">
         <div class="container">
-           
+        
                 <!-- Grid row -->
                 <div class="row" id="gallery-font">
-                     <div class="gallery" id="gallery">
+                    <div class="gallery" id="gallery">
                         
                         
                         
@@ -280,7 +291,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -301,7 +312,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -322,7 +333,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -343,7 +354,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -364,7 +375,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -385,7 +396,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -406,7 +417,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -427,7 +438,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -448,7 +459,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -469,7 +480,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -490,7 +501,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -511,7 +522,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -532,7 +543,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -553,7 +564,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -574,7 +585,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -595,7 +606,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -616,7 +627,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -637,7 +648,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -658,7 +669,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -679,7 +690,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -700,7 +711,7 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
+                        
                         
                             <!-- Grid column -->
                             <div class="mb-3">    
@@ -721,9 +732,9 @@ https://ctrlq.org/google/photos/
                                 </div>
                             </div>   
                             <!-- Grid column -->
-                         
                         
-                     </div>
+                        
+                    </div>
                 </div>
         </div>
     </div>
@@ -1307,7 +1318,7 @@ https://ctrlq.org/google/photos/
 
 
       
-    </body>
+    
     
   </div>
 
@@ -1330,6 +1341,8 @@ https://ctrlq.org/google/photos/
   <!-- Footer -->
 
 
+
+</body>
 </html>
 <style>
 .footer{
@@ -1339,3 +1352,11 @@ https://ctrlq.org/google/photos/
 
 }
 </style>
+
+
+<script>
+  var preloader = document.getElementById('loading');
+  function myFunction() { 
+      preloader.style.display = 'none';
+  }
+</script>
