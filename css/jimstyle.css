@@ -13,6 +13,7 @@ a
   padding-left: 5%;
 }
 
+
 #pad-container {
     padding-top: 1%;
     padding-right: 5%;
@@ -22,13 +23,13 @@ a
 
 #publication-font
 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Cardo', sans-serif;
   font-size: 15pt;
 }
 
 #cert-sub-heading
 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Cardo', sans-serif;
   font-size: 30pt;
 }
 
@@ -36,26 +37,38 @@ a
     font-weight:bold;
 }
 
+#front-page-font{
+  font-family: 'Cardo', cursive;
+}
+
 #specilization-font{
-  font-family: 'Concert One', cursive;
+  font-family: 'Cardo', cursive;
   font-size: 15pt;
 }
+
 #course-cert-font
 {
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Cardo', sans-serif;
   font-size: 15pt;
 }
 #achievement-font
 {
-  font-family: 'Spectral', serif;
+  font-family: 'Cardo', serif;
   font-size: 15pt;
 }
 #cert-of-part
 {
-  font-family: 'Cormorant', serif;
+  font-family: 'Cardo', serif;
   font-size: 15pt;
 
 }
+
+#gallery-font{
+  font-family: 'Cardo', serif;
+  font-size: 15pt;
+}
+
+
 
 #exp-font{
   font-family: 'Cardo', serif;
@@ -63,12 +76,12 @@ a
 }
 
 #proj-page{
-  font-family: 'Archivo', sans-serif;
+  font-family: 'Cardo', sans-serif;
   font-size: 15pt;
 }
 #proj-content
 {
-  font-family: 'Karla', sans-serif;
+  font-family: 'Cardo', sans-serif;
 }
 
 .timeline{
