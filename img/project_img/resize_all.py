@@ -29,7 +29,7 @@ def reshape_image(img_name):
      
     print('Original Dimensions : ',img.shape)
      
-    scale_percent = 5 # percent of original size
+    scale_percent = 20 # percent of original size
     print("RESCALING TO :=> ", scale_percent)
     width = int(img.shape[1] * scale_percent / 100)
     height = int(img.shape[0] * scale_percent / 100)
