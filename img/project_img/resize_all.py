@@ -29,7 +29,7 @@ def reshape_image(img_name):
      
     print('Original Dimensions : ',img.shape)
      
-    scale_percent = 60 # percent of original size
+    scale_percent = 5 # percent of original size
     print("RESCALING TO :=> ", scale_percent)
     width = int(img.shape[1] * scale_percent / 100)
     height = int(img.shape[0] * scale_percent / 100)
@@ -38,7 +38,7 @@ def reshape_image(img_name):
     resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
      
     print('Resized Dimensions : ',resized.shape)
-    cv2.imwrite(str(thumb_name+"."+exten),resized)
+    cv2.imwrite(str(thumb_name+"_thumb."+exten),resized)
 
 #print(f)
 for item in tqdm(f):
