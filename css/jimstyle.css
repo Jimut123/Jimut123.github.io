@@ -1,3 +1,57 @@
+.keywords-orangered
+{
+  background-color: orangered; 
+  border-radius: 5%;
+  border-style: ridge;
+  color: #fff;
+  font-weight: bold;
+}
+
+.keywords-blue
+{
+  background-color: blue; 
+  border-radius: 5%;
+  border-style: ridge;
+  color: #fff;
+  font-weight: bold;
+}
+
+.keywords-green
+{
+  background-color: green; 
+  border-radius: 5%;
+  border-style: ridge;
+  color: #fff;
+  font-weight: bold;
+}
+
+.keywords-yellow
+{
+  background-color: yellow; 
+  border-radius: 5%;
+  border-style: ridge;
+  color: black;
+  font-weight: bold;
+}
+
+.keywords-deepblue
+{
+  background-color: navy; 
+  border-radius: 5%;
+  border-style: ridge;
+  color: #fff;
+  font-weight: bold;
+}
+
+.keywords-orange
+{
+  background-color: orange; 
+  border-radius: 5%;
+  border-style: ridge;
+  color: black;
+  font-weight: bold;
+}
+
 
 .one {
   width: 160px;
