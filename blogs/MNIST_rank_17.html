@@ -1,0 +1,784 @@
+<!doctype html>
+
+
+<link href="https://fonts.googleapis.com/css?family=Cardo&display=swap" rel="stylesheet"> 
+
+<link rel="stylesheet" href="../css/bootstrap.min.css"></link>
+<!--
+<link rel="stylesheet" href="/css/compiled-4.8.0.min.css"></link>
+-->
+<script type="text/javascript"  src="../js/bootstrap.min.js"></script>
+
+<script type="text/javascript"  src="../js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript"  src="../js/popper.min.js"></script>
+
+
+<link rel='stylesheet' id='wsl-widget-css'  href='https://mdbootstrap.com/wp-content/plugins/wordpress-social-login/assets/css/style.css?ver=5.1.1' type='text/css' media='all' />
+
+<link rel='stylesheet' id='compiled.css-css'  href='https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled-4.8.0.min.css?ver=4.8.0' type='text/css' media='all' />
+
+
+<link rel="shortcut icon" type="image/x-icon" href="../img/thumbnail.jpg">
+
+
+<!-- Bootstrap core CSS -->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Material Design Bootstrap -->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+
+
+
+<!-- Bootstrap core JavaScript -->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<!-- Lazy loading of Gallery and stuffs!-->
+
+<script src="../js/jimjs.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" /> 
+
+
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jimut Bahan Pal" />
+    <meta name="description" content="Personal website">
+    <meta name="google-site-verification" content="2SC5t4-rLXOS1eAW-l2YL_qFLuIJW2vSRZNduyOGKN0" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140291358-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140291358-1');
+    </script>
+
+    
+    <title> MNIST Pytorch </title>
+  </head>
+
+  <body onload = "myFunction()">
+    <div id="loading"> </div>
+    
+    
+<!------ Include the above in your HEAD tag ---------->
+
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <a class="navbar-brand" href="#"> JIMUT </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+  <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+    <ul class="navbar-nav mr-auto navbar-center">
+      
+              <li class="nav-item">
+                <div class="container pull-left">
+                  <a href="/"  class="nav-link">
+                    
+                      
+                        <img src="/img/icons/home.svg" alt="icon" height="25px" width="25px">
+                      
+                   
+                    <font size="4px">HOME </font>
+                  </a>
+                </div>
+              </li>
+          
+              <li class="nav-item">
+                <div class="container pull-left">
+                  <a href="/blog.html"  class="nav-link">
+                    
+                      
+                        <img src="/img/icons/blog.svg" alt="icon" height="25px" width="25px">
+                      
+                   
+                    <font size="4px">BLOG </font>
+                  </a>
+                </div>
+              </li>
+          
+              <li class="nav-item">
+                <div class="container pull-left">
+                  <a href="/projects.html"  class="nav-link">
+                    
+                      
+                        <img src="/img/icons/projects.jpg" alt="icon" height="25px" width="25px">
+                      
+                   
+                    <font size="4px">PROJECTS </font>
+                  </a>
+                </div>
+              </li>
+          
+              <li class="nav-item">
+                <div class="container pull-left">
+                  <a href="/gallery.html"  class="nav-link">
+                    
+                      
+                        <img src="/img/icons/gallery.png" alt="icon" height="25px" width="25px">
+                      
+                   
+                    <font size="4px">GALLERY </font>
+                  </a>
+                </div>
+              </li>
+          
+              <li class="nav-item">
+                <div class="container pull-left">
+                  <a href="/certificates.html"  class="nav-link">
+                    
+                      
+                        <img src="/img/icons/certificates.png" alt="icon" height="25px" width="25px">
+                      
+                   
+                    <font size="4px">CERTIFICATES </font>
+                  </a>
+                </div>
+              </li>
+          
+              <li class="nav-item">
+                <div class="container pull-left">
+                  <a href="/about.html"  class="nav-link">
+                    
+                      
+                        <img src="/img/icons/about.png" alt="icon" height="25px" width="25px">
+                      
+                   
+                    <font size="4px">ABOUT </font>
+                  </a>
+                </div>
+              </li>
+          
+              <li class="nav-item">
+                <div class="container pull-left">
+                  <a href="/experience.html"  class="nav-link">
+                    
+                      
+                        <img src="/img/icons/experience.png" alt="icon" height="25px" width="25px">
+                      
+                   
+                    <font size="4px">EXPERIENCE </font>
+                  </a>
+                </div>
+              </li>
+          
+              <li class="nav-item">
+                <div class="container pull-left">
+                  <a href="/contact.html"  class="nav-link">
+                    
+                      
+                        <img src="/img/icons/atw.jpg" alt="icon" height="25px" width="25px">
+                      
+                   
+                    <font size="4px">CONTACT </font>
+                  </a>
+                </div>
+              </li>
+          
+    </ul>
+  
+  </div>
+</nav>
+
+
+<script type="text/javascript">
+  $(function() {
+      // this will get the full URL at the address bar
+      var url = window.location.href;
+
+      // passes on every "a" tag
+      $(".navbar a").each(function() {
+          // checks if its the same on the address bar
+          if (url == (this.href)) {
+              $(this).closest("li").addClass("active");
+              //for making parent of submenu active
+             $(this).closest("li").parent().parent().addClass("active");
+          }
+      });
+  });        
+</script>
+
+
+<style>
+
+.navbar ul li.active a, .navbar ul li a:hover {
+    background-color: #454747;
+    font-weight:bold;
+}
+</style>
+
+
+
+    <div align="center">
+    
+   
+    
+      
+      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+
+
+<br>
+
+<h1>
+    <b style="font-family: 'Playfair Display', serif;">  Let's make a MNIST classifier over 99.57% accuracy using Pytorch </b>
+</h1>
+
+<br>
+<span class="keywords-orangered"> &nbsp; MNIST &nbsp; </span>
+&nbsp;&nbsp;
+<span class="keywords-blue"> &nbsp; Deep Learning &nbsp;</span>
+&nbsp;&nbsp;
+<span class="keywords-green">&nbsp; Pytorch &nbsp;</span>
+&nbsp;&nbsp;
+<span class="keywords-yellow">&nbsp; Inner Ensemble &nbsp;</span>
+&nbsp;&nbsp;
+<span class="keywords-orange">&nbsp; Python3 &nbsp;</span>
+&nbsp;&nbsp;
+
+
+<!--http://hilite.me/-->
+
+<div id="pad-container">
+    <div class="jumbotron jumbotron-fluid" align="center" id="exp-font">
+            <div class="container" align="justify">
+
+                On 16 th October, 2020, I thought of using  Pytorch  to create a near SOTA 
+                classifier for the simplest Computer Vision dataset – MNIST, introduced 
+                by Yaan LeCun. Current state of the art is about <b> 99.84% </b> using 
+                <a href="https://arxiv.org/abs/2001.09136v5" target="_blank" > Capsule networks</a>. 
+                I wanted to test out different interesting architectural style 
+                for creating internal ensembles of the model, and for that experiment, I used Pytorch!
+
+                <br> <br>
+
+                Firstly, let's install the uncommon dependencies, given, you have installed the common ones!
+                <br> <br>
+
+<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+<span style="color: #ffffff">!</span> <span style="color: #ffffff">pip</span> <span style="color: #ffffff">install</span> <span style="color: #ffffff">hiddenlayer</span> <span style="color: #ffffff">graphviz</span> <span style="color: #ffffff">torchviz</span>
+</pre></div>
+                <br> <br>
+
+                So, let's dive into the code. <br> <br>
+
+                Firstly, the basic imports, <br><br>
+
+                
+
+
+<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+<span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">numpy</span> <span style="color: #fb660a; font-weight: bold">as</span> <span style="color: #ffffff">np</span>
+<span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">torch</span>
+<span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">torch.nn</span> <span style="color: #fb660a; font-weight: bold">as</span> <span style="color: #ffffff">nn</span>
+<span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">torch.optim</span> <span style="color: #fb660a; font-weight: bold">as</span> <span style="color: #ffffff">optim</span>
+<span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">torch.utils.data</span> <span style="color: #fb660a; font-weight: bold">as</span> <span style="color: #ffffff">Data</span>
+<span style="color: #fb660a; font-weight: bold">from</span> <span style="color: #ffffff">torchvision</span> <span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">datasets,</span> <span style="color: #ffffff">transforms</span>
+<span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">torch.nn.functional</span> <span style="color: #fb660a; font-weight: bold">as</span> <span style="color: #ffffff">F</span>
+<span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">timeit</span>
+<span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">unittest</span>
+                </pre></div>
+                <br><br>
+
+                We need to add seeds for reproducibility of results in other machines 
+
+                <br><br>
+
+<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+<span style="color: #ffffff">torch.manual_seed(</span><span style="color: #0086f7; font-weight: bold">0</span><span style="color: #ffffff">)</span>
+<span style="color: #ffffff">torch.backends.cudnn.deterministic</span> <span style="color: #ffffff">=</span> <span style="color: #fb660a; font-weight: bold">True</span>
+<span style="color: #ffffff">torch.backends.cudnn.benchmark</span> <span style="color: #ffffff">=</span> <span style="color: #fb660a; font-weight: bold">False</span>
+<span style="color: #ffffff">np.random.seed(</span><span style="color: #0086f7; font-weight: bold">0</span><span style="color: #ffffff">)</span>
+                </pre></div>
+                <br><br>
+
+
+                For running in GPUs, we need to use ‘cuda’, which can be achieved with the following piece of code
+                
+                <br><br>
+<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+<span style="color: #ffffff">device</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">torch.device(</span><span style="color: #0086d2">&#39;cuda&#39;</span> <span style="color: #fb660a; font-weight: bold">if</span> <span style="color: #ffffff">torch.cuda.is_available()</span> <span style="color: #fb660a; font-weight: bold">else</span> <span style="color: #0086d2">&#39;cpu&#39;</span><span style="color: #ffffff">)</span>
+                </pre></div>
+                <br><br>
+
+                Computer vision datasets can be trained and tested with high accuracy via image 
+                augmentations, we have used Cropping, resizing, colour jittering, rotation and 
+                random affine transform to make extensive data augmentation. We have also used 
+                the mean and standard deviation to normalize the images during training, which 
+                will make the deep learning model easier to train. 
+
+                <br><br>
+<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+<pre style="margin: 0; line-height: 125%">
+<span style="color: #008800; font-style: italic; background-color: #0f140f"># define a transforms for preparing the dataset</span>
+<span style="color: #ffffff">transform</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">transforms.Compose([</span>
+<span style="color: #ffffff">transforms.CenterCrop(</span><span style="color: #0086f7; font-weight: bold">26</span><span style="color: #ffffff">),</span>
+<span style="color: #ffffff">transforms.Resize((</span><span style="color: #0086f7; font-weight: bold">28</span><span style="color: #ffffff">,</span><span style="color: #0086f7; font-weight: bold">28</span><span style="color: #ffffff">)),</span>
+<span style="color: #ffffff">transforms.ColorJitter(brightness=</span><span style="color: #0086f7; font-weight: bold">0.05</span><span style="color: #ffffff">,</span> <span style="color: #ffffff">contrast=</span><span style="color: #0086f7; font-weight: bold">0.05</span><span style="color: #ffffff">,</span> <span style="color: #ffffff">saturation=</span><span style="color: #0086f7; font-weight: bold">0.05</span><span style="color: #ffffff">,</span> <span style="color: #ffffff">hue=</span><span style="color: #0086f7; font-weight: bold">0.05</span><span style="color: #ffffff">),</span>
+<span style="color: #ffffff">transforms.RandomRotation(</span><span style="color: #0086f7; font-weight: bold">10</span><span style="color: #ffffff">),</span>      
+<span style="color: #ffffff">transforms.RandomAffine(</span><span style="color: #0086f7; font-weight: bold">5</span><span style="color: #ffffff">),</span>
+
+<span style="color: #008800; font-style: italic; background-color: #0f140f"># convert the image to a pytorch tensor</span>
+<span style="color: #ffffff">transforms.ToTensor(),</span> 
+
+<span style="color: #008800; font-style: italic; background-color: #0f140f"># normalise the images with mean and std of the dataset</span>
+<span style="color: #ffffff">transforms.Normalize((</span><span style="color: #0086f7; font-weight: bold">0.1307</span><span style="color: #ffffff">,),</span> <span style="color: #ffffff">(</span><span style="color: #0086f7; font-weight: bold">0.3081</span><span style="color: #ffffff">,))</span> 
+<span style="color: #ffffff">])</span>
+                </pre></div>
+                <br><br>
+
+
+                After setting the basic stuffs, we will load the dataset into train and test part, 
+                which are imported and downloaded from the  datasets module. 
+                <br><br>
+
+<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+<span style="color: #008800; font-style: italic; background-color: #0f140f"># Load the MNIST training, test datasets using `torchvision.datasets.MNIST` </span>
+<span style="color: #008800; font-style: italic; background-color: #0f140f"># using the transform defined above</span>
+
+<span style="color: #ffffff">train_dataset</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">datasets.MNIST(</span><span style="color: #0086d2">&#39;./data&#39;</span><span style="color: #ffffff">,train=</span><span style="color: #fb660a; font-weight: bold">True</span><span style="color: #ffffff">,transform=transform,download=</span><span style="color: #fb660a; font-weight: bold">True</span><span style="color: #ffffff">)</span>
+<span style="color: #ffffff">test_dataset</span> <span style="color: #ffffff">=</span>  <span style="color: #ffffff">datasets.MNIST(</span><span style="color: #0086d2">&#39;./data&#39;</span><span style="color: #ffffff">,train=</span><span style="color: #fb660a; font-weight: bold">False</span><span style="color: #ffffff">,transform=transform,download=</span><span style="color: #fb660a; font-weight: bold">True</span><span style="color: #ffffff">)</span>
+                </pre></div>
+                <br><br>
+
+                This is a relatively small dataset with 60K images, but for large datasets we need to 
+                use batch-size, which will store the images in primary memory from the secondary memory
+                before sending it to GPUs. This will create a certain amount of bottleneck in computation,
+                but this is the standard thing to do, when we are dealing with massive amounts of data. 
+
+                <br><br>
+
+<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+<span style="color: #008800; font-style: italic; background-color: #0f140f"># create dataloaders for training and test datasets</span>
+<span style="color: #008800; font-style: italic; background-color: #0f140f"># use a batch size of 32 and set shuffle=True for the training set</span>
+
+<span style="color: #ffffff">train_dataloader</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">Data.DataLoader(dataset=train_dataset,</span> <span style="color: #ffffff">batch_size=</span><span style="color: #0086f7; font-weight: bold">128</span><span style="color: #ffffff">,</span> <span style="color: #ffffff">shuffle=</span><span style="color: #fb660a; font-weight: bold">True</span><span style="color: #ffffff">)</span>
+<span style="color: #ffffff">test_dataloader</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">Data.DataLoader(dataset=test_dataset,</span> <span style="color: #ffffff">batch_size=</span><span style="color: #0086f7; font-weight: bold">128</span><span style="color: #ffffff">,</span> <span style="color: #ffffff">shuffle=</span><span style="color: #fb660a; font-weight: bold">True</span><span style="color: #ffffff">)</span>
+                </pre></div>
+                <br><br>
+
+                Now it’s time to build our Deep Neural Network Model! The architecture is some-what shown below. 
+
+                <br><br>
+
+                <center>
+                    <embed src="../blogs/MNIST_SOTA/MNIST-TEST1.pdf#zoom=FitH" width="100%" height="1930px" />
+                </center>
+                <br><br>
+                
+
+                The Pytorch code can be written as: 
+                <br><br>
+
+                <!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+<span style="color: #008800; font-style: italic; background-color: #0f140f"># My Net</span>
+
+<span style="color: #fb660a; font-weight: bold">class</span> <span style="color: #ffffff">Net(nn.Module):</span>
+    <span style="color: #fb660a; font-weight: bold">def</span> <span style="color: #ff0086; font-weight: bold">__init__</span><span style="color: #ffffff">(self):</span>
+        <span style="color: #ffffff">super(Net,</span> <span style="color: #ffffff">self).__init__()</span>
+
+        <span style="color: #008800; font-style: italic; background-color: #0f140f"># define a conv layer with output channels as 16, kernel size of 3 and stride of 1</span>
+        <span style="color: #ffffff">self.conv11</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Conv2d(</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">16</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">3</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># Input = 1x28x28  Output = 16x26x26</span>
+        <span style="color: #ffffff">self.conv12</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Conv2d(</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">16</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">5</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># Input = 1x28x28  Output = 16x24x24</span>
+        <span style="color: #ffffff">self.conv13</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Conv2d(</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">16</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">7</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># Input = 1x28x28  Output = 16x22x22</span>
+        <span style="color: #ffffff">self.conv14</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Conv2d(</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">16</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">9</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># Input = 1x28x28  Output = 16x20x20</span>
+
+        <span style="color: #008800; font-style: italic; background-color: #0f140f"># define a conv layer with output channels as 32, kernel size of 3 and stride of 1</span>
+        <span style="color: #ffffff">self.conv21</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Conv2d(</span><span style="color: #0086f7; font-weight: bold">16</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">32</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">3</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># Input = 16x26x26 Output = 32x24x24</span>
+        <span style="color: #ffffff">self.conv22</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Conv2d(</span><span style="color: #0086f7; font-weight: bold">16</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">32</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">5</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># Input = 16x24x24 Output = 32x20x20</span>
+        <span style="color: #ffffff">self.conv23</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Conv2d(</span><span style="color: #0086f7; font-weight: bold">16</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">32</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">7</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># Input = 16x22x22 Output = 32x16x16</span>
+        <span style="color: #ffffff">self.conv24</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Conv2d(</span><span style="color: #0086f7; font-weight: bold">16</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">32</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">9</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># Input = 16x20x20  Output = 32x12x12</span>
+
+        <span style="color: #008800; font-style: italic; background-color: #0f140f"># define a conv layer with output channels as 64, kernel size of 3 and stride of 1</span>
+        <span style="color: #ffffff">self.conv31</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Conv2d(</span><span style="color: #0086f7; font-weight: bold">32</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">64</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">3</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># Input = 32x24x24 Output = 64x22x22</span>
+        <span style="color: #ffffff">self.conv32</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Conv2d(</span><span style="color: #0086f7; font-weight: bold">32</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">64</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">5</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># Input = 32x20x20 Output = 64x16x16</span>
+        <span style="color: #ffffff">self.conv33</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Conv2d(</span><span style="color: #0086f7; font-weight: bold">32</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">64</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">7</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># Input = 32x16x16 Output = 64x10x10</span>
+        <span style="color: #ffffff">self.conv34</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Conv2d(</span><span style="color: #0086f7; font-weight: bold">32</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">64</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">9</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># Input = 32x12x12 Output = 64x4x4</span>
+
+
+        <span style="color: #008800; font-style: italic; background-color: #0f140f"># define a max pooling layer with kernel size 2</span>
+        <span style="color: #ffffff">self.maxpool</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.MaxPool2d(</span><span style="color: #0086f7; font-weight: bold">2</span><span style="color: #ffffff">)</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># Output = 64x11x11</span>
+        <span style="color: #008800; font-style: italic; background-color: #0f140f">#self.maxpool1 = nn.MaxPool2d(1)</span>
+        <span style="color: #008800; font-style: italic; background-color: #0f140f"># define dropout layer with a probability of 0.25</span>
+        <span style="color: #ffffff">self.dropout1</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Dropout(</span><span style="color: #0086f7; font-weight: bold">0.25</span><span style="color: #ffffff">)</span>
+        <span style="color: #008800; font-style: italic; background-color: #0f140f"># define dropout layer with a probability of 0.5</span>
+        <span style="color: #ffffff">self.dropout2</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Dropout(</span><span style="color: #0086f7; font-weight: bold">0.5</span><span style="color: #ffffff">)</span>
+
+        <span style="color: #008800; font-style: italic; background-color: #0f140f"># define a linear(dense) layer with 128 output features</span>
+        <span style="color: #ffffff">self.fc11</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Linear(</span><span style="color: #0086f7; font-weight: bold">64</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">11</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">11</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">256</span><span style="color: #ffffff">)</span>
+        <span style="color: #ffffff">self.fc12</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Linear(</span><span style="color: #0086f7; font-weight: bold">64</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">8</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">8</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">256</span><span style="color: #ffffff">)</span>      <span style="color: #008800; font-style: italic; background-color: #0f140f"># after maxpooling 2x2</span>
+        <span style="color: #ffffff">self.fc13</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Linear(</span><span style="color: #0086f7; font-weight: bold">64</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">5</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">5</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">256</span><span style="color: #ffffff">)</span>
+        <span style="color: #ffffff">self.fc14</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Linear(</span><span style="color: #0086f7; font-weight: bold">64</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">2</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">2</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">256</span><span style="color: #ffffff">)</span>
+
+        <span style="color: #008800; font-style: italic; background-color: #0f140f"># define a linear(dense) layer with output features corresponding to the number of classes in the dataset</span>
+        <span style="color: #ffffff">self.fc21</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Linear(</span><span style="color: #0086f7; font-weight: bold">256</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">128</span><span style="color: #ffffff">)</span>
+        <span style="color: #ffffff">self.fc22</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Linear(</span><span style="color: #0086f7; font-weight: bold">256</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">128</span><span style="color: #ffffff">)</span>
+        <span style="color: #ffffff">self.fc23</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Linear(</span><span style="color: #0086f7; font-weight: bold">256</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">128</span><span style="color: #ffffff">)</span>
+        <span style="color: #ffffff">self.fc24</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Linear(</span><span style="color: #0086f7; font-weight: bold">256</span><span style="color: #ffffff">,</span> <span style="color: #0086f7; font-weight: bold">128</span><span style="color: #ffffff">)</span>
+
+        <span style="color: #ffffff">self.fc33</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">nn.Linear(</span><span style="color: #0086f7; font-weight: bold">128</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">4</span><span style="color: #ffffff">,</span><span style="color: #0086f7; font-weight: bold">10</span><span style="color: #ffffff">)</span>
+        <span style="color: #008800; font-style: italic; background-color: #0f140f">#self.fc33 = nn.Linear(64*3,10)</span>
+
+
+    <span style="color: #fb660a; font-weight: bold">def</span> <span style="color: #ff0086; font-weight: bold">forward</span><span style="color: #ffffff">(self,</span> <span style="color: #ffffff">inp):</span>
+        <span style="color: #008800; font-style: italic; background-color: #0f140f"># Use the layers defined above in a sequential way (folow the same as the layer definitions above) and </span>
+        <span style="color: #008800; font-style: italic; background-color: #0f140f"># write the forward pass, after each of conv1, conv2, conv3 and fc1 use a relu activation. </span>
+
+
+        <span style="color: #ffffff">x</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.conv11(inp))</span>
+        <span style="color: #ffffff">x</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.conv21(x))</span>
+        <span style="color: #ffffff">x</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.maxpool(self.conv31(x)))</span>
+        <span style="color: #008800; font-style: italic; background-color: #0f140f">#print(x.shape)</span>
+        <span style="color: #008800; font-style: italic; background-color: #0f140f">#x = torch.flatten(x, 1)</span>
+        <span style="color: #ffffff">x</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">x.view(-</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">,</span><span style="color: #0086f7; font-weight: bold">64</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">11</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">11</span><span style="color: #ffffff">)</span>
+        <span style="color: #ffffff">x</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">self.dropout1(x)</span>
+        <span style="color: #ffffff">x</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.fc11(x))</span>
+        <span style="color: #ffffff">x</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">self.dropout2(x)</span>
+        <span style="color: #ffffff">x</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">self.fc21(x)</span>
+
+        <span style="color: #ffffff">y</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.conv12(inp))</span>
+        <span style="color: #ffffff">y</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.conv22(y))</span>
+        <span style="color: #ffffff">y</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.maxpool(self.conv32(y)))</span>
+        <span style="color: #008800; font-style: italic; background-color: #0f140f">#x = torch.flatten(x, 1)</span>
+        <span style="color: #ffffff">y</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">y.view(-</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">,</span><span style="color: #0086f7; font-weight: bold">64</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">8</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">8</span><span style="color: #ffffff">)</span>
+        <span style="color: #ffffff">y</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">self.dropout1(y)</span>
+        <span style="color: #ffffff">y</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.fc12(y))</span>
+        <span style="color: #ffffff">y</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">self.dropout2(y)</span>
+        <span style="color: #ffffff">y</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">self.fc22(y)</span>
+
+        <span style="color: #ffffff">z</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.conv13(inp))</span>
+        <span style="color: #ffffff">z</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.conv23(z))</span>
+        <span style="color: #ffffff">z</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.maxpool(self.conv33(z)))</span>
+        <span style="color: #008800; font-style: italic; background-color: #0f140f">#x = torch.flatten(x, 1)</span>
+        <span style="color: #ffffff">z</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">z.view(-</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">,</span><span style="color: #0086f7; font-weight: bold">64</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">5</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">5</span><span style="color: #ffffff">)</span>
+        <span style="color: #ffffff">z</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">self.dropout1(z)</span>
+        <span style="color: #ffffff">z</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.fc13(z))</span>
+        <span style="color: #ffffff">z</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">self.dropout2(z)</span>
+        <span style="color: #ffffff">z</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">self.fc23(z)</span>
+
+        <span style="color: #ffffff">ze</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.conv14(inp))</span>
+        <span style="color: #ffffff">ze</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.conv24(ze))</span>
+        <span style="color: #ffffff">ze</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.maxpool(self.conv34(ze)))</span>
+        <span style="color: #008800; font-style: italic; background-color: #0f140f">#x = torch.flatten(x, 1)</span>
+        <span style="color: #ffffff">ze</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">ze.view(-</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">,</span><span style="color: #0086f7; font-weight: bold">64</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">2</span><span style="color: #ffffff">*</span><span style="color: #0086f7; font-weight: bold">2</span><span style="color: #ffffff">)</span>
+        <span style="color: #ffffff">ze</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">self.dropout1(ze)</span>
+        <span style="color: #ffffff">ze</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.relu(self.fc14(ze))</span>
+        <span style="color: #ffffff">ze</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">self.dropout2(ze)</span>
+        <span style="color: #ffffff">ze</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">self.fc24(ze)</span>
+
+        <span style="color: #ffffff">out_f</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">torch.cat((x,</span> <span style="color: #ffffff">y,</span> <span style="color: #ffffff">z,</span> <span style="color: #ffffff">ze),</span> <span style="color: #ffffff">dim=</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span>
+        <span style="color: #008800; font-style: italic; background-color: #0f140f">#out_f1 = torch.cat((out_f, ze), dim=1)</span>
+        <span style="color: #ffffff">out</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">self.fc33(out_f)</span>
+
+        <span style="color: #ffffff">output</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.log_softmax(out,</span> <span style="color: #ffffff">dim=</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span>
+        <span style="color: #fb660a; font-weight: bold">return</span> <span style="color: #ffffff">output</span>
+    </pre></div>
+    <br><br>
+            We can now use the model to set it to GPU.
+            <br><br>
+
+            <!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+<span style="color: #ffffff">model</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">Net().to(device)</span>
+            </pre></div>
+            <br><br>
+            
+            We can even check the parameters:
+            <br><br>
+<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+<span style="color: #ffffff">print(model.parameters)</span>
+</pre></div>
+            <br><br>
+
+            Which will result in:
+            <br><br>
+
+            <pre>
+                &lt;bound method Module.parameters of Net(
+                (conv11): Conv2d(1, 16, kernel_size=(3, 3), stride=(1, 1))
+                (conv12): Conv2d(1, 16, kernel_size=(5, 5), stride=(1, 1))
+                (conv13): Conv2d(1, 16, kernel_size=(7, 7), stride=(1, 1))
+                (conv14): Conv2d(1, 16, kernel_size=(9, 9), stride=(1, 1))
+                (conv21): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1))
+                (conv22): Conv2d(16, 32, kernel_size=(5, 5), stride=(1, 1))
+                (conv23): Conv2d(16, 32, kernel_size=(7, 7), stride=(1, 1))
+                (conv24): Conv2d(16, 32, kernel_size=(9, 9), stride=(1, 1))
+                (conv31): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1))
+                (conv32): Conv2d(32, 64, kernel_size=(5, 5), stride=(1, 1))
+                (conv33): Conv2d(32, 64, kernel_size=(7, 7), stride=(1, 1))
+                (conv34): Conv2d(32, 64, kernel_size=(9, 9), stride=(1, 1))
+                (maxpool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+                (dropout1): Dropout(p=0.25, inplace=False)
+                (dropout2): Dropout(p=0.5, inplace=False)
+                (fc11): Linear(in_features=7744, out_features=256, bias=True)
+                (fc12): Linear(in_features=4096, out_features=256, bias=True)
+                (fc13): Linear(in_features=1600, out_features=256, bias=True)
+                (fc14): Linear(in_features=256, out_features=256, bias=True)
+                (fc21): Linear(in_features=256, out_features=128, bias=True)
+                (fc22): Linear(in_features=256, out_features=128, bias=True)
+                (fc23): Linear(in_features=256, out_features=128, bias=True)
+                (fc24): Linear(in_features=256, out_features=128, bias=True)
+                (fc33): Linear(in_features=512, out_features=10, bias=True)
+                )&gt;
+            </pre>
+            
+            <br><br>
+            It is good to have unit test modules in case of bigger code bases. 
+            <br><br>
+
+            <!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">unittest</span>
+
+<span style="color: #fb660a; font-weight: bold">class</span> <span style="color: #ffffff">TestImplementations(unittest.TestCase):</span>
+    
+<span style="color: #008800; font-style: italic; background-color: #0f140f"># Dataloading tests</span>
+<span style="color: #fb660a; font-weight: bold">def</span> <span style="color: #ff0086; font-weight: bold">test_dataset</span><span style="color: #ffffff">(self):</span>
+    <span style="color: #ffffff">self.dataset_classes</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">[</span><span style="color: #0086d2">&#39;0 - zero&#39;</span><span style="color: #ffffff">,</span>
+                            <span style="color: #0086d2">&#39;1 - one&#39;</span><span style="color: #ffffff">,</span>
+                            <span style="color: #0086d2">&#39;2 - two&#39;</span><span style="color: #ffffff">,</span>
+                            <span style="color: #0086d2">&#39;3 - three&#39;</span><span style="color: #ffffff">,</span>
+                            <span style="color: #0086d2">&#39;4 - four&#39;</span><span style="color: #ffffff">,</span>
+                            <span style="color: #0086d2">&#39;5 - five&#39;</span><span style="color: #ffffff">,</span>
+                            <span style="color: #0086d2">&#39;6 - six&#39;</span><span style="color: #ffffff">,</span>
+                            <span style="color: #0086d2">&#39;7 - seven&#39;</span><span style="color: #ffffff">,</span>
+                            <span style="color: #0086d2">&#39;8 - eight&#39;</span><span style="color: #ffffff">,</span>
+                            <span style="color: #0086d2">&#39;9 - nine&#39;</span><span style="color: #ffffff">]</span>
+    <span style="color: #ffffff">self.assertTrue(train_dataset.classes</span> <span style="color: #ffffff">==</span> <span style="color: #ffffff">self.dataset_classes)</span>
+    <span style="color: #ffffff">self.assertTrue(train_dataset.train</span> <span style="color: #ffffff">==</span> <span style="color: #fb660a; font-weight: bold">True</span><span style="color: #ffffff">)</span>
+
+<span style="color: #fb660a; font-weight: bold">def</span> <span style="color: #ff0086; font-weight: bold">test_dataloader</span><span style="color: #ffffff">(self):</span>        
+    <span style="color: #ffffff">self.assertTrue(train_dataloader.batch_size</span> <span style="color: #ffffff">==</span> <span style="color: #0086f7; font-weight: bold">32</span><span style="color: #ffffff">)</span>
+    <span style="color: #ffffff">self.assertTrue(test_dataloader.batch_size</span> <span style="color: #ffffff">==</span> <span style="color: #0086f7; font-weight: bold">32</span><span style="color: #ffffff">)</span>      
+     
+<span style="color: #fb660a; font-weight: bold">def</span> <span style="color: #ff0086; font-weight: bold">test_total_parameters</span><span style="color: #ffffff">(self):</span>
+    <span style="color: #ffffff">model</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">Net().to(device)</span>
+    <span style="color: #008800; font-style: italic; background-color: #0f140f">#self.assertTrue(sum(p.numel() for p in model.parameters()) == 1015946)</span>
+
+<span style="color: #ffffff">suite</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">unittest.TestLoader().loadTestsFromModule(TestImplementations())</span>
+<span style="color: #ffffff">unittest.TextTestRunner().run(suite)</span>
+</pre></div>
+<br><br>
+ 
+
+                    In the training function, we will pass the data by iterating over the data loaders to model in GPU.
+                    We will use the optimizer to calculate the loss, and we will record the losses for plotting in a graph. 
+
+                    <br><br>
+<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #ffffff">losses_1</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">[]</span>
+    <span style="color: #ffffff">losses_2</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">[]</span>
+
+    <span style="color: #fb660a; font-weight: bold">def</span> <span style="color: #ff0086; font-weight: bold">train</span><span style="color: #ffffff">(model,</span> <span style="color: #ffffff">device,</span> <span style="color: #ffffff">train_loader,</span> <span style="color: #ffffff">optimizer,</span> <span style="color: #ffffff">epoch):</span>
+        <span style="color: #ffffff">model.train()</span>
+        
+        <span style="color: #fb660a; font-weight: bold">for</span> <span style="color: #ffffff">batch_idx,</span> <span style="color: #ffffff">(data,</span> <span style="color: #ffffff">target)</span> <span style="color: #ffffff">in</span> <span style="color: #ffffff">enumerate(train_loader):</span>
+            <span style="color: #008800; font-style: italic; background-color: #0f140f"># send the image, target to the device</span>
+            <span style="color: #ffffff">data,</span> <span style="color: #ffffff">target</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">data.to(device),</span> <span style="color: #ffffff">target.to(device)</span>
+            <span style="color: #008800; font-style: italic; background-color: #0f140f"># flush out the gradients stored in optimizer</span>
+            <span style="color: #ffffff">optimizer.zero_grad()</span>
+            <span style="color: #008800; font-style: italic; background-color: #0f140f"># pass the image to the model and assign the output to variable named output</span>
+            <span style="color: #ffffff">output</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">model(data)</span>
+            <span style="color: #008800; font-style: italic; background-color: #0f140f"># calculate the loss (use nll_loss in pytorch)</span>
+            <span style="color: #ffffff">loss</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.nll_loss(output,</span> <span style="color: #ffffff">target)</span>
+            <span style="color: #008800; font-style: italic; background-color: #0f140f"># do a backward pass</span>
+            <span style="color: #ffffff">loss.backward()</span>
+            <span style="color: #008800; font-style: italic; background-color: #0f140f"># update the weights</span>
+            <span style="color: #ffffff">optimizer.step()</span>
+          
+            <span style="color: #fb660a; font-weight: bold">if</span> <span style="color: #ffffff">batch_idx</span> <span style="color: #ffffff">%</span> <span style="color: #0086f7; font-weight: bold">100</span> <span style="color: #ffffff">==</span> <span style="color: #0086f7; font-weight: bold">0</span><span style="color: #ffffff">:</span>
+                <span style="color: #ffffff">print(</span><span style="color: #0086d2">&#39;Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}&#39;</span><span style="color: #ffffff">.format(</span>
+                    <span style="color: #ffffff">epoch,</span> <span style="color: #ffffff">batch_idx</span> <span style="color: #ffffff">*</span> <span style="color: #ffffff">len(data),</span> <span style="color: #ffffff">len(train_loader.dataset),</span>
+                    <span style="color: #0086f7; font-weight: bold">100.</span> <span style="color: #ffffff">*</span> <span style="color: #ffffff">batch_idx</span> <span style="color: #ffffff">/</span> <span style="color: #ffffff">len(train_loader),</span> <span style="color: #ffffff">loss.item()))</span>
+                <span style="color: #ffffff">losses_1.append(loss.item())</span>
+                <span style="color: #ffffff">losses_2.append(</span><span style="color: #0086f7; font-weight: bold">100.</span> <span style="color: #ffffff">*</span> <span style="color: #ffffff">batch_idx</span> <span style="color: #ffffff">/</span> <span style="color: #ffffff">len(train_loader))</span>
+            
+    </pre></div>
+    <br><br>
+
+    Similarly, for test dataset,
+    <br><br>
+    <!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #ffffff">accuracy</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">[]</span>
+<span style="color: #ffffff">avg_loss</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">[]</span>
+<span style="color: #fb660a; font-weight: bold">def</span> <span style="color: #ff0086; font-weight: bold">test</span><span style="color: #ffffff">(model,</span> <span style="color: #ffffff">device,</span> <span style="color: #ffffff">test_loader):</span>
+    <span style="color: #ffffff">model.eval()</span>
+    <span style="color: #ffffff">test_loss</span> <span style="color: #ffffff">=</span> <span style="color: #0086f7; font-weight: bold">0</span>
+    <span style="color: #ffffff">correct</span> <span style="color: #ffffff">=</span> <span style="color: #0086f7; font-weight: bold">0</span>
+    <span style="color: #fb660a; font-weight: bold">with</span> <span style="color: #ffffff">torch.no_grad():</span>
+        <span style="color: #fb660a; font-weight: bold">for</span> <span style="color: #ffffff">data,</span> <span style="color: #ffffff">target</span> <span style="color: #ffffff">in</span> <span style="color: #ffffff">test_loader:</span>
+          
+            <span style="color: #008800; font-style: italic; background-color: #0f140f"># send the image, target to the device</span>
+            <span style="color: #ffffff">data,</span> <span style="color: #ffffff">target</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">data.to(device),</span> <span style="color: #ffffff">target.to(device)</span>
+            <span style="color: #008800; font-style: italic; background-color: #0f140f"># pass the image to the model and assign the output to variable named output</span>
+            <span style="color: #ffffff">output</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">model(data)</span>
+            <span style="color: #ffffff">test_loss</span> <span style="color: #ffffff">+=</span> <span style="color: #ffffff">F.nll_loss(output,</span> <span style="color: #ffffff">target,</span> <span style="color: #ffffff">reduction=</span><span style="color: #0086d2">&#39;sum&#39;</span><span style="color: #ffffff">).item()</span> <span style="color: #008800; font-style: italic; background-color: #0f140f"># sum up batch loss</span>
+          
+            <span style="color: #ffffff">pred</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">output.argmax(dim=</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">,</span> <span style="color: #ffffff">keepdim=</span><span style="color: #fb660a; font-weight: bold">True</span><span style="color: #ffffff">)</span>  <span style="color: #008800; font-style: italic; background-color: #0f140f"># get the index of the max log-probability</span>
+            <span style="color: #ffffff">correct</span> <span style="color: #ffffff">+=</span> <span style="color: #ffffff">pred.eq(target.view_as(pred)).sum().item()</span>
+
+    <span style="color: #ffffff">test_loss</span> <span style="color: #ffffff">/=</span> <span style="color: #ffffff">len(test_loader.dataset)</span>
+
+    <span style="color: #ffffff">print(</span><span style="color: #0086d2">&#39;\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n&#39;</span><span style="color: #ffffff">.format(</span>
+        <span style="color: #ffffff">test_loss,</span> <span style="color: #ffffff">correct,</span> <span style="color: #ffffff">len(test_loader.dataset),</span>
+        <span style="color: #0086f7; font-weight: bold">100.</span> <span style="color: #ffffff">*</span> <span style="color: #ffffff">correct</span> <span style="color: #ffffff">/</span> <span style="color: #ffffff">len(test_loader.dataset)))</span>
+    <span style="color: #ffffff">avg_loss.append(test_loss)</span>
+    <span style="color: #ffffff">accuracy.append(</span><span style="color: #0086f7; font-weight: bold">100.</span> <span style="color: #ffffff">*</span> <span style="color: #ffffff">correct</span> <span style="color: #ffffff">/</span> <span style="color: #ffffff">len(test_loader.dataset))</span>
+</pre></div>
+
+    <br><br>
+    We can also adjust the learning rate, before firing up for training!
+    <br><br>
+    <!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #ffffff">model</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">Net().to(device)</span>
+<span style="color: #ffffff">learning_rate</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">[]</span>
+<span style="color: #fb660a; font-weight: bold">def</span> <span style="color: #ff0086; font-weight: bold">adjust_learning_rate</span><span style="color: #ffffff">(optimizer,</span> <span style="color: #ffffff">iter,</span> <span style="color: #ffffff">each):</span>
+    <span style="color: #008800; font-style: italic; background-color: #0f140f"># sets the learning rate to the initial LR decayed by 0.1 every &#39;each&#39; iterations</span>
+    <span style="color: #ffffff">lr</span> <span style="color: #ffffff">=</span> <span style="color: #0086f7; font-weight: bold">0.001</span> <span style="color: #ffffff">*</span> <span style="color: #ffffff">(</span><span style="color: #0086f7; font-weight: bold">0.95</span> <span style="color: #ffffff">**</span> <span style="color: #ffffff">(iter</span> <span style="color: #ffffff">//</span> <span style="color: #ffffff">each))</span>
+    <span style="color: #ffffff">state_dict</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">optimizer.state_dict()</span>
+    <span style="color: #fb660a; font-weight: bold">for</span> <span style="color: #ffffff">param_group</span> <span style="color: #ffffff">in</span> <span style="color: #ffffff">state_dict[</span><span style="color: #0086d2">&#39;param_groups&#39;</span><span style="color: #ffffff">]:</span>
+        <span style="color: #ffffff">param_group[</span><span style="color: #0086d2">&#39;lr&#39;</span><span style="color: #ffffff">]</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">lr</span>
+    <span style="color: #ffffff">optimizer.load_state_dict(state_dict)</span>
+    <span style="color: #ffffff">print(</span><span style="color: #0086d2">&quot;Learning rate = &quot;</span><span style="color: #ffffff">,lr)</span>
+    <span style="color: #fb660a; font-weight: bold">return</span> <span style="color: #ffffff">lr</span>
+
+
+<span style="color: #008800; font-style: italic; background-color: #0f140f">## Define Adam Optimiser with a learning rate of 0.01</span>
+<span style="color: #ffffff">optimizer</span> <span style="color: #ffffff">=</span>  <span style="color: #ffffff">torch.optim.Adam(model.parameters(),lr=</span><span style="color: #0086f7; font-weight: bold">0.001</span><span style="color: #ffffff">)</span>
+
+<span style="color: #ffffff">start</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">timeit.default_timer()</span>
+<span style="color: #fb660a; font-weight: bold">for</span> <span style="color: #ffffff">epoch</span> <span style="color: #ffffff">in</span> <span style="color: #ffffff">range(</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">,</span><span style="color: #0086f7; font-weight: bold">100</span><span style="color: #ffffff">):</span>
+  <span style="color: #ffffff">lr</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">adjust_learning_rate(optimizer,</span> <span style="color: #ffffff">epoch,</span> <span style="color: #0086f7; font-weight: bold">1.616</span><span style="color: #ffffff">)</span>
+  <span style="color: #ffffff">learning_rate.append(lr)</span>
+  <span style="color: #ffffff">train(model,</span> <span style="color: #ffffff">device,</span> <span style="color: #ffffff">train_dataloader,</span> <span style="color: #ffffff">optimizer,</span> <span style="color: #ffffff">epoch)</span>
+  <span style="color: #ffffff">test(model,</span> <span style="color: #ffffff">device,</span> <span style="color: #ffffff">test_dataloader)</span>
+<span style="color: #ffffff">stop</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">timeit.default_timer()</span>
+<span style="color: #ffffff">print(</span><span style="color: #0086d2">&#39;Total time taken: {} seconds&#39;</span><span style="color: #ffffff">.format(int(stop</span> <span style="color: #ffffff">-</span> <span style="color: #ffffff">start)))</span>
+</pre></div>
+
+
+    <br><br>
+        After training for 100 epochs, we get a test accuracy of, <b> 99.57%</b>, which is great, 
+        without doing any fancy stuffs!
+    <br><br>
+    <pre>
+
+Learning rate =  4.3766309037604346e-05
+Train Epoch: 99 [0/60000 (0%)]	Loss: 0.000113
+Train Epoch: 99 [12800/60000 (21%)]	Loss: 0.000007
+Train Epoch: 99 [25600/60000 (43%)]	Loss: 0.000006
+Train Epoch: 99 [38400/60000 (64%)]	Loss: 0.000010
+Train Epoch: 99 [51200/60000 (85%)]	Loss: 0.000027
+
+Test set: Average loss: 0.0211, Accuracy: 9957/10000 (100%)
+
+Total time taken: 7074 seconds
+    </pre>
+    <br><br>
+            
+            The images for variation of Learning rate can be shown below:
+            <br><br>
+            <b> (P.S. look for the typo) </b>
+            <br><br>
+
+            <center>
+                <img src="../blogs/MNIST_SOTA/loss.png" height="70%" width="70%">
+            </center>
+
+            Similarly, the average accuracy, average loss, and loss are shown below:
+
+            <br><br>
+
+            <center>
+                <img src="../blogs/MNIST_SOTA/Avg_acc_1.png" height="70%" width="70%">
+            </center>
+            <br><br>
+
+            <center>
+                <img src="../blogs/MNIST_SOTA/Avg_loss_1.png" height="70%" width="70%">
+            </center>
+            <br><br>
+            
+            
+
+            <center>
+                <img src="../blogs/MNIST_SOTA/loss_1.png" height="70%" width="70%">
+            </center>
+            <br><br>
+
+            The model can be downloaded from 
+            <a href="MNIST_SOTA/1_model_MNIST_3579_Adam_0.95_100e.pth"><b>here</b></a>.
+            <br><br>
+
+            You can use the model by loading it in Pytorch!
+            <br><br>
+
+            It takes lot of innovative methods, to surpass the current state of the art accuracy. 
+            If anyone can beat that, it will result in a new paper in a reputed journal. It looks
+            like the model has got into its limit and the test accuracy is fluctuating between <b>99.57 %</b>
+            and 99.53%. Here is the basic framework for the work, now you are all set up to explore a
+            new domain of competition, via novel methods! 
+            <br><br>
+
+
+
+
+            <b>Still then, Happy Coding!</b>
+            <br><br>
+                    
+        </div >
+    </div >
+</div >
+
+
+      
+    
+    
+  </div>
+
+  
+
+
+  <!-- Footer -->
+  <footer class="footer page-footer font-small elegant-color-dark pt-1">
+    <div  align="center">
+
+
+
+          <!-- Copyright -->
+          <div class="footer-copyright"> 2019-2020
+              <a href="https://github.com/Jimut123"> Copyright © Jimut Bahan Pal</a>
+          </div>
+          <!-- Copyright -->
+    </div>
+  </footer>
+  <!-- Footer -->
+
+
+
+</body>
+</html>
+<style>
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+}
+</style>
+
+
+<script>
+  var preloader = document.getElementById('loading');
+  function myFunction() { 
+      preloader.style.display = 'none';
+  }
+</script>
