@@ -227,6 +227,14 @@
 <p><!-- Bootstrap Bundle with Popper -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script></p>
 
+<style>
+    .btn:hover
+    {
+    background-image:none !important;
+    background-color:#33ffc2 !important;
+    }
+</style>
+
 <div id="pad-container">
     <div class="jumbotron jumbotron-fluid" align="justify">
         <div class="container" id="publication-font">
@@ -247,11 +255,11 @@
                                 </h5>
                                 <strong> Jimut Bahan Pal</strong>, <strong><a href="https://abhattacharyea.dev/" target="_blank"> Aniket Bhattacharyea</a></strong>, <strong><a href="http://narendrapur.rkmvu.ac.in/wp-content/uploads/2020/09/Dr.-Debasis-Bandyopadhyay-Banerjee-CV.pdf" target="_blank"> Debasis Banerjee</a></strong> and <strong><a href="https://cse.buffalo.edu/~tamaltan/welcome/welcome.html" target="_blank" alt="Tamal's Buffalo Website"> Tamal </a> <a href="http://cs.rkmvu.ac.in/~tamal/" target="_blank" alt="Tamal's RKMVERI Website"> Maharaj </a> </strong>
                                 <br />
-                                Under Process in Springer Nature Computer Science Journal
+                                Under Review in Springer Nature Computer Science Journal
                                 <br />
                                 <p>
                                     
-                                        <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#tldrrv_pbs" role="button" aria-expanded="false" aria-controls="tldrrv_pbs">TL;DR</a>
+                                        <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#abstractrv_pbs" role="button" aria-expanded="false" aria-controls="abstractrv_pbs">Abstract</a>
                                     
 
                                     
@@ -263,9 +271,9 @@
                                 </p>
                                 
                                 
-                                    <div class="collapse" id="tldrrv_pbs">
+                                    <div class="collapse" id="abstractrv_pbs">
                                         <div class="card card-body" align="justify">
-                                            We have created a novel peripheral blood smear dataset for multiclass instance segmentation. We performed Domain Adaptation to increase the metrics with the help of another similar dataset. The method can be further used to automate diagnosing diseases via blood test and also annotate newer blood smear slides with minimum human intervention.
+                                            Automating counting and detection of different blood cells from a smear slide can help doctors to diagnose diseases via blood test. In the current literature, whole slide data has not yet been considered. This study deals with creation of a novel 10 class peripheral blood smear dataset, the RV-PBS dataset. Standard architectures such as Mask R-CNN shows promising results in segmenting instances of blood cells, hence creating scope for semi-supervised annotation of newer data samples. Fewer data samples and data imbalance in the dataset helps us to employ innovative techniques such as domain adaptation using a similar dataset for improving the classification accuracy of the Mask R-CNN. In this study, we have successfully created a pipeline which will segment, detect and classify blood samples from slides. This in turn can count and get an estimate of the type of blood cell present to help the doctors refine their analysis.
                                         </div>
                                     </div>
                                 
@@ -292,11 +300,11 @@
                                 </h5>
                                 <strong> Jimut Bahan Pal </strong> and <strong><a href="https://web.archive.org/web/20200624004219/http://www2.eng.ox.ac.uk/civil/efm/people/dripta-sarkar" target="_blank"> Dripta Mj </a></strong>
                                 <br />
-                                Under Process in Computer Methods and Programs in Biomedicine Update Journal (Elsevier)
+                                Under Review in Computer Methods and Programs in Biomedicine Update Journal (Elsevier)
                                 <br />
                                 <p>
                                     
-                                        <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#tldrbmsan" role="button" aria-expanded="false" aria-controls="tldrbmsan">TL;DR</a>
+                                        <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#abstractbmsan" role="button" aria-expanded="false" aria-controls="abstractbmsan">Abstract</a>
                                     
 
                                     
@@ -308,9 +316,9 @@
                                 </p>
                                 
                                 
-                                    <div class="collapse" id="tldrbmsan">
+                                    <div class="collapse" id="abstractbmsan">
                                         <div class="card card-body" align="justify">
-                                            We have successfully created a computationally efficient model to segment medical data with the help of attention networks. We apply Bayesian Optimization to increase the segmentation capability of the existing network to achieve SOTA. We also test different attention modules and their effect on segmenting different datasets.
+                                            Medical sectors are facing challenges to segment images with high accuracy. Earlier methods were limited to segmenting few datasets with a large number of parameters. In this study a novel Deep Learning architecture is proposed that can segment images at multiple scales, leading to high dice coefficient in majority of challenging datasets, where regions of interest are of different shapes and sizes. Using attention module within the architecture partly increases the capability of the model to focus on relevant regions. Calculating loss at different scales also aids in incremental reconstruction of segmentation mask. To further improve the segmentation results Bayesian Optimization is carried out by selecting the weighted combination of losses at different scales. A comparison with other state of the art model shows this model performs better than most of the models with a significantly low computation overhead. This demonstrates the efficiency and reliability of this approach to generate segmentation masks for medical images.
                                         </div>
                                     </div>
                                 
@@ -341,7 +349,7 @@
                                 <br />
                                 <p>
                                     
-                                        <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#tldrmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="tldrmiccai_qubiq_21">TL;DR</a>
+                                        <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#abstractmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="abstractmiccai_qubiq_21">Abstract</a>
                                     
 
                                     
@@ -353,9 +361,9 @@
                                 </p>
                                 
                                 
-                                    <div class="collapse" id="tldrmiccai_qubiq_21">
+                                    <div class="collapse" id="abstractmiccai_qubiq_21">
                                         <div class="card card-body" align="justify">
-                                            We have created Holistic Network, which is very efficient in segmenting uncertainty in medical image with less data. This overcomes the complication of using multiple U-Nets to perform the same task, simultaneously surpassing previous SOTA results in a few tasks.
+                                            Variability in delineation is an inherent property for segmenting medical imagery, when images are annotated by a variety of expert annotators. Previous methods have used adversarial training, Monte-Carlo sampling, and dropouts, which might sometimes produce a wide range of segmentation masks that differ from the styles of mask produced by a set of expert annotators. State-of-the-art method uses multiple U-Nets to capture the individual delineations, but it is computationally demanding. To mitigate this problem, a holistic network containing N-Encoder and N-Decoder is proposed, which could individually model the variability of delineation produced by the expert annotators. This will help to create segmentation masks for different tasks of the same dataset through a single network by learning the common features of multiple Encoders via a common channel and passing those features to Decoder. These create one segmentation mask. All the masks are calculated by using weighted loss at each end of the Decoders that show excellent results for some datasets.
                                         </div>
                                     </div>
                                 
@@ -386,11 +394,11 @@
                                 <br />
                                 <p>
                                     
-                                        <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#tldrcxr_19" role="button" aria-expanded="false" aria-controls="tldrcxr_19">TL;DR</a>
+                                        <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#abstractcxr_19" role="button" aria-expanded="false" aria-controls="abstractcxr_19">Abstract</a>
                                     
 
                                     
-                                        <a class="btn btn-outline-primary" href="https://ieeexplore.ieee.org/document/9708580" target="_blank">ARTICLE</a>
+                                        <a class="btn btn-outline-primary" href="https://ieeexplore.ieee.org/document/9708580" target="_blank">Article</a>
                                     
 
                                     
@@ -404,9 +412,9 @@
                                 </p>
                                 
                                 
-                                    <div class="collapse" id="tldrcxr_19">
+                                    <div class="collapse" id="abstractcxr_19">
                                         <div class="card card-body" align="justify">
-                                            We test different architectures in classifying chest X-Ray images. We also test the reliability of different architectures by performing ablation studies.
+                                            The internal behavior of Deep Neural Network architectures can be difficult to interpret. Certain architectures achieve impressive feats in a particular dataset while failing to show comparable performance in other datasets. Developing an architecture that performs well on a dataset can be a time-consuming affair and computationally intensive process. This study explains the effect of transfer learning by fine-tuning already available state-of-the-art architectures in different datasets and using them to classify Chest X-Ray images with high accuracy. Using transfer learning helps the model learn problem-specific features in a short period. It further shows that different models perform differently in a particular setting for a dataset. Ablation studies show that a combination of smaller structures that gives an overall better result may not give the best result in the combined model. In addition, the “belief” of the model for selecting a particular class is visualized in this study.
                                         </div>
                                     </div>
                                 
