@@ -1,0 +1,60 @@
+<h1>MODIFYING AN IMAGE</h1>
+<p><h3>Image created </h3></p>
+<p> Here is the original image ::</p>
+<p><a href="https://imgur.com/oA9WCpq">
+  <img src="https://i.imgur.com/oA9WCpq.jpg?1" width=550 /></a>
+<p> Here is the image I created by modifying the image, its like an old hazy image with hazy border ::</p>
+<p><a href="https://imgur.com/m7ATVQI">
+  <img src="https://i.imgur.com/m7ATVQI.png" width=550 /></a>
+<p><h3>Algorithm ::</h3></p>
+<p>In this picture first I have created a function setBlack() so that my program becomes short. In that I have made the pixel black whichever pixel is sent to it, and return the black pixel. After that I have used Math.random() function to set the pixel we got in a radius of 10. This will be best to look the image hazy, as if we are looking it through a hazy glass like substance. After doing that I have made the border by calling the function.</p>
+<p><h3>Code :: </h3></p>
+<pre>     function setBlack(pixel)
+{
+    pixel.setRed(0);
+    pixel.setGreen(0);
+    pixel.setBlue(0);
+    return pixel;
+}
+function ensureInImage(coordinate,size){
+
+    if(coordinate<0){
+        return 0;
+    }
+    if(coordinate>=size){
+        return size-1;
+    }
+    return coordinate;
+}
+function getPixelNearby(image,x,y,diameter)
+{
+    var dx=Math.random()*diameter-diameter/2;
+    var dy=Math.random()*diameter-diameter/2;
+    var nx = ensureInImage(x+dx,image.getWidth());
+    var ny = ensureInImage(y+dy,image.getHeight());
+    return image.getPixel(nx,ny);
+}
+var image = new SimpleImage("hd_sky_blue_beach-1280x720.jpg");
+var output = new SimpleImage(image.getWidth(),image.getHeight());
+for(var pixel of image.values())
+{
+    var x=pixel.getX();
+    var y=pixel.getY();
+    
+
+if(x<10||y<10||x>=image.getWidth()-10||y>=image.getHeight()-10)
+pixel=setBlack(pixel);
+    if(Math.random()>0.5){
+        var other = getPixelNearby(image,x,y,10);
+        output.setPixel(x,y,other);
+    }
+    else
+    {
+        output.setPixel(x,y,pixel);
+    }
+    }
+    print(output);
+    
+</pre>
+<p> Thanks for visiting and watching my website</p>
+

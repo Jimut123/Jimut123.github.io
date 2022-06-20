@@ -1,0 +1,90 @@
+<h1>STEGANOGRAPHY</h1>
+<h3> First the original images were cropped to same size, the two original images that I used were ::</h3>
+<table>
+  <tr>
+  <th> <h3>Image</h3></th>
+    <th><h3> Image to hide</h3></th></tr>
+  <tr><td><a href="https://imgur.com/kDzyuE0"><img src="https://i.imgur.com/kDzyuE0.jpg"/></a></td>
+    <td><a href="https://imgur.com/3ar5SAJ"><img src="https://i.imgur.com/3ar5SAJ.jpg"/></a></td>
+  </tr>
+</table>
+  <p><h3>Image with hidden value hiding in lower 4 bits ::</h3></p>
+<table>
+  <tr>
+  <th> <h3>Image with hidden image</h3></th>
+    <th><h3> Hidden image extracted </h3></th></tr>
+  <tr><td><a href="https://imgur.com/ZlMj8VE"><img src="https://i.imgur.com/ZlMj8VE.png"/></a></td>
+    <td><a href="https://imgur.com/fXeCuqg"><img src="https://i.imgur.com/fXeCuqg.png"/></a></td>
+  </tr>
+</table>
+<p><h3>Algorithm :: </h3></p>
+<p>I had to take two picture, one that I have to store, and another that the people will see. First I have to take the higher four bits of both the images, after that we have to make the lower four bits of that image which we want to hide. We have to steganograph the image and then make another code to de encrypt the image. For encryption of the image we have to use ‘/’ operator and functions and for decryption of the image we have to use ‘%’ operator and function. </p>
+<p><h3>code :: </h3></p>
+<pre>//For encryption of the image and print the original image.
+//Steganography
+function clearbits(colorval){
+    var x=Math.floor(colorval/16)*16;
+    return x;
+}
+function chop2hide(image)
+{
+    for(var px of image.values()){
+        px.setRed(clearbits(px.getRed()));
+        px.setGreen(clearbits(px.getGreen()));
+        px.setBlue(clearbits(px.getBlue()));
+    }
+    return image;
+}
+function shift(image)
+{
+    for(var px of image.values()){
+        px.setRed(px.getRed()/16);
+         px.setGreen(px.getGreen()/16);
+          px.setBlue(px.getBlue()/16);
+    }
+
+return image;
+}
+function combine(show, hide){
+    var answer=new SimpleImage(show.getWidth(),show.getHeight());
+    for(var px of answer.values()){
+        var x = px.getX();
+        var y = px.getY();
+        var showPixel= show.getPixel(x,y);
+        var hidePixel = hide.getPixel(x,y);
+        px.setRed(showPixel.getRed()+hidePixel.getRed());
+        px.setGreen(showPixel.getGreen()+hidePixel.getGreen());
+        px.setBlue(showPixel.getBlue()+hidePixel.getBlue());
+    }
+   return answer;
+}
+var start = new SimpleImage("usain.jpg");
+var hide = new SimpleImage("skyline.jpg");
+start = chop2hide(start);
+hide=shift(hide);
+var ans=combine(start,hide);
+print(ans);
+
+//For decryption of the image and print the hidden image
+// code to decipher stegonographic messages.
+
+var hide = new SimpleImage("y3afzqii.bmp");
+function shift(image)
+{
+    for(var px of image.values()){
+        px.setRed((px.getRed()%16)*16 );
+         px.setGreen((px.getGreen()%16)*16);
+          px.setBlue((px.getBlue()%16)*16);
+    }
+    
+
+return image;
+}
+hide = shift(hide);
+        print(hide);
+
+
+</pre> 
+<p>Thanks for watching and visiting my page!!!</p>
+
+

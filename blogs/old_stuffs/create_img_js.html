@@ -1,0 +1,30 @@
+<h1>CREATING AN IMAGE FROM SCRATCH</h1>
+<h3>The image created :: </h3>
+<p>This is the image I created by using JavaScript.</p>
+<p>
+  <a href="https://imgur.com/P8fLSk5"><img src="https://i.imgur.com/P8fLSk5.png?1"/></a></p>
+<p><h3>Algorithm for this picture is given below :: </h3>
+In this picture I have taken a for loop and manipulated each pixel to set its RGB value in a such way that the upper part of the image looks green middle part have a little bluish tinge. The Math.random() and the Math.sqrt() functions have helped me a lot in achieving this thing. I have used different values like2.5 , 1.5, 0.5 to give this a perfect blending of colors using only red, blue and green components!! </p>
+<p><h3>Code ::</h3></p>
+<pre>function dist(pixel,x,y )
+{
+    var dx=pixel.getX()-x;
+    var dy=pixel.getY()-y;
+    return Math.sqrt(dx*dx+dy*dy);
+}
+
+var output = new SimpleImage(320,320);
+for(var pixel of output.values())
+{
+ if(Math.random()>0.1){
+    pixel.setRed(255);
+    pixel.setBlue(255);
+}
+pixel.setBlue(Math.max(2.5*pixel.getY()-pixel.getX(),pixel.getX()-2.5*pixel.getY()));
+pixel.setRed(Math.max(1.5*pixel.getY()-pixel.getX(),pixel.getX()-1.5*pixel.getY()));
+pixel.setGreen(Math.max(.5*pixel.getY()-pixel.getX(),pixel.getX()-.5*pixel.getY()));
+}
+print(output);</pre>
+<p>Thanks for visiting my page.....</p>
+
+
