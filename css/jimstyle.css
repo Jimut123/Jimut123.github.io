@@ -99,15 +99,16 @@ a
     padding-left: 5%;
   }
 
+
 #publication-font
 {
-  font-family: sans-serif;
-  font-size: 15pt;
+  font-family: Georgia, Times, Times New Roman, serif;
+  font-size: 16pt;
 }
 
 #cert-sub-heading
 {
-  font-family: sans-serif;
+  font-family: Georgia, Times, Times New Roman, serif;
   font-size: 30pt;
 }
 
@@ -115,51 +116,66 @@ a
     font-weight:bold;
 }
 
+
+#heading-font
+{
+  font-family: Georgia, Times, Times New Roman, serif;
+  font-size: 24pt;
+}
+
+
+
 #front-page-font{
-  font-family: sans-serif;
+  font-family: Georgia, Times, Times New Roman, serif;
+  font-size: 16pt;
 }
 
 #specilization-font{
-  font-family: sans-serif;
-  font-size: 15pt;
+  font-family: Georgia, Times, Times New Roman, serif;
+  font-size: 16pt;
+}
+
+#pub-page-btn-font{
+  font-family: Georgia, Times, Times New Roman, serif;
+  font-size: 9pt;
 }
 
 #course-cert-font
 {
-  font-family:  sans-serif;
-  font-size: 15pt;
+  font-family:  Georgia, Times, Times New Roman, serif;
+  font-size: 16pt;
 }
 #achievement-font
 {
-  font-family: sans-serif;
-  font-size: 15pt;
+  font-family: Georgia, Times, Times New Roman, serif;
+  font-size: 16pt;
 }
 #cert-of-part
 {
-  font-family:  sans-serif;
-  font-size: 15pt;
+  font-family:  Georgia, Times, Times New Roman, serif;
+  font-size: 16pt;
 
 }
 
 #gallery-font{
-  font-family: sans-serif;
-  font-size: 15pt;
+  font-family: Georgia, Times, Times New Roman, serif;
+  font-size: 16pt;
 }
 
 
 
 #exp-font{
-  font-family: sans-serif;
-  font-size: 15pt;
+  font-family: Georgia, Times, Times New Roman, serif;
+  font-size: 16pt;
 }
 
 #proj-page{
-  font-family: sans-serif;
-  font-size: 15pt;
+  font-family: Georgia, Times, Times New Roman, serif;
+  font-size: 16pt;
 }
 #proj-content
 {
-  font-family: sans-serif;
+  font-family: Georgia, Times, Times New Roman, serif;
 }
 
 .timeline{
