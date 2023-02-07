@@ -1,0 +1,8 @@
+@article{doi:10.1080/13682199.2023.2174657,
+author = {Pal,Jimut Bahan and Mj,Dripta},
+title = {Improving Multi Scale Attention Networks: Bayesian Optimization for Segmenting medical images},
+journal = {The Imaging Science Journal},
+year = {2023},
+doi = {10.1080/13682199.2023.2174657},
+
+}
