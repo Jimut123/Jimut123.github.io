@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Webpage</title>
     <style>
+
+        /* Logo styles */
+        .logo {
+            width: 80px; /* Adjust width as needed */
+            height: auto;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .logo-left {
+            left: 20px; /* Adjust left spacing as needed */
+        }
+
+        .logo-right {
+            right: 20px; /* Adjust right spacing as needed */
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -16,10 +34,16 @@
         }
 
         header {
-            background-color: #0c5960;
-            color: #fff;
+            background-image: url('./assets/header_background.png'); /* Add background image path */
+            font-weight: bold;
+            z-index: 5;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #ffffff;
             padding: 1em;
             text-align: center;
+            position: relative; Add relative positioning
         }
 
         nav {
@@ -79,8 +103,18 @@
 <body>
 
     <header>
-        <h1>Course Title</h1>
+        <div>
+            
+            <h1>
+                <img src="./assets/rkmveri_logo.png" alt="Left Logo" class="logo logo-left">
+                Course Title
+                <img src="./assets/iitb_logo.png" alt="Right Logo" class="logo logo-right">
+            </h1>
+            
+        </div>
+
         <p>Subtitle or Course Description</p>
+        
     </header>
 
     <div class="body_class">
@@ -148,7 +182,7 @@
 
         <h2>Pre-requisites</h2>
 
-        Some Python3 programming
+        Common sense and willing to make things work!
 
         <h2>Contact me</h2>
 
