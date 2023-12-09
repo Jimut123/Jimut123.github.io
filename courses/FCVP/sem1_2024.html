@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Webpage</title>
+    <style>
+
+        /* Logo styles */
+        .logo {
+            width: 80px; /* Adjust width as needed */
+            height: auto;
+            /* position: absolute; */
+            top: 50%;
+            /* transform: translateY(-50%); */
+        }
+
+        .logo-left {
+            left: 20px; /* Adjust left spacing as needed */
+        }
+
+        .logo-right {
+            right: 20px; /* Adjust right spacing as needed */
+        }
+
+        /* body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        } */
+
+        body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('./assets/background.png'); /* Replace with the correct path to your background image */
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-size: cover; /* Add this line to stretch the background image */
+        }
+
+        header {
+            /* background-image: url('./assets/header_background.png'); 
+            
+            z-index: 5;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center; */
+            background-color: #044176;
+            font-weight: bold;
+            color: #ffffff;
+            padding: 1em;
+            text-align: center;
+            position: relative;
+        }
+
+        nav {
+            background-color: #444;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .body_class {
+            flex: 1;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        footer {
+            background-color: #044176;
+            padding: 0em; /* Adjust as needed */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            
+            <h1>
+                CS101: Fundamentals of Computer Vision Programming
+            </h1>
+            
+        </div>
+
+        <p> Conducted Online Instruction for Semester I, 2024 at  <a href="https://cs.rkmvu.ac.in/" style="color: #e7e4e4;" target="_blank" alt="rkmveri-cs"> RKMVERI </a> </p>
+        
+    </header>
+
+    <div class="body_class">
+        <h2>Course Details</h2>
+
+        The integration of computer vision algorithms into everyday activities 
+        is on the rise. This course begins with foundational Python3 programming, 
+        progressing to the practical application of programming concepts through 
+        the widely-used OpenCV library, known for classical computer vision approaches. 
+        Participants will delve into the PyTorch framework, mastering the design of 
+        models tailored for classification and image segmentation—key algorithms 
+        in the industry and research. Additionally, there is potential for hands-on 
+        experience in developing a real-world deployable app, showcasing the practical 
+        application of acquired skills. <br><br>
+
+        This introductory course combines theoretical concepts with hands-on tutorials, 
+        catering to individuals keen on delving into computer vision. The practical, 
+        tutorial-driven approach is tailored for those eager to apply classical and 
+        prevalent deep learning algorithms to real-world scenarios, enhancing their 
+        understanding and skill application in the field. <br><br>
+
+
+        <h2 id="schedule">Schedule & Topics</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Topic</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01-01-2024</td>
+                    <td>10:00 AM - 12:00 PM</td>
+                    <td>Overview of the course</td>
+                </tr>
+                <tr>
+                    <td>07-01-2024</td>
+                    <td>10:00 AM - 12:00 PM</td>
+                    <td>Python3 Tutorial - 1</td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <h2> Useful Links (Totally optional) </h2>
+
+        <ul>
+            <li> <a href="https://cs231n.github.io/" target="_blank"> CS231n: Deep Learning for Computer Vision</a>, Stanford. </li>
+
+            <li> <a href="https://www.youtube.com/@DataScienceCoursesUW/playlists" target="_blank">  
+                Data Science Courses</a> - Ali Ghodsi. </li>
+
+            <li> <a href="https://www.youtube.com/@AladdinPersson/playlists" target="_blank">  
+                Pytorch tutorials</a> - Aladdin Persson. </li>
+            
+            <li> <a href="https://www.youtube.com/@ProfNandoDF/playlists" target="_blank">  
+                    Deep Learning Playlists</a> - Nando de Freitas. </li>
+            
+            <li> <a href="https://www.youtube.com/playlist?list=PLd3hlSJsX_In7qup928HaHmilugBGctuF" target="_blank"> 
+                CAP6412 Advanced Computer Vision - Spring 2023</a> - University of Central Florida. </li>
+            
+            <li> <a href="https://www.youtube.com/playlist?list=PLfYUBJiXbdtSvpQjSnJJ_PmDQB_VyT5iU" target="_blank"> Practical 
+                Deep Learning for Coders 2022</a> - Jeremy Howard. </li>
+
+            <li> <a href="https://www.youtube.com/watch?v=_7rMfsA24Ls&list=PLfYUBJiXbdtRUvTUYpLdfHHp9a58nWVXP" target="_blank"> 
+                    Practical Deep Learning 2022 Part 2</a> - Stable diffusion, Jeremy Howard. </li>
+
+            <li> <a href="https://lilianweng.github.io/" target="_blank"> Lilian Weng's blog</a>. </li>
+
+            <li> <a href="https://colah.github.io/" target="_blank"> Christopher Olah's blog</a>. </li>
+
+            <li> <a href="https://udlbook.github.io/udlbook/" target="_blank"> Understanding Deep Learning</a> - 
+                Book by Simon J.D. Prince. </li>
+
+            <li> <a href="https://theaisummer.com/learn-ai/advanced/" target="_blank"> The AI summer - 
+                Advanced Deep Learning concepts</a>. </li>
+
+            <li> <a href="https://ml.berkeley.edu/reading-list/" target="_blank"> Berkeley reading list</a>. </li>
+
+            
+            
+          
+            
+
+            
+        </ul>
+
+        
+        <h2>Reference Materials</h2>
+        
+        <ul>
+            <li>Deep Learning with PyTorch (Thomas Viehmann, Eli Stevens, Luca Pietro Giovanni Antiga), Manning Publications, 2020. </li>
+
+            <li>(Optional) Deep Learning (Ian J. Goodfellow, Yoshua Bengio and Aaron Courville), MIT Press, 2016.</li>
+        </ul>
+
+        <h2>Grading</h2>
+        
+        (Tentative, total - 110%) <br><br>
+        Assignments (about 3-4): 20% <br> 
+        Course Project: 30% <br>
+        Recitation: 15% <br>
+        Challenge Programming Assignment: 10% <br>
+        Mid-semester examination: 15% <br>
+        End-semester examination: 20% <br>
+
+
+        <h2>Pre-requisites</h2>
+
+        Fundamental understanding of Python3, coupled with practical reasoning and a proactive approach to problem-solving, is essential.
+
+        <h2>Instructor</h2>
+
+        Jimut Bahan Pal
+
+        <h2>Contact me</h2>
+
+        <b>my-last-name</b>.<b>my-first-name</b>@iitb.ac.in
+
+        <br><br>
+        
+        <div style="text-align: center;">
+            <div>
+                <img src="./assets/rkmveri_logo.png" alt="Left Logo" class="logo logo-left">
+                [<a href="https://jimut123.github.io/" target="_blank"> Back to home page </a>]
+                <img src="./assets/iitb_logo.png" alt="Right Logo" class="logo logo-right">
+            </div>
+        </div>
+        
+        
+        <br><br><br>
+
+
+        
+    </div>
+
+</body>
+<br><br><br>
+<footer>
+    <p> <a href="https://jimut123.github.io/" style="text-decoration: none; color: #FFF;"> (2023-2024) Copyright © Jimut Bahan Pal</a> </p>
+</footer>
+</html>
