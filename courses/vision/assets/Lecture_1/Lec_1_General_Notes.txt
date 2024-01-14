@@ -1,0 +1,28 @@
+Date: 13-01-2024
+Time: 4:30 - 7:30 P.M.
+
+--------------------------------
+
+In our upcoming lecture, we'll delve into 
+the fundamentals of PyTorch, with a primary 
+emphasis on deep learning and its practical 
+applications. Additionally, we intend to 
+leverage the comprehensive toolset provided 
+by OpenCV. I encourage you to inform me about 
+the topics you'd like covered in the recitation, 
+as well as your team name and members; please 
+note that teams are limited to a maximum of 
+two individuals.
+
+Furthermore, I will assign a project that extends 
+the concepts covered in the lecture, focusing 
+on areas such as 3D segmentation. The mid-semester 
+evaluation is scheduled to be flexible, tentatively 
+in March, following the conclusion of my own 
+mid-semester assessments. The end-of-semester 
+assessment is anticipated to take place in May. 
+Your active participation and timely communication 
+will contribute to a successful and enriching learning 
+experience.
+
+
