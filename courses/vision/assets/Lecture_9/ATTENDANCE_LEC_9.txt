@@ -1,20 +1,20 @@
-Date: 02-03-2024
-Time: 10:00 P.M. - 1:00 A.M.
+Date: 04-03-2024
+Time: 10:30 P.M. - 12:30 A.M.
 
 CREDIT                   ROLL
 --------------------------------
 Anirban Dey             - 19 - P
 Bidit Sadhukhan         - 22 - P
 Sourish Ghosh           - 36 - P
-Srijan Rit              - 37 - P 
+Srijan Rit              - 37 - P
 Shreyas Gangopadhyay    - 47 - P
 
 
 AUDIT 
 --------------------------------
-Debajyoti Maity         - 23 - P
+Debajyoti Maity         - 23 - A
 Shahreyar Hossain       - 34 - A
-Subhajyoti Maity        - 38 - P
+Subhajyoti Maity        - 38 - A
 Adish Mallik            - 40 - P
 Ayan Nandi              - 42 - P 
 
