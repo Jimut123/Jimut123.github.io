@@ -1,0 +1,29 @@
+INFO:
+=====
+These are the backup days remaining for the individuals.
+
+The total amount of backup days for this course is 11, and
+one can use at max of 7 days per assignment.
+
+All of the credit guys have used all the back-up days for the first 
+assignment, now if they use the remaining, marks will be deducted for the
+late submission. So, please start working early and submit in time.
+
+CREDIT                   ROLL
+--------------------------------
+Anirban Dey             - 19 - 4
+Bidit Sadhukhan         - 22 - 4
+Sourish Ghosh           - 36 - 4
+Srijan Rit              - 37 - 4
+Shreyas Gangopadhyay    - 47 - 4
+
+
+AUDIT -- Not counted
+--------------------------------
+Debajyoti Maity         - 23 - 11
+Shahreyar Hossain       - 34 - 
+Subhajyoti Maity        - 38 - 5
+Adish Mallik            - 40 - 4
+Ayan Nandi              - 42 - 
+
+(B22300)
