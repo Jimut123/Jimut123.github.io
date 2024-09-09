@@ -1,0 +1,159 @@
+/*
+	This is publications.css
+*/
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+.header {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    text-align: left;
+    font-family: 'Source Sans Pro', Arial, sans-serif; /* Adjusted to match main.css */
+}
+
+.publications-section {
+    background: #f2f1f1;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+hr {
+    border: none; /* Removes the default border */
+    height: 1px; /* Sets the height of the line */
+    background-color: #ccc; /* Sets the color of the line */
+    margin: 10px 0px; /* Adds some space above and below the line */
+}
+
+.paper {
+    margin-bottom: 0px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.paper .highlight-author {
+    font-weight: bold; /* Default, but explicitly stated here for clarity */
+    color: #666; /* Optionally change the color */
+}
+
+.paper:last-child {
+    border-bottom: none;
+}
+
+.paper .title {
+    font-size: 18px;
+    color: #333;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; /* Adjusted to match main.css */
+    text-transform: capitalize;
+}
+
+.paper p {
+    margin-bottom: 2px;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; /* Adjusted to match main.css */
+    font-size: 16px; /* Adjusted for consistency */
+    color: #414f57; /* Color adjusted for consistency */
+    text-transform: capitalize;
+}
+
+.paper-buttons {
+    display: flex;
+    justify-content: left; /* Align buttons to the left */
+    align-items: center;
+    margin-top: 10px;
+    height: 50px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px 10px;
+    margin: 0 5px;
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    font-weight: normal;
+    border-radius: 10px;
+    font-size: 12px;
+    font-family: 'Source Sans Pro', sans-serif; /* Adjusted to match main.css */
+    text-transform: none; /* No text transformation for consistency */
+}
+
+.button:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.footer {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.4);
+    border-top: 1px solid #eee;
+    padding: 15px 0;
+    font-family: 'Source Sans Pro', Arial, sans-serif; /* Adjusted to match main.css */
+}
+
+body {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+body.is-loaded {
+    opacity: 1;
+}
+
+/* Overlay style */
+body::after {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 1); /* White overlay */
+    pointer-events: none; /* Allows clicking through the overlay */
+    z-index: 1000;
+    transition: opacity 1.75s ease-out;
+}
+
+body.is-loaded::after {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.publications-section {
+    position: relative; /* Needed to position children absolutely within it */
+    background: #f2f1f1;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.horizontal-tabs {
+    position: absolute;
+    right: 10px; /* Adjust according to the layout */
+    top: 10px;  /* Adjust according to the layout */
+}
+
+.recent-publications {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    text-transform: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+.recent-publications a {
+    color: #0077cc; /* Typical blue color for links */
+    text-decoration: underline; /* Underscore to highlight it as a link */
+}
+
+.recent-publications a:hover {
+    color: #ff7496; /* Red color for hover effect to match other hover styles on your site */
+    text-decoration: none; /* Removing the underline on hover if desired */
+}
