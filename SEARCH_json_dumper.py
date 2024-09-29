@@ -17,6 +17,7 @@ def extract_and_format_to_json(folder_path, output_file):
                     # Extract permalink (using file_path)
                     permalink = file_path
                     permalink = permalink.replace('./', 'https://jimut123.github.io/')
+                    permalink = permalink.replace('_site/', '')
 
                     # Extract text from <div> with id "pad-container"
                     pad_container_div = soup.find('div', id='pad-container')
@@ -48,6 +49,6 @@ def extract_and_format_to_json(folder_path, output_file):
         json.dump(output_data, json_file, ensure_ascii=False, indent=4)
 
 # Replace with your target folder path and desired output JSON file name
-folder_path = './blogs/'
-output_file = 'output_data.json'
+folder_path = './_site'
+output_file = 'index.json'
 extract_and_format_to_json(folder_path, output_file)
