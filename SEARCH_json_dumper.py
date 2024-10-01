@@ -28,14 +28,16 @@ def extract_and_format_to_json(folder_path, output_file):
                         text_content = pad_container_div.get_text(separator=' ')
                         # Remove extra spaces and format as a single line
                         clean_text = ' '.join(text_content.split())
-                    
-                    # Extract text from <b> tags within <h1> with id "heading-font"
-                    headings = [b.get_text(strip=True) for h1 in soup.find_all('h1') for b in h1.find_all('b', id='heading-font')]
-                    
-                    # Use the headings as the title
-                    title = ', '.join(headings) if headings else "No Title"
 
-                    # Only add to output data if title is not "No Title"
+                    # Extract the first <h1> tag with length less than 100 characters
+                    title = "No Title"
+                    for h1 in soup.find_all('h1'):
+                        h1_text = h1.get_text(strip=True)
+                        if len(h1_text) < 120:
+                            title = h1_text
+                            break
+
+                    # Only add to output data if a valid title is found
                     if title != "No Title":
                         output_data.append({
                             "content": clean_text,
