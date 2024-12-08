@@ -259,6 +259,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a9196', end
   color:#fff;
 text-shadow:1px 1px 1px rgba(0,0,0,0.3);
 }
+
 .timeline-section:before{
   content:'';
   position:absolute;
