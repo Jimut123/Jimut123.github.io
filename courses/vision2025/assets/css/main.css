@@ -17,8 +17,13 @@
 	/* border: 1px solid #000;*/
 	text-align: left;
 	padding: 1em 1em 1em 1em; /* top, right, bottom, left */
-	/* color: #000; */
+	color: #000;
 	/* background: #fff; */
+	max-width: 100%; 
+	overflow-wrap: break-word; 
+	word-wrap: break-word; 
+	word-break: break-word;
+	text-align: justify;
 }
 
 h1 {
@@ -71,6 +76,66 @@ h3 {
 	margin-bottom: 0em;
 	text-align:center;
 	font-size:16px;
+	}
+
+
+
+	/* Announcements */
+
+	.announce_date {
+		font-size: .875em;
+		font-style: italic;
+	}
+	.announce {
+		font-size: inherit;
+	}
+	.schedule_week {
+		font-weight: bold;
+		background-color: #DDD;
+	}
+
+
+	/* Schedule */
+
+	table.schedule {
+		border-width: 1px;
+		border-spacing: 2px;
+		border-style: none;
+		border-color: #000;
+		border-collapse: collapse;
+		/* background-color: white; */
+	}
+	.schedule td {
+		padding: 8px;
+	}
+
+
+
+	/* Notes */
+
+	table.notes {
+		border: none;
+		border-collapse: collapse;
+	}
+
+	.notes td {
+		border-bottom: 1px solid;
+		padding-bottom: 5px;
+		padding-top: 5px;
+	}
+
+
+	/* Problem sets */
+
+	table.psets {
+	/*	border: none;*/
+		border-collapse: collapse;
+	}
+
+	.psets td {
+		border-bottom: 1px solid;
+		padding-bottom: 5px;
+		padding-top: 5px;
 	}
 
 
