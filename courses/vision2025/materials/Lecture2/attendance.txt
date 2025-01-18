@@ -1,0 +1,23 @@
+Date: 18-01-2024 
+Time: 9:00 P.M. - 12:00 A.M. (3 hrs) 
+
+--------------------------------------------------------------------------------------------------
+Name	                Department      Roll Number     Credit/Audit        Present/Absent
+--------------------------------------------------------------------------------------------------
+
+Atanu Saha              BDA             B2330024         Credit             
+Anurag Bose             CS              B2330043         Credit             
+Sanmitra Sur            BDA             B2330037         Credit             
+Aniket Ghosh            BDA             B2330018         Credit             
+Biswajit Rana           BDA             B2330026         Audit              
+Tuhin Patra             BDA             B2330041         Audit              
+Pranab Kumar Mondal     CS              B2330048         Credit             
+Debanjan Nanda          CS              B2330058         Credit             
+Saikat Kumar Ghosh      BDA             B2330035         Audit              
+Sayandeep Chatterjee    BDA             B2330038         Credit             
+Dipankar Dey            BDA             B2330116         Credit             
+Debayan Datta           BDA             B2330027         Credit             
+Amit Bera               BDA             B2330056         Credit             
+Sushovan Pan            CS              B2330054         Credit             
+
+--------------------------------------------------------------------------------------------------
