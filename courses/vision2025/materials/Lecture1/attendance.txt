@@ -15,7 +15,7 @@ Pranab Kumar Mondal     CS              B2330048         Credit             Pres
 Debanjan Nanda          CS              B2330058         Credit             Absent
 Saikat Kumar Ghosh      BDA             B2330035         Audit              Present
 Sayandeep Chatterjee    BDA             B2330038         Credit             Absent
-Dipankar Dey            BDA             B2330116         Credit             Absent
+Dipankar Dey            BDA             B2330116         Audit              Absent
 Debayan Datta           BDA             B2330027         Credit             Absent
 Amit Bera               BDA             B2330056         Credit             Present
 Sushovan Pan            CS              B2330054         Credit             Present
