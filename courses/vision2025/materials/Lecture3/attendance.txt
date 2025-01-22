@@ -1,22 +1,20 @@
-Date: 15-01-2025
-Time: 5:00 - 8:30 P.M. (3.5 hrs) 
+Date: 22-01-2025
+Time: 9:00 P.M. - 12:00 A.M. (3 hrs) 
 
 --------------------------------------------------------------------------------------------------
 Name	                Department      Roll Number     Credit/Audit        Present/Absent
 --------------------------------------------------------------------------------------------------
 
-Atanu Saha              BDA             B2330024         Credit             Absent
+Atanu Saha              BDA             B2330024         Credit             Present
 Anurag Bose             CS              B2330043         Credit             Present
 Sanmitra Sur            BDA             B2330037         Credit             Present
 Aniket Ghosh            BDA             B2330018         Credit             Present
 Biswajit Rana           BDA             B2330026         Audit              Present
-Tuhin Patra             BDA             B2330041         Audit              Present
+Tuhin Patra             BDA             B2330041         Audit              Absent
 Pranab Kumar Mondal     CS              B2330048         Credit             Present
-Debanjan Nanda          CS              B2330058         Credit             Absent
-Saikat Kumar Ghosh      BDA             B2330035         Audit              Present
-Sayandeep Chatterjee    BDA             B2330038         Credit             Absent
-Dipankar Dey            BDA             B2330116         Audit              Absent
-Debayan Datta           BDA             B2330027         Credit             Absent
+Saikat Kumar Ghosh      BDA             B2330035         Audit              Absent
+Sayandeep Chatterjee    BDA             B2330038         Credit             Present
+Dipankar Dey            BDA             B2330116         Audit              Present
 Amit Bera               BDA             B2330056         Credit             Present
 Sushovan Pan            CS              B2330054         Credit             Present
 
