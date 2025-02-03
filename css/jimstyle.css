@@ -9,7 +9,7 @@
 
 .keywords-blue
 {
-  background-color: blue; 
+  background-color: rgb(0, 200, 255); 
   border-radius: 5%;
   border-style: ridge;
   color: #fff;
@@ -36,7 +36,7 @@
 
 .keywords-deepblue
 {
-  background-color: navy; 
+  background-color: rgb(0, 94, 128); 
   border-radius: 5%;
   border-style: ridge;
   color: #fff;
@@ -71,7 +71,7 @@
 .top-buffer { margin-top:20px; }
 a 
 { 
-  color:  #06617d; 
+  color:  rgb(0, 136, 255); 
 }
 
 #pad-container-proj
@@ -368,4 +368,4 @@ text-shadow:1px 1px 1px rgba(0,0,0,0.3);
   padding-left: 1.1rem;
   padding-right: 1.1rem;
   }
-  }z
+  }

@@ -70,152 +70,225 @@
   <body onload = "myFunction()">
     <div id="loading"> </div>
     
-    
-<!------ Include the above in your HEAD tag ---------->
-<link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle Example</title>
+    <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
 
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <a class="navbar-brand" href="https://jimut123.github.io/" style="font-family: Georgia, Times, Times New Roman, serif;"> JIMUT </a>
+    <!-- Add this CSS for theme toggling -->
+    <style>
+        /* Define light theme */
+        :root {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --container-bg: #ffffff; /* Light background for containers */
+            --container-text: #000000; /* Light text for containers */
+            --special-color: #0076f4; /* Example: Dark blue for buttons/links */
+        }
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        /* Define dark theme */
+        [data-theme="dark"] {
+            --background-color: #413f3f;
+            --text-color: #ffffff;
+            --container-bg: #413f3f; /* Dark background for containers */
+            --container-text: #ffffff; /* Dark text for containers */
+            --special-color: #bb86fc; /* Example: Light purple for buttons/links in dark mode */
+        }
 
-  <span class="navbar-toggler-icon"></span>
-  </button>
+        /* Apply themes to the body and all elements inside it */
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.5s, color 0.5s;
+        }
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    
-    <ul class="navbar-nav mr-auto navbar-center" style="font-family: Georgia, Times, Times New Roman, serif;">
-      
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/"  class="nav-link">
-                    
-                      
-                        <img src="/img/icons/home.svg" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">HOME </font>
-                  </a>
-                </div>
-              </li>
-        
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/publications.html"  class="nav-link">
-                    
-                      
-                        <img src="/img/icons/publications.png" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">PUBLICATIONS </font>
-                  </a>
-                </div>
-              </li>
-        
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/blog.html"  class="nav-link">
-                    
-                      
-                        <img src="/img/icons/blog.svg" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">BLOG </font>
-                  </a>
-                </div>
-              </li>
-        
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/projects.html"  class="nav-link">
-                    
-                      
-                        <img src="/img/icons/projects.jpg" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">PROJECTS </font>
-                  </a>
-                </div>
-              </li>
-        
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/gallery.html"  class="nav-link">
-                    
-                      
-                        <img src="/img/icons/gallery.png" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">GALLERY </font>
-                  </a>
-                </div>
-              </li>
-        
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/random.html"  class="nav-link">
-                    
-                      
-                        <img src="/img/icons/certificates.png" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">RANDOM </font>
-                  </a>
-                </div>
-              </li>
-        
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/search/"  class="nav-link">
-                    
-                      
-                        <img src="/img/icons/search.png" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">SEARCH </font>
-                  </a>
-                </div>
-              </li>
-        
-    </ul>
-  
-  </div>
+        /* Ensure all divs and containers inherit the theme */
+        body div {
+            background-color: var(--container-bg);
+            color: var(--container-text);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Override specific colors for dark theme */
+        [data-theme="dark"] .btn-primary,
+        [data-theme="dark"] .bg-primary,
+        [data-theme="dark"] .text-primary {
+            background-color: var(--special-color) !important;
+            color: var(--container-text) !important;
+        }
+
+        /* Navbar active link styling (unchanged) */
+        .navbar ul li.active a, .navbar ul li a:hover {
+            background-color: #454747;
+            font-weight: bold;
+        }
+
+        /* Increase the size of the sun and moon emoji */
+        #theme-icon {
+            font-size: 2em; /* Adjust the size as needed */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light sticky-top">
+    <!-- Replace "JIMUT" with the sun/moon toggle button -->
+    <a class="navbar-brand" style="font-family: Georgia, Times, Times New Roman, serif;">
+        <button id="theme-toggle" class="btn btn-link p-0" style="color: inherit;">
+            <span id="theme-icon">🌞</span>
+        </button>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto navbar-center" style="font-family: Georgia, Times, Times New Roman, serif;">
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/"  class="nav-link">
+                            
+                                <img src="/img/icons/home.svg" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">HOME </font>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/publications.html"  class="nav-link">
+                            
+                                <img src="/img/icons/publications.png" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">PUBLICATIONS </font>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/blog.html"  class="nav-link">
+                            
+                                <img src="/img/icons/blog.svg" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">BLOG </font>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/projects.html"  class="nav-link">
+                            
+                                <img src="/img/icons/projects.jpg" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">PROJECTS </font>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/gallery.html"  class="nav-link">
+                            
+                                <img src="/img/icons/gallery.png" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">GALLERY </font>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/random.html"  class="nav-link">
+                            
+                                <img src="/img/icons/certificates.png" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">RANDOM </font>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/search/"  class="nav-link">
+                            
+                                <img src="/img/icons/search.png" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">SEARCH </font>
+                        </a>
+                    </div>
+                </li>
+            
+        </ul>
+    </div>
 </nav>
 
+<!-- Add this JavaScript for theme toggling -->
+<script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
 
-<script type="text/javascript">
-  $(function() {
-      // this will get the full URL at the address bar
-      var url = window.location.href;
+    // Check for saved theme in localStorage
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        body.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+            themeIcon.textContent = '🌜';
+        } else {
+            themeIcon.textContent = '🌞';
+        }
+    } else {
+        body.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌞';
+    }
 
-      // passes on every "a" tag
-      $(".navbar a").each(function() {
-          // checks if its the same on the address bar
-          if (url == (this.href)) {
-              $(this).closest("li").addClass("active");
-              //for making parent of submenu active
-             $(this).closest("li").parent().parent().addClass("active");
-          }
-      });
-  });        
+    // Toggle theme on button click
+    toggleButton.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        if (currentTheme === 'light') {
+            body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            themeIcon.textContent = '🌜';
+        } else {
+            body.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            themeIcon.textContent = '🌞';
+        }
+    });
 </script>
 
+<!-- Existing JavaScript for active link styling -->
+<script type="text/javascript">
+    $(function() {
+        // this will get the full URL at the address bar
+        var url = window.location.href;
 
-<style>
+        // passes on every "a" tag
+        $(".navbar a").each(function() {
+            // checks if its the same on the address bar
+            if (url == (this.href)) {
+                $(this).closest("li").addClass("active");
+                //for making parent of submenu active
+                $(this).closest("li").parent().parent().addClass("active");
+            }
+        });
+    });        
+</script>
 
-.navbar ul li.active a, .navbar ul li a:hover {
-    background-color: #454747;
-    font-weight:bold;
-}
-</style>
+</body>
+</html>
 
-
-
-    <div align="center">
-    
-   
-    
+    <div align="center">  
+      <br><br>
       
       <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
 
@@ -241,7 +314,7 @@
 <br>
 
 <div id="pad-container">
-    <div class="jumbotron jumbotron-fluid" align="center" id="exp-font">
+    <div align="center" id="exp-font">
             <div class="container" align="justify">
                 Here I will share my notebooks which was made during Machine Learning Course. These are mainly focussed
                 on artificial data generation and fundamentals of Machine Learning. This is an ongoing blog site and I will
@@ -396,6 +469,8 @@
 </div>
 
 
+
+      <br><br>
       
     
     
@@ -405,14 +480,14 @@
 
 
   <!-- Footer -->
-  <footer class="footer page-footer font-small elegant-color-dark pt-1">
+  <footer class="footer page-footer font-small pt-1">
     <div  align="center">
 
 
 
           <!-- Copyright -->
-          <div class="footer-copyright"> 2019-2025
-              <a href="https://github.com/Jimut123"> Copyright © Jimut Bahan Pal</a>
+          <div class="footer-copyright" style="color: rgb(217, 61, 61);"> 2019-2025
+              <a href="https://github.com/Jimut123" style="color: rgb(217, 61, 61);"> Copyright © Jimut Bahan Pal</a>
           </div>
           <!-- Copyright -->
     </div>

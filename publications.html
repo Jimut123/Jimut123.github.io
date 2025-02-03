@@ -70,152 +70,225 @@
   <body onload = "myFunction()">
     <div id="loading"> </div>
     
-    
-<!------ Include the above in your HEAD tag ---------->
-<link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle Example</title>
+    <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
 
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <a class="navbar-brand" href="https://jimut123.github.io/" style="font-family: Georgia, Times, Times New Roman, serif;"> JIMUT </a>
+    <!-- Add this CSS for theme toggling -->
+    <style>
+        /* Define light theme */
+        :root {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --container-bg: #ffffff; /* Light background for containers */
+            --container-text: #000000; /* Light text for containers */
+            --special-color: #0076f4; /* Example: Dark blue for buttons/links */
+        }
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        /* Define dark theme */
+        [data-theme="dark"] {
+            --background-color: #413f3f;
+            --text-color: #ffffff;
+            --container-bg: #413f3f; /* Dark background for containers */
+            --container-text: #ffffff; /* Dark text for containers */
+            --special-color: #bb86fc; /* Example: Light purple for buttons/links in dark mode */
+        }
 
-  <span class="navbar-toggler-icon"></span>
-  </button>
+        /* Apply themes to the body and all elements inside it */
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.5s, color 0.5s;
+        }
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    
-    <ul class="navbar-nav mr-auto navbar-center" style="font-family: Georgia, Times, Times New Roman, serif;">
-      
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/"  class="nav-link">
-                    
-                      
-                        <img src="/img/icons/home.svg" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">HOME </font>
-                  </a>
-                </div>
-              </li>
-        
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/publications.html"  style="color: #05f270;" class="nav-link">
-                    
-                      
-                        <img src="/img/icons/publications.png" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">PUBLICATIONS </font>
-                  </a>
-                </div>
-              </li>
-        
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/blog.html"  class="nav-link">
-                    
-                      
-                        <img src="/img/icons/blog.svg" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">BLOG </font>
-                  </a>
-                </div>
-              </li>
-        
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/projects.html"  class="nav-link">
-                    
-                      
-                        <img src="/img/icons/projects.jpg" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">PROJECTS </font>
-                  </a>
-                </div>
-              </li>
-        
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/gallery.html"  class="nav-link">
-                    
-                      
-                        <img src="/img/icons/gallery.png" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">GALLERY </font>
-                  </a>
-                </div>
-              </li>
-        
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/random.html"  class="nav-link">
-                    
-                      
-                        <img src="/img/icons/certificates.png" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">RANDOM </font>
-                  </a>
-                </div>
-              </li>
-        
-              <li class="nav-item">
-                <div class="container pull-left">
-                  <a href="/search/"  class="nav-link">
-                    
-                      
-                        <img src="/img/icons/search.png" alt="icon" height="25px" width="25px">
-                      
-                   
-                    <font size="4px">SEARCH </font>
-                  </a>
-                </div>
-              </li>
-        
-    </ul>
-  
-  </div>
+        /* Ensure all divs and containers inherit the theme */
+        body div {
+            background-color: var(--container-bg);
+            color: var(--container-text);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Override specific colors for dark theme */
+        [data-theme="dark"] .btn-primary,
+        [data-theme="dark"] .bg-primary,
+        [data-theme="dark"] .text-primary {
+            background-color: var(--special-color) !important;
+            color: var(--container-text) !important;
+        }
+
+        /* Navbar active link styling (unchanged) */
+        .navbar ul li.active a, .navbar ul li a:hover {
+            background-color: #454747;
+            font-weight: bold;
+        }
+
+        /* Increase the size of the sun and moon emoji */
+        #theme-icon {
+            font-size: 2em; /* Adjust the size as needed */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light sticky-top">
+    <!-- Replace "JIMUT" with the sun/moon toggle button -->
+    <a class="navbar-brand" style="font-family: Georgia, Times, Times New Roman, serif;">
+        <button id="theme-toggle" class="btn btn-link p-0" style="color: inherit;">
+            <span id="theme-icon">🌞</span>
+        </button>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto navbar-center" style="font-family: Georgia, Times, Times New Roman, serif;">
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/"  class="nav-link">
+                            
+                                <img src="/img/icons/home.svg" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">HOME </font>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/publications.html"  style="color: #05f270;" class="nav-link">
+                            
+                                <img src="/img/icons/publications.png" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">PUBLICATIONS </font>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/blog.html"  class="nav-link">
+                            
+                                <img src="/img/icons/blog.svg" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">BLOG </font>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/projects.html"  class="nav-link">
+                            
+                                <img src="/img/icons/projects.jpg" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">PROJECTS </font>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/gallery.html"  class="nav-link">
+                            
+                                <img src="/img/icons/gallery.png" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">GALLERY </font>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/random.html"  class="nav-link">
+                            
+                                <img src="/img/icons/certificates.png" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">RANDOM </font>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/search/"  class="nav-link">
+                            
+                                <img src="/img/icons/search.png" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">SEARCH </font>
+                        </a>
+                    </div>
+                </li>
+            
+        </ul>
+    </div>
 </nav>
 
+<!-- Add this JavaScript for theme toggling -->
+<script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
 
-<script type="text/javascript">
-  $(function() {
-      // this will get the full URL at the address bar
-      var url = window.location.href;
+    // Check for saved theme in localStorage
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        body.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+            themeIcon.textContent = '🌜';
+        } else {
+            themeIcon.textContent = '🌞';
+        }
+    } else {
+        body.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌞';
+    }
 
-      // passes on every "a" tag
-      $(".navbar a").each(function() {
-          // checks if its the same on the address bar
-          if (url == (this.href)) {
-              $(this).closest("li").addClass("active");
-              //for making parent of submenu active
-             $(this).closest("li").parent().parent().addClass("active");
-          }
-      });
-  });        
+    // Toggle theme on button click
+    toggleButton.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        if (currentTheme === 'light') {
+            body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            themeIcon.textContent = '🌜';
+        } else {
+            body.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            themeIcon.textContent = '🌞';
+        }
+    });
 </script>
 
+<!-- Existing JavaScript for active link styling -->
+<script type="text/javascript">
+    $(function() {
+        // this will get the full URL at the address bar
+        var url = window.location.href;
 
-<style>
+        // passes on every "a" tag
+        $(".navbar a").each(function() {
+            // checks if its the same on the address bar
+            if (url == (this.href)) {
+                $(this).closest("li").addClass("active");
+                //for making parent of submenu active
+                $(this).closest("li").parent().parent().addClass("active");
+            }
+        });
+    });        
+</script>
 
-.navbar ul li.active a, .navbar ul li a:hover {
-    background-color: #454747;
-    font-weight:bold;
-}
-</style>
+</body>
+</html>
 
-
-
-    <div align="center">
-    
-   
-    
+    <div align="center">  
+      <br><br>
       
       <link href="https://fonts.googleapis.com/css?family=Playfair+Display&amp;display=swap" rel="stylesheet" />
 
@@ -252,7 +325,7 @@
 <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
 
 <div id="pad-container">
-    <div class="jumbotron jumbotron-fluid" align="justify">
+    <div align="justify">
         <div class="container" id="publication-font">
             
 
@@ -278,28 +351,28 @@
                                     
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#abstractrv_pbs" role="button" aria-expanded="false" aria-controls="abstractrv_pbs" id="pub-page-btn-font">Abstract</a>
+                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#abstractrv_pbs" role="button" aria-expanded="false" aria-controls="abstractrv_pbs" id="pub-page-btn-font">Abstract</a>
                                     
 
                                     
-                                        <a type="button" class="btn btn-outline-dark btn-sm" href="https://www.sciencedirect.com/science/article/pii/S0957417424005268" target="_blank" id="pub-page-btn-font">Article</a>
-                                    
-
-                                    
-
-                                    
-                                        <a class="btn btn-outline-dark btn-sm" href="../publications/RV_PBS/thesis_presentation.pdf" target="_blank" id="pub-page-btn-font">Slide</a>
+                                        <a type="button" class="btn btn-sm" href="https://www.sciencedirect.com/science/article/pii/S0957417424005268" target="_blank" id="pub-page-btn-font">Article</a>
                                     
 
                                     
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" href="https://github.com/Jimut123/cellseg" target="_blank" id="pub-page-btn-font">Code</a>
+                                        <a class="btn btn-sm" href="../publications/RV_PBS/thesis_presentation.pdf" target="_blank" id="pub-page-btn-font">Slide</a>
+                                    
+
+                                    
+
+                                    
+                                        <a class="btn btn-sm" href="https://github.com/Jimut123/cellseg" target="_blank" id="pub-page-btn-font">Code</a>
                                     
 
                                    
                                     
-                                        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#bibrv_pbs" role="button" aria-expanded="false" aria-controls="bibrv_pbs" id="pub-page-btn-font">Bibtex</a>
+                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#bibrv_pbs" role="button" aria-expanded="false" aria-controls="bibrv_pbs" id="pub-page-btn-font">Bibtex</a>
                                     
                                    
                                 </p>
@@ -349,26 +422,26 @@
                                     
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#abstractbmsan" role="button" aria-expanded="false" aria-controls="abstractbmsan" id="pub-page-btn-font">Abstract</a>
+                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#abstractbmsan" role="button" aria-expanded="false" aria-controls="abstractbmsan" id="pub-page-btn-font">Abstract</a>
                                     
 
                                     
-                                        <a type="button" class="btn btn-outline-dark btn-sm" href="https://www.tandfonline.com/doi/full/10.1080/13682199.2023.2174657" target="_blank" id="pub-page-btn-font">Article</a>
-                                    
-
-                                    
-
+                                        <a type="button" class="btn btn-sm" href="https://www.tandfonline.com/doi/full/10.1080/13682199.2023.2174657" target="_blank" id="pub-page-btn-font">Article</a>
                                     
 
                                     
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" href="https://github.com/Jimut123/bmsan" target="_blank" id="pub-page-btn-font">Code</a>
+
+                                    
+
+                                    
+                                        <a class="btn btn-sm" href="https://github.com/Jimut123/bmsan" target="_blank" id="pub-page-btn-font">Code</a>
                                     
 
                                    
                                     
-                                        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#bibbmsan" role="button" aria-expanded="false" aria-controls="bibbmsan" id="pub-page-btn-font">Bibtex</a>
+                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#bibbmsan" role="button" aria-expanded="false" aria-controls="bibbmsan" id="pub-page-btn-font">Bibtex</a>
                                     
                                    
                                 </p>
@@ -416,15 +489,15 @@
                                 <p>
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#authors_list_bigbmic" role="button" aria-expanded="false" aria-controls="authors_list_bigbmic" id="pub-page-btn-font">Authors</a>
+                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#authors_list_bigbmic" role="button" aria-expanded="false" aria-controls="authors_list_bigbmic" id="pub-page-btn-font">Authors</a>
                                     
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#abstractbmic" role="button" aria-expanded="false" aria-controls="abstractbmic" id="pub-page-btn-font">Abstract</a>
+                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#abstractbmic" role="button" aria-expanded="false" aria-controls="abstractbmic" id="pub-page-btn-font">Abstract</a>
                                     
 
                                     
-                                        <a type="button" class="btn btn-outline-dark btn-sm" href="https://arxiv.org/abs/2212.08568" target="_blank" id="pub-page-btn-font">Article</a>
+                                        <a type="button" class="btn btn-sm" href="https://arxiv.org/abs/2212.08568" target="_blank" id="pub-page-btn-font">Article</a>
                                     
 
                                     
@@ -437,7 +510,7 @@
 
                                    
                                     
-                                        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#bibbmic" role="button" aria-expanded="false" aria-controls="bibbmic" id="pub-page-btn-font">Bibtex</a>
+                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#bibbmic" role="button" aria-expanded="false" aria-controls="bibbmic" id="pub-page-btn-font">Bibtex</a>
                                     
                                    
                                 </p>
@@ -493,30 +566,30 @@
                                     
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#abstractmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="abstractmiccai_qubiq_21" id="pub-page-btn-font">Abstract</a>
+                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#abstractmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="abstractmiccai_qubiq_21" id="pub-page-btn-font">Abstract</a>
                                     
 
                                     
-                                        <a type="button" class="btn btn-outline-dark btn-sm" href="https://link.springer.com/chapter/10.1007/978-3-031-09002-8_49" target="_blank" id="pub-page-btn-font">Article</a>
+                                        <a type="button" class="btn btn-sm" href="https://link.springer.com/chapter/10.1007/978-3-031-09002-8_49" target="_blank" id="pub-page-btn-font">Article</a>
                                     
 
                                     
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" href="../publications/MICCAI_QUBIQ_21/Jimut_Bahan_Pal_QUBIQ_MICCAI.pdf" target="_blank" id="pub-page-btn-font">Slide</a>
+                                        <a class="btn btn-sm" href="../publications/MICCAI_QUBIQ_21/Jimut_Bahan_Pal_QUBIQ_MICCAI.pdf" target="_blank" id="pub-page-btn-font">Slide</a>
                                     
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" href="https://www.youtube.com/watch?v=AaVvNG-ihMU" target="_blank" id="pub-page-btn-font">Video</a>
+                                        <a class="btn btn-sm" href="https://www.youtube.com/watch?v=AaVvNG-ihMU" target="_blank" id="pub-page-btn-font">Video</a>
                                     
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" href="https://github.com/Jimut123/MICCAI_QUBIQ_21" target="_blank" id="pub-page-btn-font">Code</a>
+                                        <a class="btn btn-sm" href="https://github.com/Jimut123/MICCAI_QUBIQ_21" target="_blank" id="pub-page-btn-font">Code</a>
                                     
 
                                    
                                     
-                                        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#bibmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="bibmiccai_qubiq_21" id="pub-page-btn-font">Bibtex</a>
+                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#bibmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="bibmiccai_qubiq_21" id="pub-page-btn-font">Bibtex</a>
                                     
                                    
                                 </p>
@@ -566,30 +639,30 @@
                                     
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#abstractcxr_19" role="button" aria-expanded="false" aria-controls="abstractcxr_19" id="pub-page-btn-font">Abstract</a>
+                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#abstractcxr_19" role="button" aria-expanded="false" aria-controls="abstractcxr_19" id="pub-page-btn-font">Abstract</a>
                                     
 
                                     
-                                        <a type="button" class="btn btn-outline-dark btn-sm" href="https://ieeexplore.ieee.org/document/9708580" target="_blank" id="pub-page-btn-font">Article</a>
+                                        <a type="button" class="btn btn-sm" href="https://ieeexplore.ieee.org/document/9708580" target="_blank" id="pub-page-btn-font">Article</a>
                                     
 
                                     
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" href="../publications/CXR_19/CXR_COVID_19_slide.pdf" target="_blank" id="pub-page-btn-font">Slide</a>
+                                        <a class="btn btn-sm" href="../publications/CXR_19/CXR_COVID_19_slide.pdf" target="_blank" id="pub-page-btn-font">Slide</a>
                                     
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" href="https://www.youtube.com/watch?v=27ixHn6SP_4" target="_blank" id="pub-page-btn-font">Video</a>
+                                        <a class="btn btn-sm" href="https://www.youtube.com/watch?v=27ixHn6SP_4" target="_blank" id="pub-page-btn-font">Video</a>
                                     
 
                                     
-                                        <a class="btn btn-outline-dark btn-sm" href="https://github.com/Jimut123/CXR_Covid-19" target="_blank" id="pub-page-btn-font">Code</a>
+                                        <a class="btn btn-sm" href="https://github.com/Jimut123/CXR_Covid-19" target="_blank" id="pub-page-btn-font">Code</a>
                                     
 
                                    
                                     
-                                        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#bibcxr_19" role="button" aria-expanded="false" aria-controls="bibcxr_19" id="pub-page-btn-font">Bibtex</a>
+                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#bibcxr_19" role="button" aria-expanded="false" aria-controls="bibcxr_19" id="pub-page-btn-font">Bibtex</a>
                                     
                                    
                                 </p>
@@ -635,6 +708,8 @@ In most cases, these works may not be reposted without the explicit permission o
 
 </div>
 
+
+      <br><br>
       
     
     
@@ -644,14 +719,14 @@ In most cases, these works may not be reposted without the explicit permission o
 
 
   <!-- Footer -->
-  <footer class="footer page-footer font-small elegant-color-dark pt-1">
+  <footer class="footer page-footer font-small pt-1">
     <div  align="center">
 
 
 
           <!-- Copyright -->
-          <div class="footer-copyright"> 2019-2025
-              <a href="https://github.com/Jimut123"> Copyright © Jimut Bahan Pal</a>
+          <div class="footer-copyright" style="color: rgb(217, 61, 61);"> 2019-2025
+              <a href="https://github.com/Jimut123" style="color: rgb(217, 61, 61);"> Copyright © Jimut Bahan Pal</a>
           </div>
           <!-- Copyright -->
     </div>
