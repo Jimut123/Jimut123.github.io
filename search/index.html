@@ -1,10 +1,9 @@
-
 <center>
-    <br><br><br><br><br>
-    <a href="https://jimut123.github.io/" data-hover="If done searching :)" class="btn4">Go Back!</a>
-    <br><br><br><br><br>
-    <div>
-        <!DOCTYPE html>
+  <br><br><br><br><br>
+  <a href="https://jimut123.github.io/" data-hover="If done searching :)" class="btn4">Home</a>
+  <br><br><br><br><br>
+  <div>
+      <!DOCTYPE html>
 <html lang="en" dir="auto">
 
 <head><meta charset="utf-8">
@@ -139,20 +138,7 @@ if (!doNotTrack) {
     <ul id="searchResults" aria-label="search results"></ul>
 </div>
     </main>
-<!--     
-<footer class="footer">
-    <span>&copy; 2024 <a href="https://jimut123.github.io/">Jimut Bahan Pal's Website</a></span>
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a> -->
+
 
 <script>
     let menu = document.getElementById('menu')
@@ -212,9 +198,9 @@ if (!doNotTrack) {
 
 </html>
 
-    </div>
+  </div>
 
-    
+  
 
 
   <!-- Footer -->
@@ -237,54 +223,61 @@ if (!doNotTrack) {
 </center>
 
 <style>
-
-
-
 /* ------ btn4 ------ */
 .btn4 {
-  @btn4-color: #DB701F;
-  background: @btn4-color;
-  border: solid 7px #000;
-  padding: 20px;
-  box-shadow: inset 0 0 6px darken(@btn4-color,20%);
+  background: linear-gradient(45deg, #1fdbc2, #42aaff);
+  border: none;
+  padding: 20px 40px;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   text-transform: uppercase;
   font-weight: bold;
-  font-family: "Tahoma", sans-serif;
-  text-shadow: 1px 1px 3px darken(@btn4-color,20%);
-  color: #000000;
+  font-family: "Poppins", sans-serif;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
   position: relative;
   width: 300px;
-  &:hover {
-    background: green;
-    &:before {
-      content: attr(data-hover);
-      display: block;
-      background: #c63535;
-      position: absolute;
-      top: 100%;
-      left: -7px;
-      right: -7px;
-      padding: 15px; 
-    }
-    &:after {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 0;
-      height: 0;
-      border: solid 10px transparent;
-      border-bottom-color: #000;
-      bottom: 0;
-      left: 50%;
-      margin-left: -10px;
-      z-index: 2;
-    }
-  }
-  
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
+.btn4:hover {
+  background: linear-gradient(45deg, #aaff42, #1fdbb2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
 
+.btn4:hover:before {
+  content: attr(data-hover);
+  display: block;
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  border-radius: 0 0 50px 50px;
+  color: #ffffff;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
 
+.btn4:hover:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 10px transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  left: 50%;
+  margin-left: -10px;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
 
 </style>
-
