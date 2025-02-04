@@ -18,7 +18,7 @@
 }
 
 .dark {
-    --theme: rgb(29, 30, 32);
+    --theme: #413f3f;
     --entry: rgb(46, 46, 51);
     --primary: rgb(255, 255, 255);
     --secondary: rgb(155, 156, 157);
