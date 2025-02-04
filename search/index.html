@@ -1,32 +1,289 @@
-<center>
-  <br><br><br><br><br>
-  <a href="https://jimut123.github.io/" data-hover="If done searching :)" class="btn4">Home</a>
-  <br><br><br><br><br>
-  <div>
-      <!DOCTYPE html>
-<html lang="en" dir="auto">
+<!doctype html>
 
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+
 <title>Search | Jimut Bahan Pal's Website</title>
-<meta name="keywords" content="" />
-<meta name="description" content="Search - Jimut Bahan Pal's Website">
 
 
+<script type="text/javascript"  src="../js/bootstrap.min.js"></script>
+
+<script type="text/javascript"  src="../js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript"  src="../js/popper.min.js"></script>
+
+
+<link rel='stylesheet' id='wsl-widget-css'  href='https://mdbootstrap.com/wp-content/plugins/wordpress-social-login/assets/css/style.css?ver=5.1.1' type='text/css' media='all' />
+
+<link rel='stylesheet' id='compiled.css-css'  href='https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled-4.8.0.min.css?ver=4.8.0' type='text/css' media='all' />
+
+
+<link rel="shortcut icon" type="image/x-icon" href="../img/thumbnail.jpg">
+
+
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+    
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle Example</title>
+    <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+
+    <!-- Add this CSS for theme toggling -->
+    <style>
+        /* Define light theme */
+        :root {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --container-bg: #ffffff; /* Light background for containers */
+            --container-text: #000000; /* Light text for containers */
+            --special-color: #0076f4; /* Example: Dark blue for buttons/links */
+        }
+
+        /* Define dark theme */
+        [data-theme="dark"] {
+            --background-color: #413f3f;
+            --text-color: #ffffff;
+            --container-bg: #413f3f; /* Dark background for containers */
+            --container-text: #ffffff; /* Dark text for containers */
+            --special-color: #bb86fc; /* Example: Light purple for buttons/links in dark mode */
+        }
+
+        /* Apply themes to the body and all elements inside it */
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Ensure all divs and containers inherit the theme */
+        body div {
+            background-color: var(--container-bg);
+            color: var(--container-text);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Override specific colors for dark theme */
+        [data-theme="dark"] .btn-primary,
+        [data-theme="dark"] .bg-primary,
+        [data-theme="dark"] .text-primary {
+            background-color: var(--special-color) !important;
+            color: var(--container-text) !important;
+        }
+
+        /* Navbar active link styling (unchanged) */
+        .navbar ul li.active a, .navbar ul li a:hover {
+            background-color: #e5e8d1;
+            font-weight: bold;
+        }
+
+        /* Increase the size of the sun and moon emoji */
+        #theme-icon {
+            font-size: 2em; /* Adjust the size as needed */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light sticky-top">
+    <!-- Replace "JIMUT" with the sun/moon toggle button -->
+    <a class="navbar-brand" style="font-family: Georgia, Times, Times New Roman, serif;">
+        <button id="theme-toggle" class="btn btn-link p-0" style="color: inherit;">
+            <span id="theme-icon">🌞</span>
+        </button>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto navbar-center" style="font-family: Georgia, Times, Times New Roman, serif;">
+
+
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/"  class="nav-link">
+                        
+                            
+                                <img src="/img/icons/home.svg" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">HOME </font>
+                            
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/publications.html"  class="nav-link">
+                        
+                            
+                                <img src="/img/icons/publications.png" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">PUBLICATIONS </font>
+                            
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/blog.html"  class="nav-link">
+                        
+                            
+                                <img src="/img/icons/blog.svg" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">BLOG </font>
+                            
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/projects.html"  class="nav-link">
+                        
+                            
+                                <img src="/img/icons/projects.jpg" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">PROJECTS </font>
+                            
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/gallery.html"  class="nav-link">
+                        
+                            
+                                <img src="/img/icons/gallery.png" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">GALLERY </font>
+                            
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/random.html"  class="nav-link">
+                        
+                            
+                                <img src="/img/icons/certificates.png" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">RANDOM </font>
+                            
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/search/"  style="color: #05f270;" class="nav-link">
+                        
+                            
+                                <img src="/img/icons/search.png" alt="icon" height="25px" width="25px">
+                            
+                            <font size="4px" style="color: #18a236;">SEARCH </font>
+                            
+                        </a>
+                    </div>
+                </li>
+            
+
+           
+        </ul>
+    </div>
+</nav>
+
+<!-- Add this JavaScript for theme toggling -->
+<script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    // Check for saved theme in localStorage
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        body.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+            themeIcon.textContent = '🌜';
+        } else {
+            themeIcon.textContent = '🌞';
+        }
+    } else {
+        body.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌞';
+    }
+
+    // Toggle theme on button click
+    toggleButton.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        if (currentTheme === 'light') {
+            body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            themeIcon.textContent = '🌜';
+        } else {
+            body.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            themeIcon.textContent = '🌞';
+        }
+    });
+</script>
+
+<!-- Existing JavaScript for active link styling -->
+<script type="text/javascript">
+    $(function() {
+        // this will get the full URL at the address bar
+        var url = window.location.href;
+
+        // passes on every "a" tag
+        $(".navbar a").each(function() {
+            // checks if its the same on the address bar
+            if (url == (this.href)) {
+                $(this).closest("li").addClass("active");
+                //for making parent of submenu active
+                $(this).closest("li").parent().parent().addClass("active");
+            }
+        });
+    });        
+</script>
+
+</body>
+</html>
+
+<center>
+
+      <title>Search | Jimut Bahan Pal's Website</title>
 
 
 <meta name="author" content="Deep Search Jimut's Website">
 <link rel="canonical" href="https://jimut123.github.io/search/" />
-<link crossorigin="anonymous" href="stylesheet.min.67a6fb6e33089cb29e856bcc95d7aa39f70049a42b123105531265a0d9f1258b.css" rel="preload stylesheet" as="style"><link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
+
+<link crossorigin="anonymous" href="stylesheet.min.67a6fb6e33089cb29e856bcc95d7aa39f70049a42b123105531265a0d9f1258b.css" 
+        rel="preload stylesheet" as="style"><link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
+
 <script defer crossorigin="anonymous" src="search.min.5161323bceb3fb5fb4dc241cf529d1be3c36c59a7fda1105c1fbc0e55991ae9f.js"></script>
 <link rel="icon" type="image/png" sizes="16x16" href="https://jimut123.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://jimut123.github.io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://jimut123.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://jimut123.github.io/safari-pinned-tab.svg">
+<link rel="mask-icon" href="https://jimut123.github.io/safari-pinned-tab.svg">  
+
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
+
+
 <noscript>
     <style>
         #theme-toggle,
@@ -126,18 +383,18 @@ if (!doNotTrack) {
 <main class="main">
 
     <header class="page-header">
-        <h1>Deep Search Jimut's Website
+        <h1 id="bold_id">Deep Search Jimut's Website
             <img src="imgs/search.svg" style="width:10%; display: inline-block;">
-        </h1>
-    <div class="post-meta"></div>
-</header>
+            </h1>
+        <div class="post-meta"></div>
+    </header>
 
-<div id="searchbox">
-    <input id="searchInput" autofocus placeholder="Type to search ↵"
-        aria-label="search" type="search" autocomplete="off">
-    <ul id="searchResults" aria-label="search results"></ul>
-</div>
-    </main>
+    <div id="searchbox">
+        <input id="searchInput" autofocus placeholder="Type to search ↵"
+            aria-label="search" type="search" autocomplete="off">
+        <ul id="searchResults" aria-label="search results"></ul>
+    </div>
+</main>
 
 
 <script>
@@ -196,19 +453,18 @@ if (!doNotTrack) {
 </script>
 </body>
 
-</html>
 
-  </div>
 
-  
+
+</center>
+
+
 
 
   <!-- Footer -->
   <footer class="footer page-footer font-small pt-1">
     <div  align="center">
-
-
-
+      
           <!-- Copyright -->
           <div class="footer-copyright" style="color: rgb(217, 61, 61);"> 2019-2025
               <a href="https://github.com/Jimut123" style="color: rgb(217, 61, 61);"> Copyright © Jimut Bahan Pal</a>
@@ -220,64 +476,5 @@ if (!doNotTrack) {
 
 
 
-</center>
 
-<style>
-/* ------ btn4 ------ */
-.btn4 {
-  background: linear-gradient(45deg, #1fdbc2, #42aaff);
-  border: none;
-  padding: 20px 40px;
-  border-radius: 50px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  text-transform: uppercase;
-  font-weight: bold;
-  font-family: "Poppins", sans-serif;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-  color: #ffffff;
-  position: relative;
-  width: 300px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
 
-.btn4:hover {
-  background: linear-gradient(45deg, #aaff42, #1fdbb2);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
-}
-
-.btn4:hover:before {
-  content: attr(data-hover);
-  display: block;
-  background: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  padding: 10px;
-  border-radius: 0 0 50px 50px;
-  color: #ffffff;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.btn4:hover:after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 10px transparent;
-  border-bottom-color: rgba(0, 0, 0, 0.7);
-  bottom: 0;
-  left: 50%;
-  margin-left: -10px;
-  z-index: 2;
-  transition: all 0.3s ease;
-}
-
-</style>
