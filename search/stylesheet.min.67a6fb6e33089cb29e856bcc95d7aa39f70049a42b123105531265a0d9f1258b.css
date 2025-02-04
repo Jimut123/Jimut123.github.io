@@ -149,10 +149,10 @@ textarea:-webkit-autofill {
     box-shadow: 0 0 0 50px var(--theme)inset
 }
 
-img {
+/* img {
     display: block;
     max-width: 100%
-}
+} */
 
 ::-webkit-scrollbar-track {
     background: 0 0
