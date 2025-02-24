@@ -1,0 +1,686 @@
+<link href="https://fonts.googleapis.com/css?family=Cardo&display=swap" rel="stylesheet"> 
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<!--
+<link rel="stylesheet" href="/css/compiled-4.8.0.min.css">
+-->
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" src="../js/popper.min.js"></script>
+
+<link rel='stylesheet' id='wsl-widget-css' href='https://mdbootstrap.com/wp-content/plugins/wordpress-social-login/assets/css/style.css?ver=5.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='compiled.css-css' href='https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled-4.8.0.min.css?ver=4.8.0' type='text/css' media='all' />
+
+<link rel="shortcut icon" type="image/x-icon" href="../img/thumbnail.jpg">
+
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Lazy loading of Gallery and stuffs!-->
+<script src="../js/jimjs.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" /> 
+
+<link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+
+
+<title>Morocco and Qatar Trip - MICCAI 2024</title>
+
+<style>
+body {
+  /* Add padding to prevent content from being hidden behind fixed footer */
+  padding-bottom: 60px; /* Adjust this value based on your footer height */
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  /* background-color: #fff; Add background color so text is visible over content */
+  /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); Optional: adds slight shadow for separation */
+  z-index: 1000; /* Ensures footer stays on top of other content */
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  /* text-align: center; */
+  /* background-color: #fff; Add background color so text is visible over content */
+  /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); Optional: adds slight shadow for separation */
+  z-index: 1000; /* Ensures footer stays on top of other content */
+}
+
+
+#loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 9999;
+}
+</style>
+
+<body onload="myFunction()">
+  <div id="loading"></div>
+  
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle Example</title>
+    <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+
+    <style>
+        /* Define light theme */
+        :root {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --container-bg: #ffffff;
+            --container-text: #000000;
+            --special-color: #0076f4;
+            --navbar-bg: rgba(255, 255, 255, 0);
+            --navbar-backdrop: blur(2px);
+        }
+
+        /* Define dark theme */
+        [data-theme="dark"] {
+            --background-color: #413f3f;
+            --text-color: #ffffff;
+            --container-bg: #413f3f;
+            --container-text: #ffffff;
+            --special-color: #bb86fc;
+            --navbar-bg: rgba(65, 63, 63, 0.5);
+            --navbar-backdrop: blur(2px);
+        }
+
+        /* Apply themes to the body and all elements */
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Updated navbar styling */
+        .navbar {
+            background-color: var(--navbar-bg) !important;
+            backdrop-filter: var(--navbar-backdrop);
+            -webkit-backdrop-filter: var(--navbar-backdrop);
+            transition: all 0.5s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ensure navbar text is visible in both themes */
+        .navbar .nav-link {
+            color: var(--text-color) !important;
+        }
+
+        /* Updated active link styling */
+        .navbar ul li.active a, 
+        .navbar ul li a:hover {
+            background-color: rgba(229, 232, 209, 0.3);
+            font-weight: bold;
+        }
+
+        /* Container styling */
+        body div {
+            background-color: var(--container-bg);
+            color: var(--container-text);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Override specific colors for dark theme */
+        [data-theme="dark"] .btn-primary,
+        [data-theme="dark"] .bg-primary,
+        [data-theme="dark"] .text-primary {
+            background-color: var(--special-color) !important;
+            color: var(--container-text) !important;
+        }
+
+        #theme-icon {
+            font-size: 2em;
+        }
+
+        /* Make navbar container transparent */
+        .navbar .container {
+            background-color: transparent !important;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light sticky-top">
+    <a class="navbar-brand" style="font-family: Georgia, Times, Times New Roman, serif;">
+        <button id="theme-toggle" class="btn btn-link p-0" style="color: inherit;">
+            <span id="theme-icon">🌞</span>
+        </button>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto navbar-center" style="font-family: Georgia, Times, Times New Roman, serif;">
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/"  class="nav-link">
+                            
+                                <img src="/img/icons/home.svg" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">HOME </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/publications.html"  class="nav-link">
+                            
+                                <img src="/img/icons/publications.png" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">PUBLICATIONS </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/blog.html"  class="nav-link">
+                            
+                                <img src="/img/icons/blog.svg" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">BLOG </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/projects.html"  class="nav-link">
+                            
+                                <img src="/img/icons/projects.jpg" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">PROJECTS </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/gallery.html"  class="nav-link">
+                            
+                                <img src="/img/icons/gallery.png" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">GALLERY </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/random.html"  class="nav-link">
+                            
+                                <img src="/img/icons/certificates.png" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">RANDOM </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/search/"  class="nav-link">
+                            
+                                <img src="/img/icons/search.png" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">SEARCH </span>
+                        </a>
+                    </div>
+                </li>
+            
+        </ul>
+    </div>
+</nav>
+
+<script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        body.setAttribute('data-theme', currentTheme);
+        themeIcon.textContent = currentTheme === 'dark' ? '🌜' : '🌞';
+    } else {
+        body.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌞';
+    }
+
+    toggleButton.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeIcon.textContent = newTheme === 'dark' ? '🌜' : '🌞';
+    });
+</script>
+
+<script type="text/javascript">
+    $(function() {
+        var url = window.location.href;
+        $(".navbar a").each(function() {
+            if (url == (this.href)) {
+                $(this).closest("li").addClass("active");
+                $(this).closest("li").parent().parent().addClass("active");
+            }
+        });
+    });        
+</script>
+
+</body>
+</html>
+
+  
+    <br><br>
+    <br>
+    
+    <html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test blog style</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #6c5ce7 0%, #a8c0ff 100%);
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: white;
+            margin: 0;
+        }
+
+        .navigable-image {
+            position: relative;
+            transition: all 0.3s ease;
+            margin: 30px 0;
+        }
+
+        .navigable-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .navigable-image.focused::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 12px;
+            border: 3px solid #6c5ce7;
+            animation: borderPulse 2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes borderPulse {
+            0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
+        }
+
+        .image-caption {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .image-text-layout {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .image-text-layout .navigable-image {
+            width: 50%;
+            margin: 0;
+        }
+
+        .image-text-layout.text-left {
+            flex-direction: row-reverse;
+        }
+
+        .image-text-layout .text {
+            flex: 1;
+        }
+
+        .help-box {
+            position: fixed;
+            top: 150px;
+            right: 20px;
+            background: linear-gradient(135deg, #6c5ce7 0%, #a8c0ff 100%);
+            padding: 10px;
+            border-radius: 8px;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            font-size: 0.9em;
+            max-width: 200px;
+        }
+
+        .help-box h4 {
+            margin: 0 0 8px 0;
+            font-size: 1em;
+        }
+
+        .help-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .help-box li {
+            margin: 3px 0;
+            font-size: 0.85em;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal img {
+            max-width: 100%;
+            max-height: 70vh;
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .modal-description {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.5em;
+            text-align: center;
+            background: rgba(255, 255, 255, 0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 3000;
+        }
+
+        @media (max-width: 768px) {
+            .image-text-layout {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .image-text-layout.text-left {
+                flex-direction: column;
+            }
+
+            .image-text-layout .navigable-image {
+                width: 100%;
+            }
+
+            .help-box {
+                top: 10px;
+                right: 10px;
+                padding: 8px;
+                font-size: 0.8em;
+                max-width: 150px;
+            }
+
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 20px 0;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .modal img {
+                max-height: 60vh;
+            }
+
+            .modal-description {
+                font-size: 1.2em;
+            }
+
+            .close-modal {
+                font-size: 30px;
+                top: 5px;
+                right: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="help-box">
+        <h4>Navigation Guide</h4>
+        <ul>
+            <li>↑ Up Arrow: Previous image</li>
+            <li>↓ Down Arrow: Next image</li>
+            <li>Click image to enlarge</li>
+        </ul>
+    </div>
+
+    <header>
+        <h1>My Travel Adventures</h1>
+    </header>
+
+    <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+
+    <div class="navigable-image" data-description="A scenic view of Sameer Hills">
+        <img src="https://jimut123.github.io/img/gallery/that_side_sameer_hills.jpg" alt="Scenic view of Sameer Hills" />
+        <div class="image-caption">Beautiful view of Sameer Hills</div>
+    </div>
+
+    <div class="image-text-layout">
+        <div class="navigable-image" data-description="A scenic view of Sameer Hills from another angle">
+            <img src="https://jimut123.github.io/img/gallery/that_side_sameer_hills.jpg" alt="Another view of Sameer Hills" />
+            <div class="image-caption">Sameer Hills landscape</div>
+        </div>
+        <div class="text">
+            <h3>Natural Beauty</h3>
+            <p>The majestic hills stretched out before us, their slopes painted in various shades of green. The morning mist added an ethereal quality to the landscape.</p>
+        </div>
+    </div>
+
+    <div class="image-text-layout text-left">
+        <div class="navigable-image" data-description="Evening view of Sameer Hills">
+            <img src="https://jimut123.github.io/img/gallery/that_side_sameer_hills.jpg" alt="Evening at Sameer Hills" />
+            <div class="image-caption">Evening atmosphere</div>
+        </div>
+        <div class="text">
+            <h3>Evening Serenity</h3>
+            <p>As the day drew to a close, the hills took on a different character. The setting sun cast long shadows across the landscape, creating a peaceful atmosphere.</p>
+        </div>
+    </div>
+
+    <div class="navigable-image" data-description="A scenic view of Sameer Hills">
+        <img src="https://jimut123.github.io/img/gallery/that_side_sameer_hills.jpg" alt="Scenic view of Sameer Hills" />
+        <div class="image-caption">Beautiful view of Sameer Hills</div>
+    </div>
+
+    <div class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img src="" alt="" />
+            <div class="modal-description"></div>
+        </div>
+    </div>
+
+    <script>
+        const navigableImages = document.querySelectorAll('.navigable-image');
+        const modal = document.querySelector('.modal');
+        const modalImg = modal.querySelector('img');
+        const modalDescription = modal.querySelector('.modal-description');
+        const closeModal = modal.querySelector('.close-modal');
+        let currentFocusIndex = -1;
+
+        function focusImage(index) {
+            navigableImages.forEach(container => container.classList.remove('focused'));
+            
+            if (index >= 0 && index < navigableImages.length) {
+                const container = navigableImages[index];
+                container.classList.add('focused');
+                container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                currentFocusIndex = index;
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (currentFocusIndex <= 0) {
+                    focusImage(navigableImages.length - 1);
+                } else {
+                    focusImage(currentFocusIndex - 1);
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (currentFocusIndex >= navigableImages.length - 1) {
+                    focusImage(0);
+                } else {
+                    focusImage(currentFocusIndex + 1);
+                }
+            } else if (e.key === 'Escape') {
+                modal.style.display = 'none';
+            }
+        });
+
+        navigableImages.forEach(container => {
+            const img = container.querySelector('img');
+            container.addEventListener('click', () => {
+                modal.style.display = 'block';
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+                modalDescription.textContent = container.dataset.description || img.alt;
+            });
+        });
+
+        closeModal.addEventListener('click', () => modal.style.display = 'none');
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+
+        focusImage(0);
+    </script>
+    
+</body>
+</html>
+
+
+    <br><br>
+
+  
+  
+
+
+  <!-- Footer -->
+  <footer class="footer page-footer font-small pt-1">
+    <div  align="center">
+      
+          <!-- Copyright -->
+          <div class="footer-copyright" style="color: rgb(217, 61, 61);"> 2019-2025
+              <a href="https://github.com/Jimut123" style="color: rgb(217, 61, 61);"> Copyright © Jimut Bahan Pal</a>
+          </div>
+          <!-- Copyright -->
+    </div>
+  </footer>
+  <!-- Footer -->
+
+
+
+  <script>
+    var preloader = document.getElementById('loading');
+    function myFunction() { 
+      preloader.style.display = 'none';
+    }
+  </script>
+</body>
