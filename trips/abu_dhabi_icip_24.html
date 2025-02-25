@@ -1,0 +1,1134 @@
+<link href="https://fonts.googleapis.com/css?family=Cardo&display=swap" rel="stylesheet"> 
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<!--
+<link rel="stylesheet" href="/css/compiled-4.8.0.min.css">
+-->
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" src="../js/popper.min.js"></script>
+
+<link rel='stylesheet' id='wsl-widget-css' href='https://mdbootstrap.com/wp-content/plugins/wordpress-social-login/assets/css/style.css?ver=5.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='compiled.css-css' href='https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled-4.8.0.min.css?ver=4.8.0' type='text/css' media='all' />
+
+<link rel="shortcut icon" type="image/x-icon" href="../img/thumbnail.jpg">
+
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Lazy loading of Gallery and stuffs!-->
+<script src="../js/jimjs.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" /> 
+
+<link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+
+
+<title>Abu Dhabi Trip - ICIP 2024</title>
+
+<style>
+body {
+  /* Add padding to prevent content from being hidden behind fixed footer */
+  padding-bottom: 60px; /* Adjust this value based on your footer height */
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  /* background-color: #fff; Add background color so text is visible over content */
+  /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); Optional: adds slight shadow for separation */
+  z-index: 1000; /* Ensures footer stays on top of other content */
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  /* text-align: center; */
+  /* background-color: #fff; Add background color so text is visible over content */
+  /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); Optional: adds slight shadow for separation */
+  z-index: 1000; /* Ensures footer stays on top of other content */
+}
+
+
+#loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 9999;
+}
+</style>
+
+<body onload="myFunction()">
+  <div id="loading"></div>
+  
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle Example</title>
+    <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+
+    <style>
+        /* Define light theme */
+        :root {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --container-bg: #ffffff;
+            --container-text: #000000;
+            --special-color: #0076f4;
+            --navbar-bg: rgba(255, 255, 255, 0);
+            --navbar-backdrop: blur(2px);
+        }
+
+        /* Define dark theme */
+        [data-theme="dark"] {
+            --background-color: #413f3f;
+            --text-color: #ffffff;
+            --container-bg: #413f3f;
+            --container-text: #ffffff;
+            --special-color: #bb86fc;
+            --navbar-bg: rgba(65, 63, 63, 0.5);
+            --navbar-backdrop: blur(2px);
+        }
+
+        /* Apply themes to the body and all elements */
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Updated navbar styling */
+        .navbar {
+            background-color: var(--navbar-bg) !important;
+            backdrop-filter: var(--navbar-backdrop);
+            -webkit-backdrop-filter: var(--navbar-backdrop);
+            transition: all 0.5s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ensure navbar text is visible in both themes */
+        .navbar .nav-link {
+            color: var(--text-color) !important;
+        }
+
+        /* Updated active link styling */
+        .navbar ul li.active a, 
+        .navbar ul li a:hover {
+            background-color: rgba(229, 232, 209, 0.3);
+            font-weight: bold;
+        }
+
+        /* Container styling */
+        body div {
+            background-color: var(--container-bg);
+            color: var(--container-text);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Override specific colors for dark theme */
+        [data-theme="dark"] .btn-primary,
+        [data-theme="dark"] .bg-primary,
+        [data-theme="dark"] .text-primary {
+            background-color: var(--special-color) !important;
+            color: var(--container-text) !important;
+        }
+
+        #theme-icon {
+            font-size: 2em;
+        }
+
+        /* Make navbar container transparent */
+        .navbar .container {
+            background-color: transparent !important;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light sticky-top">
+    <a class="navbar-brand" style="font-family: Georgia, Times, Times New Roman, serif;">
+        <button id="theme-toggle" class="btn btn-link p-0" style="color: inherit;">
+            <span id="theme-icon">🌞</span>
+        </button>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto navbar-center" style="font-family: Georgia, Times, Times New Roman, serif;">
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/"  class="nav-link">
+                            
+                                <img src="/img/icons/home.svg" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">HOME </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/publications.html"  class="nav-link">
+                            
+                                <img src="/img/icons/publications.png" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">PUBLICATIONS </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/blog.html"  class="nav-link">
+                            
+                                <img src="/img/icons/blog.svg" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">BLOG </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/projects.html"  class="nav-link">
+                            
+                                <img src="/img/icons/projects.jpg" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">PROJECTS </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/gallery.html"  class="nav-link">
+                            
+                                <img src="/img/icons/gallery.png" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">GALLERY </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/random.html"  class="nav-link">
+                            
+                                <img src="/img/icons/certificates.png" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">RANDOM </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/search/"  class="nav-link">
+                            
+                                <img src="/img/icons/search.png" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">SEARCH </span>
+                        </a>
+                    </div>
+                </li>
+            
+        </ul>
+    </div>
+</nav>
+
+<script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        body.setAttribute('data-theme', currentTheme);
+        themeIcon.textContent = currentTheme === 'dark' ? '🌜' : '🌞';
+    } else {
+        body.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌞';
+    }
+
+    toggleButton.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeIcon.textContent = newTheme === 'dark' ? '🌜' : '🌞';
+    });
+</script>
+
+<script type="text/javascript">
+    $(function() {
+        var url = window.location.href;
+        $(".navbar a").each(function() {
+            if (url == (this.href)) {
+                $(this).closest("li").addClass("active");
+                $(this).closest("li").parent().parent().addClass("active");
+            }
+        });
+    });        
+</script>
+
+</body>
+</html>
+
+  
+    <br><br>
+    <br>
+    
+    <html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test blog style</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #6c5ce7 0%, #a8c0ff 100%);
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: white;
+            margin: 0;
+        }
+
+        .navigable-image {
+            position: relative;
+            transition: all 0.3s ease;
+            margin: 30px 0;
+        }
+
+        .navigable-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .navigable-image.focused::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 12px;
+            border: 3px solid #6c5ce7;
+            animation: borderPulse 2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes borderPulse {
+            0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
+        }
+
+        .image-caption {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .image-text-layout {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .image-text-layout .navigable-image {
+            width: 50%;
+            margin: 0;
+        }
+
+        .image-text-layout.text-left {
+            flex-direction: row-reverse;
+        }
+
+        .image-text-layout .text {
+            flex: 1;
+        }
+
+        .help-box {
+            position: fixed;
+            top: 150px;
+            right: 20px;
+            background: linear-gradient(135deg, #6c5ce7 0%, #a8c0ff 100%);
+            padding: 10px;
+            border-radius: 8px;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            font-size: 0.9em;
+            max-width: 200px;
+        }
+
+        .help-box h4 {
+            margin: 0 0 8px 0;
+            font-size: 1em;
+        }
+
+        .help-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .help-box li {
+            margin: 3px 0;
+            font-size: 0.85em;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 80vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal img {
+            max-width: 100%;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .modal-description {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.5em;
+            text-align: center;
+            background: rgba(255, 255, 255, 0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 3000;
+        }
+
+        /* Placeholder for lazy loaded images */
+        .placeholder {
+            background-color: #f1f1f1;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .placeholder::after {
+            content: 'Loading...';
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .image-text-layout {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .image-text-layout.text-left {
+                flex-direction: column;
+            }
+
+            .image-text-layout .navigable-image {
+                width: 100%;
+            }
+
+            .help-box {
+                top: 10px;
+                right: 10px;
+                padding: 8px;
+                font-size: 0.8em;
+                max-width: 150px;
+            }
+
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 20px 0;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .modal img {
+                max-height: 70vh;
+            }
+
+            .modal-description {
+                font-size: 1.2em;
+            }
+
+            .close-modal {
+                font-size: 30px;
+                top: 5px;
+                right: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="help-box">
+        <h4>Navigation Guide</h4>
+        <ul>
+            <li>↑ Up Arrow: Previous image</li>
+            <li>↓ Down Arrow: Next image</li>
+            <li>Click image to enlarge</li>
+        </ul>
+    </div>
+
+    <header>
+        <h1>Morocco and Qatar Trip - Oct, 2024</h1>
+    </header>
+
+
+
+
+    <div class="text">The International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI) 2024 was held in the vibrant city of Marrakesh, Morocco, from October 6th to October 10th. I had the privilege of attending this prestigious event to present my poster titled Convex Segments for Convex Objects Using DNN Boundary Tracing and Graduated Optimization. The PDF of the paper can be accessed here: MICCAI 2024 Paper.
+    </div>
+
+   <!-- (1) Image on right, text on left -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="View from Hotel in Abu Dhabi">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/1_View_from_Hotel.jpg" alt="View from Hotel" /></noscript>
+    <div class="image-caption">View from Hotel in Abu Dhabi</div>
+  </div>
+  <div class="text">
+    <h3>Arrival in Abu Dhabi</h3>
+    <p>The journey to Abu Dhabi for ICIP 2024 began with this stunning view from my hotel room. The cityscape offered a perfect introduction to this modern metropolis, setting the stage for both the conference and exploration.</p>
+  </div>
+</div>
+
+<!-- (2) ADNEC Conference Center -->
+<div class="image-text-layout">
+  <div class="navigable-image" data-description="ADNEC Conference Center">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/2_ADNEC_Conference_Center.jpg" alt="ADNEC Conference Center" /></noscript>
+    <div class="image-caption">ADNEC Conference Center - ICIP 2024 Venue</div>
+  </div>
+  <div class="text">
+    <h3>Conference Venue</h3>
+    <p>The ICIP 2024 conference was hosted at the Abu Dhabi National Exhibition Centre (ADNEC), a world-class venue with excellent facilities for international academic gatherings. The modern architecture provided the perfect setting for knowledge exchange and networking.</p>
+  </div>
+</div>
+
+<!-- (3) My name in Arabic -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="My name in Arabic">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/3_My_name_in_arabic.jpg" alt="My name in Arabic" /></noscript>
+    <div class="image-caption">My name written in Arabic</div>
+  </div>
+  <div class="text">
+    <h3>Cultural Experience</h3>
+    <p>One of the highlights of visiting Abu Dhabi was experiencing the local culture. Having my name written in beautiful Arabic calligraphy was a special souvenir to commemorate the trip.</p>
+  </div>
+</div>
+
+<!-- (4) Premier Inn at Night -->
+<div class="image-text-layout">
+  <div class="navigable-image" data-description="Premier Inn at Night">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/4_Priemier_Inn_in_Night.jpg" alt="Premier Inn at Night" /></noscript>
+    <div class="image-caption">Premier Inn illuminated at night</div>
+  </div>
+  <div class="text">
+    <h3>Evening in Abu Dhabi</h3>
+    <p>The Premier Inn, beautifully lit at night, served as comfortable accommodation during the conference. Abu Dhabi comes alive after sunset with spectacular lighting that highlights the city's modern architecture.</p>
+  </div>
+</div>
+
+<!-- (5) Abu Dhabi Etihad Towers -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="Abu Dhabi Etihad Towers">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/5_Abu_Dhabi_Etihad_Towers.jpg" alt="Abu Dhabi Etihad Towers" /></noscript>
+    <div class="image-caption">The iconic Etihad Towers</div>
+  </div>
+  <div class="text">
+    <h3>Etihad Towers</h3>
+    <p>The Etihad Towers are among Abu Dhabi's most recognizable landmarks, representing the city's rapid development and architectural prowess. These magnificent skyscrapers have become symbols of modern Abu Dhabi.</p>
+  </div>
+</div>
+
+<!-- (5) Abu Dhabi Etihad Towers 2 -->
+<div class="image-text-layout">
+  <div class="navigable-image" data-description="Another view of Etihad Towers">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/5_Abu_Dhabi_Etihad_Towers_2.jpg" alt="Abu Dhabi Etihad Towers 2" /></noscript>
+    <div class="image-caption">Another perspective of the Etihad Towers</div>
+  </div>
+  <div class="text">
+    <h3>Architectural Marvels</h3>
+    <p>This different angle of the Etihad Towers showcases their impressive design. The complex consists of five towers of varying heights, creating a distinctive silhouette against the Abu Dhabi skyline.</p>
+  </div>
+</div>
+
+<!-- (5) Louvre Museum 5 -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="Louvre Abu Dhabi Museum">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/5_Louvre_Museum_5.jpg" alt="Louvre Museum Abu Dhabi" /></noscript>
+    <div class="image-caption">Louvre Abu Dhabi Museum</div>
+  </div>
+  <div class="text">
+    <h3>Cultural Heritage</h3>
+    <p>The Louvre Abu Dhabi is a remarkable cultural institution that bridges Eastern and Western art and civilization. Its iconic dome creates a "rain of light" effect, symbolizing the diffused light that filters through palm fronds in an oasis.</p>
+  </div>
+</div>
+
+<!-- (5) Louvre Museum Julius Caesar -->
+<div class="image-text-layout">
+  <div class="navigable-image" data-description="Julius Caesar exhibit at Louvre Abu Dhabi">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/5_Louvre_Museum_Juleus_Ceaser.jpg" alt="Julius Caesar exhibit" /></noscript>
+    <div class="image-caption">Julius Caesar exhibit at Louvre Abu Dhabi</div>
+  </div>
+  <div class="text">
+    <h3>Historical Treasures</h3>
+    <p>The Louvre Abu Dhabi houses an impressive collection of historical artifacts, including this Julius Caesar exhibit. The museum offers visitors a journey through human creativity spanning thousands of years.</p>
+  </div>
+</div>
+
+<!-- (5) Louvre Museum Mummy -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="Ancient Egyptian mummy at Louvre Abu Dhabi">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/5_Louvre_Museum_Mummy.jpg" alt="Ancient Egyptian mummy" /></noscript>
+    <div class="image-caption">Ancient Egyptian mummy at Louvre Abu Dhabi</div>
+  </div>
+  <div class="text">
+    <h3>Ancient Egypt</h3>
+    <p>This well-preserved mummy exemplifies the ancient Egyptian funerary practices and beliefs in the afterlife. The Louvre Abu Dhabi's collection spans various civilizations, offering insights into humanity's shared history.</p>
+  </div>
+</div>
+
+<!-- (5) Louvre Museum Statue -->
+<div class="image-text-layout">
+  <div class="navigable-image" data-description="Classical statue at Louvre Abu Dhabi">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/5_Louvre_Museum_Statue.jpg" alt="Classical statue" /></noscript>
+    <div class="image-caption">Classical statue at Louvre Abu Dhabi</div>
+  </div>
+  <div class="text">
+    <h3>Classical Art</h3>
+    <p>This beautiful classical statue represents the artistic achievements of ancient civilizations. The Louvre Abu Dhabi carefully curates works that highlight the interconnectedness of human artistic expression across different cultures.</p>
+  </div>
+</div>
+
+<!-- (5) Louvre Museum Statue Nataraj -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="Nataraj statue at Louvre Abu Dhabi">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/5_Louvre_Museum_Statue_Nataraj.jpg" alt="Nataraj statue" /></noscript>
+    <div class="image-caption">Nataraj statue at Louvre Abu Dhabi</div>
+  </div>
+  <div class="text">
+    <h3>Eastern Art</h3>
+    <p>The Nataraj, depicting Lord Shiva as the cosmic dancer, represents the cyclical nature of creation and destruction. This masterpiece showcases the museum's commitment to representing diverse cultural and religious traditions.</p>
+  </div>
+</div>
+
+<!-- (5) Near Emirates Mall -->
+<div class="image-text-layout">
+  <div class="navigable-image" data-description="Near Emirates Mall">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/5_Near_Emirates_Mall.jpg" alt="Near Emirates Mall" /></noscript>
+    <div class="image-caption">Area near Emirates Mall</div>
+  </div>
+  <div class="text">
+    <h3>Urban Exploration</h3>
+    <p>The area surrounding Emirates Mall offers a glimpse into Abu Dhabi's modern urban planning and retail landscape. The city combines cutting-edge architecture with thoughtful design to create inviting public spaces.</p>
+  </div>
+</div>
+
+<!-- (5) Near Emirates Mall 2 -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="Another view near Emirates Mall">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/5_Near_Emirates_Mall_2.jpg" alt="Near Emirates Mall 2" /></noscript>
+    <div class="image-caption">Another perspective near Emirates Mall</div>
+  </div>
+  <div class="text">
+    <h3>Modern Architecture</h3>
+    <p>This view showcases the blend of contemporary design and functionality that characterizes Abu Dhabi's newer developments. The city continuously evolves, adding impressive structures to its already remarkable skyline.</p>
+  </div>
+</div>
+
+<!-- (6) 7 Star Emirates Palace -->
+<div class="image-text-layout">
+  <div class="navigable-image" data-description="7 Star Emirates Palace">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/6_7_Star_Emirates_Palace.jpg" alt="Emirates Palace" /></noscript>
+    <div class="image-caption">The luxurious Emirates Palace</div>
+  </div>
+  <div class="text">
+    <h3>Luxury Defined</h3>
+    <p>The Emirates Palace is one of the world's most opulent hotels, known for its 7-star luxury and remarkable Arabian architecture. This grand building exemplifies Abu Dhabi's commitment to excellence in hospitality and design.</p>
+  </div>
+</div>
+
+<!-- (6) 7 Star Emirates Palace 2 -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="Another view of Emirates Palace">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/6_7_Star_Emirates_Palace_2.jpg" alt="Emirates Palace 2" /></noscript>
+    <div class="image-caption">Another perspective of Emirates Palace</div>
+  </div>
+  <div class="text">
+    <h3>Architectural Splendor</h3>
+    <p>This angle of the Emirates Palace showcases its impressive façade and meticulous landscaping. The hotel spans over a kilometer from wing to wing and features 114 domes, with the central dome rising to 72 meters.</p>
+  </div>
+</div>
+
+<!-- (6) 7 Star Emirates Palace 3 -->
+<div class="image-text-layout">
+  <div class="navigable-image" data-description="Interior of Emirates Palace">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/6_7_Star_Emirates_Palace_3.jpg" alt="Emirates Palace Interior" /></noscript>
+    <div class="image-caption">Interior view of Emirates Palace</div>
+  </div>
+  <div class="text">
+    <h3>Interior Elegance</h3>
+    <p>The interior of Emirates Palace is adorned with gold, marble, and crystal elements that create an atmosphere of unparalleled luxury. The meticulous attention to detail is evident in every aspect of this magnificent hotel.</p>
+  </div>
+</div>
+
+<!-- (6) 7 Star Emirates Palace 4 -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="Another interior view of Emirates Palace">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/6_7_Star_Emirates_Palace_4.jpg" alt="Emirates Palace Interior 2" /></noscript>
+    <div class="image-caption">Grand hall of Emirates Palace</div>
+  </div>
+  <div class="text">
+    <h3>Palatial Design</h3>
+    <p>The grand hall of Emirates Palace exemplifies its palatial design philosophy, combining traditional Arabian elements with contemporary luxury. The hotel has become an icon of Abu Dhabi and a symbol of the emirate's hospitality.</p>
+  </div>
+</div>
+
+<!-- (6) 7 Star Emirates Palace 6 -->
+<div class="image-text-layout">
+  <div class="navigable-image" data-description="Exterior gardens of Emirates Palace">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/6_7_Star_Emirates_Palace_6.jpg" alt="Emirates Palace Gardens" /></noscript>
+    <div class="image-caption">Gardens of Emirates Palace</div>
+  </div>
+  <div class="text">
+    <h3>Landscaped Beauty</h3>
+    <p>The meticulously maintained gardens of Emirates Palace create a lush oasis in the desert environment. The landscape design incorporates fountains, palm trees, and colorful floral arrangements that complement the architectural grandeur.</p>
+  </div>
+</div>
+
+<!-- (6) Lunch -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="Lunch during the conference">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/6_Lunch.jpg" alt="Conference Lunch" /></noscript>
+    <div class="image-caption">Lunch during the ICIP 2024 conference</div>
+  </div>
+  <div class="text">
+    <h3>Conference Hospitality</h3>
+    <p>The ICIP 2024 organizers provided excellent catering throughout the event. This lunch showcases the attention to detail in every aspect of the conference, ensuring attendees could network and share ideas in a comfortable setting.</p>
+  </div>
+</div>
+
+<!-- (7) Beach Abu Dhabi -->
+<div class="image-text-layout">
+  <div class="navigable-image" data-description="Abu Dhabi Beach">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/7_Beach_Abu_Dhabi.jpg" alt="Abu Dhabi Beach" /></noscript>
+    <div class="image-caption">Beautiful beach in Abu Dhabi</div>
+  </div>
+  <div class="text">
+    <h3>Coastal Beauty</h3>
+    <p>Abu Dhabi is blessed with stunning coastlines and pristine beaches. Taking a break from the conference to enjoy the turquoise waters and sandy shores provided a perfect balance between academic pursuits and relaxation.</p>
+  </div>
+</div>
+
+<!-- (8) Aquarium 1 -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="Abu Dhabi Aquarium">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/8_Aquarium_1.jpg" alt="Abu Dhabi Aquarium" /></noscript>
+    <div class="image-caption">Abu Dhabi Aquarium exhibit</div>
+  </div>
+  <div class="text">
+    <h3>Marine Life</h3>
+    <p>The Abu Dhabi Aquarium offers visitors an immersive experience into the underwater world. This exhibit showcases the rich marine biodiversity found in the waters surrounding the UAE and beyond.</p>
+  </div>
+</div>
+
+<!-- (8) Aquarium 2 -->
+<div class="image-text-layout">
+  <div class="navigable-image" data-description="Another view of Abu Dhabi Aquarium">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/8_Aquarium_2.jpg" alt="Abu Dhabi Aquarium 2" /></noscript>
+    <div class="image-caption">Colorful fish at Abu Dhabi Aquarium</div>
+  </div>
+  <div class="text">
+    <h3>Underwater Wonders</h3>
+    <p>The vibrant colors of tropical fish create a mesmerizing display at the aquarium. Educational exhibits help visitors understand marine ecosystems and the importance of ocean conservation.</p>
+  </div>
+</div>
+
+<!-- (8) Aquarium 3 -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="Large tank at Abu Dhabi Aquarium">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/8_Aquarium_3.jpg" alt="Abu Dhabi Aquarium 3" /></noscript>
+    <div class="image-caption">Large display tank at Abu Dhabi Aquarium</div>
+  </div>
+  <div class="text">
+    <h3>Ocean Depths</h3>
+    <p>The large display tanks at the Abu Dhabi Aquarium allow visitors to witness the complex interactions of various marine species. The facility combines entertainment with education, promoting awareness about marine conservation.</p>
+  </div>
+</div>
+
+<!-- (8) Aquarium 4 -->
+<div class="image-text-layout">
+  <div class="navigable-image" data-description="Ray exhibit at Abu Dhabi Aquarium">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/8_Aquarium_4.jpg" alt="Abu Dhabi Aquarium 4" /></noscript>
+    <div class="image-caption">Ray exhibit at Abu Dhabi Aquarium</div>
+  </div>
+  <div class="text">
+    <h3>Graceful Movements</h3>
+    <p>Rays glide elegantly through the water in this specialized exhibit. The Abu Dhabi Aquarium houses various species of these fascinating creatures, allowing visitors to observe their unique locomotion and behavior.</p>
+  </div>
+</div>
+
+<!-- (9) Sheikh Zayed Grand Mosque -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="Sheikh Zayed Grand Mosque">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/9_Abu_Dhabi_Sheikh_Zayed_Grand_Mosque_Center.jpg" alt="Sheikh Zayed Grand Mosque" /></noscript>
+    <div class="image-caption">The magnificent Sheikh Zayed Grand Mosque</div>
+  </div>
+  <div class="text">
+    <h3>Architectural Masterpiece</h3>
+    <p>The Sheikh Zayed Grand Mosque is one of the world's largest mosques and a masterpiece of modern Islamic architecture. Its pure white marble exterior, featuring 82 domes and over 1,000 columns, creates an awe-inspiring presence.</p>
+  </div>
+</div>
+
+<!-- (9) Sheikh Zayed Grand Mosque 2 -->
+<div class="image-text-layout">
+  <div class="navigable-image" data-description="Interior of Sheikh Zayed Grand Mosque">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/9_Abu_Dhabi_Sheikh_Zayed_Grand_Mosque_Center_2.jpg" alt="Sheikh Zayed Grand Mosque Interior" /></noscript>
+    <div class="image-caption">Interior view of Sheikh Zayed Grand Mosque</div>
+  </div>
+  <div class="text">
+    <h3>Interior Splendor</h3>
+    <p>The interior of the Sheikh Zayed Grand Mosque is adorned with intricate floral designs, gold accents, and the world's largest hand-knotted carpet. The mosque accommodates over 40,000 worshippers and welcomes visitors of all faiths.</p>
+  </div>
+</div>
+
+<!-- (9) Sheikh Zayed Grand Mosque at night -->
+<div class="image-text-layout text-left">
+  <div class="navigable-image" data-description="Sheikh Zayed Grand Mosque at night">
+    <div class="placeholder"></div>
+    <noscript><img src="../img/abu_dhabi_icip_2024/9_Abu_Dhabi_Sheikh_Zayed_Grand_Mosque_Center_night_3.jpg" alt="Sheikh Zayed Grand Mosque at Night" /></noscript>
+    <div class="image-caption">Sheikh Zayed Grand Mosque illuminated at night</div>
+  </div>
+  <div class="text">
+    <h3>Nocturnal Beauty</h3>
+    <p>At night, the Sheikh Zayed Grand Mosque is illuminated by a unique lighting system that reflects the phases of the moon. The ethereal blue lighting creates a spiritual ambiance that enhances the mosque's architectural features in a magical way.</p>
+  </div>
+</div>
+
+    <div class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img src="" alt="" />
+            <div class="modal-description"></div>
+        </div>
+    </div>
+
+    <script>
+        const navigableImages = document.querySelectorAll('.navigable-image');
+        const modal = document.querySelector('.modal');
+        const modalImg = modal.querySelector('img');
+        const modalDescription = modal.querySelector('.modal-description');
+        const closeModal = modal.querySelector('.close-modal');
+        let currentFocusIndex = -1;
+        let lastClickedImageIndex = -1;
+
+        function focusImage(index) {
+            navigableImages.forEach(container => container.classList.remove('focused'));
+            
+            if (index >= 0 && index < navigableImages.length) {
+                const container = navigableImages[index];
+                container.classList.add('focused');
+                container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                currentFocusIndex = index;
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (currentFocusIndex <= 0) {
+                    focusImage(navigableImages.length - 1);
+                } else {
+                    focusImage(currentFocusIndex - 1);
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (currentFocusIndex >= navigableImages.length - 1) {
+                    focusImage(0);
+                } else {
+                    focusImage(currentFocusIndex + 1);
+                }
+            } else if (e.key === 'Escape') {
+                modal.style.display = 'none';
+                if (lastClickedImageIndex !== -1) {
+                    focusImage(lastClickedImageIndex);
+                }
+            }
+        });
+
+        // Lazy loading implementation
+        const lazyLoadImages = () => {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const container = entry.target;
+                        const placeholder = container.querySelector('.placeholder');
+                        const noscript = container.querySelector('noscript');
+                        
+                        if (placeholder && noscript) {
+                            // Extract image HTML from noscript
+                            const imgHtml = noscript.textContent || noscript.innerHTML;
+                            const tempDiv = document.createElement('div');
+                            tempDiv.innerHTML = imgHtml;
+                            const img = tempDiv.querySelector('img');
+                            
+                            if (img) {
+                                // Create new image with load event
+                                const newImg = new Image();
+                                newImg.onload = function() {
+                                    // Replace placeholder with loaded image
+                                    placeholder.parentNode.replaceChild(newImg, placeholder);
+                                    observer.unobserve(container);
+                                };
+                                newImg.onerror = function() {
+                                    console.error('Failed to load image:', img.src);
+                                    placeholder.textContent = 'Failed to load image';
+                                };
+                                newImg.src = img.src;
+                                newImg.alt = img.alt;
+                                newImg.className = img.className;
+                                
+                                // Set additional attributes
+                                for (const attr of img.attributes) {
+                                    if (attr.name !== 'src' && attr.name !== 'alt' && attr.name !== 'class') {
+                                        newImg.setAttribute(attr.name, attr.value);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }, {
+                rootMargin: '100px 0px',
+                threshold: 0.1
+            });
+
+            // Observe all image containers
+            navigableImages.forEach(container => {
+                imageObserver.observe(container);
+            });
+        };
+
+        // Setup modal and click events
+        navigableImages.forEach((container, index) => {
+            container.addEventListener('click', () => {
+                lastClickedImageIndex = index;
+                modal.style.display = 'block';
+                
+                // Get the loaded image or placeholder
+                const img = container.querySelector('img') || container.querySelector('.placeholder');
+                
+                // If we have a real image, use it
+                if (img && img.tagName === 'IMG') {
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                } else {
+                    // If we only have a placeholder, attempt to load the image from noscript
+                    const noscript = container.querySelector('noscript');
+                    if (noscript) {
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = noscript.textContent || noscript.innerHTML;
+                        const noscriptImg = tempDiv.querySelector('img');
+                        if (noscriptImg) {
+                            modalImg.src = noscriptImg.src;
+                            modalImg.alt = noscriptImg.alt;
+                        }
+                    }
+                }
+                
+                modalDescription.textContent = container.dataset.description || modalImg.alt;
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            if (lastClickedImageIndex !== -1) {
+                focusImage(lastClickedImageIndex);
+            }
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                if (lastClickedImageIndex !== -1) {
+                    focusImage(lastClickedImageIndex);
+                }
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            lazyLoadImages();
+            focusImage(0);
+        });
+
+        // Fallback for browsers that don't support IntersectionObserver
+        if (!('IntersectionObserver' in window)) {
+            console.log('IntersectionObserver not supported, using fallback');
+            document.querySelectorAll('.navigable-image').forEach((container) => {
+                const placeholder = container.querySelector('.placeholder');
+                const noscript = container.querySelector('noscript');
+                
+                if (placeholder && noscript) {
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = noscript.textContent || noscript.innerHTML;
+                    const img = tempDiv.querySelector('img');
+                    
+                    if (img) {
+                        placeholder.parentNode.replaceChild(img, placeholder);
+                    }
+                }
+            });
+        }
+    </script>
+    
+</body>
+</html>
+
+
+    <br><br>
+
+  
+  
+
+
+  <!-- Footer -->
+  <footer class="footer page-footer font-small pt-1">
+    <div  align="center">
+      
+          <!-- Copyright -->
+          <div class="footer-copyright" style="color: rgb(217, 61, 61);"> 2019-2025
+              <a href="https://github.com/Jimut123" style="color: rgb(217, 61, 61);"> Copyright © Jimut Bahan Pal</a>
+          </div>
+          <!-- Copyright -->
+    </div>
+  </footer>
+  <!-- Footer -->
+
+
+
+  <script>
+    var preloader = document.getElementById('loading');
+    function myFunction() { 
+      preloader.style.display = 'none';
+    }
+  </script>
+</body>
