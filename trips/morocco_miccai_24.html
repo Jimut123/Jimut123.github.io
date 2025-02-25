@@ -485,6 +485,23 @@ body {
             z-index: 3000;
         }
 
+        /* Placeholder for lazy loaded images */
+        .placeholder {
+            background-color: #f1f1f1;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .placeholder::after {
+            content: 'Loading...';
+            color: #666;
+            font-size: 1.2em;
+        }
+
         @media (max-width: 768px) {
             .image-text-layout {
                 flex-direction: column;
@@ -546,46 +563,130 @@ body {
     </div>
 
     <header>
-        <h1>My Travel Adventures</h1>
+        <h1>Morocco and Qatar Trip - Oct, 2024</h1>
     </header>
 
-    <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <div class="text">Our journey through Morocco and Qatar was an unforgettable experience, combining ancient history, vibrant culture, and modern marvels. From the narrow streets of Marrakech's medina to the futuristic skyline of Doha, each day brought new discoveries and enriching experiences. The MICCAI 2024 conference provided an excellent backdrop for this cultural exploration, bringing together scientific advancement with historical wonder.
     </div>
 
-    <div class="navigable-image" data-description="A scenic view of Sameer Hills">
-        <img src="https://jimut123.github.io/img/gallery/that_side_sameer_hills.jpg" alt="Scenic view of Sameer Hills" />
-        <div class="image-caption">Beautiful view of Sameer Hills</div>
+    <div class="navigable-image" data-description="Hazarduari Palace, an architectural marvel">
+        <div class="placeholder"></div>
+        <noscript><img src="https://jimut123.github.io/img/gallery/hazarduari.jpg" alt="Hazarduari Palace" /></noscript>
+        <div class="image-caption">Magnificent view of Hazarduari Palace</div>
     </div>
 
     <div class="image-text-layout">
-        <div class="navigable-image" data-description="A scenic view of Sameer Hills from another angle">
-            <img src="https://jimut123.github.io/img/gallery/that_side_sameer_hills.jpg" alt="Another view of Sameer Hills" />
-            <div class="image-caption">Sameer Hills landscape</div>
+        <div class="navigable-image" data-description="Another angle of Hazarduari Palace showing its grandeur">
+            <div class="placeholder"></div>
+            <noscript><img src="https://jimut123.github.io/img/gallery/hazarduari.jpg" alt="Hazarduari Palace from another angle" /></noscript>
+            <div class="image-caption">Architectural details of Hazarduari</div>
         </div>
         <div class="text">
-            <h3>Natural Beauty</h3>
-            <p>The majestic hills stretched out before us, their slopes painted in various shades of green. The morning mist added an ethereal quality to the landscape.</p>
+            <h3>Historical Wonders</h3>
+            <p>Morocco's rich history is reflected in its magnificent architecture. The ancient buildings stand as a testament to the craftsmanship and artistic vision of past generations. Each corner reveals intricate details and stories of a bygone era.</p>
         </div>
     </div>
 
     <div class="image-text-layout text-left">
-        <div class="navigable-image" data-description="Evening view of Sameer Hills">
-            <img src="https://jimut123.github.io/img/gallery/that_side_sameer_hills.jpg" alt="Evening at Sameer Hills" />
-            <div class="image-caption">Evening atmosphere</div>
+        <div class="navigable-image" data-description="Evening lighting at Hazarduari Palace">
+            <div class="placeholder"></div>
+            <noscript><img src="https://jimut123.github.io/img/gallery/hazarduari.jpg" alt="Evening at Hazarduari Palace" /></noscript>
+            <div class="image-caption">Evening ambiance at Hazarduari</div>
         </div>
         <div class="text">
-            <h3>Evening Serenity</h3>
-            <p>As the day drew to a close, the hills took on a different character. The setting sun cast long shadows across the landscape, creating a peaceful atmosphere.</p>
+            <h3>Evening Magnificence</h3>
+            <p>As day turns to night, the palace takes on a different character. The carefully designed lighting highlights the architectural elements, creating a magical atmosphere that transports visitors through time.</p>
         </div>
     </div>
 
-    <div class="navigable-image" data-description="A scenic view of Sameer Hills">
-        <img src="https://jimut123.github.io/img/gallery/that_side_sameer_hills.jpg" alt="Scenic view of Sameer Hills" />
-        <div class="image-caption">Beautiful view of Sameer Hills</div>
+    <div class="navigable-image" data-description="The intricate interior details of Hazarduari Palace">
+        <div class="placeholder"></div>
+        <noscript><img src="https://jimut123.github.io/img/gallery/hazarduari.jpg" alt="Interior details of Hazarduari Palace" /></noscript>
+        <div class="image-caption">Interior craftsmanship of Hazarduari</div>
+    </div>
+
+    <div class="image-text-layout">
+        <div class="navigable-image" data-description="The beautiful gardens surrounding Hazarduari Palace">
+            <div class="placeholder"></div>
+            <noscript><img src="https://jimut123.github.io/img/gallery/hazarduari.jpg" alt="Gardens of Hazarduari Palace" /></noscript>
+            <div class="image-caption">Lush gardens of Hazarduari</div>
+        </div>
+        <div class="text">
+            <h3>Natural Beauty</h3>
+            <p>The palace grounds feature meticulously maintained gardens that complement the architectural grandeur. These green spaces provide a peaceful retreat for visitors and showcase the harmony between man-made structures and natural elements.</p>
+        </div>
+    </div>
+
+    <div class="navigable-image" data-description="A panoramic view of Hazarduari Palace and surroundings">
+        <div class="placeholder"></div>
+        <noscript><img src="https://jimut123.github.io/img/gallery/hazarduari.jpg" alt="Panoramic view of Hazarduari Palace" /></noscript>
+        <div class="image-caption">Panoramic perspective of Hazarduari</div>
+    </div>
+
+    <div class="image-text-layout text-left">
+        <div class="navigable-image" data-description="Historical artifacts displayed at Hazarduari Palace Museum">
+            <div class="placeholder"></div>
+            <noscript><img src="https://jimut123.github.io/img/gallery/hazarduari.jpg" alt="Artifacts at Hazarduari Palace Museum" /></noscript>
+            <div class="image-caption">Historical treasures at Hazarduari</div>
+        </div>
+        <div class="text">
+            <h3>Cultural Heritage</h3>
+            <p>The palace museum houses an impressive collection of artifacts that tell the story of the region's rich cultural heritage. From ancient manuscripts to royal possessions, each item offers a glimpse into the past and helps preserve the legacy for future generations.</p>
+        </div>
+    </div>
+
+    <div class="navigable-image" data-description="The iconic entrance gate of Hazarduari Palace">
+        <div class="placeholder"></div>
+        <noscript><img src="https://jimut123.github.io/img/gallery/hazarduari.jpg" alt="Entrance gate of Hazarduari Palace" /></noscript>
+        <div class="image-caption">Majestic entrance of Hazarduari</div>
+    </div>
+
+    <div class="image-text-layout">
+        <div class="navigable-image" data-description="Local artisans showcasing traditional crafts near Hazarduari">
+            <div class="placeholder"></div>
+            <noscript><img src="https://jimut123.github.io/img/gallery/hazarduari.jpg" alt="Local artisans near Hazarduari" /></noscript>
+            <div class="image-caption">Traditional craftsmanship</div>
+        </div>
+        <div class="text">
+            <h3>Living Traditions</h3>
+            <p>The area around the palace is a hub of traditional craftsmanship. Local artisans continue to practice age-old techniques, creating beautiful pieces that reflect the cultural identity of the region. Their dedication ensures that these valuable skills are passed down through generations.</p>
+        </div>
+    </div>
+
+    <div class="navigable-image" data-description="Sunset view of Hazarduari Palace silhouette">
+        <div class="placeholder"></div>
+        <noscript><img src="https://jimut123.github.io/img/gallery/hazarduari.jpg" alt="Sunset at Hazarduari Palace" /></noscript>
+        <div class="image-caption">Sunset silhouette of Hazarduari</div>
+    </div>
+
+    <div class="image-text-layout text-left">
+        <div class="navigable-image" data-description="A close-up of the ornate architectural details">
+            <div class="placeholder"></div>
+            <noscript><img src="https://jimut123.github.io/img/gallery/hazarduari.jpg" alt="Architectural details of Hazarduari" /></noscript>
+            <div class="image-caption">Ornate architectural elements</div>
+        </div>
+        <div class="text">
+            <h3>Architectural Brilliance</h3>
+            <p>The intricate details found throughout the palace showcase the exceptional skill of the craftsmen who built it. From delicate carvings to geometric patterns, every element was carefully designed and executed, resulting in a harmonious and awe-inspiring structure.</p>
+        </div>
+    </div>
+
+    <div class="navigable-image" data-description="Reflection of Hazarduari Palace in nearby water">
+        <div class="placeholder"></div>
+        <noscript><img src="https://jimut123.github.io/img/gallery/hazarduari.jpg" alt="Reflection of Hazarduari Palace" /></noscript>
+        <div class="image-caption">Reflections of history</div>
+    </div>
+
+    <div class="image-text-layout">
+        <div class="navigable-image" data-description="The grand ballroom inside Hazarduari Palace">
+            <div class="placeholder"></div>
+            <noscript><img src="https://jimut123.github.io/img/gallery/hazarduari.jpg" alt="Grand ballroom of Hazarduari Palace" /></noscript>
+            <div class="image-caption">Opulent interior spaces</div>
+        </div>
+        <div class="text">
+            <h3>Royal Splendor</h3>
+            <p>The interior spaces of the palace reflect the opulence and grandeur of royal life. Spacious halls with high ceilings, ornate furnishings, and luxurious materials create an atmosphere of splendor that hints at the lavish lifestyles of those who once inhabited these spaces.</p>
+        </div>
     </div>
 
     <div class="modal">
@@ -639,14 +740,87 @@ body {
             }
         });
 
+        // Lazy loading implementation
+        const lazyLoadImages = () => {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const container = entry.target;
+                        const placeholder = container.querySelector('.placeholder');
+                        const noscript = container.querySelector('noscript');
+                        
+                        if (placeholder && noscript) {
+                            // Extract image HTML from noscript
+                            const imgHtml = noscript.textContent || noscript.innerHTML;
+                            const tempDiv = document.createElement('div');
+                            tempDiv.innerHTML = imgHtml;
+                            const img = tempDiv.querySelector('img');
+                            
+                            if (img) {
+                                // Create new image with load event
+                                const newImg = new Image();
+                                newImg.onload = function() {
+                                    // Replace placeholder with loaded image
+                                    placeholder.parentNode.replaceChild(newImg, placeholder);
+                                    observer.unobserve(container);
+                                };
+                                newImg.onerror = function() {
+                                    console.error('Failed to load image:', img.src);
+                                    placeholder.textContent = 'Failed to load image';
+                                };
+                                newImg.src = img.src;
+                                newImg.alt = img.alt;
+                                newImg.className = img.className;
+                                
+                                // Set additional attributes
+                                for (const attr of img.attributes) {
+                                    if (attr.name !== 'src' && attr.name !== 'alt' && attr.name !== 'class') {
+                                        newImg.setAttribute(attr.name, attr.value);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }, {
+                rootMargin: '100px 0px',
+                threshold: 0.1
+            });
+
+            // Observe all image containers
+            navigableImages.forEach(container => {
+                imageObserver.observe(container);
+            });
+        };
+
+        // Setup modal and click events
         navigableImages.forEach((container, index) => {
-            const img = container.querySelector('img');
             container.addEventListener('click', () => {
                 lastClickedImageIndex = index;
                 modal.style.display = 'block';
-                modalImg.src = img.src;
-                modalImg.alt = img.alt;
-                modalDescription.textContent = container.dataset.description || img.alt;
+                
+                // Get the loaded image or placeholder
+                const img = container.querySelector('img') || container.querySelector('.placeholder');
+                
+                // If we have a real image, use it
+                if (img && img.tagName === 'IMG') {
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                } else {
+                    // If we only have a placeholder, attempt to load the image from noscript
+                    const noscript = container.querySelector('noscript');
+                    if (noscript) {
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = noscript.textContent || noscript.innerHTML;
+                        const noscriptImg = tempDiv.querySelector('img');
+                        if (noscriptImg) {
+                            modalImg.src = noscriptImg.src;
+                            modalImg.alt = noscriptImg.alt;
+                        }
+                    }
+                }
+                
+                modalDescription.textContent = container.dataset.description || modalImg.alt;
             });
         });
 
@@ -666,7 +840,30 @@ body {
             }
         });
 
-        focusImage(0);
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            lazyLoadImages();
+            focusImage(0);
+        });
+
+        // Fallback for browsers that don't support IntersectionObserver
+        if (!('IntersectionObserver' in window)) {
+            console.log('IntersectionObserver not supported, using fallback');
+            document.querySelectorAll('.navigable-image').forEach((container) => {
+                const placeholder = container.querySelector('.placeholder');
+                const noscript = container.querySelector('noscript');
+                
+                if (placeholder && noscript) {
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = noscript.textContent || noscript.innerHTML;
+                    const img = tempDiv.querySelector('img');
+                    
+                    if (img) {
+                        placeholder.parentNode.replaceChild(img, placeholder);
+                    }
+                }
+            });
+        }
     </script>
     
 </body>
