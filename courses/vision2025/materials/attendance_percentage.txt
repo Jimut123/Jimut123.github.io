@@ -1,12 +1,12 @@
 Name                      Roll Number     Credit/Audit    Department      Attendance %   
 -------------------------------------------------------------------------------------
-Anurag Bose               B2330043        Credit          CS              91.67         %
-Sanmitra Sur              B2330037        Credit          BDA             91.67         %
-Pranab Kumar Mondal       B2330048        Credit          CS              91.67         %
-Sayandeep Chatterjee      B2330038        Credit          BDA             91.67         %
-Atanu Saha                B2330024        Credit          BDA             83.33         %
-Amit Bera                 B2330056        Credit          BDA             83.33         %
-Sushovan Pan              B2330054        Credit          CS              75.00         %
+Anurag Bose               B2330043        Credit          CS              92.31         %
+Sanmitra Sur              B2330037        Credit          BDA             92.31         %
+Pranab Kumar Mondal       B2330048        Credit          CS              92.31         %
+Sayandeep Chatterjee      B2330038        Credit          BDA             92.31         %
+Atanu Saha                B2330024        Credit          BDA             84.62         %
+Amit Bera                 B2330056        Credit          BDA             84.62         %
+Sushovan Pan              B2330054        Credit          CS              69.23         %
 Aniket Ghosh              B2330018        Credit          BDA             41.67         %
 Biswajit Rana             B2330026        Audit           BDA             33.33         %
 Dipankar Dey              B2330116        Audit           BDA             25.00         %
