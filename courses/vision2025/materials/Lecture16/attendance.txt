@@ -5,12 +5,12 @@ Time: 9:00 P.M. - 11:00 P.M. (2 hrs)
 Name	                Department      Roll Number     Credit/Audit        Present/Absent
 --------------------------------------------------------------------------------------------------
 
-Atanu Saha              BDA             B2330024         Credit             
-Anurag Bose             CS              B2330043         Credit             
-Sanmitra Sur            BDA             B2330037         Credit             
-Pranab Kumar Mondal     CS              B2330048         Credit             
-Sayandeep Chatterjee    BDA             B2330038         Credit             
-Amit Bera               BDA             B2330056         Credit             
-Sushovan Pan            CS              B2330054         Credit             
+Atanu Saha              BDA             B2330024         Credit             Present
+Anurag Bose             CS              B2330043         Credit             Present
+Sanmitra Sur            BDA             B2330037         Credit             Present
+Pranab Kumar Mondal     CS              B2330048         Credit             Present
+Sayandeep Chatterjee    BDA             B2330038         Credit             Present
+Amit Bera               BDA             B2330056         Credit             Present
+Sushovan Pan            CS              B2330054         Credit             Present
 
 --------------------------------------------------------------------------------------------------
