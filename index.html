@@ -348,7 +348,39 @@
                   alt="Avatar" width="250" height="250" style="background-color: black;">
               -->
 
-              <img src="../img/jimut_2024_qatar_square.png" alt="Avatar" width="235" height="235" style="border-radius: 50%;"> 
+              <div style="position: relative; width: 235px; height: 235px; margin: 0 auto;">
+                <img src="../img/jimut_2024_qatar_square.png" alt="Avatar" width="235" height="235" style="border-radius: 50%; position: relative; z-index: 1;"> 
+                <svg width="270" height="270" style="position: absolute; top: -17px; left: -17px; z-index: 2; pointer-events: none;">
+                  <!-- Fixed circle outline -->
+                  <circle cx="135" cy="135" r="117.5" fill="none" stroke="rgba(0,255,0,0.1)" stroke-width="1" />
+                  
+                  <!-- Rotating second dot -->
+                  <circle cx="135" cy="17.5" r="4" fill="#00ff00">
+                    <animateTransform 
+                      attributeName="transform"
+                      type="rotate"
+                      from="0 135 135"
+                      to="360 135 135"
+                      dur="60s"
+                      repeatCount="indefinite"
+                    />
+                  </circle>
+                </svg>
+                <script>
+                  // Set the dot to current seconds position when page loads
+                  document.addEventListener('DOMContentLoaded', function() {
+                    const secondDot = document.querySelector('circle[cx="135"][cy="17.5"]');
+                    const now = new Date();
+                    const seconds = now.getSeconds();
+                    const angle = (seconds / 60) * 360;
+                    
+                    // Update the animation to start from current seconds position
+                    const animate = secondDot.querySelector('animateTransform');
+                    animate.setAttribute('from', angle + ' 135 135');
+                    animate.setAttribute('to', (angle + 360) + ' 135 135');
+                  });
+                </script>
+              </div>
               <br><br>
             </div>
 
