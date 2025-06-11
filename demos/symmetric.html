@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symmetric</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #4a5568;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 1rem;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .controls-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            min-width: 280px;
+            height: fit-content;
+        }
+
+        .canvas-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #drawing_canvas {
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            background: white;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        .control-section {
+            margin-bottom: 2rem;
+        }
+
+        .control-section h3 {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .color-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .color-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .color-btn.active {
+            border-color: #4a5568;
+            transform: scale(1.15);
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #4a5568;
+        }
+
+        .thickness-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .thickness-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .thickness-btn:hover {
+            transform: scale(1.1);
+            background: #edf2f7;
+        }
+
+        .thickness-btn.active {
+            border-color: #4a5568;
+            background: #edf2f7;
+            transform: scale(1.1);
+        }
+
+        .thickness-dot {
+            background: #4a5568;
+            border-radius: 50%;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .symmetry-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .symmetry-btn {
+            padding: 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .symmetry-btn:hover {
+            border-color: #667eea;
+            background: #f8faff;
+        }
+
+        .symmetry-btn.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .controls-panel {
+                min-width: auto;
+                padding: 1.5rem;
+            }
+
+            .color-palette {
+                grid-template-columns: repeat(10, 1fr);
+            }
+
+            #drawing_canvas {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Symmetric</h1>
+        <p>Create beautiful symmetrical gibberish artwork with every stroke</p>
+        <p>This was just a evening project to test an idea... It works!</p>
+    </div>
+
+    <div class="main-container">
+        <div class="controls-panel">
+            <div class="control-section">
+                <h3>🎨 Colors</h3>
+                <div class="color-palette" id="colorPalette"></div>
+            </div>
+
+            <div class="control-section">
+                <h3>✏️ Brush Size</h3>
+                <div class="thickness-controls" id="thicknessControls"></div>
+            </div>
+
+            <div class="control-section">
+                <h3>🔄 Symmetry Style</h3>
+                <div class="symmetry-options" id="symmetryOptions"></div>
+            </div>
+
+            <div class="control-section">
+                <h3>🛠️ Actions</h3>
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="undo()">↶ Undo</button>
+                    <button class="btn btn-secondary" onclick="clearCanvas()">🗑️ Clear All</button>
+                    <button class="btn btn-primary" onclick="downloadArt()">💾 Download</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="drawing_canvas" width="600" height="600"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const CONFIG = {
+            canvasSize: 600,
+            colors: [
+                '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', 
+                '#FFEAA7', '#DDA0DD', '#98D8C8', '#F7DC6F',
+                '#BB8FCE', '#85C1E9', '#F8C471', '#82E0AA',
+                '#F1948A', '#85929E', '#2C3E50', '#FFFFFF'
+            ],
+            thicknesses: [2, 5, 8, 12],
+            symmetryTypes: [
+                { name: 'Basic Mirror', count: 2 },
+                { name: '4-Way', count: 4 },
+                { name: '8-Way', count: 8 },
+                { name: 'Kaleidoscope', count: 12 }
+            ]
+        };
+
+        // State
+        let canvas, ctx;
+        let isDrawing = false;
+        let currentStroke = [];
+        let allStrokes = [];
+        let currentColor = CONFIG.colors[0];
+        let currentThickness = CONFIG.thicknesses[1];
+        let currentSymmetry = 0;
+
+        // Initialize
+        function init() {
+            canvas = document.getElementById('drawing_canvas');
+            ctx = canvas.getContext('2d');
+            
+            setupCanvas();
+            setupControls();
+            setupEventListeners();
+        }
+
+        function setupCanvas() {
+            canvas.width = CONFIG.canvasSize;
+            canvas.height = CONFIG.canvasSize;
+            
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+        }
+
+        function setupControls() {
+            // Setup color palette
+            const colorPalette = document.getElementById('colorPalette');
+            CONFIG.colors.forEach((color, index) => {
+                const colorBtn = document.createElement('div');
+                colorBtn.className = `color-btn ${index === 0 ? 'active' : ''}`;
+                colorBtn.style.backgroundColor = color;
+                colorBtn.onclick = () => selectColor(color, colorBtn);
+                colorPalette.appendChild(colorBtn);
+            });
+
+            // Setup thickness controls
+            const thicknessControls = document.getElementById('thicknessControls');
+            CONFIG.thicknesses.forEach((thickness, index) => {
+                const thickBtn = document.createElement('div');
+                thickBtn.className = `thickness-btn ${index === 1 ? 'active' : ''}`;
+                
+                const dot = document.createElement('div');
+                dot.className = 'thickness-dot';
+                dot.style.width = `${Math.min(thickness * 2, 20)}px`;
+                dot.style.height = `${Math.min(thickness * 2, 20)}px`;
+                
+                thickBtn.appendChild(dot);
+                thickBtn.onclick = () => selectThickness(thickness, thickBtn);
+                thicknessControls.appendChild(thickBtn);
+            });
+
+            // Setup symmetry options
+            const symmetryOptions = document.getElementById('symmetryOptions');
+            CONFIG.symmetryTypes.forEach((type, index) => {
+                const symBtn = document.createElement('div');
+                symBtn.className = `symmetry-btn ${index === 0 ? 'active' : ''}`;
+                symBtn.textContent = type.name;
+                symBtn.onclick = () => selectSymmetry(index, symBtn);
+                symmetryOptions.appendChild(symBtn);
+            });
+        }
+
+        function setupEventListeners() {
+            // Mouse events
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+
+            // Touch events
+            canvas.addEventListener('touchstart', handleTouch);
+            canvas.addEventListener('touchmove', handleTouch);
+            canvas.addEventListener('touchend', stopDrawing);
+
+            // Prevent scrolling on touch
+            canvas.addEventListener('touchstart', e => e.preventDefault());
+            canvas.addEventListener('touchmove', e => e.preventDefault());
+        }
+
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            
+            return {
+                x: (e.clientX - rect.left) * scaleX,
+                y: (e.clientY - rect.top) * scaleY
+            };
+        }
+
+        function getTouchPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            
+            return {
+                x: (e.touches[0].clientX - rect.left) * scaleX,
+                y: (e.touches[0].clientY - rect.top) * scaleY
+            };
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const pos = getMousePos(e);
+            currentStroke = [{
+                x: pos.x,
+                y: pos.y,
+                color: currentColor,
+                thickness: currentThickness
+            }];
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            
+            const pos = getMousePos(e);
+            currentStroke.push({
+                x: pos.x,
+                y: pos.y,
+                color: currentColor,
+                thickness: currentThickness
+            });
+            
+            redrawCanvas();
+            drawStroke(currentStroke);
+        }
+
+        function stopDrawing() {
+            if (!isDrawing) return;
+            
+            isDrawing = false;
+            if (currentStroke.length > 0) {
+                allStrokes.push([...currentStroke]);
+                currentStroke = [];
+                redrawCanvas();
+            }
+        }
+
+        function handleTouch(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent(e.type === 'touchstart' ? 'mousedown' : 
+                                            e.type === 'touchmove' ? 'mousemove' : 'mouseup', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            
+            if (e.type === 'touchstart') startDrawing(mouseEvent);
+            else if (e.type === 'touchmove') draw(mouseEvent);
+        }
+
+        function drawStroke(stroke) {
+            if (stroke.length < 2) return;
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const symmetryCount = CONFIG.symmetryTypes[currentSymmetry].count;
+
+            // Draw original stroke and all symmetrical versions
+            for (let i = 0; i < symmetryCount; i++) {
+                const angle = (2 * Math.PI * i) / symmetryCount;
+                
+                ctx.beginPath();
+                ctx.strokeStyle = stroke[0].color;
+                ctx.lineWidth = stroke[0].thickness;
+                ctx.globalAlpha = 0.8;
+
+                for (let j = 0; j < stroke.length - 1; j++) {
+                    const p1 = transformPoint(stroke[j].x, stroke[j].y, centerX, centerY, angle);
+                    const p2 = transformPoint(stroke[j + 1].x, stroke[j + 1].y, centerX, centerY, angle);
+                    
+                    if (j === 0) ctx.moveTo(p1.x, p1.y);
+                    ctx.lineTo(p2.x, p2.y);
+                }
+                
+                ctx.stroke();
+
+                // For mirror symmetry (except single reflection), also draw reflected versions
+                if (symmetryCount > 2 || currentSymmetry === 0) {
+                    ctx.beginPath();
+                    for (let j = 0; j < stroke.length - 1; j++) {
+                        const p1 = transformPointReflected(stroke[j].x, stroke[j].y, centerX, centerY, angle);
+                        const p2 = transformPointReflected(stroke[j + 1].x, stroke[j + 1].y, centerX, centerY, angle);
+                        
+                        if (j === 0) ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                    }
+                    ctx.stroke();
+                }
+                
+                ctx.globalAlpha = 1.0;
+            }
+        }
+
+        function transformPoint(x, y, centerX, centerY, angle) {
+            // Translate to origin
+            const translatedX = x - centerX;
+            const translatedY = y - centerY;
+            
+            // Apply rotation
+            const rotatedX = translatedX * Math.cos(angle) - translatedY * Math.sin(angle);
+            const rotatedY = translatedX * Math.sin(angle) + translatedY * Math.cos(angle);
+            
+            // Translate back
+            return {
+                x: rotatedX + centerX,
+                y: rotatedY + centerY
+            };
+        }
+
+        function transformPointReflected(x, y, centerX, centerY, angle) {
+            // Translate to origin
+            const translatedX = x - centerX;
+            const translatedY = y - centerY;
+            
+            // Apply rotation and reflection (flip Y)
+            const rotatedX = translatedX * Math.cos(angle) - (-translatedY) * Math.sin(angle);
+            const rotatedY = translatedX * Math.sin(angle) + (-translatedY) * Math.cos(angle);
+            
+            // Translate back
+            return {
+                x: rotatedX + centerX,
+                y: rotatedY + centerY
+            };
+        }
+
+        function redrawCanvas() {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            allStrokes.forEach(stroke => drawStroke(stroke));
+        }
+
+        function selectColor(color, element) {
+            currentColor = color;
+            document.querySelectorAll('.color-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function selectThickness(thickness, element) {
+            currentThickness = thickness;
+            document.querySelectorAll('.thickness-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function selectSymmetry(index, element) {
+            currentSymmetry = index;
+            document.querySelectorAll('.symmetry-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            redrawCanvas();
+        }
+
+        function undo() {
+            if (allStrokes.length > 0) {
+                allStrokes.pop();
+                redrawCanvas();
+            }
+        }
+
+        function clearCanvas() {
+            if (confirm('Are you sure you want to clear your artwork?')) {
+                allStrokes = [];
+                currentStroke = [];
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        function downloadArt() {
+            const link = document.createElement('a');
+            link.download = `symmetrical-art-${Date.now()}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Initialize when page loads
+        window.addEventListener('load', init);
+    </script>
+
+    
+    
+   
+</body>
+<br>
+<a href="https://jimut123.github.io/"><p style="text-align: center;">Jimut Bahan Pal and the idiot company</p></a>
+<br>
+</html>
