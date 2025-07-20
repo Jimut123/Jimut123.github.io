@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes: Attention Is All You Need</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="notes-container">
+        <a href="../index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Papers List
+        </a>
+        
+        <div class="notes-header">
+            <h1 class="notes-title">Attention Is All You Need</h1>
+            <div class="notes-meta">
+                <strong>Authors:</strong> Ashish Vaswani, Noam Shazeer, Niki Parmar, et al.<br>
+                <strong>Venue:</strong> NIPS 2017<br>
+                <strong>Status:</strong> <span style="color: #27ae60; font-weight: bold;">Read ✓</span><br>
+                <strong>Last Updated:</strong> July 2025
+            </div>
+            
+            <div class="paper-tags">
+                <span class="tag ai">AI</span>
+                <span class="tag ml">ML</span>
+                <span class="tag nlp">NLP</span>
+            </div>
+        </div>
+
+        <div class="notes-content">
+            <h2>📋 Summary</h2>
+            <p>
+                This paper introduces the <strong>Transformer architecture</strong>, which relies entirely on attention mechanisms 
+                and dispenses with recurrence and convolutions entirely. The model achieves state-of-the-art results on 
+                machine translation tasks while being more parallelizable and requiring significantly less time to train.
+            </p>
+
+            <h2>🔑 Key Contributions</h2>
+            <ul>
+                <li><strong>Self-Attention Mechanism:</strong> The core innovation that allows the model to relate different positions of a single sequence</li>
+                <li><strong>Multi-Head Attention:</strong> Running multiple attention functions in parallel to capture different types of relationships</li>
+                <li><strong>Positional Encoding:</strong> Since the model contains no recurrence, positional information is injected using sine and cosine functions</li>
+                <li><strong>Feed-Forward Networks:</strong> Applied to each position separately and identically</li>
+            </ul>
+
+            <h2>🏗️ Architecture Details</h2>
+            
+            <h3>Encoder-Decoder Structure</h3>
+            <p>
+                The Transformer follows an encoder-decoder architecture. The encoder maps an input sequence to a sequence 
+                of continuous representations, which the decoder uses to generate an output sequence one element at a time.
+            </p>
+
+            <h3>Multi-Head Self-Attention</h3>
+            <p>
+                Instead of performing a single attention function with <code>d_model</code>-dimensional keys, values and queries, 
+                the authors linearly project the queries, keys and values <code>h</code> times with different learned projections.
+            </p>
+
+            <blockquote>
+                "Multi-head attention allows the model to jointly attend to information from different representation 
+                subspaces at different positions."
+            </blockquote>
+
+            <h3>Positional Encoding</h3>
+            <p>
+                Since the model contains no recurrence or convolution, positional encodings are added to input embeddings:
+            </p>
+            <ul>
+                <li>PE(pos, 2i) = sin(pos/10000^(2i/d_model))</li>
+                <li>PE(pos, 2i+1) = cos(pos/10000^(2i/d_model))</li>
+            </ul>
+
+            <h2>💡 Key Insights</h2>
+            <p>
+                <span class="highlight">Attention mechanisms can completely replace recurrence and convolutions</span> 
+                for sequence modeling tasks. This leads to:
+            </p>
+            <ul>
+                <li><strong>Better Parallelization:</strong> All positions can be processed simultaneously</li>
+                <li><strong>Shorter Path Lengths:</strong> Direct connections between any two positions</li>
+                <li><strong>Interpretability:</strong> Attention weights provide insight into model behavior</li>
+            </ul>
+
+            <h2>🎯 Results</h2>
+            <ul>
+                <li><strong>WMT 2014 English-to-German:</strong> BLEU score of 28.4 (new state-of-the-art)</li>
+                <li><strong>WMT 2014 English-to-French:</strong> BLEU score of 41.8</li>
+                <li><strong>Training Time:</strong> 3.5 days on 8 P100 GPUs (much faster than previous models)</li>
+            </ul>
+
+            <h2>🤔 My Thoughts & Analysis</h2>
+            
+            <h3>Strengths</h3>
+            <ul>
+                <li>Revolutionary approach that opened up new possibilities for sequence modeling</li>
+                <li>Excellent empirical results with theoretical justification</li>
+                <li>Much more parallelizable than RNN-based approaches</li>
+                <li>The attention mechanism provides interpretability</li>
+            </ul>
+
+            <h3>Potential Limitations</h3>
+            <ul>
+                <li>Memory complexity is O(n²) with respect to sequence length</li>
+                <li>Requires positional encoding which might not capture all positional relationships</li>
+                <li>May struggle with very long sequences due to quadratic complexity</li>
+            </ul>
+
+            <h3>Impact on the Field</h3>
+            <p>
+                This paper essentially <strong>launched the modern era of NLP</strong>. It led directly to:
+            </p>
+            <ul>
+                <li>BERT and other transformer-based language models</li>
+                <li>GPT series of models</li>
+                <li>Vision Transformers (ViTs)</li>
+                <li>Widespread adoption across multiple domains beyond NLP</li>
+            </ul>
+
+            <h2>🔗 Related Work to Explore</h2>
+            <ul>
+                <li><strong>BERT:</strong> Bidirectional transformer for language understanding</li>
+                <li><strong>GPT:</strong> Generative pre-training with transformers</li>
+                <li><strong>Vision Transformer (ViT):</strong> Applying transformers to computer vision</li>
+                <li><strong>Longformer:</strong> Addressing the quadratic complexity issue</li>
+            </ul>
+
+            <h2>📝 Implementation Notes</h2>
+            <p>
+                Key implementation details to remember:
+            </p>
+            <ul>
+                <li>Layer normalization is applied before each sub-layer (pre-norm vs post-norm)</li>
+                <li>Residual connections around each sub-layer</li>
+                <li>Dropout applied to attention weights and feed-forward outputs</li>
+                <li>Label smoothing used during training</li>
+            </ul>
+
+            <h2>🎓 Questions for Further Study</h2>
+            <ul>
+                <li>How does the transformer handle very long sequences in practice?</li>
+                <li>What are the theoretical limits of self-attention mechanisms?</li>
+                <li>How do different positional encoding schemes affect performance?</li>
+                <li>Can we develop more efficient attention mechanisms?</li>
+            </ul>
+
+            <h2>⭐ Personal Rating: 5/5</h2>
+            <p>
+                <strong>Groundbreaking paper that fundamentally changed the field.</strong> The transformer architecture 
+                introduced here became the foundation for virtually all modern large language models. The clarity of 
+                presentation and the empirical results make this a must-read for anyone in AI/ML.
+            </p>
+
+            <hr style="margin: 2rem 0; border: none; border-top: 2px solid #ecf0f1;">
+            
+            <p style="color: #95a5a6; font-style: italic; text-align: center;">
+                <i class="fas fa-lightbulb"></i> 
+                These notes were compiled while reading the paper. They represent my understanding and interpretation 
+                of the key concepts and contributions.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

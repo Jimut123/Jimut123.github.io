@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Papers & Studies</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-graduation-cap"></i> Research Papers & Studies</h1>
+            <p class="subtitle">A curated collection of academic papers and research insights</p>
+        </header>
+
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalPapers">0</div>
+                    <div class="stat-label">Total Papers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="readPapers">0</div>
+                    <div class="stat-label">Papers Read</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="currentlyReading">0</div>
+                    <div class="stat-label">Currently Reading</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="plannedPapers">0</div>
+                    <div class="stat-label">Planned to Read</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-filter-section">
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search papers by title, authors, tags, or notes content...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All Papers</button>
+                <button class="filter-tab" data-filter="ai">Artificial Intelligence</button>
+                <button class="filter-tab" data-filter="ml">Machine Learning</button>
+                <button class="filter-tab" data-filter="nlp">Natural Language Processing</button>
+                <button class="filter-tab" data-filter="cv">Computer Vision</button>
+                <button class="filter-tab" data-filter="robotics">Robotics</button>
+                <button class="filter-tab" data-filter="read">Read</button>
+                <button class="filter-tab" data-filter="reading">Currently Reading</button>
+                <button class="filter-tab" data-filter="planned">Planned</button>
+            </div>
+        </div>
+
+        <div class="papers-grid" id="papersGrid">
+            <!-- Paper 1 -->
+            <div class="paper-card" data-tags="ai,ml,nlp" data-status="read" data-notes="transformer architecture attention mechanism self-attention neural networks deep learning breakthrough revolutionized nlp">
+                <div class="paper-header">
+                    <div>
+                        <h3 class="paper-title">
+                            <a href="https://arxiv.org/abs/1706.03762" target="_blank">Attention Is All You Need</a>
+                        </h3>
+                        <div class="paper-authors">Ashish Vaswani, Noam Shazeer, Niki Parmar, et al.</div>
+                        <div class="paper-venue">NIPS 2017</div>
+                    </div>
+                    <div class="read-status status-read">Read</div>
+                </div>
+                
+                <div class="paper-tags">
+                    <span class="tag ai">AI</span>
+                    <span class="tag ml">ML</span>
+                    <span class="tag nlp">NLP</span>
+                </div>
+                
+                <div class="paper-summary">
+                    This groundbreaking paper introduces the Transformer architecture, revolutionizing natural language processing by relying entirely on attention mechanisms without recurrence or convolution.
+                </div>
+                
+                <div class="paper-actions">
+                    <a href="https://arxiv.org/abs/1706.03762" class="action-btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Read Paper
+                    </a>
+                    <a href="notes/attention-is-all-you-need.html" class="action-btn btn-secondary">
+                        <i class="fas fa-edit"></i> My Notes
+                    </a>
+                </div>
+            </div>
+
+            <!-- Paper 2 -->
+            <div class="paper-card" data-tags="cv,ml" data-status="reading" data-notes="residual networks skip connections deep networks vanishing gradient problem computer vision breakthrough">
+                <div class="paper-header">
+                    <div>
+                        <h3 class="paper-title">
+                            <a href="https://arxiv.org/abs/1512.03385" target="_blank">Deep Residual Learning for Image Recognition</a>
+                        </h3>
+                        <div class="paper-authors">Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun</div>
+                        <div class="paper-venue">CVPR 2016</div>
+                    </div>
+                    <div class="read-status status-reading">Reading</div>
+                </div>
+                
+                <div class="paper-tags">
+                    <span class="tag cv">CV</span>
+                    <span class="tag ml">ML</span>
+                </div>
+                
+                <div class="paper-summary">
+                    Introduces residual networks (ResNets) that enable training of extremely deep neural networks by using skip connections to address the vanishing gradient problem.
+                </div>
+                
+                <div class="paper-actions">
+                    <a href="https://arxiv.org/abs/1512.03385" class="action-btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Read Paper
+                    </a>
+                    <a href="notes/deep-residual-learning.html" class="action-btn btn-secondary">
+                        <i class="fas fa-edit"></i> My Notes
+                    </a>
+                </div>
+            </div>
+
+            <!-- Paper 3 -->
+            <div class="paper-card" data-tags="robotics,ai,rl" data-status="planned" data-notes="reinforcement learning soft actor critic maximum entropy continuous control robotics">
+                <div class="paper-header">
+                    <div>
+                        <h3 class="paper-title">
+                            <a href="https://arxiv.org/abs/1801.01290" target="_blank">Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning</a>
+                        </h3>
+                        <div class="paper-authors">Tuomas Haarnoja, Aurick Zhou, Pieter Abbeel, Sergey Levine</div>
+                        <div class="paper-venue">ICML 2018</div>
+                    </div>
+                    <div class="read-status status-planned">Planned</div>
+                </div>
+                
+                <div class="paper-tags">
+                    <span class="tag robotics">Robotics</span>
+                    <span class="tag ai">AI</span>
+                </div>
+                
+                <div class="paper-summary">
+                    Presents a maximum entropy reinforcement learning algorithm that achieves state-of-the-art performance on a range of continuous control benchmark tasks.
+                </div>
+                
+                <div class="paper-actions">
+                    <a href="https://arxiv.org/abs/1801.01290" class="action-btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Read Paper
+                    </a>
+                    <a href="notes/soft-actor-critic.html" class="action-btn btn-secondary">
+                        <i class="fas fa-edit"></i> My Notes
+                    </a>
+                </div>
+            </div>
+
+            <!-- Paper 4 -->
+            <div class="paper-card" data-tags="nlp,ai,ml" data-status="read" data-notes="bert bidirectional transformer pre-training language model fine-tuning nlp tasks breakthrough">
+                <div class="paper-header">
+                    <div>
+                        <h3 class="paper-title">
+                            <a href="https://arxiv.org/abs/1810.04805" target="_blank">BERT: Pre-training of Deep Bidirectional Transformers</a>
+                        </h3>
+                        <div class="paper-authors">Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova</div>
+                        <div class="paper-venue">NAACL 2019</div>
+                    </div>
+                    <div class="read-status status-read">Read</div>
+                </div>
+                
+                <div class="paper-tags">
+                    <span class="tag nlp">NLP</span>
+                    <span class="tag ai">AI</span>
+                </div>
+                
+                <div class="paper-summary">
+                    Introduces BERT, a method for pre-training language representations that obtains state-of-the-art results on eleven natural language processing tasks.
+                </div>
+                
+                <div class="paper-actions">
+                    <a href="https://arxiv.org/abs/1810.04805" class="action-btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Read Paper
+                    </a>
+                    <a href="notes/bert-paper.html" class="action-btn btn-secondary">
+                        <i class="fas fa-edit"></i> My Notes
+                    </a>
+                </div>
+            </div>
+
+            <!-- Paper 5 -->
+            <div class="paper-card" data-tags="cv,ml,generative" data-status="reading" data-notes="generative adversarial networks gans generative models adversarial training discriminator generator">
+                <div class="paper-header">
+                    <div>
+                        <h3 class="paper-title">
+                            <a href="https://arxiv.org/abs/1406.2661" target="_blank">Generative Adversarial Networks</a>
+                        </h3>
+                        <div class="paper-authors">Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, et al.</div>
+                        <div class="paper-venue">NIPS 2014</div>
+                    </div>
+                    <div class="read-status status-reading">Reading</div>
+                </div>
+                
+                <div class="paper-tags">
+                    <span class="tag cv">CV</span>
+                    <span class="tag ml">ML</span>
+                </div>
+                
+                <div class="paper-summary">
+                    Introduces Generative Adversarial Networks, a novel framework for estimating generative models via an adversarial process between two neural networks.
+                </div>
+                
+                <div class="paper-actions">
+                    <a href="https://arxiv.org/abs/1406.2661" class="action-btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Read Paper
+                    </a>
+                    <a href="notes/generative-adversarial-networks.html" class="action-btn btn-secondary">
+                        <i class="fas fa-edit"></i> My Notes
+                    </a>
+                </div>
+            </div>
+
+            <!-- Paper 6 -->
+            <div class="paper-card" data-tags="nlp,ai,gpt" data-status="planned" data-notes="gpt language model autoregressive transformer unsupervised pre-training natural language understanding">
+                <div class="paper-header">
+                    <div>
+                        <h3 class="paper-title">
+                            <a href="https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf" target="_blank">Improving Language Understanding by Generative Pre-Training</a>
+                        </h3>
+                        <div class="paper-authors">Alec Radford, Karthik Narasimhan, Tim Salimans, Ilya Sutskever</div>
+                        <div class="paper-venue">OpenAI 2018</div>
+                    </div>
+                    <div class="read-status status-planned">Planned</div>
+                </div>
+                
+                <div class="paper-tags">
+                    <span class="tag nlp">NLP</span>
+                    <span class="tag ai">AI</span>
+                </div>
+                
+                <div class="paper-summary">
+                    The original GPT paper that demonstrates how unsupervised pre-training of a language model on a diverse corpus can achieve significant gains on discriminative tasks.
+                </div>
+                
+                <div class="paper-actions">
+                    <a href="https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf" class="action-btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Read Paper
+                    </a>
+                    <a href="notes/gpt-original.html" class="action-btn btn-secondary">
+                        <i class="fas fa-edit"></i> My Notes
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+            <p>No papers found matching your search criteria.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

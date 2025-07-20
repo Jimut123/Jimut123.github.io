@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Glorified TODO App</title>
+
+<!-- GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* ———————————————————  GLOBAL THEME  ——————————————————— */
+:root{
+  --bg-primary:#0a0a0a;
+  --bg-panel:rgba(15,15,25,.95);
+  --accent-blue:#00d4ff;
+  --accent-purple:#8b00ff;
+  --accent-gold:#ffd700;
+  --text-primary:#ffffff;
+  --text-secondary:#b0b8c8;
+  --gradient-primary:linear-gradient(135deg,#00d4ff,#0099cc);
+  --gradient-gold:linear-gradient(135deg,#ffd700,#ff8c00);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Orbitron',monospace;
+  background:var(--bg-primary);
+  color:var(--text-primary);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(0,212,255,.06)0%,transparent 50%),
+    radial-gradient(circle at 80% 70%,rgba(139,0,255,.04)0%,transparent 50%),
+    radial-gradient(circle at 40% 80%,rgba(0,255,255,.03)0%,transparent 50%);
+  animation:bgPulse 8s ease-in-out infinite alternate;
+  z-index:-1;pointer-events:none
+}
+@keyframes bgPulse{0%{opacity:.3}100%{opacity:.7}}
+
+/* ———————————————————  HEADER  ——————————————————— */
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:100;
+  background:var(--bg-panel);backdrop-filter:blur(20px);
+  border-bottom:2px solid var(--accent-blue);
+  height:80px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px
+}
+.logo{
+  font-size:2.4rem;font-weight:900;letter-spacing:3px;
+  background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:0 0 18px var(--accent-blue);animation:titleGlow 2s ease-in-out infinite alternate
+}
+@keyframes titleGlow{from{filter:drop-shadow(0 0 6px var(--accent-blue))}to{filter:drop-shadow(0 0 14px var(--accent-blue))}}
+
+.rank-badge{background:var(--gradient-primary);color:var(--bg-primary);padding:5px 14px;border-radius:18px;font-size:.9rem;font-weight:700;margin-bottom:4px}
+.rank-title{color:var(--accent-blue);font-size:.8rem;font-weight:600}
+
+.pill{background:rgba(0,212,255,.1);border:2px solid var(--accent-blue);color:var(--accent-blue);
+  padding:10px 20px;border-radius:8px;font-weight:600;font-size:.9rem;cursor:pointer;
+  transition:.3s;position:relative;overflow:hidden;user-select:none}
+.pill::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(0,212,255,.35),transparent);
+  left:-100%;transition:left .6s}
+.pill:hover::before{left:100%}
+.pill:hover{background:var(--accent-blue);color:var(--bg-primary);transform:translateY(-2px)}
+
+.pill.shop{border-color:var(--accent-gold);color:var(--accent-gold);background:rgba(255,215,0,.1)}
+.pill.shop::before{background:linear-gradient(90deg,transparent,rgba(255,215,0,.35),transparent)}
+.pill.shop:hover{background:var(--accent-gold);color:var(--bg-primary)}
+
+/* ———————————————————  LAYOUT  ——————————————————— */
+main{max-width:1400px;margin:120px auto 60px;padding:0 40px}
+.grid{display:grid;gap:30px}
+.stats{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{
+  background:var(--bg-panel);backdrop-filter:blur(25px);border:2px solid var(--accent-blue);
+  border-radius:15px;padding:26px;position:relative;transition:.3s overflow:hidden}
+.card:hover{transform:translateY(-5px);box-shadow:0 0 22px rgba(0,212,255,.2)}
+.card::before{content:'';position:absolute;inset:-2px;background:var(--gradient-primary);border-radius:15px;opacity:0;transition:.3s;pointer-events:none}
+.card:hover::before{opacity:.18}
+.stat-val{font-size:2.4rem;font-weight:900;text-align:center;
+  background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:10px 0}
+.stat-label{font-size:.9rem;font-weight:600;color:var(--accent-blue);letter-spacing:1px;text-transform:uppercase}
+.bar{height:8px;width:100%;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-top:14px}
+.fill{height:100%;background:var(--gradient-primary);border-radius:4px;position:relative}
+.fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+  animation:shimmer 2s infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+.window{margin-top:40px}
+.win-head{background:linear-gradient(145deg,rgba(0,212,255,.12),rgba(139,0,255,.07));
+  padding:20px 26px;border-bottom:2px solid var(--accent-blue)}
+.win-title{color:var(--accent-blue);font-size:1.3rem;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.win-body{padding:26px}
+
+.form{display:grid;gap:20px}
+label{color:var(--accent-blue);font-size:.88rem;font-weight:600;letter-spacing:1px}
+input,textarea,select{
+  width:100%;background:rgba(0,212,255,.06);border:2px solid rgba(0,212,255,.3);
+  border-radius:8px;padding:12px 14px;color:var(--text-primary);font-family:'Orbitron',monospace;
+  transition:.3s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent-blue);box-shadow:0 0 14px rgba(0,212,255,.3)}
+textarea{min-height:80px;resize:vertical}
+.btn-primary{background:var(--gradient-primary);color:var(--bg-primary);border:none;padding:14px 25px;
+  border-radius:8px;font-weight:700;cursor:pointer;transition:.3s;position:relative;overflow:hidden;text-transform:uppercase}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
+  left:-100%;transition:left .5s}
+.btn-primary:hover::before{left:100%}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 0 18px rgba(0,212,255,.25)}
+
+.missions{display:flex;flex-direction:column;gap:20px}
+.mission{background:rgba(0,212,255,.04);border:2px solid rgba(0,212,255,.25);border-radius:12px;padding:20px;
+  position:relative;transition:.3s}
+.mission::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--gradient-primary);
+  transition:width .3s;pointer-events:none}
+.mission:hover{border-color:var(--accent-blue);box-shadow:0 0 18px rgba(0,212,255,.18);transform:translateY(-3px)}
+.mission:hover::before{width:100%;opacity:.05}
+.m-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.check{width:20px;height:20px;accent-color:var(--accent-blue);cursor:pointer}
+.m-title{flex:1;font-size:1.15rem;font-weight:700}
+.m-exp{background:linear-gradient(45deg,#ffd700,#ff8c00);color:#000;padding:6px 12px;border-radius:14px;font-weight:700;font-size:.88rem}
+.m-desc{margin:10px 0;padding:10px;background:rgba(0,212,255,.05);border-left:3px solid var(--accent-blue);color:var(--text-secondary);line-height:1.5}
+.m-actions{display:flex;flex-wrap:wrap;gap:10px;font-size:.8rem}
+.small-btn{background:rgba(0,212,255,.1);border:2px solid var(--accent-blue);color:var(--accent-blue);
+  padding:7px 14px;border-radius:6px;font-weight:600;cursor:pointer;transition:.2s;text-transform:uppercase}
+.small-btn:hover{background:var(--accent-blue);color:var(--bg-primary)}
+.small-btn.danger{border-color:#ff4757;color:#ff4757;background:rgba(255,71,87,.12)}
+.small-btn.danger:hover{background:#ff4757;color:#fff}
+
+/* Subtasks styling */
+.subtasks{margin:15px 0;padding:10px;background:rgba(0,212,255,.03);border-radius:8px}
+.subtask{display:flex;align-items:center;gap:10px;padding:8px;margin:5px 0;background:rgba(0,212,255,.05);border-radius:6px}
+.subtask.completed{opacity:.6;text-decoration:line-through}
+.subtask-text{flex:1;color:var(--text-secondary)}
+.subtask input[type="checkbox"]{width:18px;height:18px;accent-color:var(--accent-blue)}
+
+.panel{position:fixed;top:0;right:-100%;width:100%;max-width:600px;height:100%;
+  background:var(--bg-panel);backdrop-filter:blur(30px);border-left:2px solid var(--accent-blue);
+  transition:right .4s cubic-bezier(.4,0,.2,1);z-index:200;overflow-y:auto}
+.panel.open{right:0}
+.p-head{position:sticky;top:0;background:linear-gradient(145deg,rgba(0,212,255,.12),rgba(139,0,255,.07));
+  padding:24px 30px;border-bottom:2px solid var(--accent-blue);display:flex;justify-content:space-between;align-items:center;z-index:10}
+.p-title{font-size:1.25rem;color:var(--accent-blue);font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.close{width:40px;height:40px;border:2px solid var(--accent-blue);border-radius:50%;background:rgba(0,212,255,.1);
+  color:var(--accent-blue);cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:.3s}
+.close:hover{background:var(--accent-blue);color:var(--bg-primary);transform:rotate(90deg)}
+.p-body{padding:30px}
+
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;border-bottom:2px solid rgba(0,212,255,.22);padding-bottom:14px}
+.tab{background:rgba(0,212,255,.1);border:2px solid rgba(0,212,255,.3);color:var(--text-secondary);
+  padding:9px 14px;border-radius:8px;font-weight:600;font-size:.8rem;cursor:pointer;transition:.3s;text-transform:uppercase}
+.tab.active{background:var(--accent-blue);border-color:var(--accent-blue);color:var(--bg-primary);box-shadow:0 0 14px rgba(0,212,255,.45)}
+.tab:not(.active):hover{background:rgba(0,212,255,.18);color:var(--accent-blue)}
+.search{margin-bottom:20px}
+.search input{width:100%;background:rgba(0,212,255,.06);border:2px solid rgba(0,212,255,.3);border-radius:8px;
+  padding:12px;color:var(--text-primary);transition:.3s}
+.search input:focus{outline:none;border-color:var(--accent-blue);box-shadow:0 0 14px rgba(0,212,255,.3)}
+.i-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.item{background:rgba(0,212,255,.05);border:2px solid rgba(0,212,255,.2);border-radius:12px;padding:18px;
+  cursor:pointer;transition:.3s;position:relative;overflow:hidden}
+.item::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--gradient-primary);
+  transform:scaleX(0);transition:transform .3s;pointer-events:none}
+.item:hover{border-color:var(--accent-blue);box-shadow:0 0 16px rgba(0,212,255,.18);transform:translateY(-4px)}
+.item:hover::before{transform:scaleX(1)}
+.item-icon{font-size:2.3rem;text-align:center;margin-bottom:12px}
+.item-name{font-weight:700;text-align:center}
+.item-rank{display:inline-block;padding:3px 9px;border-radius:11px;font-size:.7rem;font-weight:700;margin:8px auto 10px;
+  text-transform:uppercase}
+.item-stats{font-size:.85rem;color:var(--accent-blue);text-align:center;margin-bottom:4px}
+.item-desc{font-size:.78rem;color:var(--text-secondary);text-align:center;line-height:1.4}
+.item-cost{font-size:.9rem;color:var(--accent-gold);text-align:center;font-weight:700;margin-top:8px}
+.item.owned{background:rgba(0,212,255,.09);border-color:var(--accent-blue)}
+.item.owned::before{background:linear-gradient(90deg,#ffd700,#ff8c00)}
+.item.affordable{border-color:var(--accent-gold)}
+.item.expensive{opacity:.6}
+
+.rarity-common .item-rank{background:#95a5a6;color:#fff}
+.rarity-rare .item-rank{background:#3498db;color:#fff}
+.rarity-epic .item-rank{background:#9b59b6;color:#fff}
+.rarity-legendary .item-rank{background:#f39c12;color:#fff}
+.rarity-ssr .item-rank{background:#e74c3c;color:#fff}
+
+.toast{position:fixed;top:100px;right:30px;background:linear-gradient(45deg,#ffd700,#ff8c00);color:#000;
+  padding:15px 20px;border-radius:10px;font-weight:700;border:2px solid #ffd700;display:flex;align-items:center;gap:10px;
+  max-width:320px;transform:translateX(420px);transition:transform .6s cubic-bezier(.68,-.55,.265,1.55);z-index:300}
+.toast.show{transform:translateX(0)}
+
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:400}
+.modal-content{background:var(--bg-panel);border:2px solid var(--accent-blue);border-radius:15px;padding:30px;max-width:500px;width:90%}
+.modal .title{color:var(--accent-blue);font-size:1.2rem;font-weight:700;text-align:center;margin-bottom:18px}
+.mBtns{display:flex;gap:14px;justify-content:center;margin-top:22px}
+.mBtns .small-btn{padding:10px 18px}
+
+.year-head{background:linear-gradient(45deg,var(--accent-purple),#8e44ad);color:#fff;padding:14px 20px;border-radius:12px;
+  display:flex;justify-content:space-between;align-items:center;cursor:pointer;margin-bottom:10px;transition:.3s}
+.year-head:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(155,89,182,.4)}
+.archive-list{margin-left:20px}
+.entry{background:rgba(46,204,113,.08);border:2px solid rgba(46,204,113,.3);border-radius:12px;padding:18px;
+  margin:10px 0;position:relative}
+.entry::before{content:'✓';position:absolute;left:-14px;top:50%;transform:translateY(-50%);
+  width:28px;height:28px;border-radius:50%;background:linear-gradient(45deg,#2ecc71,#27ae60);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
+.entry h4{font-size:1rem;margin-bottom:6px}
+.entry p{font-size:.85rem;color:var(--text-secondary);margin-bottom:6px}
+.entry small{color:var(--accent-blue);font-size:.78rem}
+.entry .quest-exp{font-size:.88rem;color:var(--accent-gold);font-weight:700}
+.entry-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.entry-actions{display:flex;gap:8px;align-items:center}
+
+.buy-btn{background:var(--gradient-gold);color:var(--bg-primary);border:none;padding:8px 16px;
+  border-radius:6px;font-weight:700;cursor:pointer;transition:.3s;font-size:.85rem;text-transform:uppercase}
+.buy-btn:hover{transform:translateY(-2px);box-shadow:0 0 12px rgba(255,215,0,.3)}
+.buy-btn:disabled{opacity:.5;cursor:not-allowed}
+
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:rgba(0,212,255,.12)}
+::-webkit-scrollbar-thumb{background:var(--gradient-primary);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#00c0e0}
+
+@media(max-width:768px){
+  header{flex-direction:column;height:auto;padding:14px 20px}
+  .logo{font-size:2rem}
+  main{padding:0 20px;margin-top:140px}
+  .stats{grid-template-columns:1fr}
+  .i-grid{grid-template-columns:1fr}
+  .pill{margin-top:10px}
+  .panel{max-width:100%}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div style="display:flex;align-items:center;gap:18px">
+    <span class="logo">J-SYSTEM</span>
+    <div>
+      <div class="rank-badge" id="hunterRank">E-RANK</div>
+      <div class="rank-title" id="hunterTitle">WEAKEST HUNTER</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:14px;flex-wrap:wrap">
+    <button class="pill" onclick="toggleInventory()">🎒 INVENTORY</button>
+    <button class="pill shop" onclick="toggleShop()">🛒 SHOP</button>
+    <button class="pill" onclick="toggleArchives()">🗂️ ARCHIVES</button>
+  </div>
+</header>
+
+<main>
+  <section class="grid stats">
+    <div class="card">
+      <div class="stat-label">Hunter Level</div>
+      <div class="stat-val" id="curLvl">1</div>
+      <div class="bar"><div class="fill" id="lvlBar" style="width:0%"></div></div>
+    </div>
+    <div class="card"><div class="stat-label">Total EXP</div><div class="stat-val" id="totExp">0</div></div>
+    <div class="card"><div class="stat-label">Active Missions</div><div class="stat-val" id="actMis">0</div></div>
+    <div class="card"><div class="stat-label">Daily Streak</div><div class="stat-val" id="streak">0</div></div>
+  </section>
+
+  <section class="window">
+    <div class="win-head"><span class="win-title">📋 Mission Creation</span></div>
+    <div class="win-body">
+      <form class="form" onsubmit="createMission(event)">
+        <div><label>Mission Title</label><input id="title" required></div>
+        <div><label>Mission Details</label><textarea id="desc"></textarea></div>
+        <div>
+          <label>EXP Reward</label>
+          <select id="xp">
+            <option value="10">10 EXP – E-Rank</option>
+            <option value="20">20 EXP – D-Rank</option>
+            <option value="30">30 EXP – C-Rank</option>
+            <option value="50">50 EXP – B-Rank</option>
+            <option value="75">75 EXP – A-Rank</option>
+            <option value="100">100 EXP – S-Rank</option>
+          </select>
+        </div>
+        <button class="btn-primary">🚀 Launch Mission</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="window">
+    <div class="win-head"><span class="win-title">⚔️ Active Missions</span></div>
+    <div class="win-body"><div id="missions" class="missions"></div></div>
+  </section>
+</main>
+
+<!-- INVENTORY PANEL -->
+<aside id="inv" class="panel">
+  <div class="p-head">
+    <span class="p-title">🎒 Hunter Inventory</span>
+    <button class="close" onclick="closeInv()">&times;</button>
+  </div>
+  <div class="p-body">
+    <div id="inventoryTabs" class="tabs"></div>
+    <div class="search"><input id="searchInv" placeholder="🔍 Search…" oninput="searchInventory()"></div>
+    <div id="inventoryGrid" class="i-grid"></div>
+  </div>
+</aside>
+
+<!-- SHOP PANEL -->
+<aside id="shop" class="panel">
+  <div class="p-head">
+    <span class="p-title">🛒 Hunter Shop</span>
+    <button class="close" onclick="closeShop()">&times;</button>
+  </div>
+  <div class="p-body">
+    <div id="shopTabs" class="tabs"></div>
+    <div class="search"><input id="searchShop" placeholder="🔍 Search items…" oninput="searchShop()"></div>
+    <div id="shopGrid" class="i-grid"></div>
+  </div>
+</aside>
+
+<!-- ARCHIVES PANEL -->
+<aside id="arc" class="panel">
+  <div class="p-head">
+    <span class="p-title">🗂️ Mission Archives</span>
+    <button class="close" onclick="closeArc()">&times;</button>
+  </div>
+  <div class="p-body"><div id="archives" class="archives"></div></div>
+</aside>
+
+<!-- MODALS -->
+<div id="subModal" class="modal">
+  <div class="modal-content">
+    <p class="title">Add Subtask</p>
+    <input id="subInput">
+    <div class="mBtns">
+      <button class="btn-primary" onclick="addSubtask()">Add</button>
+      <button class="small-btn" onclick="closeSub()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="itemModal" class="modal">
+  <div class="modal-content">
+    <p class="title">Item Details</p>
+    <div id="itemDetails"></div>
+    <div class="mBtns"><button class="small-btn" onclick="closeItem()">Close</button></div>
+  </div>
+</div>
+
+<div id="buyModal" class="modal">
+  <div class="modal-content">
+    <p class="title">Purchase Item</p>
+    <div id="buyDetails"></div>
+    <div class="mBtns">
+      <button class="buy-btn" onclick="confirmPurchase()">PURCHASE</button>
+      <button class="small-btn" onclick="closeBuy()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"><span id="tIcon">🏆</span><span id="tMsg"></span></div>
+
+<script>
+const RANKS={E:{title:"WEAKEST HUNTER",min:1},D:{title:"WEAK HUNTER",min:11},C:{title:"AVERAGE HUNTER",min:26},
+B:{title:"ABOVE AVERAGE HUNTER",min:51},A:{title:"ELITE HUNTER",min:76},S:{title:"NATIONAL LEVEL HUNTER",min:101}};
+const EXP_LVL=100;
+
+// COMPREHENSIVE ITEM DATABASE - FIXED
+const DB = {
+  weapons: [
+    // E-Rank Weapons (10-100 XP)
+    {id:1,name:"Rusted Dagger",rank:"E",attack:15,description:"A worn blade barely holding together",icon:"🗡️",rarity:"common",cost:10},
+    {id:2,name:"Wooden Club",rank:"E",attack:20,description:"Basic wooden weapon for beginners",icon:"🏏",rarity:"common",cost:15},
+    {id:3,name:"Iron Dagger",rank:"E",attack:35,description:"Standard issue hunter dagger",icon:"⚔️",rarity:"common",cost:25},
+    {id:4,name:"Steel Sword",rank:"E",attack:50,description:"Reliable steel blade for new hunters",icon:"🗡️",rarity:"common",cost:40},
+    {id:5,name:"Hunter's Bow",rank:"E",attack:45,description:"Basic ranged weapon",icon:"🏹",rarity:"common",cost:50},
+    {id:6,name:"Bronze Spear",rank:"E",attack:60,description:"Long-reach bronze weapon",icon:"🔱",rarity:"common",cost:65},
+    {id:7,name:"Combat Knife",rank:"E",attack:40,description:"Sharp tactical blade",icon:"🔪",rarity:"common",cost:80},
+    {id:8,name:"War Hammer",rank:"E",attack:75,description:"Heavy blunt weapon",icon:"🔨",rarity:"common",cost:100},
+    
+    // D-Rank Weapons (150-500 XP)
+    {id:9,name:"Silver Blade",rank:"D",attack:120,description:"Enchanted silver sword with demon-slaying properties",icon:"⚔️",rarity:"rare",cost:150},
+    {id:10,name:"Flame Dagger",rank:"D",attack:100,effect:"+15 Fire DMG",description:"Blade imbued with fire magic",icon:"🔥",rarity:"rare",cost:200},
+    {id:11,name:"Ice Spear",rank:"D",attack:140,effect:"Freeze Chance",description:"Crystalline spear that can freeze enemies",icon:"🧊",rarity:"rare",cost:250},
+    {id:12,name:"Lightning Bow",rank:"D",attack:130,effect:"+20 Shock DMG",description:"Bow that fires electric arrows",icon:"⚡",rarity:"rare",cost:300},
+    {id:13,name:"Mithril Sword",rank:"D",attack:160,description:"Lightweight yet incredibly strong",icon:"🗡️",rarity:"rare",cost:350},
+    {id:14,name:"Shadow Blade",rank:"D",attack:150,effect:"Stealth Bonus",description:"Weapon forged from shadow essence",icon:"🌙",rarity:"rare",cost:400},
+    {id:15,name:"Crystal Mace",rank:"D",attack:180,description:"Devastating blunt weapon",icon:"💎",rarity:"rare",cost:450},
+    {id:16,name:"Wind Cutter",rank:"D",attack:145,effect:"Wind Slash",description:"Blade that cuts through air itself",icon:"💨",rarity:"rare",cost:500}
+  ],
+
+  armor: [
+    {id:101,name:"Leather Vest",rank:"E",defense:10,description:"Basic protection for hunters",icon:"🦺",rarity:"common",cost:12},
+    {id:102,name:"Iron Helmet",rank:"E",defense:15,description:"Standard head protection",icon:"⛑️",rarity:"common",cost:18},
+    {id:103,name:"Chain Mail",rank:"E",defense:25,description:"Flexible metal armor",icon:"🔗",rarity:"common",cost:30},
+    {id:104,name:"Steel Gauntlets",rank:"E",defense:8,description:"Hand protection",icon:"🧤",rarity:"common",cost:35},
+    {id:105,name:"Combat Boots",rank:"E",defense:12,description:"Reinforced footwear",icon:"🥾",rarity:"common",cost:45},
+    {id:106,name:"Hunter's Cloak",rank:"E",defense:20,description:"Basic hunter gear",icon:"🧥",rarity:"common",cost:60},
+    {id:107,name:"Bronze Breastplate",rank:"E",defense:35,description:"Chest armor for beginners",icon:"🛡️",rarity:"common",cost:75},
+    {id:108,name:"Reinforced Pants",rank:"E",defense:18,description:"Armored leg protection",icon:"👖",rarity:"common",cost:90}
+  ],
+
+  accessories: [
+    {id:201,name:"Copper Ring",rank:"E",effect:"+5 HP",description:"Simple health-boosting ring",icon:"💍",rarity:"common",cost:20},
+    {id:202,name:"Leather Bracelet",rank:"E",effect:"+3 STR",description:"Basic strength enhancer",icon:"📿",rarity:"common",cost:25},
+    {id:203,name:"Hunter's Badge",rank:"E",effect:"ID Verification",description:"Official hunter identification",icon:"🪪",rarity:"common",cost:30},
+    {id:204,name:"Iron Necklace",rank:"E",effect:"+8 DEF",description:"Defensive accessory",icon:"📿",rarity:"common",cost:40},
+    {id:205,name:"Speed Boots Charm",rank:"E",effect:"+5% Speed",description:"Enhances movement speed",icon:"⚡",rarity:"common",cost:50}
+  ],
+
+  consumables: [
+    {id:301,name:"Health Potion",rank:"E",effect:"Restore 50 HP",description:"Basic healing potion",icon:"🧪",rarity:"common",cost:10},
+    {id:302,name:"Mana Potion",rank:"E",effect:"Restore 30 MP",description:"Restores magical energy",icon:"💙",rarity:"common",cost:15},
+    {id:303,name:"Stamina Drink",rank:"E",effect:"Restore Energy",description:"Recovers stamina",icon:"🥤",rarity:"common",cost:20},
+    {id:304,name:"Antidote",rank:"E",effect:"Cure Poison",description:"Neutralizes toxins",icon:"💚",rarity:"common",cost:25},
+    {id:305,name:"Strength Booster",rank:"D",effect:"+20 STR (1hr)",description:"Temporary strength enhancement",icon:"💪",rarity:"rare",cost:100}
+  ],
+
+  cores: [
+    {id:401,name:"Goblin Core",rank:"E",effect:"+2 All Stats",description:"Core from a weak goblin",icon:"👺",rarity:"common",cost:30},
+    {id:402,name:"Orc Warrior Core",rank:"D",effect:"+15 STR",description:"Core of a strong orc",icon:"🧌",rarity:"rare",cost:200},
+    {id:403,name:"Troll Chieftain Core",rank:"C",effect:"+50 HP, +20 DEF",description:"Core from a troll leader",icon:"👹",rarity:"epic",cost:800}
+  ],
+
+  runes: [
+    {id:501,name:"Fire Rune",rank:"D",effect:"Fire Magic +25%",description:"Enhances fire-based attacks",icon:"🔥",rarity:"rare",cost:250},
+    {id:502,name:"Ice Rune",rank:"D",effect:"Ice Magic +25%",description:"Enhances ice-based attacks",icon:"❄️",rarity:"rare",cost:250},
+    {id:503,name:"Lightning Rune",rank:"D",effect:"Lightning Magic +25%",description:"Enhances electric attacks",icon:"⚡",rarity:"rare",cost:250}
+  ],
+
+  essences: [
+    {id:601,name:"Beast Essence",rank:"D",effect:"Animal Communication",description:"Essence of wild beasts",icon:"🐺",rarity:"rare",cost:300},
+    {id:602,name:"Spirit Essence",rank:"C",effect:"Ghost Sight",description:"Essence of departed spirits",icon:"👻",rarity:"epic",cost:700}
+  ],
+
+  keys: [
+    {id:701,name:"Iron Gate Key",rank:"E",effect:"Opens E-Rank Gates",description:"Key to low-level dungeons",icon:"🗝️",rarity:"common",cost:50},
+    {id:702,name:"Silver Gate Key",rank:"D",effect:"Opens D-Rank Gates",description:"Key to moderate dungeons",icon:"🔑",rarity:"rare",cost:300}
+  ],
+
+  special: [
+    {id:801,name:"System Access Card",rank:"B",effect:"Enhanced System Features",description:"Unlocks advanced system functions",icon:"💳",rarity:"legendary",cost:5000},
+    {id:802,name:"Double EXP Token",rank:"C",effect:"2x EXP (24hrs)",description:"Doubles experience gain",icon:"🎫",rarity:"epic",cost:1500}
+  ]
+};
+
+// FIXED DATA INITIALIZATION
+let data=JSON.parse(localStorage.getItem("slData")||`{"missions":[],"done":[],"xp":0,"lvl":1,"streak":0,"last":null,"inv":{},"purchased":{}}`);
+let curTab="owned",curShopTab="weapons",curMissionId=null,pendingPurchase=null;
+
+const $=q=>document.querySelector(q);
+function save(){localStorage.setItem("slData",JSON.stringify(data))}
+function toast(msg,ic="🏆"){$("#tMsg").textContent=msg;$("#tIcon").textContent=ic;
+  $("#toast").classList.add("show");setTimeout(()=>$("#toast").classList.remove("show"),3800)}
+function rankFromLvl(lvl){return Object.keys(RANKS).reverse().find(r=>lvl>=RANKS[r].min)||"E"}
+
+// FIXED INITIALIZATION
+function init(){
+  const today=new Date().toDateString();
+  if(data.last!==today){
+    const yesterday = new Date(Date.now()-864e5).toDateString();
+    data.streak=(data.last === yesterday) ? data.streak+1 : 1;
+    data.last=today;
+    save();
+  }
+  $("#streak").textContent=data.streak;
+  buildStats();
+  renderMissions();
+  buildTabs();
+  buildShopTabs();
+  renderInv();
+  renderShop(); // FIXED: Ensure shop renders on init
+  renderArchives(); // FIXED: Ensure archives render on init
+}
+window.addEventListener("DOMContentLoaded",init);
+
+function buildStats(){
+  $("#curLvl").textContent=data.lvl;
+  $("#totExp").textContent=data.xp.toLocaleString();
+  $("#actMis").textContent=data.missions.length;
+  $("#lvlBar").style.width=`${(data.xp%EXP_LVL)/EXP_LVL*100}%`;
+  const rk=rankFromLvl(data.lvl);
+  $("#hunterRank").textContent=`${rk}-RANK`;
+  $("#hunterTitle").textContent=RANKS[rk].title;
+}
+
+function renderMissions(){
+  const missionsContainer = $("#missions");
+  if(!data.missions.length){
+    missionsContainer.innerHTML=`<p style="text-align:center;color:var(--text-secondary)">No missions.</p>`;
+    return;
+  }
+  
+  missionsContainer.innerHTML=data.missions.map(m=>{
+    const done=m.subtasks?.filter(s=>s.done).length||0;
+    const total=m.subtasks?.length||0;
+    const subtasksHtml = m.subtasks && m.subtasks.length ? `
+      <div class="subtasks">
+        <div style="font-weight:600;margin-bottom:10px;color:var(--accent-blue)">Subtasks (${done}/${total}):</div>
+        ${m.subtasks.map(s=>`
+          <div class="subtask ${s.done?'completed':''}">
+            <input type="checkbox" ${s.done?'checked':''} onchange="toggleSubtask(${m.id},${s.id})">
+            <span class="subtask-text">${s.txt}</span>
+            <button class="small-btn danger" onclick="deleteSubtask(${m.id},${s.id})" style="padding:4px 8px;font-size:.7rem">DELETE</button>
+          </div>
+        `).join('')}
+      </div>` : '';
+    
+    return`<div class="mission">
+      <div class="m-head">
+        <input type="checkbox" class="check" onclick="finish(${m.id})">
+        <span class="m-title">${m.title}</span>
+        <span class="m-exp">+${m.xp} EXP</span>
+      </div>
+      ${m.desc?`<div class="m-desc">${m.desc}</div>`:""}
+      ${subtasksHtml}
+      <div class="m-actions">
+        <button class="small-btn" onclick="openSub(${m.id})">Add Subtask</button>
+        <button class="small-btn danger" onclick="delMis(${m.id})">Delete</button>
+        ${total?`<span style="color:var(--accent-blue);font-weight:600">${done}/${total} Subtasks</span>`:""}
+      </div>
+    </div>`;
+  }).join("");
+}
+
+function createMission(e){
+  e.preventDefault();
+  const t=$("#title").value.trim();
+  if(!t)return toast("Enter a title","⚠️");
+  
+  data.missions.push({
+    id:Date.now(),
+    title:t,
+    desc:$("#desc").value.trim(),
+    xp:+$("#xp").value,
+    subtasks:[]
+  });
+  
+  $("#title").value="";
+  $("#desc").value="";
+  $("#xp").selectedIndex=0;
+  save();
+  renderMissions();
+  buildStats();
+  toast(`Mission "${t}" created`,"🚀");
+}
+
+// FIXED MISSION COMPLETION
+function finish(id){
+  const idx=data.missions.findIndex(m=>m.id===id);
+  if(idx<0)return;
+  
+  const m=data.missions[idx];
+  
+  // Check for incomplete subtasks
+  if(m.subtasks && m.subtasks.some(s=>!s.done) && !confirm("Some subtasks incomplete. Finish anyway?")){
+    event.target.checked=false;
+    return;
+  }
+  
+  // Calculate bonuses
+  const mult=[1,1.5,2,3,5][[70,15,10,4,1].findIndex((p,i,c)=>Math.random()*100<c.slice(0,i+1).reduce((a,b)=>a+b))];
+  const bonus=data.streak>=30?1:data.streak>=14?.5:data.streak>=7?.25:data.streak>=3?.1:0;
+  const gained=Math.floor(m.xp*mult*(1+bonus));
+  
+  // Update data
+  data.xp+=gained;
+  data.lvl=Math.floor(data.xp/EXP_LVL)+1;
+  
+  // FIXED: Move to archives with proper data structure
+  data.done.push({
+    id: m.id,
+    title: m.title,
+    desc: m.desc,
+    xp: m.xp,
+    subtasks: m.subtasks || [],
+    gained: gained,
+    mult: mult,
+    bonus: bonus,
+    date: Date.now()
+  });
+  
+  data.missions.splice(idx,1);
+  
+  // Update UI
+  buildStats();
+  renderMissions();
+  renderShop();
+  renderArchives(); // FIXED: Call renderArchives after completion
+  save();
+  toast(`+${gained} EXP earned!`,"✅");
+  addDrop();
+}
+
+function delMis(id){
+  if(confirm("Delete mission?")){
+    data.missions=data.missions.filter(m=>m.id!==id);
+    save();
+    renderMissions();
+    buildStats();
+    toast("Mission deleted","❌");
+  }
+}
+
+// SUBTASK MANAGEMENT
+function openSub(id){
+  curMissionId=id;
+  $("#subModal").style.display="flex";
+  $("#subInput").focus();
+}
+
+function closeSub(){
+  $("#subModal").style.display="none";
+}
+
+function addSubtask(){
+  const txt=$("#subInput").value.trim();
+  if(!txt)return;
+  
+  const mis=data.missions.find(m=>m.id===curMissionId);
+  if(!mis)return;
+  
+  mis.subtasks=mis.subtasks||[];
+  mis.subtasks.push({id:Date.now(),txt,done:false});
+  
+  save();
+  renderMissions();
+  closeSub();
+  toast("Subtask added","📝");
+  $("#subInput").value="";
+}
+
+function toggleSubtask(missionId, subtaskId){
+  const mission = data.missions.find(m => m.id === missionId);
+  if(!mission) return;
+  
+  const subtask = mission.subtasks.find(s => s.id === subtaskId);
+  if(!subtask) return;
+  
+  subtask.done = !subtask.done;
+  save();
+  renderMissions();
+  toast(`Subtask ${subtask.done ? 'completed' : 'unchecked'}`, subtask.done ? "✅" : "🔄");
+}
+
+function deleteSubtask(missionId, subtaskId){
+  if(!confirm("Delete this subtask?")) return;
+  
+  const mission = data.missions.find(m => m.id === missionId);
+  if(!mission) return;
+  
+  mission.subtasks = mission.subtasks.filter(s => s.id !== subtaskId);
+  save();
+  renderMissions();
+  toast("Subtask deleted", "❌");
+}
+
+// INVENTORY
+function buildTabs(){
+  const cats=Object.keys(DB);
+  $("#inventoryTabs").innerHTML=["owned",...cats].map(tab=>
+   `<button class="tab ${tab===curTab?'active':''}" onclick="switchTab('${tab}')">${tab.toUpperCase()}</button>`).join("");
+}
+
+function switchTab(t){
+  curTab=t;
+  document.querySelectorAll('#inventoryTabs .tab').forEach(b=>
+    b.classList.toggle('active',b.textContent===t.toUpperCase()));
+  renderInv();
+}
+
+function renderInv(){
+  const grid=$("#inventoryGrid");
+  let items=[];
+  
+  if(curTab==="owned"){
+    Object.entries(data.inv).forEach(([c,arr])=>arr.forEach(i=>{
+      const full=DB[c]?.find(o=>o.id===i.id);
+      if(full)items.push({...full,qty:i.qty||1,cat:c});
+    }));
+  }else{
+    items=DB[curTab] || [];
+  }
+  
+  if(!items.length){
+    grid.innerHTML=`<p style="text-align:center;color:var(--text-secondary)">Nothing here.</p>`;
+    return;
+  }
+  
+  grid.innerHTML=items.map(it=>{
+    const qty=curTab==="owned"?it.qty:(data.inv[curTab]?.find(o=>o.id===it.id)?.qty||0);
+    const own=qty>0;
+    return`
+    <div class="item rarity-${it.rarity}${own?' owned':''}" onclick="showItem(${it.id},'${curTab==="owned"?it.cat:curTab}')">
+      <div class="item-icon">${it.icon}</div>
+      <div class="item-name">${it.name}</div>
+      <div class="item-rank">${it.rank}</div>
+      ${it.attack?`<div class="item-stats">ATK ${it.attack}</div>`:''}
+      ${it.defense?`<div class="item-stats">DEF ${it.defense}</div>`:''}
+      ${it.effect?`<div class="item-stats">${it.effect}</div>`:''}
+      <div class="item-desc">${it.description}</div>
+      <div style="color:${own?'#ffd700':'#888'};font-weight:700;margin-top:9px">${own?'OWNED ×'+qty:'NOT OWNED'}</div>
+      ${curTab==="owned"?`<div class="item-stats" style="margin-top:6px;font-size:.7rem;color:#888">(${it.cat.toUpperCase()})</div>`:''}
+    </div>`;
+  }).join("");
+}
+
+function searchInventory(){
+  const q=$("#searchInv").value.toLowerCase();
+  document.querySelectorAll('#inventoryGrid .item').forEach(el=>{
+    const n=el.querySelector('.item-name').textContent.toLowerCase();
+    const d=el.querySelector('.item-desc').textContent.toLowerCase();
+    el.style.display=(n.includes(q)||d.includes(q))?'block':'none';
+  });
+}
+
+// FIXED SHOP SYSTEM
+function buildShopTabs(){
+  const cats=Object.keys(DB);
+  $("#shopTabs").innerHTML=cats.map(tab=>
+   `<button class="tab ${tab===curShopTab?'active':''}" onclick="switchShopTab('${tab}')">${tab.toUpperCase()}</button>`).join("");
+}
+
+function switchShopTab(t){
+  curShopTab=t;
+  document.querySelectorAll('#shopTabs .tab').forEach(b=>
+    b.classList.toggle('active',b.textContent===t.toUpperCase()));
+  renderShop();
+}
+
+// FIXED SHOP RENDERING
+function renderShop(){
+  const grid=$("#shopGrid");
+  const items=DB[curShopTab];
+  
+  if(!items || !items.length){
+    grid.innerHTML=`<p style="text-align:center;color:var(--text-secondary)">No items available in ${curShopTab}.</p>`;
+    return;
+  }
+  
+  grid.innerHTML=items.map(it=>{
+    const owned=data.purchased[curShopTab]?.includes(it.id)||false;
+    const canAfford=data.xp>=it.cost;
+    
+    return`
+    <div class="item rarity-${it.rarity} ${canAfford?'affordable':'expensive'} ${owned?'owned':''}" onclick="showShopItem(${it.id},'${curShopTab}')">
+      <div class="item-icon">${it.icon}</div>
+      <div class="item-name">${it.name}</div>
+      <div class="item-rank">${it.rank}</div>
+      ${it.attack?`<div class="item-stats">ATK ${it.attack}</div>`:''}
+      ${it.defense?`<div class="item-stats">DEF ${it.defense}</div>`:''}
+      ${it.effect?`<div class="item-stats">${it.effect}</div>`:''}
+      <div class="item-desc">${it.description}</div>
+      <div class="item-cost">${it.cost.toLocaleString()} XP</div>
+      <div style="color:${owned?'#0f0':canAfford?'#ffd700':'#f33'};font-weight:700;margin-top:6px">
+        ${owned?'PURCHASED':canAfford?'AVAILABLE':'TOO EXPENSIVE'}
+      </div>
+    </div>`;
+  }).join("");
+}
+
+function searchShop(){
+  const q=$("#searchShop").value.toLowerCase();
+  document.querySelectorAll('#shopGrid .item').forEach(el=>{
+    const n=el.querySelector('.item-name').textContent.toLowerCase();
+    const d=el.querySelector('.item-desc').textContent.toLowerCase();
+    el.style.display=(n.includes(q)||d.includes(q))?'block':'none';
+  });
+}
+
+function showShopItem(id,cat){
+  const itm=DB[cat]?.find(i=>i.id===id);
+  if(!itm)return;
+  
+  const owned=data.purchased[cat]?.includes(id)||false;
+  const canAfford=data.xp>=itm.cost;
+  
+  $("#buyDetails").innerHTML=`
+  <div style="text-align:center">
+    <div style="font-size:3rem">${itm.icon}</div>
+    <h3 style="color:var(--accent-blue);margin:10px 0">${itm.name}</h3>
+    <p style="margin-bottom:12px">${itm.description}</p>
+    ${itm.attack?`<p>ATK <strong>${itm.attack}</strong></p>`:''}
+    ${itm.defense?`<p>DEF <strong>${itm.defense}</strong></p>`:''}
+    ${itm.effect?`<p>Effect: <strong>${itm.effect}</strong></p>`:''}
+    <p style="margin:14px 0;font-size:1.2rem;color:var(--accent-gold)"><strong>Cost: ${itm.cost.toLocaleString()} XP</strong></p>
+    <p>Your XP: <strong>${data.xp.toLocaleString()}</strong></p>
+    <p style="margin-top:14px;font-weight:700;color:${owned?'#0f0':canAfford?'#ffd700':'#f33'}">
+      ${owned?'Already Purchased':canAfford?'Can Afford':'Insufficient XP'}
+    </p>
+  </div>`;
+  
+  pendingPurchase={id,cat,cost:itm.cost,name:itm.name};
+  $("#buyModal .buy-btn").disabled=owned||!canAfford;
+  $("#buyModal").style.display="flex";
+}
+
+function confirmPurchase(){
+  if(!pendingPurchase)return;
+  
+  const {id,cat,cost,name}=pendingPurchase;
+  if(data.xp<cost)return toast("Insufficient XP","❌");
+  if(data.purchased[cat]?.includes(id))return toast("Already purchased","⚠️");
+  
+  data.xp-=cost;
+  data.purchased[cat]=data.purchased[cat]||[];
+  data.purchased[cat].push(id);
+  
+  // Add to inventory
+  data.inv[cat]=data.inv[cat]||[];
+  const existing=data.inv[cat].find(i=>i.id===id);
+  if(existing){
+    existing.qty++;
+  }else{
+    data.inv[cat].push({id,qty:1});
+  }
+  
+  buildStats();
+  renderShop();
+  renderInv();
+  save();
+  closeBuy();
+  toast(`Purchased ${name}!`,"🛒");
+}
+
+function closeBuy(){
+  $("#buyModal").style.display="none";
+  pendingPurchase=null;
+}
+
+function showItem(id,cat){
+  const itm=DB[cat]?.find(i=>i.id===id);
+  if(!itm)return;
+  
+  const owned=data.inv[cat]?.find(o=>o.id===id);
+  const qty=owned?owned.qty||1:0;
+  
+  $("#itemDetails").innerHTML=`
+  <div style="text-align:center">
+    <div style="font-size:3rem">${itm.icon}</div>
+    <h3 style="color:var(--accent-blue);margin:10px 0">${itm.name}</h3>
+    <p style="margin-bottom:12px">${itm.description}</p>
+    ${itm.attack?`<p>ATK <strong>${itm.attack}</strong></p>`:''}
+    ${itm.defense?`<p>DEF <strong>${itm.defense}</strong></p>`:''}
+    ${itm.effect?`<p>Effect: <strong>${itm.effect}</strong></p>`:''}
+    ${itm.cost?`<p style="color:var(--accent-gold)">Cost: <strong>${itm.cost.toLocaleString()} XP</strong></p>`:''}
+    <p style="margin-top:14px;font-weight:700;color:${qty?'#0f0':'#f33'}">${qty?'OWNED ×'+qty:'NOT OWNED'}</p>
+  </div>`;
+  
+  $("#itemModal").style.display="flex";
+}
+
+function closeItem(){
+  $("#itemModal").style.display="none";
+}
+
+function addDrop(){
+  const cats=Object.keys(DB).filter(c=>DB[c].length>0);
+  if(!cats.length)return;
+  
+  const c=cats[Math.floor(Math.random()*cats.length)];
+  const arr=DB[c].filter(item=>item.cost<=100);
+  if(!arr.length)return;
+  
+  const drop=arr[Math.floor(Math.random()*arr.length)];
+  data.inv[c]=data.inv[c]||[];
+  const have=data.inv[c].find(x=>x.id===drop.id);
+  
+  if(have){
+    have.qty++;
+  }else{
+    data.inv[c].push({id:drop.id,qty:1});
+  }
+  
+  save();
+  toast(`Found: ${drop.name}`,"📦");
+}
+
+// FIXED ARCHIVES WITH DELETION
+function renderArchives(){
+  const out=$("#archives");
+  
+  if(!data.done.length){
+    out.innerHTML='<p style="text-align:center;color:var(--text-secondary)">No completed missions yet.</p>';
+    return;
+  }
+  
+  const byYr={};
+  data.done.forEach(d=>{
+    const y=new Date(d.date).getFullYear();
+    if(!byYr[y]) byYr[y]=[];
+    byYr[y].push(d);
+  });
+  
+  out.innerHTML=Object.keys(byYr).sort((a,b)=>b-a).map(y=>{
+    const arr=byYr[y];
+    const xp=arr.reduce((s,m)=>s+m.gained,0);
+    
+    return`<div>
+      <div class="year-head" onclick="this.nextElementSibling.classList.toggle('hide')">
+        ${y}
+        <span style="opacity:.8">${arr.length} missions • ${xp.toLocaleString()} EXP</span>
+      </div>
+      <div class="archive-list">${arr.map(m=>`
+        <div class="entry">
+          <div class="entry-header">
+            <div>
+              <h4>${m.title}</h4>
+              <p>${m.desc||'No description'}</p>
+              <small>${new Date(m.date).toLocaleString()}</small>
+              ${m.mult>1?`<div style="color:#ffd700;font-size:.8rem;margin-top:4px">Bonus Multiplier: ${m.mult}x</div>`:''}
+              ${m.bonus>0?`<div style="color:#00d4ff;font-size:.8rem">Streak Bonus: +${Math.round(m.bonus*100)}%</div>`:''}
+            </div>
+            <div class="entry-actions">
+              <span class="quest-exp">+${m.gained} XP</span>
+              <button class="small-btn danger" onclick="deleteArchivedMission('${m.date}')" style="margin-left:10px;padding:4px 8px;font-size:.7rem">DELETE</button>
+            </div>
+          </div>
+        </div>`).join("")}</div>
+    </div>`;
+  }).join("");
+}
+
+// FIXED ARCHIVE DELETION
+function deleteArchivedMission(missionDate){
+  if(!confirm("Delete this archived mission? This action cannot be undone.")) return;
+  
+  // Convert string to number for comparison
+  const targetDate = parseInt(missionDate);
+  const missionIndex = data.done.findIndex(m => m.date === targetDate);
+  
+  if(missionIndex === -1) {
+    toast("Mission not found", "❌");
+    return;
+  }
+  
+  const deletedMission = data.done[missionIndex];
+  data.done.splice(missionIndex, 1);
+  
+  save();
+  renderArchives();
+  toast(`Deleted: ${deletedMission.title}`, "🗑️");
+}
+
+// PANEL TOGGLES
+function toggleInventory(){
+  closeArc();
+  closeShop();
+  $("#inv").classList.toggle("open");
+}
+
+function closeInv(){
+  $("#inv").classList.remove("open");
+}
+
+function toggleShop(){
+  closeInv();
+  closeArc();
+  $("#shop").classList.toggle("open");
+}
+
+function closeShop(){
+  $("#shop").classList.remove("open");
+}
+
+function toggleArchives(){
+  closeInv();
+  closeShop();
+  $("#arc").classList.toggle("open");
+}
+
+function closeArc(){
+  $("#arc").classList.remove("open");
+}
+
+// EVENT LISTENERS
+window.addEventListener("click",e=>{
+  if(e.target.classList.contains("modal")){
+    e.target.style.display="none";
+  }
+});
+
+window.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    closeInv();
+    closeShop();
+    closeArc();
+    document.querySelectorAll('.modal').forEach(m=>m.style.display="none");
+  }
+});
+</script>
+</body>
+
+<footer>
+  <!-- Copyright and website link-->
+  <center>
+    <p>&copy; 2025 <a href="https://jimut123.github.io" target="_blank">Jimut Bahan Pal</a>. All rights and lefts reserved.</p>
+  </center>
+  
+</footer>
+</html>
