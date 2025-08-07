@@ -541,3 +541,43 @@ footer {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+
+/* Difficulty badges */
+.difficulty {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.difficulty.easy {
+    background: #d1f2eb;
+    color: #0d7345;
+    border: 1px solid #a3e2c7;
+}
+
+.difficulty.medium {
+    background: #fef9e7;
+    color: #b7791f;
+    border: 1px solid #f9e79f;
+}
+
+.difficulty.hard {
+    background: #fdeaea;
+    color: #cb4b4b;
+    border: 1px solid #f1948a;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+    .difficulty {
+        display: block;
+        margin: 0.3rem 0 0 0;
+        width: fit-content;
+    }
+}
