@@ -1,0 +1,13 @@
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        s = re.sub(r'[^a-zA-Z0-9]', '', s).lower()
+        R=len(s)-1
+        for L in range(len(s)):
+            if s[L] != s[R]:
+                return False
+            R-=1
+        return True

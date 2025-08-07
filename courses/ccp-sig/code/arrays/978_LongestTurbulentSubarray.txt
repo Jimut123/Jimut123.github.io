@@ -1,0 +1,27 @@
+class Solution(object):
+    def maxTurbulenceSize(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
+        if len(arr) == 1:
+            return 1
+        length = 0; L=0; R=0
+        for i in range(len(arr)-1):
+            if i%2==0 and arr[i]<arr[i+1]:
+                R+=1
+            elif i%2!=0 and arr[i]>arr[i+1]:
+                R+=1
+            else:
+                L=R
+            length = max(length,R-L+1)
+        L=0; R=0
+        for i in range(len(arr)-1):
+            if i%2==0 and arr[i]>arr[i+1]:
+                R+=1
+            elif i%2!=0 and arr[i]<arr[i+1]:
+                R+=1
+            else:
+                L=R
+            length = max(length,R-L+1)
+        return length

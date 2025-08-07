@@ -1,0 +1,18 @@
+class Solution(object):
+    def minSubArrayLen(self, target, nums):
+        """
+        :type target: int
+        :type nums: List[int]
+        :rtype: int
+        """
+        cursum=0; length=float("inf"); L=0; dummy=0
+        for R in range(len(nums)):
+            cursum += nums[R]
+            while cursum >= target:
+                length = min(length, R-L+1)
+                cursum -= nums[L]
+                L += 1
+                dummy=1
+        if dummy==0:
+            return 0
+        return length

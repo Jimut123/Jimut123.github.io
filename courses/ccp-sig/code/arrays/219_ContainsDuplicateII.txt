@@ -1,0 +1,20 @@
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: bool
+        """
+        if k==0:
+            return False
+        window = set()
+        L=0
+        for R in range(len(nums)):
+            if nums[R] in window:
+                return True
+            if R-L+1>k:
+                window.remove(nums[L])
+                L+=1
+            window.add(nums[R])
+            
+        return False

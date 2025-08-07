@@ -1,0 +1,17 @@
+class Solution(object):
+    def numOfSubarrays(self, arr, k, threshold):
+        """
+        :type arr: List[int]
+        :type k: int
+        :type threshold: int
+        :rtype: int
+        """
+        cursum=0; amt=k*threshold; S=0; L=0
+        for R in range(len(arr)):
+            cursum+=arr[R]
+            if R-L+1>k:
+                cursum-=arr[L]
+                L+=1
+            if cursum >= amt and R-L+1==k:
+                S+=1
+        return S
