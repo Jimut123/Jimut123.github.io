@@ -4,361 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CCP-SIG</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Simple Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            text-align: center;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: #e74c3c;
-            text-decoration: none;
-        }
-
-        /* Main Content */
-        main {
-            background: white;
-            margin-top: 1rem;
-            border-radius: 20px 20px 0 0;
-            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
-            padding: 2rem 0;
-        }
-
-        .section {
-            padding: 2rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #c0392b;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #e74c3c, #c0392b);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: justify;
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 3rem;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Search Bar */
-        .search-container {
-            text-align: center;
-            margin: 2rem 0;
-            position: sticky;
-            top: 20px;
-            z-index: 100;
-        }
-
-        .search-bar {
-            width: 100%;
-            max-width: 500px;
-            padding: 1rem 1.5rem;
-            font-size: 1.1rem;
-            border: 2px solid #2ecc71;
-            border-radius: 50px;
-            outline: none;
-            transition: all 0.3s ease;
-            background: white;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-bar:focus {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.3);
-        }
-
-        /* Meeting Schedule Section */
-        .meeting-schedule {
-            background: #f8f9fa;
-            padding: 3rem 0;
-            margin: 2rem 0;
-        }
-
-        .meetings-grid {
-            display: grid;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .meeting-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            border-left: 6px solid #2ecc71;
-        }
-
-        .meeting-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .meeting-header {
-            display: flex;
-            justify-content: between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .meeting-date {
-            background: linear-gradient(45deg, #2ecc71, #27ae60);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .meeting-session {
-            font-size: 1.3rem;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .problems-in-meeting {
-            margin-top: 1.5rem;
-        }
-
-        .problems-in-meeting h4 {
-            color: #27ae60;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .problem-item {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .problem-info {
-            flex: 1;
-        }
-
-        .problem-name {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.3rem;
-        }
-
-        .problem-topic {
-            font-size: 0.9rem;
-            color: #666;
-            background: #e9ecef;
-            padding: 0.2rem 0.8rem;
-            border-radius: 15px;
-            display: inline-block;
-        }
-
-        .problem-links {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .link-btn {
-            padding: 0.4rem 1rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .leetcode-btn { background: #ffa116; color: white; }
-        .code-btn { background: #28a745; color: white; }
-
-        .link-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .pdf-link {
-            background: #e74c3c;
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-            margin-top: 1rem;
-        }
-
-        .pdf-link:hover {
-            background: #c0392b;
-            transform: translateY(-2px);
-        }
-
-        /* Topics Section */
-        .topics-section {
-            padding: 3rem 0;
-        }
-
-        .topic-filter {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .topic-btn {
-            background: #e9ecef;
-            border: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .topic-btn.active {
-            background: #2ecc71;
-            color: white;
-        }
-
-        .topic-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .topic-problems {
-            display: none;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .topic-problems.active {
-            display: grid;
-        }
-
-        .topic-problem-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
-            border-left: 4px solid #2ecc71;
-        }
-
-        .topic-problem-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .difficulty {
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-left: 1rem;
-        }
-
-        .easy { background: #d4edda; color: #155724; }
-        .medium { background: #fff3cd; color: #856404; }
-        .hard { background: #f8d7da; color: #721c24; }
-
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .meeting-header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .problem-item {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .topic-filter {
-                justify-content: center;
-            }
-
-            .topic-problems {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Search highlight */
-        .highlight {
-            background: yellow;
-            padding: 2px 4px;
-            border-radius: 3px;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-    </style>
+    <!-- Link the style.css and script.js here -->
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
@@ -413,44 +61,125 @@
                 <div class="meetings-grid">
                     <div class="meeting-card" data-searchable>
                         <div class="meeting-header">
-                            <div class="meeting-date">January 15, 2025</div>
+                            <div class="meeting-date">August 16, 2025</div>
                             <div class="meeting-session">Session #1</div>
                         </div>
                         <div class="problems-in-meeting">
                             <h4>Problems Covered:</h4>
                             
-                            <div class="problem-item" data-title="Two Sum">
+                            <div class="problem-item" data-title="53. Maximum Subarray">
                                 <div class="problem-info">
-                                    <div class="problem-name">Two Sum</div>
+                                    <div class="problem-name">53. Maximum Subarray</div>
                                     <span class="problem-topic">Arrays</span>
                                 </div>
                                 <div class="problem-links">
-                                    <a href="https://leetcode.com/problems/two-sum/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
-                                    <a href="#" class="link-btn code-btn">Python Code</a>
+                                    <a href="https://leetcode.com/problems/maximum-subarray/description/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="./code/arrays/53_max_subarray.py">Python Code</a>
                                 </div>
                             </div>
 
-                            <div class="problem-item" data-title="Valid Parentheses">
+                            <div class="problem-item" data-title="978. Longest Turbulent Subarray">
                                 <div class="problem-info">
-                                    <div class="problem-name">Valid Parentheses</div>
-                                    <span class="problem-topic">Stack</span>
+                                    <div class="problem-name">978. Longest Turbulent Subarray</div>
+                                    <span class="problem-topic">Arrays</span>
                                 </div>
                                 <div class="problem-links">
-                                    <a href="https://leetcode.com/problems/valid-parentheses/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
-                                    <a href="#" class="link-btn code-btn">Python Code</a>
+                                    <a href="https://leetcode.com/problems/longest-turbulent-subarray/description/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="./code/arrays/978_LongestTurbulentSubarray.py">Python Code</a>
                                 </div>
                             </div>
 
-                            <div class="problem-item" data-title="Merge Two Sorted Lists">
+
+                             <div class="problem-item" data-title="219. Contains Duplicate II">
                                 <div class="problem-info">
-                                    <div class="problem-name">Merge Two Sorted Lists</div>
-                                    <span class="problem-topic">Linked List</span>
+                                    <div class="problem-name">219. Contains Duplicate II</div>
+                                    <span class="problem-topic">Arrays</span>
                                 </div>
                                 <div class="problem-links">
-                                    <a href="https://leetcode.com/problems/merge-two-sorted-lists/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
-                                    <a href="#" class="link-btn code-btn">Python Code</a>
+                                    <a href="https://leetcode.com/problems/contains-duplicate-ii/description/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="./code/arrays/219_ContainsDuplicateII.py">Python Code</a>
                                 </div>
                             </div>
+
+                            <div class="problem-item" data-title="1343. Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold">
+                                <div class="problem-info">
+                                    <div class="problem-name">1343. Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold</div>
+                                    <span class="problem-topic">Arrays</span>
+                                </div>
+                                <div class="problem-links">
+                                    <a href="https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/description/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="./code/arrays/1343_NumberOfSub-arraysOfSizeKandAverageGreaterthanorEqualtoThreshold.py">Python Code</a>
+                                </div>
+                            </div>
+
+
+                            <div class="problem-item" data-title="209. Minimum Size Subarray Sum">
+                                <div class="problem-info">
+                                    <div class="problem-name">209. Minimum Size Subarray Sum</div>
+                                    <span class="problem-topic">Arrays</span>
+                                </div>
+                                <div class="problem-links">
+                                    <a href="https://leetcode.com/problems/minimum-size-subarray-sum/description/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="./code/arrays/209_MinimumSizeSubarraySum.py">Python Code</a>
+                                </div>
+                            </div>
+
+
+                            <div class="problem-item" data-title="3. Longest Substring Without Repeating Characters">
+                                <div class="problem-info">
+                                    <div class="problem-name">3. Longest Substring Without Repeating Characters</div>
+                                    <span class="problem-topic">Arrays</span>
+                                </div>
+                                <div class="problem-links">
+                                    <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/description/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="./code/arrays/3_LongestSubstringWithoutRepeatingCharacters.py">Python Code</a>
+                                </div>
+                            </div>
+
+
+                            <div class="problem-item" data-title="125. Valid Palindrome">
+                                <div class="problem-info">
+                                    <div class="problem-name">125. Valid Palindrome</div>
+                                    <span class="problem-topic">Arrays</span>
+                                </div>
+                                <div class="problem-links">
+                                    <a href="https://leetcode.com/problems/valid-palindrome/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="./code/arrays/125_ValidPalindrome.py">Python Code</a>
+                                </div>
+                            </div>
+                            
+
+                            <div class="problem-item" data-title="167. Two Sum II - Input Array Is Sorted">
+                                <div class="problem-info">
+                                    <div class="problem-name">167. Two Sum II - Input Array Is Sorted</div>
+                                    <span class="problem-topic">Arrays</span>
+                                </div>
+                                <div class="problem-links">
+                                    <a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="./code/arrays/167_TwoSumII-InputArrayIsSorted.py">Python Code</a>
+                                </div>
+                            </div>
+
+
+                            <div class="problem-item" data-title="26. Remove Duplicates from Sorted Array">
+                                <div class="problem-info">
+                                    <div class="problem-name">26. Remove Duplicates from Sorted Array</div>
+                                    <span class="problem-topic">Arrays</span>
+                                </div>
+                                <div class="problem-links">
+                                    <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="./code/arrays/26_RemoveDuplicatesFromSortedArray.py">Python Code</a>
+                                </div>
+                            </div>
+
+
+                            
+
+
+                            
+
+                            
+
                         </div>
                         <a href="#" class="pdf-link">📄 Download Session Notes PDF</a>
                     </div>
@@ -470,7 +199,7 @@
                                 </div>
                                 <div class="problem-links">
                                     <a href="https://leetcode.com/problems/maximum-subarray/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
-                                    <a href="#" class="link-btn code-btn">Python Code</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="courses/ccp-sig/code/dp/maximum_subarray.py">Python Code</a>
                                 </div>
                             </div>
 
@@ -481,7 +210,7 @@
                                 </div>
                                 <div class="problem-links">
                                     <a href="https://leetcode.com/problems/climbing-stairs/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
-                                    <a href="#" class="link-btn code-btn">Python Code</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="courses/ccp-sig/code/dp/climbing_stairs.py">Python Code</a>
                                 </div>
                             </div>
 
@@ -492,7 +221,7 @@
                                 </div>
                                 <div class="problem-links">
                                     <a href="https://leetcode.com/problems/binary-tree-inorder-traversal/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
-                                    <a href="#" class="link-btn code-btn">Python Code</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="courses/ccp-sig/code/trees/binary_tree_inorder_traversal.py">Python Code</a>
                                 </div>
                             </div>
                         </div>
@@ -514,7 +243,7 @@
                                 </div>
                                 <div class="problem-links">
                                     <a href="https://leetcode.com/problems/number-of-islands/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
-                                    <a href="#" class="link-btn code-btn">Python Code</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="courses/ccp-sig/code/graphs/number_of_islands.py">Python Code</a>
                                 </div>
                             </div>
 
@@ -525,7 +254,7 @@
                                 </div>
                                 <div class="problem-links">
                                     <a href="https://leetcode.com/problems/course-schedule/" class="link-btn leetcode-btn" target="_blank">LeetCode</a>
-                                    <a href="#" class="link-btn code-btn">Python Code</a>
+                                    <a href="#" class="link-btn code-btn" data-codepath="courses/ccp-sig/code/graphs/course_schedule.py">Python Code</a>
                                 </div>
                             </div>
                         </div>
@@ -534,120 +263,29 @@
                 </div>
             </div>
         </section>
-
     </main>
+
+    <!-- Code Modal -->
+    <div class="code-modal" id="codeModal">
+        <div class="code-modal-content">
+            <div class="code-modal-header">
+                <div class="code-modal-title" id="codeModalTitle">Python Code</div>
+                <button class="code-modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="code-modal-body">
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div class="spinner"></div>
+                    Loading code...
+                </div>
+                <div class="code-content" id="codeContent"></div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="container">
             <p><a href="https://jimut123.github.io/" target="_blank" style="color: #d4edda; "> &copy 2025 Jimut Bahan Pal. All rights reserved.</a></p>
         </div>
     </footer>
-
-    <script>
-        // Search functionality
-        const searchInput = document.getElementById('searchInput');
-        const meetingCards = document.querySelectorAll('.meeting-card[data-searchable]');
-        const problemItems = document.querySelectorAll('.problem-item');
-
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            
-            if (searchTerm === '') {
-                // Show all meetings and remove highlights
-                meetingCards.forEach(card => {
-                    card.classList.remove('hidden');
-                    card.querySelectorAll('.highlight').forEach(highlight => {
-                        highlight.outerHTML = highlight.innerHTML;
-                    });
-                });
-                return;
-            }
-
-            meetingCards.forEach(card => {
-                let hasMatch = false;
-                const problems = card.querySelectorAll('.problem-item');
-                
-                problems.forEach(problem => {
-                    const title = problem.getAttribute('data-title').toLowerCase();
-                    const nameElement = problem.querySelector('.problem-name');
-                    
-                    // Remove existing highlights
-                    nameElement.innerHTML = nameElement.textContent;
-                    
-                    if (title.includes(searchTerm)) {
-                        hasMatch = true;
-                        // Highlight the matching text
-                        const regex = new RegExp(`(${searchTerm})`, 'gi');
-                        nameElement.innerHTML = nameElement.textContent.replace(regex, '<span class="highlight">$1</span>');
-                        
-                        // Scroll the first match into view
-                        if (card.classList.contains('hidden')) {
-                            setTimeout(() => {
-                                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            }, 100);
-                        }
-                    }
-                });
-                
-                if (hasMatch) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-        });
-
-        // Topic filtering
-        const topicBtns = document.querySelectorAll('.topic-btn');
-        const topicContents = document.querySelectorAll('.topic-problems');
-
-        topicBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Remove active class from all buttons
-                topicBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                this.classList.add('active');
-                
-                // Hide all topic contents
-                topicContents.forEach(content => content.classList.remove('active'));
-                
-                // Show selected topic content
-                const topic = this.getAttribute('data-topic');
-                const targetContent = document.querySelector(`[data-topic-content="${topic}"]`);
-                if (targetContent) {
-                    targetContent.classList.add('active');
-                }
-            });
-        });
-
-        // Smooth scrolling for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add click handlers for buttons
-        document.querySelectorAll('.code-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('Python code will be available here - link to your GitHub repository or display code inline');
-            });
-        });
-
-        document.querySelectorAll('.pdf-link').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('PDF notes will be linked here - you can host them on your server or use cloud storage');
-            });
-        });
-    </script>
 </body>
 </html>
