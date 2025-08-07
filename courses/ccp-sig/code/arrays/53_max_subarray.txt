@@ -1,0 +1,13 @@
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        maxsum = -float("inf")
+        cursum = 0
+        for n in nums:
+            cursum = max(0, cursum)
+            cursum += n
+            maxsum = max(maxsum, cursum)
+        return maxsum
