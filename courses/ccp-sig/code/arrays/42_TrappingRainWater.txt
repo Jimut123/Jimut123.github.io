@@ -1,0 +1,26 @@
+class Solution(object):
+    def trap(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        maxL=[]; max_curr=0
+        maxL.append(0)
+        for i in range(len(height)):
+            max_curr = max(max_curr,height[i])
+            maxL.append(max_curr)
+        
+        max_curr=0;maxR=[]
+        maxR.append(0)
+        for i in range(len(height)-1,0,-1):
+            max_curr=max(max_curr,height[i])
+            maxR.append(max_curr)
+        maxR.reverse()
+
+        vol=0
+        for i in range(len(height)):
+            if height[i]>min(maxL[i],maxR[i]):
+                pass # if potential < height; results in -ve
+            else:
+                vol+=min(maxL[i],maxR[i])-height[i] #potential-height
+        return vol
