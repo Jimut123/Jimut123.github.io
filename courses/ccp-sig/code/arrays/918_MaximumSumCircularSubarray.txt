@@ -1,0 +1,16 @@
+class Solution(object):
+    def maxSubarraySumCircular(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        globMax=nums[0];globMin=nums[0]
+        curmax=0;curmin=0
+        total=0
+        for n in nums:
+            curmax = max(curmax+n,n)
+            curmin = min(curmin+n,n)
+            total += n
+            globMax=max(globMax,curmax)
+            globMin=min(globMin,curmin)
+        return max(globMax,total-globMin) if globMax>0 else globMax

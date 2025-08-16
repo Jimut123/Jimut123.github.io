@@ -443,11 +443,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// PDF link handler
-document.querySelectorAll('.pdf-link').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        alert('PDF notes will be linked here - you can host them on your server or use cloud storage');
-    });
-});
+// // PDF link handler
+// document.querySelectorAll('.pdf-link').forEach(btn => {
+//     btn.addEventListener('click', (e) => {
+//         e.preventDefault();
+//         alert('PDF notes will be linked here - you can host them on your server or use cloud storage');
+//     });
+// });
 

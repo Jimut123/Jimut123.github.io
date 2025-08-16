@@ -1,0 +1,15 @@
+class Solution(object):
+    def subarraySum(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        cursum=0; res=0
+        prefix_sum={0:1}
+        for num in nums:
+            cursum+=num
+            if cursum-k in prefix_sum:
+                res+=prefix_sum[cursum-k]
+            prefix_sum[cursum]=prefix_sum.get(cursum,0)+1
+        return res
