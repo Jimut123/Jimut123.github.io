@@ -1,0 +1,19 @@
+class Solution(object):
+    def findDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # treat the index as linked lists
+        head1=0;head2=0 # starting index actually
+        while True:
+            head1=nums[head1]
+            head2=nums[nums[head2]]
+            if head1==head2:
+                break
+        head3=0 # starting index
+        while True:
+            head1=nums[head1]
+            head3=nums[head3]
+            if head1==head3:
+                return head1

@@ -1,0 +1,31 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution(object):
+    def pairSum(self, head):
+        """
+        :type head: Optional[ListNode]
+        :rtype: int
+        """
+        head1=head;head2=head
+        val_list = []
+        k=0
+        # case when there are only two values
+        if head2.next.next is None:
+            return head1.val+head1.next.val
+
+        while head2 is not None:
+            # print(head1)
+            val_list.append(head1.val)
+            head1=head1.next
+            head2=head2.next.next
+            k+=1            
+        val_list1 = []
+        while head1 is not None:
+            val_list1.append(val_list[k-1]+head1.val)
+            head1 = head1.next
+            k-=1
+        return max(val_list1)
