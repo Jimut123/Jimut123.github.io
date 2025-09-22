@@ -1,0 +1,446 @@
+<!doctype html>
+
+
+<link href="https://fonts.googleapis.com/css?family=Cardo&display=swap" rel="stylesheet"> 
+
+<link rel="stylesheet" href="../css/bootstrap.min.css"></link>
+<!--
+<link rel="stylesheet" href="/css/compiled-4.8.0.min.css"></link>
+-->
+<script type="text/javascript"  src="../js/bootstrap.min.js"></script>
+
+<script type="text/javascript"  src="../js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript"  src="../js/popper.min.js"></script>
+
+
+<link rel='stylesheet' id='wsl-widget-css'  href='https://mdbootstrap.com/wp-content/plugins/wordpress-social-login/assets/css/style.css?ver=5.1.1' type='text/css' media='all' />
+
+<link rel='stylesheet' id='compiled.css-css'  href='https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled-4.8.0.min.css?ver=4.8.0' type='text/css' media='all' />
+
+
+<link rel="shortcut icon" type="image/x-icon" href="../img/thumbnail.jpg">
+
+
+<!-- Bootstrap core CSS -->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Material Design Bootstrap -->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+
+
+
+<!-- Bootstrap core JavaScript -->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<!-- Lazy loading of Gallery and stuffs!-->
+
+<script src="../js/jimjs.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" /> 
+
+<link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jimut Bahan Pal" />
+    <meta name="description" content="Personal website">
+    <meta name="google-site-verification" content="2SC5t4-rLXOS1eAW-l2YL_qFLuIJW2vSRZNduyOGKN0" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140291358-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140291358-1');
+    </script>
+
+    
+    <title> Blog Page </title>
+  </head>
+
+  <body onload = "myFunction()">
+    <div id="loading"> </div>
+    
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle Example</title>
+    <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+
+    <style>
+        /* Define light theme */
+        :root {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --container-bg: #ffffff;
+            --container-text: #000000;
+            --special-color: #0076f4;
+            --navbar-bg: rgba(255, 255, 255, 0);
+            --navbar-backdrop: blur(2px);
+            --toggler-glow-color: #18a236; /* Green glow color */
+        }
+
+        /* Define dark theme */
+        [data-theme="dark"] {
+            --background-color: #413f3f;
+            --text-color: #ffffff;
+            --container-bg: #413f3f;
+            --container-text: #ffffff;
+            --special-color: #bb86fc;
+            --navbar-bg: rgba(65, 63, 63, 0.5);
+            --navbar-backdrop: blur(2px);
+            --toggler-glow-color: #18a236; /* Same green glow in dark mode */
+        }
+
+        /* Apply themes to the body and all elements */
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Updated navbar styling */
+        .navbar {
+            background-color: var(--navbar-bg) !important;
+            backdrop-filter: var(--navbar-backdrop);
+            -webkit-backdrop-filter: var(--navbar-backdrop);
+            transition: all 0.5s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ensure navbar text is visible in both themes */
+        .navbar .nav-link {
+            color: var(--text-color) !important;
+        }
+
+        /* Updated active link styling */
+        .navbar ul li.active a, 
+        .navbar ul li a:hover {
+            background-color: rgba(229, 232, 209, 0.3);
+            font-weight: bold;
+        }
+
+        /* Container styling */
+        body div {
+            background-color: var(--container-bg);
+            color: var(--container-text);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Override specific colors for dark theme */
+        [data-theme="dark"] .btn-primary,
+        [data-theme="dark"] .bg-primary,
+        [data-theme="dark"] .text-primary {
+            background-color: var(--special-color) !important;
+            color: var(--container-text) !important;
+        }
+
+        #theme-icon {
+            font-size: 2em;
+        }
+
+        /* Make navbar container transparent */
+        .navbar .container {
+            background-color: transparent !important;
+        }
+
+        /* NAVBAR TOGGLER GLOW EFFECT */
+        @keyframes glowing-toggler {
+            0% { box-shadow: 0 0 5px var(--toggler-glow-color); }
+            50% { box-shadow: 0 0 20px var(--toggler-glow-color), 0 0 30px var(--toggler-glow-color); }
+            100% { box-shadow: 0 0 5px var(--toggler-glow-color); }
+        }
+
+        /* Apply animation only when toggler is visible (on smaller screens) */
+        @media (max-width: 991.98px) {
+            .navbar-toggler {
+                animation: glowing-toggler 2s infinite;
+                border-color: var(--toggler-glow-color) !important;
+            }
+            
+            /* Style the toggler icon bars with the same green color */
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(24, 162, 54, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light sticky-top">
+    <a class="navbar-brand" style="font-family: Georgia, Times, Times New Roman, serif;">
+        <button id="theme-toggle" class="btn btn-link p-0" style="color: inherit;">
+            <span id="theme-icon">🌞</span>
+        </button>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto navbar-center" style="font-family: Georgia, Times, Times New Roman, serif;">
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/"  class="nav-link">
+                            
+                                <img src="/img/icons/home.svg" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">HOME </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/publications.html"  class="nav-link">
+                            
+                                <img src="/img/icons/publications.png" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">PUBLICATIONS </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/blog.html"  class="nav-link">
+                            
+                                <img src="/img/icons/blog.svg" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">BLOG </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/projects.html"  class="nav-link">
+                            
+                                <img src="/img/icons/projects.jpg" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">PROJECTS </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/gallery.html"  class="nav-link">
+                            
+                                <img src="/img/icons/gallery.png" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">GALLERY </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/random.html"  class="nav-link">
+                            
+                                <img src="/img/icons/certificates.png" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">RANDOM </span>
+                        </a>
+                    </div>
+                </li>
+            
+                <li class="nav-item">
+                    <div class="container pull-left">
+                        <a href="/search/"  class="nav-link">
+                            
+                                <img src="/img/icons/search.png" alt="icon" height="25px" width="25px">
+                            
+                            <span size="4px" style="color: #18a236;">SEARCH </span>
+                        </a>
+                    </div>
+                </li>
+            
+        </ul>
+    </div>
+</nav>
+
+<script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        body.setAttribute('data-theme', currentTheme);
+        themeIcon.textContent = currentTheme === 'dark' ? '🌜' : '🌞';
+    } else {
+        body.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌞';
+    }
+
+    toggleButton.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeIcon.textContent = newTheme === 'dark' ? '🌜' : '🌞';
+    });
+</script>
+
+<script type="text/javascript">
+    $(function() {
+        var url = window.location.href;
+        $(".navbar a").each(function() {
+            if (url == (this.href)) {
+                $(this).closest("li").addClass("active");
+                $(this).closest("li").parent().parent().addClass("active");
+            }
+        });
+    });        
+</script>
+
+</body>
+</html>
+
+    <div align="center">  
+      <br><br>
+      
+      <link rel = "stylesheet" type = "text/css" href = "../../css/jimstyle.css" />
+
+
+
+<title>
+     A dive into Transformers for language translation
+</title>
+
+<br>
+<h1>
+    <b id="heading-font">  A dive into Transformers for language translation </b>
+</h1>
+
+
+<span class="keywords-orangered"> &nbsp; Transformers &nbsp; </span>
+&nbsp;&nbsp;
+<span class="keywords-blue"> &nbsp; Language Translation &nbsp;</span>
+&nbsp;&nbsp;
+<span class="keywords-green">&nbsp; Attention Mechanism &nbsp;</span>
+&nbsp;&nbsp;
+<span class="keywords-yellow">&nbsp; Pytorch &nbsp;</span>
+
+
+
+<!--
+
+    https://assistant-chat-eu-gb.watsonplatform.net/web/public/e9f349c0-19b7-4131-acde-0c803ab25d36
+
+    https://jimutbahanpal.intelaedu.com
+
+    https://jimut-furniture-classifier.eu-gb.mybluemix.net/
+--> 
+
+
+<br><br><br>
+
+<div id="pad-container">
+    <div align="center" id="exp-font">
+            <div class="container" align="justify">
+            
+
+                The last time I did something serious in natural language processing was during my days at RKMVERI, 
+                probably for selecting a project for my ML-1 course, back in 2020. During that time, I thought 
+                language generation was a cool thing, and people back then were using all sorts of RNNs, LSTMs, Bidirectional 
+                LSTMs, and whatnot to generate/summarize texts and even for sentence completion tasks. I didn't have a 
+                fascination for NLP tasks since the ideas were not natural to me. If I had taken a linguistics course, 
+                I would have taken a keen interest in it. The only interesting thing that came to my mind was story 
+                generation. I didn't have the requisite knowledge to make this idea into reality, since I was starting to 
+                read ML back at that time, but I was fascinated by the way the human mind compresses data and spits out 
+                interesting, and sometimes randomly connected stories during REM sleep. I thought, if I have some 4-5 
+                keywords and I would generate some nearest token to connect those keywords, and have 3-4 passes to 
+                interpolate more interesting ideas inside it, I can perhaps come up with a story generation mechanism. 
+                Later, when I discussed this thing with my ML-1 mentor, he said that many people at the Ivy League are 
+                trying to do this, so he didn't recommend I invest time in something that will take more time than the 
+                completion of the course project, since I could afford about 3-4 months for a course project. So, I 
+                worked on a simple task, i.e., song generation. After working for 2-3 days, collecting some Keras code 
+                from Kaggle and piecing together a pipeline to do so, after repeated failed attempts, I was able to train 
+                a bidirectional LSTM to complete a line of a song, and generate about 1024 characters more. The moment I 
+                completed the training and gave some randomly rhyming words for completion, it generated complete unrelated 
+                rhyming garbage, with a lot of slang. I thought this was doing something which I didn't expect it to do, 
+                like, this is generating curse word songs, and I wouldn't be able to present this to my mentor, so I gave 
+                up on this project and started working on image segmentation in the medical domain. Later I found out that 
+                the dataset I used for training had a lot of curse words in it, and the model just learned to mimic the dataset. 
+                I was a bit disappointed, but I thought that this is how things work in ML, and I should have been more careful 
+                while selecting the dataset, but it was too late, and I have already invested a lot of time in medical image segmentation
+                <br><br>
+
+                This was the last time I touched NLP code seriously, and after that, now, I am thinking of catching up with all 
+                those things that I have ditched back then. After the invention of LLMs for chatting (like ChatGPT, etc) and 
+                after hearing Geoffrey Hinton's and Illya Stuskever's discussions, I thought LLMs might think the way humans 
+                think, that they might be a bit conscious, but after working with transformers for a while, I think that is 
+                complete nonsense. The idea of even thinking that something like language might someday wake up consciousness 
+                in a machine feels disgusting. These models, which we call LLMs, are essentially Ogre, eating and compressing 
+                a lot of data into their latent manifold, and spitting out interpolated, sometimes weird, unrelated mispredicted 
+                stuff (also called hallucination in modern day) for a query. This works in most of the usual and mundane 
+                tasks at hand, but I don't think that you can have something like mind/consciousness/reasoning in machines. 
+                They might simulate it, but not like humans, who actually reason to find solutions to complex problems. 
+                Actually, I don't even think that reasoning/consciousness can be represented in some mathematical representations. 
+                They are just something that can't be done algorithmically (which is essentially some form of mathematical construct).
+                I completely disagree with the idea that I thought in my previous 
+                <a href="../machines_and_consciousness.html" target="_blank">blog</a>, but this again can be debated endlessly.
+                <br><br>
+
+                So, with all these background yapping, let's dive into the pytorch code, where we talk about the transformers paper, 
+                implement a code for translation and break down some essential components.
+            </div>
+    </div>
+</div>
+
+      <br><br>
+      
+    </div>
+
+  
+
+
+  <!-- Footer -->
+  <footer class="footer page-footer font-small pt-1">
+    <div  align="center">
+      
+          <!-- Copyright -->
+          <div class="footer-copyright" style="color: rgb(217, 61, 61);"> 2019-2025
+              <a href="https://github.com/Jimut123" style="color: rgb(217, 61, 61);"> Copyright © Jimut Bahan Pal</a>
+          </div>
+          <!-- Copyright -->
+    </div>
+  </footer>
+  <!-- Footer -->
+
+
+
+</body>
+</html>
+<style>
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+}
+</style>
+
+
+<script>
+  var preloader = document.getElementById('loading');
+  function myFunction() { 
+      preloader.style.display = 'none';
+  }
+</script>
