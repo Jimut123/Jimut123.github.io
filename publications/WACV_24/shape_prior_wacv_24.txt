@@ -1,0 +1,8 @@
+@InProceedings{Pal_2025_WACV,
+    author    = {Pal, Jimut B. and Welling, Shantanu and Saini, Himali and Awate, Suyash P.},
+    title     = {Reviving Poor Object Segmentations in OOD Medical Images using Variational-Deep-PCA Modeling on Segmentation Maps with Sampling-Free Learning},
+    booktitle = {Proceedings of the Winter Conference on Applications of Computer Vision (WACV)},
+    month     = {February},
+    year      = {2025},
+    pages     = {9346-9355}
+}

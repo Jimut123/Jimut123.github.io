@@ -1,0 +1,7 @@
+@inproceedings{pal2024convex,
+  title={Convex Segments for Convex Objects Using DNN Boundary Tracing and Graduated Optimization},
+  author={Pal, Jimut B and Awate, Suyash P},
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  pages={91-101},
+  year={2024}
+}
