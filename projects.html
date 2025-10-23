@@ -348,22 +348,87 @@
 
                 
                 
-                <tr onmouseout="J-System_stop()" onmouseover="J-System_start()" >
+                <tr onmouseout="mosaic_stop()" onmouseover="mosaic_start()" >
                   <td style="width:25%;vertical-align:middle">
                     <div class="one">
-                      <div style="width:100%; height:75%" class="two" id='J-System_image'><img style="width:100%; height:100%" src='../img/project_img/j_system_2.png'></div>
+                      <div style="width:100%; height:75%" class="two" id='mosaic_image'><img style="width:100%; height:100%" src='../img/project_img/jimut_mosaic_2.jpeg'></div>
+                      <img style="box-shadow: 4px 4px 8px #888; width:100%; height:75%" src='../img/project_img/jimut_mosaic_1.jpg'>
+                    </div>
+                    <br>
+                    <script type="text/javascript">
+                      function mosaic_start() {
+                        document.getElementById('mosaic_image').style.opacity = "1";
+                      }
+      
+                      function mosaic_stop() {
+                        document.getElementById('mosaic_image').style.opacity = "0";
+                      }
+                      mosaic_stop()
+                    </script>
+                    </td>
+                    <td style="width:75%;vertical-align:middle" id="publication-font" >
+                      
+                          <a href="https://huggingface.co/spaces/jisnoo/collage_image">
+                            <papertitle> <strong>Image Mosaic</strong> </papertitle>
+                          </a>
+                      
+                      <br>
+                      <strong>Mentored project, created by <a href="https://jisnoo123.github.io/" target="_blank"> Jisnoo Dev Pal </a></strong>
+                      <br>
+
+                        
+                        
+                        
+
+                        
+
+                        
+                            [<a href = "https://github.com/jisnoo123/collage" target="_blank"><i class="fab fa-github"></i></a>]
+                        
+                        
+                        
+          
+                        
+          
+                        
+          
+                        
+
+                        
+          
+                        
+
+                        
+                     
+                      <p></p>
+                      <p>Please access the demo here <a href="https://huggingface.co/spaces/jisnoo/collage_image" target="_blank">Image Mosaic Demo</a>. This project creates a mosaic of images from a dataset to recreate a target image. The images are chosen based on color similarity to the corresponding section of the target image. Check the github repo for generating video mosaics too!</p>
+                      
+                    </td>
+                  </tr>
+                  <tr></tr>
+                
+              
+
+              
+
+                
+                
+                <tr onmouseout="J_System_stop()" onmouseover="J_System_start()" >
+                  <td style="width:25%;vertical-align:middle">
+                    <div class="one">
+                      <div style="width:100%; height:75%" class="two" id='J_System_image'><img style="width:100%; height:100%" src='../img/project_img/j_system_2.png'></div>
                       <img style="box-shadow: 4px 4px 8px #888; width:100%; height:75%" src='../img/project_img/j_system_1.png'>
                     </div>
                     <br>
                     <script type="text/javascript">
-                      function J-System_start() {
-                        document.getElementById('J-System_image').style.opacity = "1";
+                      function J_System_start() {
+                        document.getElementById('J_System_image').style.opacity = "1";
                       }
       
-                      function J-System_stop() {
-                        document.getElementById('J-System_image').style.opacity = "0";
+                      function J_System_stop() {
+                        document.getElementById('J_System_image').style.opacity = "0";
                       }
-                      J-System_stop()
+                      J_System_stop()
                     </script>
                     </td>
                     <td style="width:75%;vertical-align:middle" id="publication-font" >
@@ -1864,11 +1929,79 @@
           
 
               
-                  <div class="project-row" onmouseout="J-System_stop()" onmouseover="J-System_start()">
+                  <div class="project-row" onmouseout="mosaic_stop()" onmouseover="mosaic_start()">
                       <!-- Image Column -->
                       <div class="image-column">
                           <div class="image-container">
-                              <div class="hover-image" id="J-System_image">
+                              <div class="hover-image" id="mosaic_image">
+                                  <img src="../img/project_img/jimut_mosaic_2.jpeg" />
+                              </div>
+                              <img src="../img/project_img/jimut_mosaic_1.jpg" class="main-image" />
+                          </div>
+                      </div>
+
+                      <!-- Text Column -->
+                      <div class="text-column" id="publication-font">
+                          
+                              <a href="https://huggingface.co/spaces/jisnoo/collage_image">
+                                  <papertitle><strong>Image Mosaic</strong></papertitle>
+                              </a>
+                          
+                          <br />
+                          <strong>Mentored project, created by <a href="https://jisnoo123.github.io/" target="_blank"> Jisnoo Dev Pal </a></strong>
+                          <br />
+
+                          
+
+                          
+
+                          
+
+                          
+                              [<a href="https://github.com/jisnoo123/collage" target="_blank" style="color: #6e5494;"><i class="fab fa-github"></i></a>]
+                          
+
+                          
+
+                          
+
+                          
+
+                          
+
+                          
+
+                          
+
+                          
+
+                          <p></p>
+                          <p>Please access the demo here <a href="https://huggingface.co/spaces/jisnoo/collage_image" target="_blank">Image Mosaic Demo</a>. This project creates a mosaic of images from a dataset to recreate a target image. The images are chosen based on color similarity to the corresponding section of the target image. Check the github repo for generating video mosaics too!</p>
+                      </div>
+                  </div>
+
+                  <script type="text/javascript">
+                      function mosaic_start() {
+                          document.getElementById('mosaic_image').style.opacity = "1";
+                      }
+
+                      function mosaic_stop() {
+                          document.getElementById('mosaic_image').style.opacity = "0";
+                      }
+                      mosaic_stop();
+                  </script>
+              
+
+              <br /><br />
+
+          
+
+              
+                  <div class="project-row" onmouseout="J_System_stop()" onmouseover="J_System_start()">
+                      <!-- Image Column -->
+                      <div class="image-column">
+                          <div class="image-container">
+                              <div class="hover-image" id="J_System_image">
                                   <img src="../img/project_img/j_system_2.png" />
                               </div>
                               <img src="../img/project_img/j_system_1.png" class="main-image" />
@@ -1914,14 +2047,14 @@
                   </div>
 
                   <script type="text/javascript">
-                      function J-System_start() {
-                          document.getElementById('J-System_image').style.opacity = "1";
+                      function J_System_start() {
+                          document.getElementById('J_System_image').style.opacity = "1";
                       }
 
-                      function J-System_stop() {
-                          document.getElementById('J-System_image').style.opacity = "0";
+                      function J_System_stop() {
+                          document.getElementById('J_System_image').style.opacity = "0";
                       }
-                      J-System_stop();
+                      J_System_stop();
                   </script>
               
 
