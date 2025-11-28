@@ -1,0 +1,31 @@
+# robots.txt for jimut123.github.io
+
+User-agent: *
+Allow: /
+
+# Allow all image directories
+Allow: /img/
+Allow: /blogs/IITB_OLD/old/
+Allow: /blogs/IITB_OLD/new/
+Allow: /blogs/blog_img/
+
+# Allow important content directories
+Allow: /blogs/
+Allow: /projects/
+Allow: /publications/
+Allow: /courses/
+Allow: /trips/
+Allow: /gallery/
+Allow: /games/
+Allow: /files/
+
+# Disallow temporary and system files
+Disallow: /.git/
+Disallow: /_includes/
+Disallow: /_layouts/
+Disallow: /_plugins/
+Disallow: /_data/
+Disallow: /scss/
+
+# Sitemap location
+Sitemap: https://jimut123.github.io/sitemap.xml

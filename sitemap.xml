@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Main Pages -->
+  <url>
+    <loc>https://jimut123.github.io/</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://jimut123.github.io/img/jimut.jpeg</image:loc>
+      <image:title>Jimut Bahan Pal Profile Photo</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/about</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blog</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/projects</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/publications</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/experience</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/gallery</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/contact</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/random</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://jimut123.github.io/blogs/IITB_OLD/index.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/main_building_1958.jpg</image:loc>
+      <image:title>IIT Bombay Main Building 1958 - Bird's eye view looking towards Ghatkopar hills</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/1_Nehru_Bose_Handshake.jpg</image:loc>
+      <image:title>Nehru with Prof. Bose, the first Director of IIT Bombay</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/Bose_in_Jeep.jpg</image:loc>
+      <image:title>Dr. Radhakrishnan with Prof. Bose at IIT Bombay</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/1_Sukhatme%20teaching.jpg</image:loc>
+      <image:title>Prof. S.P. Sukhatme teaching heat transfer at IIT Bombay</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/First_Convocation.jpg</image:loc>
+      <image:title>IIT Bombay First Convocation</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/Indra_gandi_convo.jpg</image:loc>
+      <image:title>Indira Gandhi at IIT Bombay Convocation</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/myfairlady.jpg</image:loc>
+      <image:title>My Fair Lady theatrical performance at IIT Bombay</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/03_First_Girl%20Student.jpg</image:loc>
+      <image:title>First Girl Student at IIT Bombay</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/04_Mobike.jpg</image:loc>
+      <image:title>Four students on a bike at IIT Bombay</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/05_RDB_Asha.jpg</image:loc>
+      <image:title>R. D. Burman and Asha Bhosle at IIT Bombay</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/06_Computing_with_Cards.jpg</image:loc>
+      <image:title>Punch cards and computing at IIT Bombay</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/10_Students_Guitar.jpg</image:loc>
+      <image:title>IIT Bombay students with guitar</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/1_Nehru_rope.jpg</image:loc>
+      <image:title>Foundation Stone and Nehru at IIT Bombay</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/1983_to_85_infi_corridore.jpg</image:loc>
+      <image:title>IIT Bombay Infinity Corridor 1983-85</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/1983_to_85_pipeline.jpg</image:loc>
+      <image:title>IIT Bombay water pipeline 1983-85</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/IITB_1970_vs_2003.jpg</image:loc>
+      <image:title>IIT Bombay campus 1970 vs 2003 comparison from Sameer Hills</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/blogs/IITB_OLD/old/barren_1970.jpg</image:loc>
+      <image:title>IIT Bombay campus 1970 barren land</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/allPairs.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/anime_op.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/nostalgic_games.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/iitb_courses.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/machine_learning_course.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/cnn_games_ai.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/workingWithWatson.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/jjc_wisp.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/transformers/index.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/papers/index.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/CAPTCHA/index.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Machine Learning Blog Posts -->
+  <url>
+    <loc>https://jimut123.github.io/blogs/ML/LinearRegression-1.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/ML/LogisticRegression-2.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/ML/PolynomialRegressionLASSO-3.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/ML/kNN-4.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/ML/nnKeras-5.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/blogs/ML/CNN_TransferLearning_6.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Projects -->
+  <url>
+    <loc>https://jimut123.github.io/projects/jimutmap_1.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/projects/analytica_design.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Trips/Gallery Pages with Images -->
+  <url>
+    <loc>https://jimut123.github.io/trips/morocco_miccai_24</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/trips/abu_dhabi_icip_24</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://jimut123.github.io/img/abu_dhabi_icip_2024/5_Louvre_Museum_Statue_Nataraj.jpg</image:loc>
+      <image:title>Louvre Museum Abu Dhabi - Nataraj Statue</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/img/abu_dhabi_icip_2024/5_Abu_Dhabi_Etihad_Towers.jpg</image:loc>
+      <image:title>Abu Dhabi Etihad Towers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jimut123.github.io/img/abu_dhabi_icip_2024/9_Abu_Dhabi_Sheikh_Zayed_Grand_Mosque_Center.jpg</image:loc>
+      <image:title>Sheikh Zayed Grand Mosque Center Abu Dhabi</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/trips/trip_sgnp_dec_2022</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/trips/trip_marine_drive_sept_2022</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/trips/cminds_trip_march_2023</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Courses -->
+  <url>
+    <loc>https://jimut123.github.io/courses/vision2025/index.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/courses/vision2024/index.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/courses/ccp-sig/index.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Games -->
+  <url>
+    <loc>https://jimut123.github.io/games/SuperSpartyBrothers/index.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/games/pong_classic/index.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/games/BoxShooter2/index.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jimut123.github.io/games/solar_system/index.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Search -->
+  <url>
+    <loc>https://jimut123.github.io/search/index.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- News Archive -->
+  <url>
+    <loc>https://jimut123.github.io/news_archive.html</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+</urlset>
