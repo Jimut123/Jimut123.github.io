@@ -18,7 +18,7 @@
 
 }
 
-.dark {
+/* .dark {
     --theme: #413f3f;
     --entry: rgb(46, 46, 51);
     --primary: rgb(255, 255, 255);
@@ -29,15 +29,15 @@
     --code-bg: rgb(55, 56, 62);
     --border: rgb(51, 51, 51)
     
-}
+} */
 
 .list {
     background: var(--code-bg)
 }
 
-.dark.list {
+/* .dark.list {
     background: var(--theme)
-}
+} */
 
 *,
 ::after,
@@ -160,9 +160,9 @@ textarea:-webkit-autofill {
     background: 0 0
 }
 
-.list:not(.dark)::-webkit-scrollbar-track {
+/* .list:not(.dark)::-webkit-scrollbar-track {
     background: var(--code-bg)
-}
+} */
 
 ::-webkit-scrollbar-thumb {
     background: var(--tertiary);
@@ -170,9 +170,10 @@ textarea:-webkit-autofill {
     border-radius: var(--radius)
 }
 
+/* 
 .list:not(.dark)::-webkit-scrollbar-thumb {
     border: 5px solid var(--code-bg)
-}
+} */
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary)
@@ -345,14 +346,14 @@ button#theme-toggle {
     margin: auto 4px
 }
 
-body.dark #moon {
+/* body.dark #moon {
     vertical-align: middle;
     display: none
-}
+} */
 
-body:not(.dark) #sun {
+/* body:not(.dark) #sun {
     display: none
-}
+} */
 
 #menu {
     list-style: none;
@@ -871,10 +872,10 @@ figcaption a {
     padding: .4em;
     font-size: 15px
 }
-
+/* 
 .dark .toc {
     background: var(--entry)
-}
+} */
 
 .toc details summary {
     cursor: zoom-in;
@@ -1263,4 +1264,47 @@ h6:hover .anchor {
     #searchResults li:active {
         transform: none
     }
+}
+
+
+
+
+[data-theme="dark"] {
+    --theme: #413f3f;
+    --entry: rgb(46, 46, 51);
+    --primary: rgb(255, 255, 255);
+    --secondary: rgb(155, 156, 157);
+    --tertiary: rgb(65, 66, 68);
+    --content: rgb(196, 196, 197);
+    --hljs-bg: rgb(46, 46, 51);
+    --code-bg: rgb(55, 56, 62);
+    --border: rgb(51, 51, 51)
+    
+}
+
+
+.list:not([data-theme="dark"])::-webkit-scrollbar-track {
+    background: var(--code-bg)
+}
+
+[data-theme="dark"]. list {
+    background: var(--theme)
+}
+
+
+.list:not([data-theme="dark"])::-webkit-scrollbar-thumb {
+    border: 5px solid var(--code-bg)
+}
+
+body[data-theme="dark"] #moon {
+    vertical-align: middle;
+    display: none
+}
+
+body:not([data-theme="dark"]) #sun {
+    display: none
+}
+
+[data-theme="dark"] .toc {
+    background: var(--entry)
 }
