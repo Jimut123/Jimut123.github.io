@@ -33,51 +33,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theme Toggle Example</title>
+    <title>Navigation</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
 
-    <!-- Add this CSS for theme toggling -->
     <style>
-               
-        /* Apply themes to the body and all elements inside it */
+        /* --- 1. THEME VARIABLES --- */
+        :root {
+            /* Global Colors */
+            --site-bg: #ffffff;
+            --site-text: #333333;
+            
+            /* Navbar Specifics (Light Mode) */
+            --nav-glass: rgba(255, 255, 255, 0.85);
+            --nav-border: rgba(0, 0, 0, 0.05);
+            --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            --nav-link-color: #555555;
+            --nav-accent: #18a236; /* Your Green */
+            --nav-hover-bg: rgba(24, 162, 54, 0.1);
+        }
+
+        [data-theme="dark"] {
+            /* Global Colors */
+            --site-bg: #121212;
+            --site-text: #f0f0f0;
+            
+            /* Navbar Specifics (Dark Mode) */
+            --nav-glass: rgba(18, 18, 18, 0.85);
+            --nav-border: rgba(255, 255, 255, 0.1);
+            --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            --nav-link-color: #e0e0e0;
+            --nav-accent: #4ade80; /* Brighter green */
+            --nav-hover-bg: rgba(74, 222, 128, 0.15);
+        }
+
+        /* --- 2. BASE STYLES --- */
         body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            transition: background-color 0.5s, color 0.5s;
+            background-color: var(--site-bg);
+            color: var(--site-text);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            margin: 0;
+            font-family: 'Poppins', sans-serif; /* Modern Font */
         }
 
-        /* Ensure all divs and containers inherit the theme */
-        body div {
-            background-color: var(--container-bg);
-            color: var(--container-text);
-            transition: background-color 0.5s, color 0.5s;
+        /* --- 3. GLASS NAVBAR --- */
+        .glass-navbar {
+            background: var(--nav-glass);
+            backdrop-filter: blur(12px); /* The Blur Effect */
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--nav-border);
+            box-shadow: var(--nav-shadow);
+            padding: 0.8rem 1rem;
+            transition: all 0.4s ease;
+            z-index: 9999;
         }
 
-        /* Override specific colors for dark theme */
-        [data-theme="dark"] .btn-primary,
-        [data-theme="dark"] .bg-primary,
-        [data-theme="dark"] .text-primary {
-            background-color: var(--special-color) !important;
-            color: var(--container-text) !important;
+        /* --- 4. LINKS & ITEMS --- */
+        .glass-navbar .nav-link {
+            font-family: 'Poppins', sans-serif;
+            color: var(--nav-link-color) !important;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* Navbar active link styling (unchanged) */
-        .navbar ul li.active a, .navbar ul li a:hover {
-            background-color: #e5e8d1;
-            font-weight: bold;
+        /* Hover Effect */
+        .glass-navbar .nav-link:hover {
+            color: var(--nav-accent) !important;
+            background-color: var(--nav-hover-bg);
+            transform: translateY(-1px);
         }
 
-        /* Increase the size of the sun and moon emoji */
-        #theme-icon {
-            font-size: 1em; /* Adjust the size as needed */
+        /* Active State (Underline) */
+        .glass-navbar .nav-item {
+            position: relative;
+            margin: 0 5px;
+        }
+
+        .glass-navbar .nav-item.active .nav-link {
+            color: var(--nav-accent) !important;
+            font-weight: 600;
+        }
+
+        .glass-navbar .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            width: 0%;
+            height: 3px;
+            background: var(--nav-accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .glass-navbar .nav-item.active::after {
+            width: 60%; /* Width of the active underline */
+        }
+
+        /* --- 5. THEME TOGGLE BUTTON --- */
+        #theme-toggle {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            line-height: 1;
+        }
+
+        #theme-toggle:hover {
+            transform: rotate(25deg) scale(1.2);
+            background-color: var(--nav-hover-bg);
+        }
+
+        /* --- 6. MOBILE HAMBURGER --- */
+        .navbar-toggler {
+            border: none;
+            outline: none !important;
+            padding: 0;
+        }
+
+        .toggler-bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--nav-link-color);
+            margin: 5px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hamburger Animation when open */
+        .navbar-toggler[aria-expanded="true"] .toggler-bar:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+            background-color: var(--nav-accent);
+        }
+        .navbar-toggler[aria-expanded="true"] .toggler-bar:nth-child(2) {
+            opacity: 0;
+        }
+        .navbar-toggler[aria-expanded="true"] .toggler-bar:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+            background-color: var(--nav-accent);
+        }
+
+        /* Mobile Dropdown Styling */
+        @media (max-width: 991px) {
+            .glass-navbar .navbar-collapse {
+                background: var(--site-bg);
+                border: 1px solid var(--nav-border);
+                margin-top: 15px;
+                padding: 15px;
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            .glass-navbar .nav-item.active::after {
+                display: none; /* No underline on mobile */
+            }
+            .glass-navbar .nav-item.active .nav-link {
+                border-left: 4px solid var(--nav-accent);
+                background-color: var(--nav-hover-bg);
+            }
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light sticky-top">
-    <!-- Replace "JIMUT" with the sun/moon toggle button -->
-    <a class="navbar-brand" style="font-family: Georgia, Times, Times New Roman, serif;">
+<nav class="navbar navbar-expand-lg sticky-top glass-navbar">
+    
+    <a class="navbar-brand">
         <button id="theme-toggle" class="btn btn-link p-0" style="color: inherit;">
             <span id="theme-icon">🌞</span>
         </button>
@@ -85,217 +220,137 @@
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto navbar-center" style="font-family: Georgia, Times, Times New Roman, serif;">
-
-
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            
             
                 <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/"  class="nav-link">
+                    <a href="/" class="nav-link">
                         
-                            
-                                <img src="/img/icons/home.svg" alt="icon" height="25px" width="25px">
-                            
-                            <span size="4px" style="color: #18a236;">HOME </span>
-                            
-                        </a>
-                    </div>
+                        
+                            <img src="/img/icons/home.svg" alt="icon" height="20px" width="20px">
+                        
+                        
+                        <span>Home</span>
+                    </a>
                 </li>
             
                 <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/publications.html"  class="nav-link">
+                    <a href="/publications.html" class="nav-link">
                         
-                            
-                                <img src="/img/icons/publications.png" alt="icon" height="25px" width="25px">
-                            
-                            <span size="4px" style="color: #18a236;">PUBLICATIONS </span>
-                            
-                        </a>
-                    </div>
+                        
+                            <img src="/img/icons/publications.png" alt="icon" height="20px" width="20px">
+                        
+                        
+                        <span>Publications</span>
+                    </a>
                 </li>
             
                 <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/blog.html"  class="nav-link">
+                    <a href="/blog.html" class="nav-link">
                         
-                            
-                                <img src="/img/icons/blog.svg" alt="icon" height="25px" width="25px">
-                            
-                            <span size="4px" style="color: #18a236;">BLOG </span>
-                            
-                        </a>
-                    </div>
+                        
+                            <img src="/img/icons/blog.svg" alt="icon" height="20px" width="20px">
+                        
+                        
+                        <span>Blog</span>
+                    </a>
                 </li>
             
                 <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/projects.html"  class="nav-link">
+                    <a href="/projects.html" class="nav-link">
                         
-                            
-                                <img src="/img/icons/projects.jpg" alt="icon" height="25px" width="25px">
-                            
-                            <span size="4px" style="color: #18a236;">PROJECTS </span>
-                            
-                        </a>
-                    </div>
+                        
+                            <img src="/img/icons/projects.jpg" alt="icon" height="20px" width="20px">
+                        
+                        
+                        <span>Projects</span>
+                    </a>
                 </li>
             
                 <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/gallery.html"  class="nav-link">
+                    <a href="/gallery.html" class="nav-link">
                         
-                            
-                                <img src="/img/icons/gallery.png" alt="icon" height="25px" width="25px">
-                            
-                            <span size="4px" style="color: #18a236;">GALLERY </span>
-                            
-                        </a>
-                    </div>
+                        
+                            <img src="/img/icons/gallery.png" alt="icon" height="20px" width="20px">
+                        
+                        
+                        <span>Gallery</span>
+                    </a>
                 </li>
             
                 <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/random.html"  class="nav-link">
+                    <a href="/random.html" class="nav-link">
                         
-                            
-                                <img src="/img/icons/certificates.png" alt="icon" height="25px" width="25px">
-                            
-                            <span size="4px" style="color: #18a236;">RANDOM </span>
-                            
-                        </a>
-                    </div>
+                        
+                            <img src="/img/icons/certificates.png" alt="icon" height="20px" width="20px">
+                        
+                        
+                        <span>Random</span>
+                    </a>
                 </li>
             
                 <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/search/"  style="color: #05f270;" class="nav-link">
+                    <a href="/search/" class="nav-link">
                         
-                            
-                                <img src="/img/icons/search.png" alt="icon" height="25px" width="25px">
-                            
-                            <span size="4px" style="color: #18a236;">SEARCH </span>
-                            
-                        </a>
-                    </div>
+                        
+                            <img src="/img/icons/search.png" alt="icon" height="20px" width="20px">
+                        
+                        
+                        <span>Search</span>
+                    </a>
                 </li>
             
 
-           
         </ul>
     </div>
 </nav>
 
-<!-- Add this JavaScript for theme toggling -->
 <script>
+    // 1. Theme Toggling Logic
     const toggleButton = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
     const body = document.body;
 
-    // Check for saved theme in localStorage
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
         body.setAttribute('data-theme', currentTheme);
-        if (currentTheme === 'dark') {
-            themeIcon.textContent = '🌜';
-        } else {
-            themeIcon.textContent = '🌞';
-        }
+        themeIcon.textContent = currentTheme === 'dark' ? '🌜' : '🌞';
     } else {
         body.setAttribute('data-theme', 'light');
         themeIcon.textContent = '🌞';
     }
 
-    // Toggle theme on button click
     toggleButton.addEventListener('click', () => {
         const currentTheme = body.getAttribute('data-theme');
-        if (currentTheme === 'light') {
-            body.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-            themeIcon.textContent = '🌜';
-        } else {
-            body.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-            themeIcon.textContent = '🌞';
-        }
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeIcon.textContent = newTheme === 'dark' ? '🌜' : '🌞';
     });
 </script>
 
-<!-- Existing JavaScript for active link styling -->
-<script type="text/javascript">
-    $(function() {
-        // this will get the full URL at the address bar
-        var url = window.location.href;
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        // passes on every "a" tag
-        $(".navbar a").each(function() {
-            // checks if its the same on the address bar
+<script type="text/javascript">
+    // 2. Active Link Logic
+    $(function() {
+        var url = window.location.href;
+        
+        // Loop through all nav links
+        $(".glass-navbar a.nav-link").each(function() {
+            // Check if href matches current url
             if (url == (this.href)) {
                 $(this).closest("li").addClass("active");
-                //for making parent of submenu active
-                $(this).closest("li").parent().parent().addClass("active");
             }
         });
     });        
 </script>
-
-
-<style>
-    /* Define light theme */
-    :root {
-        --background-color: #ffffff;
-        --text-color: #000000;
-        --container-bg: #ffffff;
-        --container-text: #000000;
-        --special-color: #0076f4;
-    }
-
-    /* Define dark theme */
-    [data-theme="dark"] {
-        --background-color: #413f3f;
-        --text-color: #ffffff;
-        --container-bg: #413f3f;
-        --container-text: #ffffff;
-        --special-color: #bb86fc;
-    }
-           
-    /* Apply themes to the body and all elements inside it */
-    body {
-        background-color: var(--background-color);
-        color: var(--text-color);
-        transition: background-color 0. 5s, color 0.5s;
-    }
-
-    /* Ensure all divs and containers inherit the theme */
-    body div {
-        background-color: var(--container-bg);
-        color: var(--container-text);
-        transition: background-color 0.5s, color 0.5s;
-    }
-
-    /* Override specific colors for dark theme */
-    [data-theme="dark"] .btn-primary,
-    [data-theme="dark"] .bg-primary,
-    [data-theme="dark"] .text-primary {
-        background-color: var(--special-color) !important;
-        color: var(--container-text) !important;
-    }
-
-    /* Navbar active link styling (unchanged) */
-    .navbar ul li.active a, .navbar ul li a:hover {
-        background-color: #e5e8d1;
-        font-weight: bold;
-    }
-
-    /* Increase the size of the sun and moon emoji */
-    #theme-icon {
-        font-size: 1em;
-    }
-</style>
 
 </body>
 </html>

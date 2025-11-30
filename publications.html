@@ -105,202 +105,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theme Toggle Example</title>
+    <title>Navigation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
 
     <style>
-        /* Define light theme */
+        /* --- 1. THEME VARIABLES (Colors used by the toggle) --- */
         :root {
-            --background-color: #ffffff;
-            --text-color: #000000;
-            --container-bg: #ffffff;
-            --container-text: #000000;
-            --special-color: #0076f4;
-            --navbar-bg: rgba(255, 255, 255, 0);
-            --navbar-backdrop: blur(2px);
-            --toggler-glow-color: #18a236; /* Green glow color */
+            --site-bg: #ffffff;
+            --site-text: #333333;
+            /* Navbar Specific Variables */
+            --nav-glass-bg: rgba(255, 255, 255, 0.75);
+            --nav-border: rgba(0, 0, 0, 0.05);
+            --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            --nav-text: #444444;
+            --nav-accent: #18a236; /* Green */
+            --nav-hover-bg: rgba(24, 162, 54, 0.08);
         }
 
-        /* Define dark theme */
         [data-theme="dark"] {
-            --background-color: #413f3f;
-            --text-color: #ffffff;
-            --container-bg: #413f3f;
-            --container-text: #ffffff;
-            --special-color: #bb86fc;
-            --navbar-bg: rgba(65, 63, 63, 0.5);
-            --navbar-backdrop: blur(2px);
-            --toggler-glow-color: #18a236; /* Same green glow in dark mode */
+            --site-bg: #121212;
+            --site-text: #f0f0f0;
+            /* Navbar Dark Variables */
+            --nav-glass-bg: rgba(18, 18, 18, 0.75);
+            --nav-border: rgba(255, 255, 255, 0.1);
+            --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            --nav-text: #e0e0e0;
+            --nav-accent: #4ade80; /* Brighter green for dark mode */
+            --nav-hover-bg: rgba(74, 222, 128, 0.15);
         }
 
-        /* Apply themes to the body and all elements */
+        /* --- 2. GLOBAL SITE BACKGROUND (Necessary for theme toggle) --- */
         body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            transition: background-color 0.5s, color 0.5s;
+            background-color: var(--site-bg);
+            color: var(--site-text);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin: 0; /* Reset default margin */
+        }
+        
+        /* NOTE: The 'body div' rule has been DELETED to prevent messing up other sections */
+
+        /* --- 3. SEXY NAVBAR STYLING (Scoped ONLY to .glass-navbar) --- */
+        .glass-navbar {
+            background: var(--nav-glass-bg);
+            backdrop-filter: blur(12px); /* The Glass Effect */
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--nav-border);
+            box-shadow: var(--nav-shadow);
+            padding: 0.8rem 1rem;
+            transition: all 0.3s ease;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
         }
 
-        /* Updated navbar styling */
-        .navbar {
-            background-color: var(--navbar-bg) !important;
-            backdrop-filter: var(--navbar-backdrop);
-            -webkit-backdrop-filter: var(--navbar-backdrop);
-            transition: all 0.5s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        /* Styling the Links */
+        .glass-navbar .nav-link {
+            font-family: 'Poppins', sans-serif;
+            color: var(--nav-text) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* Ensure navbar text is visible in both themes */
-        .navbar .nav-link {
-            color: var(--text-color) !important;
+        /* Icon Animation */
+        .glass-navbar .nav-link i, 
+        .glass-navbar .nav-link img {
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Updated active link styling */
-        .navbar ul li.active a, 
-        .navbar ul li a:hover {
-            background-color: rgba(229, 232, 209, 0.3);
-            font-weight: bold;
+        /* Hover Effect */
+        .glass-navbar .nav-link:hover {
+            background-color: var(--nav-hover-bg);
+            color: var(--nav-accent) !important;
+        }
+        
+        .glass-navbar .nav-link:hover i,
+        .glass-navbar .nav-link:hover img {
+            transform: scale(1.2) rotate(-5deg); /* Playful pop */
         }
 
-        /* Container styling */
-        body div {
-            background-color: var(--container-bg);
-            color: var(--container-text);
-            transition: background-color 0.5s, color 0.5s;
+        /* Active State (Sleek Underline) */
+        .glass-navbar .nav-item.active .nav-link {
+            color: var(--nav-accent) !important;
+            font-weight: 600;
+        }
+        
+        /* The underline bar */
+        .glass-navbar .nav-item {
+            position: relative;
+        }
+        
+        .glass-navbar .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            width: 0%;
+            height: 3px;
+            background: var(--nav-accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
 
-        /* Override specific colors for dark theme */
-        [data-theme="dark"] .btn-primary,
-        [data-theme="dark"] .bg-primary,
-        [data-theme="dark"] .text-primary {
-            background-color: var(--special-color) !important;
-            color: var(--container-text) !important;
+        .glass-navbar .nav-item.active::after {
+            width: 70%;
         }
 
-        #theme-icon {
-            font-size: 2em;
+        /* --- 4. TOGGLE BUTTON & MOBILE --- */
+        #theme-toggle {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.6rem;
+            padding: 5px;
+            border-radius: 50%;
+            transition: transform 0.5s ease;
+            line-height: 1;
+        }
+        
+        /* Spin the sun/moon on hover */
+        #theme-toggle:hover {
+            transform: rotate(45deg) scale(1.1);
+            background-color: var(--nav-hover-bg);
         }
 
-        /* Make navbar container transparent */
-        .navbar .container {
-            background-color: transparent !important;
+        .navbar-toggler {
+            border: none;
+            outline: none !important;
+        }
+        
+        /* Custom Mobile Hamburger Bars */
+        .toggler-bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--nav-text);
+            margin: 5px 0;
+            transition: 0.3s;
+            border-radius: 2px;
         }
 
-        /* NAVBAR TOGGLER GLOW EFFECT */
-        @keyframes glowing-toggler {
-            0% { box-shadow: 0 0 5px var(--toggler-glow-color); }
-            50% { box-shadow: 0 0 20px var(--toggler-glow-color), 0 0 30px var(--toggler-glow-color); }
-            100% { box-shadow: 0 0 5px var(--toggler-glow-color); }
-        }
-
-        /* Apply animation only when toggler is visible (on smaller screens) */
-        @media (max-width: 991.98px) {
-            .navbar-toggler {
-                animation: glowing-toggler 2s infinite;
-                border-color: var(--toggler-glow-color) !important;
+        /* Mobile specific fixes */
+        @media (max-width: 991px) {
+            .glass-navbar .navbar-collapse {
+                background: var(--site-bg); /* Solid background on mobile for readability */
+                padding: 15px;
+                border-radius: 12px;
+                margin-top: 15px;
+                border: 1px solid var(--nav-border);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             }
-            
-            /* Style the toggler icon bars with the same green color */
-            .navbar-toggler-icon {
-                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(24, 162, 54, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+            .glass-navbar .nav-item::after {
+                display: none; /* Disable underline on mobile */
+            }
+            .glass-navbar .nav-item.active .nav-link {
+                border-left: 4px solid var(--nav-accent);
+                background-color: var(--nav-hover-bg);
             }
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light sticky-top">
-    <a class="navbar-brand" style="font-family: Georgia, Times, Times New Roman, serif;">
-        <button id="theme-toggle" class="btn btn-link p-0" style="color: inherit;">
-            <span id="theme-icon">🌞</span>
+<nav class="navbar navbar-expand-lg glass-navbar">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <button id="theme-toggle" aria-label="Switch Theme">
+                <span id="theme-icon">🌞</span>
+            </button>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" 
+            aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="toggler-bar"></span>
+            <span class="toggler-bar"></span>
+            <span class="toggler-bar"></span>
         </button>
-    </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto navbar-center" style="font-family: Georgia, Times, Times New Roman, serif;">
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/"  class="nav-link">
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+            <ul class="navbar-nav">
+                
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">
                             
-                                <img src="/img/icons/home.svg" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">HOME </span>
+                                <img src="/img/icons/home.svg" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Home</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/publications.html"  style="color: #05f270;" class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/publications.html" class="nav-link">
                             
-                                <img src="/img/icons/publications.png" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">PUBLICATIONS </span>
+                                <img src="/img/icons/publications.png" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Publications</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/blog.html"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/blog.html" class="nav-link">
                             
-                                <img src="/img/icons/blog.svg" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">BLOG </span>
+                                <img src="/img/icons/blog.svg" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Blog</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/projects.html"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/projects.html" class="nav-link">
                             
-                                <img src="/img/icons/projects.jpg" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">PROJECTS </span>
+                                <img src="/img/icons/projects.jpg" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Projects</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/gallery.html"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/gallery.html" class="nav-link">
                             
-                                <img src="/img/icons/gallery.png" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">GALLERY </span>
+                                <img src="/img/icons/gallery.png" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Gallery</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/random.html"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/random.html" class="nav-link">
                             
-                                <img src="/img/icons/certificates.png" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">RANDOM </span>
+                                <img src="/img/icons/certificates.png" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Random</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/search/"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/search/" class="nav-link">
                             
-                                <img src="/img/icons/search.png" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">SEARCH </span>
+                                <img src="/img/icons/search.png" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Search</span>
                         </a>
-                    </div>
-                </li>
-            
-        </ul>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
 </nav>
 
@@ -309,15 +382,16 @@
     const themeIcon = document.getElementById('theme-icon');
     const body = document.body;
 
+    // 1. Check Local Storage on Load
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
         body.setAttribute('data-theme', currentTheme);
         themeIcon.textContent = currentTheme === 'dark' ? '🌜' : '🌞';
     } else {
         body.setAttribute('data-theme', 'light');
-        themeIcon.textContent = '🌞';
     }
 
+    // 2. Toggle Logic
     toggleButton.addEventListener('click', () => {
         const currentTheme = body.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -327,13 +401,14 @@
     });
 </script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+    // 3. Highlight Active Link
     $(function() {
         var url = window.location.href;
-        $(".navbar a").each(function() {
+        $(".glass-navbar a.nav-link").each(function() {
             if (url == (this.href)) {
-                $(this).closest("li").addClass("active");
-                $(this).closest("li").parent().parent().addClass("active");
+                $(this).closest(".nav-item").addClass("active");
             }
         });
     });        
@@ -353,549 +428,762 @@
     </h1>
 </html>
 
-<!--
-    <b><i class="fas fa-chevron-circle-right"></i> <a id = "sucess-link"href="http://ijarcsms.com/docs/paper/volume6/issue10/V6I10-0031.pdf" target="_blank">Botnets: A constant threat to cyberspace </a>. <a id = "sucess-link" onclick="window.open('https://drive.google.com/open?id=196CA1C81ZOd-BzCTQ67anwI_n3ZF1Mnp');
-          window.open('https://drive.google.com/open?id=1FWGG9MaOXC169E9g6qwvjTfb4_kRMNgn');" target="_blank">IJARCSMS</a>. Nov 12, 2018. </b>
-        <br>
--->
 <link href="https://fonts.googleapis.com/css?family=Cardo&amp;display=swap" rel="stylesheet" />
 
-<p><span id="front-page-font">Please refer to the <a href="https://scholar.google.com/citations?user=uyS3AKkAAAAJ&amp;hl=en" target="_blank">Google Scholar</a> page for updated list of publications.</span></p>
-
-<p><br /></p>
-<div itemscope="" itemtype="https://schema.org/Person"><a id="front-page-font" itemprop="sameAs" content="https://orcid.org/0000-0002-1206-7902" href="https://orcid.org/0000-0002-1206-7902" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon" />ORCID ID: 0000-0002-1206-7902</a></div>
-<p><br /></p>
-
-<p><!-- Bootstrap Bundle with Popper -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script></p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
 <style>
-    .btn:hover
-    {
-    background-image:none !important;
-    background-color:#90e0ef !important;
+    /* 1. TYPOGRAPHY & PALETTE */
+    :root {
+        /* Colors matched to the Projects Page Style */
+        --text-dark: #1a202c;       
+        --text-medium: #4a5568;     
+        --text-light: #718096;      
+        --accent-color: #2b6cb0;    
+        
+        /* The "Sexy" Panel Variables */
+        --panel-bg: rgba(255, 255, 255, 0.75);
+        --panel-border: rgba(255, 255, 255, 0.6);
+        --panel-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        --panel-radius: 12px;
+    }
+
+    /* Keep your existing font settings */
+    #publication-font, .pub-card {
+        font-family: var(--font-main);
+    }
+
+    /* 2. CARD DESIGN - MATCHING PROJECTS STYLE */
+    .pub-card {
+        background: var(--panel-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--panel-border);
+        box-shadow: var(--panel-shadow);
+        border-radius: var(--panel-radius);
+        
+        margin-bottom: 25px;
+        padding: 25px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pub-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px 0 rgba(31, 38, 135, 0.12);
+        border-color: #fff;
+    }
+
+    /* 3. IMAGES (Fixed for scaling) */
+    .pub-img-col {
+        padding-right: 25px;
+        text-align: left;
+    }
+
+    .pub-thumbnail {
+        width: 100%;
+        height: auto;
+        max-height: 200px; /* Optional cap to prevent huge images */
+        
+        /* The Fix: Ensures image fits inside without cropping */
+        object-fit: contain; 
+        object-position: top left;
+        
+        border-radius: 8px;
+        border: 1px solid rgba(0,0,0,0.05);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        display: block;
+        background-color: #fff;
+    }
+
+    /* 4. TEXT HIERARCHY */
+    .pub-content-col {
+        text-align: left !important;
+    }
+
+    .pub-title {
+        font-family: var(--font-main);
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+    }
+
+    .pub-authors {
+        font-family: var(--font-main);
+        font-weight: 400;
+        font-size: 1rem;
+        color: var(--text-medium);
+        margin-bottom: 0.5rem;
+        line-height: 1.5;
+    }
+
+    .pub-venue {
+        font-family: var(--font-main);
+        font-weight: 400;
+        font-style: italic;
+        font-size: 0.95rem;
+        color: var(--text-light);
+        margin-bottom: 1.25rem;
+    }
+
+    /* 5. BUTTONS (Updated to Pill/Badge Style) */
+    .btn-academic {
+        font-family: var(--font-main);
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase; /* Match project badges */
+        
+        padding: 6px 14px;
+        border-radius: 50px; /* Pill shape */
+        border: 1px solid #e2e8f0;
+        
+        color: #555;
+        background-color: rgba(255,255,255,0.8);
+        
+        margin-right: 8px;
+        margin-bottom: 8px;
+        text-decoration: none;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .btn-academic:hover {
+        color: #fff;
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+        transform: translateY(-1px);
+    }
+
+    /* Active state for collapsible buttons */
+    .btn-academic[aria-expanded="true"] {
+        background-color: #2c5282;
+        color: #fff;
+        border-color: #2c5282;
+    }
+
+    /* 6. COLLAPSIBLE CONTENT */
+    .collapse-box {
+        margin-top: 15px;
+        padding: 20px;
+        background-color: rgba(247, 250, 252, 0.8); /* Slight transparency */
+        border-radius: 8px;
+        border-left: 4px solid var(--accent-color);
+        font-family: var(--font-main);
+        font-size: 0.95rem;
+        color: var(--text-medium);
+        line-height: 1.6;
+        text-align: left;
     }
 </style>
+
+<div class="container my-4">
+    <div class="alert shadow-sm text-start" role="alert" style="background: rgba(255,255,255,0.8); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.6); border-radius: 12px; color: #333;">
+        <span id="front-page-font">Please refer to the <a href="https://scholar.google.com/citations?user=uyS3AKkAAAAJ&amp;hl=en" target="_blank" style="color: var(--accent-color); font-weight: 600; text-decoration: none;">Google Scholar</a> page for an updated list of publications.</span>
+    </div>
+
+    <div itemscope="" itemtype="https://schema.org/Person" class="mb-4 text-start">
+        <a id="front-page-font" itemprop="sameAs" content="https://orcid.org/0000-0002-1206-7902" href="https://orcid.org/0000-0002-1206-7902" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top; text-decoration: none; color: #4a5568;">
+            <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon" />ORCID ID: 0000-0002-1206-7902
+        </a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
 
 <div id="pad-container">
-    <div align="justify">
-        <div class="container" id="publication-font">
-            
+    <div class="container" id="publication-font">
 
-                
+        
 
-
-
-                    <div class="row g-0">
-                        <div class="col-md-4 text-center my-4 px-2">
-                            <img src="../publications/WACV_24/wacv_24.png" width="100%" style="box-shadow: 4px 4px 8px #888" class="center" />
-                        </div>
-                        <div class="col-md-8 my-4">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span id="bold_id">Reviving Poor Object Segmentations in OOD Medical Images using Variational-Deep-PCA Modeling on Segmentation Maps with Sampling-Free Learning</span>
-                                </h5>
-                                <span id="bold_id"> Jimut Bahan Pal</span>, Shantanu Welling, Himali Saini and <a href="https://www.cse.iitb.ac.in/~suyash/index.html"> Suyash P. Awate </a>
-                                <br />
-                                Winter Conference on Applications of Computer Vision (WACV) 2024
-                                <br />
-                                <p>
-
-                                    
-
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#abstractshape_prior_wacv" role="button" aria-expanded="false" aria-controls="abstractshape_prior_wacv" id="pub-page-btn-font">Abstract</a>
-                                    
-
-                                    
-                                        <a type="button" class="btn btn-sm" href="../publications/WACV_24/shape_prior_wacv_24.pdf" target="_blank" id="pub-page-btn-font">Article</a>
-                                    
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-
-                                   
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#bibshape_prior_wacv" role="button" aria-expanded="false" aria-controls="bibshape_prior_wacv" id="pub-page-btn-font">Bibtex</a>
-                                    
-                                   
-                                </p>
-                                
-                                
-                                    <div class="collapse" id="abstractshape_prior_wacv">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            For object segmentation in medical images deep neural networks (DNNs) typically perform poorly on out-of-distribution (OOD) images stemming from the large variability in image-acquisition equipment and protocols across sites. However compared to such variability in the acquired medical images we observe that the variability in the underlying object-segmentation maps is far lower. Thus we propose a novel DNN framework to model this variability in segmentation maps and leverage it to revive poor segmentations produced by existing DNNs on OOD images. Our DNN framework (i) learns the principal modes of variation in a class of segmentation maps (ii) models each segmentation map using a low-dimensional mixture-of-modes latent representation on a simplex (iii) enables sampling-free variational learning and uncertainty estimation and (iv) trains using small in-distribution image sets. When OOD-image segmentations are extremely poor we propose a novel human-in-the-loop method needing minuscule human intervention. Results using 6 publicly-available datasets and 8 existing DNN segmenters show the benefits of our framework in OOD-image object segmentation.
-                                        </div>
-                                    </div>
-                                
-
-                                
-                                    <div class="collapse" id="bibshape_prior_wacv">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            <object data="../publications/WACV_24/shape_prior_wacv_24.txt" width="100%"></object>
-                                        </div>
-                                    </div>
-                                
-
-                                
-                                
-                            </div>
-                        </div>
+            <div class="pub-card">
+                <div class="row g-0 align-items-start">
+                    
+                    <div class="col-md-3 pub-img-col">
+                        <img src="../publications/WACV_24/wacv_24.png" class="pub-thumbnail" alt="Reviving Poor Object Segmentations in OOD Medical Images using Variational-Deep-PCA Modeling on Segmentation Maps with Sampling-Free Learning" />
                     </div>
 
-
-                
-
-
-
-                    <div class="row g-0">
-                        <div class="col-md-4 text-center my-4 px-2">
-                            <img src="../publications/MICCAI_24/Arch_Conv_Seg_Final_MICCAI.png" width="100%" style="box-shadow: 4px 4px 8px #888" class="center" />
+                    <div class="col-md-9 pub-content-col">
+                        
+                        <div class="pub-title">
+                            <span id="bold_id">Reviving Poor Object Segmentations in OOD Medical Images using Variational-Deep-PCA Modeling on Segmentation Maps with Sampling-Free Learning</span>
                         </div>
-                        <div class="col-md-8 my-4">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span id="bold_id">Convex Segments for Convex Objects using DNN Boundary Tracing and Graduated Optimization</span>
-                                </h5>
-                                <span id="bold_id"> Jimut Bahan Pal</span> and <a href="https://www.cse.iitb.ac.in/~suyash/index.html"> Suyash P. Awate </a>
-                                <br />
-                                International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI) 2024.
-                                <br />
-                                <p>
 
-                                    
+                        <div class="pub-authors">
+                            <span id="bold_id"> Jimut Bahan Pal</span>, Shantanu Welling, Himali Saini and <a href="https://www.cse.iitb.ac.in/~suyash/index.html"> Suyash P. Awate </a>
+                        </div>
 
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#abstractconvex_seg_miccai" role="button" aria-expanded="false" aria-controls="abstractconvex_seg_miccai" id="pub-page-btn-font">Abstract</a>
-                                    
+                        <div class="pub-venue">
+                            Winter Conference on Applications of Computer Vision (WACV) 2024
+                        </div>
 
-                                    
-                                        <a type="button" class="btn btn-sm" href="../publications/MICCAI_24/convex_seg_miccai_24.pdf" target="_blank" id="pub-page-btn-font">Article</a>
-                                    
+                        <div class="d-flex flex-wrap justify-content-start mt-2">
+                            
 
-                                    
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractshape_prior_wacv" role="button" aria-expanded="false" aria-controls="abstractshape_prior_wacv">
+                                    <i class="fas fa-align-left"></i> Abstract
+                                </a>
+                            
 
-                                    
+                            
+                                <a class="btn btn-academic" href="../publications/WACV_24/shape_prior_wacv_24.pdf" target="_blank">
+                                    <i class="far fa-file-pdf"></i> Article
+                                </a>
+                            
 
-                                    
+                            
 
-                                    
+                            
 
-                                   
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#bibconvex_seg_miccai" role="button" aria-expanded="false" aria-controls="bibconvex_seg_miccai" id="pub-page-btn-font">Bibtex</a>
-                                    
-                                   
-                                </p>
-                                
-                                
-                                    <div class="collapse" id="abstractconvex_seg_miccai">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            Image segmentation often involves objects of interest that are biologically known to be convex shaped. While typical deep-neural-networks (DNNs) for object segmentation ignore object properties relating to shape, the DNNs that employ shape information fail to enforce hard constraints on shape. We design a brand-new DNN framework that guarantees convexity of the output object-segment by leveraging fundamental geometrical insights into the boundaries of convex-shaped objects. Moreover, we design our framework to build on typical existing DNNs for per-pixel segmentation, while maintaining simplicity in loss-term formulation and maintaining frugality in model size and training time. Results using six publicly available datasets demonstrates that our DNN framework, with little overheads, provides significant benefits in the robust segmentation of convex objects in out-of-distribution images.
-                                        </div>
-                                    </div>
-                                
+                            
 
-                                
-                                    <div class="collapse" id="bibconvex_seg_miccai">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            <object data="../publications/MICCAI_24/convex_seg_miccai_24.txt" width="100%"></object>
-                                        </div>
-                                    </div>
-                                
+                            
 
-                                
-                                
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibshape_prior_wacv" role="button" aria-expanded="false" aria-controls="bibshape_prior_wacv">
+                                    <i class="fas fa-quote-right"></i> BibTeX
+                                </a>
+                            
+                        </div>
+                        
+                        
+                            <div class="collapse" id="abstractshape_prior_wacv">
+                                <div class="collapse-box">
+                                    <strong>Abstract:</strong> For object segmentation in medical images deep neural networks (DNNs) typically perform poorly on out-of-distribution (OOD) images stemming from the large variability in image-acquisition equipment and protocols across sites. However compared to such variability in the acquired medical images we observe that the variability in the underlying object-segmentation maps is far lower. Thus we propose a novel DNN framework to model this variability in segmentation maps and leverage it to revive poor segmentations produced by existing DNNs on OOD images. Our DNN framework (i) learns the principal modes of variation in a class of segmentation maps (ii) models each segmentation map using a low-dimensional mixture-of-modes latent representation on a simplex (iii) enables sampling-free variational learning and uncertainty estimation and (iv) trains using small in-distribution image sets. When OOD-image segmentations are extremely poor we propose a novel human-in-the-loop method needing minuscule human intervention. Results using 6 publicly-available datasets and 8 existing DNN segmenters show the benefits of our framework in OOD-image object segmentation.
+                                </div>
                             </div>
-                        </div>
+                        
+
+                        
+                            <div class="collapse" id="bibshape_prior_wacv">
+                                <div class="collapse-box">
+                                    <object data="../publications/WACV_24/shape_prior_wacv_24.txt" width="100%" height="200px" style="border:none;"></object>
+                                </div>
+                            </div>
+                        
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+        
+
+            <div class="pub-card">
+                <div class="row g-0 align-items-start">
+                    
+                    <div class="col-md-3 pub-img-col">
+                        <img src="../publications/MICCAI_24/Arch_Conv_Seg_Final_MICCAI.png" class="pub-thumbnail" alt="Convex Segments for Convex Objects using DNN Boundary Tracing and Graduated Optimization" />
                     </div>
 
-
-                
-
-
-
-                    <div class="row g-0">
-                        <div class="col-md-4 text-center my-4 px-2">
-                            <img src="../publications/RV_PBS/rv_pbs.jpg" width="100%" style="box-shadow: 4px 4px 8px #888" class="center" />
+                    <div class="col-md-9 pub-content-col">
+                        
+                        <div class="pub-title">
+                            <span id="bold_id">Convex Segments for Convex Objects using DNN Boundary Tracing and Graduated Optimization</span>
                         </div>
-                        <div class="col-md-8 my-4">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span id="bold_id">Advancing instance segmentation and WBC classification in peripheral blood smear through domain adaptation - A study on PBC and the novel RV-PBS datasets</span>
-                                </h5>
-                                <span id="bold_id"> Jimut Bahan Pal</span>, Aniket Bhattacharyea, <strong><a href="http://narendrapur.rkmvu.ac.in/wp-content/uploads/2020/09/Dr.-Debasis-Bandyopadhyay-Banerjee-CV.pdf" target="_blank"> Debasis Banerjee</a></strong> and <strong><a href="https://cs.rkmvu.ac.in/~tamal/" target="_blank" alt="Tamal's RKMVERI Website"> Tamal </a> <a href="http://cs.rkmvu.ac.in/~tamal/" target="_blank" alt="Tamal's RKMVERI Website"> Maharaj </a> </strong>
-                                <br />
-                                Expert Systems With Applications. (<span id="bold_id">2024</span>). <br /> <a style="color:rgb(217, 61, 61);" id="bold_id" href="https://github.com/Jimut123/RV-PBS" target="_blank"> Find the Novel RV-PBS dataset here</a>.
-                                <br />
-                                <p>
 
-                                    
+                        <div class="pub-authors">
+                            <span id="bold_id"> Jimut Bahan Pal</span> and <a href="https://www.cse.iitb.ac.in/~suyash/index.html"> Suyash P. Awate </a>
+                        </div>
 
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#abstractrv_pbs" role="button" aria-expanded="false" aria-controls="abstractrv_pbs" id="pub-page-btn-font">Abstract</a>
-                                    
+                        <div class="pub-venue">
+                            International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI) 2024.
+                        </div>
 
-                                    
-                                        <a type="button" class="btn btn-sm" href="../publications/RV_PBS/rv_pbs_paper.pdf" target="_blank" id="pub-page-btn-font">Article</a>
-                                    
+                        <div class="d-flex flex-wrap justify-content-start mt-2">
+                            
 
-                                    
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractconvex_seg_miccai" role="button" aria-expanded="false" aria-controls="abstractconvex_seg_miccai">
+                                    <i class="fas fa-align-left"></i> Abstract
+                                </a>
+                            
 
-                                    
-                                        <a class="btn btn-sm" href="../publications/RV_PBS/thesis_presentation.pdf" target="_blank" id="pub-page-btn-font">Slide</a>
-                                    
+                            
+                                <a class="btn btn-academic" href="../publications/MICCAI_24/convex_seg_miccai_24.pdf" target="_blank">
+                                    <i class="far fa-file-pdf"></i> Article
+                                </a>
+                            
 
-                                    
+                            
 
-                                    
-                                        <a class="btn btn-sm" href="https://github.com/Jimut123/cellseg" target="_blank" id="pub-page-btn-font">Code</a>
-                                    
+                            
 
-                                   
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#bibrv_pbs" role="button" aria-expanded="false" aria-controls="bibrv_pbs" id="pub-page-btn-font">Bibtex</a>
-                                    
-                                   
-                                </p>
-                                
-                                
-                                    <div class="collapse" id="abstractrv_pbs">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            Automating blood cell counting and detection from smear slides holds significant potential for aiding doctors in disease diagnosis through blood tests. However, existing literature has not adequately addressed using whole slide data in this context. This study introduces the novel RV-PBS dataset, comprising ten distinct peripheral blood smear classes, each featuring multiple multi-class White Blood Cells per slide, specifically designed, for instance segmentation benchmarks. While conventional instance segmentation models like Mask R-CNN exhibit promising results in segmenting medical artifact instances, they face challenges in scenarios with limited samples and class imbalances within the dataset. This challenge prompted us to explore innovative techniques such as domain adaptation using a similar dataset to enhance the classification accuracy of Mask R-CNN, a novel approach in the domain of medical image analysis. Our study has successfully established a comprehensive pipeline capable of segmenting, detecting, and classifying blood samples from slides, striking an optimal balance between computational complexity and accurate classification of medical artifacts. This advancement enables precise cell counting and classification, facilitating doctors in refining their diagnostic analyses.
-                                        </div>
-                                    </div>
-                                
+                            
 
-                                
-                                    <div class="collapse" id="bibrv_pbs">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            <object data="../publications/RV_PBS/pal_2024_rvpbs.txt" width="100%"></object>
-                                        </div>
-                                    </div>
-                                
+                            
 
-                                
-                                
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibconvex_seg_miccai" role="button" aria-expanded="false" aria-controls="bibconvex_seg_miccai">
+                                    <i class="fas fa-quote-right"></i> BibTeX
+                                </a>
+                            
+                        </div>
+                        
+                        
+                            <div class="collapse" id="abstractconvex_seg_miccai">
+                                <div class="collapse-box">
+                                    <strong>Abstract:</strong> Image segmentation often involves objects of interest that are biologically known to be convex shaped. While typical deep-neural-networks (DNNs) for object segmentation ignore object properties relating to shape, the DNNs that employ shape information fail to enforce hard constraints on shape. We design a brand-new DNN framework that guarantees convexity of the output object-segment by leveraging fundamental geometrical insights into the boundaries of convex-shaped objects. Moreover, we design our framework to build on typical existing DNNs for per-pixel segmentation, while maintaining simplicity in loss-term formulation and maintaining frugality in model size and training time. Results using six publicly available datasets demonstrates that our DNN framework, with little overheads, provides significant benefits in the robust segmentation of convex objects in out-of-distribution images.
+                                </div>
                             </div>
-                        </div>
+                        
+
+                        
+                            <div class="collapse" id="bibconvex_seg_miccai">
+                                <div class="collapse-box">
+                                    <object data="../publications/MICCAI_24/convex_seg_miccai_24.txt" width="100%" height="200px" style="border:none;"></object>
+                                </div>
+                            </div>
+                        
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+        
+
+            <div class="pub-card">
+                <div class="row g-0 align-items-start">
+                    
+                    <div class="col-md-3 pub-img-col">
+                        <img src="../publications/RV_PBS/rv_pbs.jpg" class="pub-thumbnail" alt="Advancing instance segmentation and WBC classification in peripheral blood smear through domain adaptation - A study on PBC and the novel RV-PBS datasets" />
                     </div>
 
-
-                
-
-
-
-                    <div class="row g-0">
-                        <div class="col-md-4 text-center my-4 px-2">
-                            <img src="../publications/BMSAN/bmsan.jpg" width="100%" style="box-shadow: 4px 4px 8px #888" class="center" />
+                    <div class="col-md-9 pub-content-col">
+                        
+                        <div class="pub-title">
+                            <span id="bold_id">Advancing instance segmentation and WBC classification in peripheral blood smear through domain adaptation - A study on PBC and the novel RV-PBS datasets</span>
                         </div>
-                        <div class="col-md-8 my-4">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span id="bold_id">Improving Multi Scale Attention Networks - Bayesian Optimization for Segmenting medical images</span>
-                                </h5>
-                                <span id="bold_id"> Jimut Bahan Pal </span> and <strong><a href="https://web.archive.org/web/20200624004219/http://www2.eng.ox.ac.uk/civil/efm/people/dripta-sarkar" target="_blank"> Dripta Mj </a></strong>
-                                <br />
-                                The Imaging Science Journal. (<span id="bold_id">2023</span>)
-                                <br />
-                                <p>
 
-                                    
+                        <div class="pub-authors">
+                            <span id="bold_id"> Jimut Bahan Pal</span>, Aniket Bhattacharyea, <strong><a href="http://narendrapur.rkmvu.ac.in/wp-content/uploads/2020/09/Dr.-Debasis-Bandyopadhyay-Banerjee-CV.pdf" target="_blank"> Debasis Banerjee</a></strong> and <strong><a href="https://cs.rkmvu.ac.in/~tamal/" target="_blank" alt="Tamal's RKMVERI Website"> Tamal </a> <a href="http://cs.rkmvu.ac.in/~tamal/" target="_blank" alt="Tamal's RKMVERI Website"> Maharaj </a> </strong>
+                        </div>
 
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#abstractbmsan" role="button" aria-expanded="false" aria-controls="abstractbmsan" id="pub-page-btn-font">Abstract</a>
-                                    
+                        <div class="pub-venue">
+                            Expert Systems With Applications. (<span id="bold_id">2024</span>). <br /> <a style="color:rgb(217, 61, 61);" id="bold_id" href="https://github.com/Jimut123/RV-PBS" target="_blank"> Find the Novel RV-PBS dataset here</a>.
+                        </div>
 
-                                    
-                                        <a type="button" class="btn btn-sm" href="../publications/BMSAN/bmsan_paper.pdf" target="_blank" id="pub-page-btn-font">Article</a>
-                                    
+                        <div class="d-flex flex-wrap justify-content-start mt-2">
+                            
 
-                                    
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractrv_pbs" role="button" aria-expanded="false" aria-controls="abstractrv_pbs">
+                                    <i class="fas fa-align-left"></i> Abstract
+                                </a>
+                            
 
-                                    
+                            
+                                <a class="btn btn-academic" href="../publications/RV_PBS/rv_pbs_paper.pdf" target="_blank">
+                                    <i class="far fa-file-pdf"></i> Article
+                                </a>
+                            
 
-                                    
+                            
 
-                                    
-                                        <a class="btn btn-sm" href="https://github.com/Jimut123/bmsan" target="_blank" id="pub-page-btn-font">Code</a>
-                                    
+                            
+                                <a class="btn btn-academic" href="../publications/RV_PBS/thesis_presentation.pdf" target="_blank">
+                                    <i class="fas fa-chalkboard-teacher"></i> Slide
+                                </a>
+                            
 
-                                   
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#bibbmsan" role="button" aria-expanded="false" aria-controls="bibbmsan" id="pub-page-btn-font">Bibtex</a>
-                                    
-                                   
-                                </p>
-                                
-                                
-                                    <div class="collapse" id="abstractbmsan">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            Current deep learning based image segmentation methods are notable for their use of large number of parameters and extensive computational resources in training. There is a persistent need for more efficient flexible systems without compromising on precision. This work proposes a novel model that combines the best of deep learning and probabilistic machine learning to segment a wide variety of medical image datasets with state-of-the-art accuracy and limited resources. The approach benefits from the introduction of new diverse attention modules that serve multiple purposes including capturing of relevant information at different scales. These proposed attention modules are generic and can potentially be used with other architectures to boost performance. In addition, Bayesian optimization is employed to tune multi-scale weight hyperparameters of the model. The architecture combined with one of the proposed novel attention modules and tuned hyperparameters achieves the best results in segmenting ISIC 2017, LUNGS, NERVE, Skin Lesion, and CHEST datasets. Finally, the explainability of the network is analyzed by visualizing the feature map learned from the attention modules.
-                                        </div>
-                                    </div>
-                                
+                            
 
-                                
-                                    <div class="collapse" id="bibbmsan">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            <object data="../publications/BMSAN/bmsan.txt" width="100%"></object>
-                                        </div>
-                                    </div>
-                                
+                            
+                                <a class="btn btn-academic" href="https://github.com/Jimut123/cellseg" target="_blank">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            
 
-                                
-                                
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibrv_pbs" role="button" aria-expanded="false" aria-controls="bibrv_pbs">
+                                    <i class="fas fa-quote-right"></i> BibTeX
+                                </a>
+                            
+                        </div>
+                        
+                        
+                            <div class="collapse" id="abstractrv_pbs">
+                                <div class="collapse-box">
+                                    <strong>Abstract:</strong> Automating blood cell counting and detection from smear slides holds significant potential for aiding doctors in disease diagnosis through blood tests. However, existing literature has not adequately addressed using whole slide data in this context. This study introduces the novel RV-PBS dataset, comprising ten distinct peripheral blood smear classes, each featuring multiple multi-class White Blood Cells per slide, specifically designed, for instance segmentation benchmarks. While conventional instance segmentation models like Mask R-CNN exhibit promising results in segmenting medical artifact instances, they face challenges in scenarios with limited samples and class imbalances within the dataset. This challenge prompted us to explore innovative techniques such as domain adaptation using a similar dataset to enhance the classification accuracy of Mask R-CNN, a novel approach in the domain of medical image analysis. Our study has successfully established a comprehensive pipeline capable of segmenting, detecting, and classifying blood samples from slides, striking an optimal balance between computational complexity and accurate classification of medical artifacts. This advancement enables precise cell counting and classification, facilitating doctors in refining their diagnostic analyses.
+                                </div>
                             </div>
-                        </div>
+                        
+
+                        
+                            <div class="collapse" id="bibrv_pbs">
+                                <div class="collapse-box">
+                                    <object data="../publications/RV_PBS/pal_2024_rvpbs.txt" width="100%" height="200px" style="border:none;"></object>
+                                </div>
+                            </div>
+                        
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+        
+
+            <div class="pub-card">
+                <div class="row g-0 align-items-start">
+                    
+                    <div class="col-md-3 pub-img-col">
+                        <img src="../publications/BMSAN/bmsan.jpg" class="pub-thumbnail" alt="Improving Multi Scale Attention Networks - Bayesian Optimization for Segmenting medical images" />
                     </div>
 
-
-                
-
-
-
-                    <div class="row g-0">
-                        <div class="col-md-4 text-center my-4 px-2">
-                            <img src="../publications/BMIC/bmic.png" width="100%" style="box-shadow: 4px 4px 8px #888" class="center" />
+                    <div class="col-md-9 pub-content-col">
+                        
+                        <div class="pub-title">
+                            <span id="bold_id">Improving Multi Scale Attention Networks - Bayesian Optimization for Segmenting medical images</span>
                         </div>
-                        <div class="col-md-8 my-4">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span id="bold_id">Biomedical image analysis competitions - The state of current participation practice</span>
-                                </h5>
-                                Matthias Eisenmann, Annika Reinke, ... <span id="bold_id"> Jimut Bahan Pal </span> ... Lena Maier-Hein
-                                <br />
-                                arXiv. (<span id="bold_id">2022</span>)
-                                <br />
-                                <p>
 
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#authors_list_bigbmic" role="button" aria-expanded="false" aria-controls="authors_list_bigbmic" id="pub-page-btn-font">Authors</a>
-                                    
+                        <div class="pub-authors">
+                            <span id="bold_id"> Jimut Bahan Pal </span> and <strong><a href="https://web.archive.org/web/20200624004219/http://www2.eng.ox.ac.uk/civil/efm/people/dripta-sarkar" target="_blank"> Dripta Mj </a></strong>
+                        </div>
 
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#abstractbmic" role="button" aria-expanded="false" aria-controls="abstractbmic" id="pub-page-btn-font">Abstract</a>
-                                    
+                        <div class="pub-venue">
+                            The Imaging Science Journal. (<span id="bold_id">2023</span>)
+                        </div>
 
-                                    
-                                        <a type="button" class="btn btn-sm" href="https://arxiv.org/abs/2212.08568" target="_blank" id="pub-page-btn-font">Article</a>
-                                    
+                        <div class="d-flex flex-wrap justify-content-start mt-2">
+                            
 
-                                    
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractbmsan" role="button" aria-expanded="false" aria-controls="abstractbmsan">
+                                    <i class="fas fa-align-left"></i> Abstract
+                                </a>
+                            
 
-                                    
+                            
+                                <a class="btn btn-academic" href="../publications/BMSAN/bmsan_paper.pdf" target="_blank">
+                                    <i class="far fa-file-pdf"></i> Article
+                                </a>
+                            
 
-                                    
+                            
 
-                                    
+                            
 
-                                   
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#bibbmic" role="button" aria-expanded="false" aria-controls="bibbmic" id="pub-page-btn-font">Bibtex</a>
-                                    
-                                   
-                                </p>
-                                
-                                
-                                    <div class="collapse" id="abstractbmic">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            The number of international benchmarking competitions is steadily increasing in various fields of machine learning (ML) research and practice. This holds especially true for the field of biomedical image analysis, for which dozens of competitions are organized each year. So far, however, little is known about the common practice as well as bottlenecks faced by the community in tackling the research questions posed. To shed light on the status quo of algorithm development for biomedical imaging analysis, we designed an international survey that was issued to all participants of challenges conducted in conjunction with the IEEE International Symposium on Biomedical Imaging (ISBI) and the International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI) in the year 2021 (n = 80 competitions in total). Besides questions pertaining to general information on the team and the tackled tasks, the survey covered participants’ expertise and working environments, their chosen strategies, as well as algorithm characteristics. A median of 72% challenge participants took part in the survey. According to our results, knowledge exchange was the primary incentive (70%) for participation, while the reception of prize money played only a minor role (16%). While a median of 80 working hours was spent on method development, a large portion of participants stated that they did not have enough time for method development (32%). Surprisingly, only 25% perceived the infrastructure to be a bottleneck. Overall, 94% of all solutions were deep learning-based. Of these, 84% were based on standard architectures. 43% of the respondents reported that the data samples (e.g., images) were too large to be processed at once. This was most commonly addressed by patch-based training (69%), downsampling (37%), and solving 3D analysis tasks as a series of 2D tasks. KSurprisingly, k-fold cross-validation on the training set was performed by only 37% of the participants and only 50% of the participants performed ensembling based on multiple identical models (61%) or heterogeneous models (39%). 48% of the respondents applied postprocessing steps.
-                                        </div>
-                                    </div>
-                                
+                            
 
-                                
-                                    <div class="collapse" id="bibbmic">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            <object data="../publications/BMIC/bmic_arxiv.txt" width="100%"></object>
-                                        </div>
-                                    </div>
-                                
+                            
+                                <a class="btn btn-academic" href="https://github.com/Jimut123/bmsan" target="_blank">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            
 
-                                
-                                    <div class="collapse" id="authors_list_bigbmic">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            Matthias Eisenmann, Annika Reinke, Vivienn Weru, Minu Dietlinde Tizabi, Fabian Isensee, Tim J. Adler, Patrick Godau, Veronika Cheplygina, Michal Kozubek, Sharib Ali, Anubha Gupta, Jan Kybic, Alison Noble, Carlos Ortiz de Solórzano, Samiksha Pachade, Caroline Petitjean, Daniel Sage, Donglai Wei, Elizabeth Wilden, Deepak Alapatt, Vincent Andrearczyk, Ujjwal Baid, Spyridon Bakas, Niranjan Balu, Sophia Bano, Vivek Singh Bawa, Jorge Bernal, Sebastian Bodenstedt, Alessandro Casella, Jinwook Choi, Olivier Commowick, Marie Daum, Adrien Depeursinge, Reuben Dorent, Jan Egger, Hannah Eichhorn, Sandy Engelhardt, Melanie Ganz, Gabriel Girard, Lasse Hansen, Mattias Heinrich, Nicholas Heller, Alessa Hering, Arnaud Huaulmé, Hyunjeong Kim, Bennett Landman, Hongwei Bran Li, Jianning Li, Jun Ma, Anne Martel, Carlos Martín-Isla, Bjoern Menze, Chinedu Innocent Nwoye, Valentin Oreiller, Nicolas Padoy, Sarthak Pati, Kelly Payette, Carole Sudre, Kimberlin van Wijnen, Armine Vardazaryan, Tom Vercauteren, Martin Wagner, Chuanbo Wang, Moi Hoon Yap, Zeyun Yu, Chun Yuan, Maximilian Zenk, Aneeq Zia, David Zimmerer, Rina Bao, Chanyeol Choi, Andrew Cohen, Oleh Dzyubachyk, Adrian Galdran, Tianyuan Gan, Tianqi Guo, Pradyumna Gupta, Mahmood Haithami, Edward Ho, Ikbeom Jang, Zhili Li, Zhengbo Luo, Filip Lux, Sokratis Makrogiannis, Dominik Müller, Young-tack Oh, Subeen Pang, Constantin Pape, Gorkem Polat, Charlotte Rosalie Reed, Kanghyun Ryu, Tim Scherr, Vajira Thambawita, Haoyu Wang, Xinliang Wang, Kele Xu, Hung Yeh, Doyeob Yeo, Yixuan Yuan, Yan Zeng , Xin Zhao, Julian Abbing, Jannes Adam, Nagesh Adluru, Niklas Agethen, Salman Ahmed, Yasmina Al Khalil, Mireia Alenyà, Esa Alhoniemi, Chengyang An, Talha Anwar, Tewodros Weldebirhan Arega, Netanell Avisdris, Dogu Baran Aydogan, Yingbin Bai, Maria Baldeon Calisto, Berke Doga Basaran, Marcel Beetz, Cheng Bian, Hao Bian, Kevin Blansit, Louise Bloch, Robert Bohnsack, Sara Bosticardo, Jack Breen, Mikael Brudfors, Raphael Brüngel, Mariano Cabezas, Alberto Cacciola, Zhiwei Chen, Yucong Chen, Daniel Tianming Chen, Minjeong Cho, Min-Kook Choi, Chuantao Xie Chuantao Xie, Dana Cobzas, Julien Cohen-Adad, Jorge Corral Acero, Sujit Kumar Das, Marcela de Oliveira, Hanqiu Deng, Guiming Dong, Lars Doorenbos, Cory Efird, Di Fan, Mehdi Fatan Serj, Alexandre Fenneteau, Lucas Fidon, Patryk Filipiak, René Finzel, Nuno R. Freitas, Christoph M. Friedrich, Mitchell Fulton, Finn Gaida, Francesco Galati, Christoforos Galazis, Chang Hee Gan, Zheyao Gao, Shengbo Gao, Matej Gazda, Beerend Gerats, Neil Getty, Adam Gibicar, Ryan Gifford, Sajan Gohil, Maria Grammatikopoulou, Daniel Grzech, Orhun Güley, Timo Günnemann, Chunxu Guo, Sylvain Guy, Heonjin Ha, Luyi Han, Il Song Han, Ali Hatamizadeh, Tian He, Jimin Heo, Sebastian Hitziger, SeulGi Hong, SeungBum Hong, Rian Huang, Ziyan Huang, Markus Huellebrand, Stephan Huschauer, Mustaffa Hussain, Tomoo Inubushi, Ece Isik Polat, Mojtaba Jafaritadi, SeongHun Jeong, Bailiang Jian, Yuanhong Jiang, Zhifan Jiang, Yueming Jin, Smriti Joshi, Abdolrahim Kadkhodamohammadi, Reda Abdellah Kamraoui, Inha Kang, Junghwa Kang, Davood Karimi, April Khademi, Muhammad Irfan Khan, Suleiman A. Khan, Rishab Khantwal, Kwang-Ju Kim, Timothy Kline, Satoshi Kondo, Elina Kontio, Adrian Krenzer, Artem Kroviakov, Hugo Kuijf, Satyadwyoom Kumar, Francesco La Rosa, Abhi Lad, Doohee Lee, Minho Lee, Chiara Lena, Hao Li, Ling Li, Xingyu Li, Fuyuan Liao, KuanLun Liao, Arlindo Limede Oliveira, Chaonan Lin, Shan Lin, Akis Linardos, Marius George Linguraru, Han Liu, Tao Liu, Di Liu, Yanling Liu, João Lourenço-Silva, Jingpei Lu, Jiangshan Lu, Imanol Luengo, Christina B. Lund, Huan Minh Luu, Yi Lv, Yi Lv, Uzay Macar, Leon Maechler, Sina Mansour L., Kenji Marshall, Moona Mazher, Richard McKinley, Alfonso Medela, Felix Meissen, Mingyuan Meng, Dylan Miller, Seyed Hossein Mirjahanmardi, Arnab Mishra, Samir Mitha, Hassan Mohy-ud-Din, Tony Chi Wing Mok, Gowtham Krishnan Murugesan, Enamundram Naga Karthik, Sahil Nalawade, Jakub Nalepa, Mohamed Naser, Ramin Nateghi, Hammad Naveed, Quang-Minh Nguyen, Cuong Nguyen Quoc, Brennan Nichyporuk, Bruno Oliveira, David Owen, Jimut Bahan Pal, Junwen Pan, Wentao Pan, Winnie Pang, Bogyu Park, Vivek Pawar, Kamlesh Pawar, Michael Peven, Lena Philipp, Tomasz Pieciak, Szymon Plotka, Marcel Plutat, Fattaneh Pourakpour, Domen Preložnik, Kumaradevan Punithakumar, Abdul Qayyum, Sandro Queirós, Arman Rahmim, Salar Razavi, Jintao Ren, Mina Rezaei, Jonathan Adam Rico, ZunHyan Rieu, Markus Rink, Johannes Roth, Yusely Ruiz-Gonzalez, Numan Saeed, Anindo Saha, Mostafa Salem, Ricardo Sanchez-Matilla, Kurt Schilling, Wei Shao, Zhiqiang Shen, Ruize Shi, Pengcheng Shi, Daniel Sobotka, Théodore Soulier, Bella Specktor Fadida, Danail Stoyanov, Timothy Sum Hon Mun, Xiaowu Sun, Rong Tao, Franz Thaler, Antoine Théberge, Felix Thielke, Helena Torres, Kareem A. Wahid, Jiacheng Wang, YiFei Wang, Wei Wang, Xiong Wang, Jianhui Wen, Ning Wen, Marek Wodzinski, Ye Wu, Fangfang Xia, Tianqi Xiang, Chen Xiaofei, Lizhan Xu, Tingting Xue, Yuxuan Yang, Lin Yang, Kai Yao, Huifeng Yao, Amirsaeed Yazdani, Michael Yip, Hwanseung Yoo, Fereshteh Yousefirizi, Shunkai Yu, Lei Yu, Jonathan Zamora, Ramy Ashraf Zeineldin, Dewen Zeng, Jianpeng Zhang, Bokai Zhang, Jiapeng Zhang, Fan Zhang, Huahong Zhang, Zhongchen Zhao, Zixuan Zhao, Jiachen Zhao, Can Zhao, Qingshuo Zheng, Yuheng Zhi, Ziqi Zhou, Baosheng Zou, Klaus Maier-Hein, Paul F. Jäger, Annette Kopp-Schneider, Lena Maier-Hein
-                                        </div>
-                                    </div>
-                                
-                                
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibbmsan" role="button" aria-expanded="false" aria-controls="bibbmsan">
+                                    <i class="fas fa-quote-right"></i> BibTeX
+                                </a>
+                            
+                        </div>
+                        
+                        
+                            <div class="collapse" id="abstractbmsan">
+                                <div class="collapse-box">
+                                    <strong>Abstract:</strong> Current deep learning based image segmentation methods are notable for their use of large number of parameters and extensive computational resources in training. There is a persistent need for more efficient flexible systems without compromising on precision. This work proposes a novel model that combines the best of deep learning and probabilistic machine learning to segment a wide variety of medical image datasets with state-of-the-art accuracy and limited resources. The approach benefits from the introduction of new diverse attention modules that serve multiple purposes including capturing of relevant information at different scales. These proposed attention modules are generic and can potentially be used with other architectures to boost performance. In addition, Bayesian optimization is employed to tune multi-scale weight hyperparameters of the model. The architecture combined with one of the proposed novel attention modules and tuned hyperparameters achieves the best results in segmenting ISIC 2017, LUNGS, NERVE, Skin Lesion, and CHEST datasets. Finally, the explainability of the network is analyzed by visualizing the feature map learned from the attention modules.
+                                </div>
                             </div>
-                        </div>
+                        
+
+                        
+                            <div class="collapse" id="bibbmsan">
+                                <div class="collapse-box">
+                                    <object data="../publications/BMSAN/bmsan.txt" width="100%" height="200px" style="border:none;"></object>
+                                </div>
+                            </div>
+                        
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+        
+
+            <div class="pub-card">
+                <div class="row g-0 align-items-start">
+                    
+                    <div class="col-md-3 pub-img-col">
+                        <img src="../publications/BMIC/bmic.png" class="pub-thumbnail" alt="Biomedical image analysis competitions - The state of current participation practice" />
                     </div>
 
-
-                
-
-
-
-                    <div class="row g-0">
-                        <div class="col-md-4 text-center my-4 px-2">
-                            <img src="../publications/MICCAI_QUBIQ_21/qubiq_21.jpg" width="100%" style="box-shadow: 4px 4px 8px #888" class="center" />
+                    <div class="col-md-9 pub-content-col">
+                        
+                        <div class="pub-title">
+                            <span id="bold_id">Biomedical image analysis competitions - The state of current participation practice</span>
                         </div>
-                        <div class="col-md-8 my-4">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span id="bold_id">Holistic network for quantifying uncertainties in medical images</span>
-                                </h5>
-                                <span id="bold_id"> Jimut Bahan Pal </span>
-                                <br />
-                                International MICCAI Brainlesion Workshop, BrainLes 2021, Brainlesion, Glioma, Multiple Sclerosis, Stroke and Traumatic Brain Injuries. (<span id="bold_id">2022</span>)
-                                <br />
-                                <p>
 
-                                    
+                        <div class="pub-authors">
+                            Matthias Eisenmann, Annika Reinke, ... <span id="bold_id"> Jimut Bahan Pal </span> ... Lena Maier-Hein
+                        </div>
 
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#abstractmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="abstractmiccai_qubiq_21" id="pub-page-btn-font">Abstract</a>
-                                    
+                        <div class="pub-venue">
+                            arXiv. (<span id="bold_id">2022</span>)
+                        </div>
 
-                                    
-                                        <a type="button" class="btn btn-sm" href="https://link.springer.com/chapter/10.1007/978-3-031-09002-8_49" target="_blank" id="pub-page-btn-font">Article</a>
-                                    
+                        <div class="d-flex flex-wrap justify-content-start mt-2">
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#authors_list_bigbmic" role="button" aria-expanded="false" aria-controls="authors_list_bigbmic">
+                                    <i class="fas fa-users"></i> Authors
+                                </a>
+                            
 
-                                    
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractbmic" role="button" aria-expanded="false" aria-controls="abstractbmic">
+                                    <i class="fas fa-align-left"></i> Abstract
+                                </a>
+                            
 
-                                    
-                                        <a class="btn btn-sm" href="../publications/MICCAI_QUBIQ_21/Jimut_Bahan_Pal_QUBIQ_MICCAI.pdf" target="_blank" id="pub-page-btn-font">Slide</a>
-                                    
+                            
+                                <a class="btn btn-academic" href="https://arxiv.org/abs/2212.08568" target="_blank">
+                                    <i class="far fa-file-pdf"></i> Article
+                                </a>
+                            
 
-                                    
-                                        <a class="btn btn-sm" href="https://www.youtube.com/watch?v=AaVvNG-ihMU" target="_blank" id="pub-page-btn-font">Video</a>
-                                    
+                            
 
-                                    
-                                        <a class="btn btn-sm" href="https://github.com/Jimut123/MICCAI_QUBIQ_21" target="_blank" id="pub-page-btn-font">Code</a>
-                                    
+                            
 
-                                   
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#bibmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="bibmiccai_qubiq_21" id="pub-page-btn-font">Bibtex</a>
-                                    
-                                   
-                                </p>
-                                
-                                
-                                    <div class="collapse" id="abstractmiccai_qubiq_21">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            Variability in delineation is an inherent property for segmenting medical imagery, when images are annotated by a variety of expert annotators. Previous methods have used adversarial training, Monte-Carlo sampling, and dropouts, which might sometimes produce a wide range of segmentation masks that differ from the styles of mask produced by a set of expert annotators. State-of-the-art method uses multiple U-Nets to capture the individual delineations, but it is computationally demanding. To mitigate this problem, a holistic network containing N-Encoder and N-Decoder is proposed, which could individually model the variability of delineation produced by the expert annotators. This will help to create segmentation masks for different tasks of the same dataset through a single network by learning the common features of multiple Encoders via a common channel and passing those features to Decoder. These create one segmentation mask. All the masks are calculated by using weighted loss at each end of the Decoders that show excellent results for some datasets.
-                                        </div>
-                                    </div>
-                                
+                            
 
-                                
-                                    <div class="collapse" id="bibmiccai_qubiq_21">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            <object data="../publications/MICCAI_QUBIQ_21/miccai_qubiq_21.txt" width="100%"></object>
-                                        </div>
-                                    </div>
-                                
+                            
 
-                                
-                                
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibbmic" role="button" aria-expanded="false" aria-controls="bibbmic">
+                                    <i class="fas fa-quote-right"></i> BibTeX
+                                </a>
+                            
+                        </div>
+                        
+                        
+                            <div class="collapse" id="abstractbmic">
+                                <div class="collapse-box">
+                                    <strong>Abstract:</strong> The number of international benchmarking competitions is steadily increasing in various fields of machine learning (ML) research and practice. This holds especially true for the field of biomedical image analysis, for which dozens of competitions are organized each year. So far, however, little is known about the common practice as well as bottlenecks faced by the community in tackling the research questions posed. To shed light on the status quo of algorithm development for biomedical imaging analysis, we designed an international survey that was issued to all participants of challenges conducted in conjunction with the IEEE International Symposium on Biomedical Imaging (ISBI) and the International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI) in the year 2021 (n = 80 competitions in total). Besides questions pertaining to general information on the team and the tackled tasks, the survey covered participants’ expertise and working environments, their chosen strategies, as well as algorithm characteristics. A median of 72% challenge participants took part in the survey. According to our results, knowledge exchange was the primary incentive (70%) for participation, while the reception of prize money played only a minor role (16%). While a median of 80 working hours was spent on method development, a large portion of participants stated that they did not have enough time for method development (32%). Surprisingly, only 25% perceived the infrastructure to be a bottleneck. Overall, 94% of all solutions were deep learning-based. Of these, 84% were based on standard architectures. 43% of the respondents reported that the data samples (e.g., images) were too large to be processed at once. This was most commonly addressed by patch-based training (69%), downsampling (37%), and solving 3D analysis tasks as a series of 2D tasks. KSurprisingly, k-fold cross-validation on the training set was performed by only 37% of the participants and only 50% of the participants performed ensembling based on multiple identical models (61%) or heterogeneous models (39%). 48% of the respondents applied postprocessing steps.
+                                </div>
                             </div>
-                        </div>
+                        
+
+                        
+                            <div class="collapse" id="bibbmic">
+                                <div class="collapse-box">
+                                    <object data="../publications/BMIC/bmic_arxiv.txt" width="100%" height="200px" style="border:none;"></object>
+                                </div>
+                            </div>
+                        
+
+                        
+                            <div class="collapse" id="authors_list_bigbmic">
+                                <div class="collapse-box">
+                                    Matthias Eisenmann, Annika Reinke, Vivienn Weru, Minu Dietlinde Tizabi, Fabian Isensee, Tim J. Adler, Patrick Godau, Veronika Cheplygina, Michal Kozubek, Sharib Ali, Anubha Gupta, Jan Kybic, Alison Noble, Carlos Ortiz de Solórzano, Samiksha Pachade, Caroline Petitjean, Daniel Sage, Donglai Wei, Elizabeth Wilden, Deepak Alapatt, Vincent Andrearczyk, Ujjwal Baid, Spyridon Bakas, Niranjan Balu, Sophia Bano, Vivek Singh Bawa, Jorge Bernal, Sebastian Bodenstedt, Alessandro Casella, Jinwook Choi, Olivier Commowick, Marie Daum, Adrien Depeursinge, Reuben Dorent, Jan Egger, Hannah Eichhorn, Sandy Engelhardt, Melanie Ganz, Gabriel Girard, Lasse Hansen, Mattias Heinrich, Nicholas Heller, Alessa Hering, Arnaud Huaulmé, Hyunjeong Kim, Bennett Landman, Hongwei Bran Li, Jianning Li, Jun Ma, Anne Martel, Carlos Martín-Isla, Bjoern Menze, Chinedu Innocent Nwoye, Valentin Oreiller, Nicolas Padoy, Sarthak Pati, Kelly Payette, Carole Sudre, Kimberlin van Wijnen, Armine Vardazaryan, Tom Vercauteren, Martin Wagner, Chuanbo Wang, Moi Hoon Yap, Zeyun Yu, Chun Yuan, Maximilian Zenk, Aneeq Zia, David Zimmerer, Rina Bao, Chanyeol Choi, Andrew Cohen, Oleh Dzyubachyk, Adrian Galdran, Tianyuan Gan, Tianqi Guo, Pradyumna Gupta, Mahmood Haithami, Edward Ho, Ikbeom Jang, Zhili Li, Zhengbo Luo, Filip Lux, Sokratis Makrogiannis, Dominik Müller, Young-tack Oh, Subeen Pang, Constantin Pape, Gorkem Polat, Charlotte Rosalie Reed, Kanghyun Ryu, Tim Scherr, Vajira Thambawita, Haoyu Wang, Xinliang Wang, Kele Xu, Hung Yeh, Doyeob Yeo, Yixuan Yuan, Yan Zeng , Xin Zhao, Julian Abbing, Jannes Adam, Nagesh Adluru, Niklas Agethen, Salman Ahmed, Yasmina Al Khalil, Mireia Alenyà, Esa Alhoniemi, Chengyang An, Talha Anwar, Tewodros Weldebirhan Arega, Netanell Avisdris, Dogu Baran Aydogan, Yingbin Bai, Maria Baldeon Calisto, Berke Doga Basaran, Marcel Beetz, Cheng Bian, Hao Bian, Kevin Blansit, Louise Bloch, Robert Bohnsack, Sara Bosticardo, Jack Breen, Mikael Brudfors, Raphael Brüngel, Mariano Cabezas, Alberto Cacciola, Zhiwei Chen, Yucong Chen, Daniel Tianming Chen, Minjeong Cho, Min-Kook Choi, Chuantao Xie Chuantao Xie, Dana Cobzas, Julien Cohen-Adad, Jorge Corral Acero, Sujit Kumar Das, Marcela de Oliveira, Hanqiu Deng, Guiming Dong, Lars Doorenbos, Cory Efird, Di Fan, Mehdi Fatan Serj, Alexandre Fenneteau, Lucas Fidon, Patryk Filipiak, René Finzel, Nuno R. Freitas, Christoph M. Friedrich, Mitchell Fulton, Finn Gaida, Francesco Galati, Christoforos Galazis, Chang Hee Gan, Zheyao Gao, Shengbo Gao, Matej Gazda, Beerend Gerats, Neil Getty, Adam Gibicar, Ryan Gifford, Sajan Gohil, Maria Grammatikopoulou, Daniel Grzech, Orhun Güley, Timo Günnemann, Chunxu Guo, Sylvain Guy, Heonjin Ha, Luyi Han, Il Song Han, Ali Hatamizadeh, Tian He, Jimin Heo, Sebastian Hitziger, SeulGi Hong, SeungBum Hong, Rian Huang, Ziyan Huang, Markus Huellebrand, Stephan Huschauer, Mustaffa Hussain, Tomoo Inubushi, Ece Isik Polat, Mojtaba Jafaritadi, SeongHun Jeong, Bailiang Jian, Yuanhong Jiang, Zhifan Jiang, Yueming Jin, Smriti Joshi, Abdolrahim Kadkhodamohammadi, Reda Abdellah Kamraoui, Inha Kang, Junghwa Kang, Davood Karimi, April Khademi, Muhammad Irfan Khan, Suleiman A. Khan, Rishab Khantwal, Kwang-Ju Kim, Timothy Kline, Satoshi Kondo, Elina Kontio, Adrian Krenzer, Artem Kroviakov, Hugo Kuijf, Satyadwyoom Kumar, Francesco La Rosa, Abhi Lad, Doohee Lee, Minho Lee, Chiara Lena, Hao Li, Ling Li, Xingyu Li, Fuyuan Liao, KuanLun Liao, Arlindo Limede Oliveira, Chaonan Lin, Shan Lin, Akis Linardos, Marius George Linguraru, Han Liu, Tao Liu, Di Liu, Yanling Liu, João Lourenço-Silva, Jingpei Lu, Jiangshan Lu, Imanol Luengo, Christina B. Lund, Huan Minh Luu, Yi Lv, Yi Lv, Uzay Macar, Leon Maechler, Sina Mansour L., Kenji Marshall, Moona Mazher, Richard McKinley, Alfonso Medela, Felix Meissen, Mingyuan Meng, Dylan Miller, Seyed Hossein Mirjahanmardi, Arnab Mishra, Samir Mitha, Hassan Mohy-ud-Din, Tony Chi Wing Mok, Gowtham Krishnan Murugesan, Enamundram Naga Karthik, Sahil Nalawade, Jakub Nalepa, Mohamed Naser, Ramin Nateghi, Hammad Naveed, Quang-Minh Nguyen, Cuong Nguyen Quoc, Brennan Nichyporuk, Bruno Oliveira, David Owen, Jimut Bahan Pal, Junwen Pan, Wentao Pan, Winnie Pang, Bogyu Park, Vivek Pawar, Kamlesh Pawar, Michael Peven, Lena Philipp, Tomasz Pieciak, Szymon Plotka, Marcel Plutat, Fattaneh Pourakpour, Domen Preložnik, Kumaradevan Punithakumar, Abdul Qayyum, Sandro Queirós, Arman Rahmim, Salar Razavi, Jintao Ren, Mina Rezaei, Jonathan Adam Rico, ZunHyan Rieu, Markus Rink, Johannes Roth, Yusely Ruiz-Gonzalez, Numan Saeed, Anindo Saha, Mostafa Salem, Ricardo Sanchez-Matilla, Kurt Schilling, Wei Shao, Zhiqiang Shen, Ruize Shi, Pengcheng Shi, Daniel Sobotka, Théodore Soulier, Bella Specktor Fadida, Danail Stoyanov, Timothy Sum Hon Mun, Xiaowu Sun, Rong Tao, Franz Thaler, Antoine Théberge, Felix Thielke, Helena Torres, Kareem A. Wahid, Jiacheng Wang, YiFei Wang, Wei Wang, Xiong Wang, Jianhui Wen, Ning Wen, Marek Wodzinski, Ye Wu, Fangfang Xia, Tianqi Xiang, Chen Xiaofei, Lizhan Xu, Tingting Xue, Yuxuan Yang, Lin Yang, Kai Yao, Huifeng Yao, Amirsaeed Yazdani, Michael Yip, Hwanseung Yoo, Fereshteh Yousefirizi, Shunkai Yu, Lei Yu, Jonathan Zamora, Ramy Ashraf Zeineldin, Dewen Zeng, Jianpeng Zhang, Bokai Zhang, Jiapeng Zhang, Fan Zhang, Huahong Zhang, Zhongchen Zhao, Zixuan Zhao, Jiachen Zhao, Can Zhao, Qingshuo Zheng, Yuheng Zhi, Ziqi Zhou, Baosheng Zou, Klaus Maier-Hein, Paul F. Jäger, Annette Kopp-Schneider, Lena Maier-Hein
+                                </div>
+                            </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+        
+
+            <div class="pub-card">
+                <div class="row g-0 align-items-start">
+                    
+                    <div class="col-md-3 pub-img-col">
+                        <img src="../publications/MICCAI_QUBIQ_21/qubiq_21.jpg" class="pub-thumbnail" alt="Holistic network for quantifying uncertainties in medical images" />
                     </div>
 
-
-                
-
-
-
-                    <div class="row g-0">
-                        <div class="col-md-4 text-center my-4 px-2">
-                            <img src="../publications/CXR_19/cxr_19.jpg" width="100%" style="box-shadow: 4px 4px 8px #888" class="center" />
+                    <div class="col-md-9 pub-content-col">
+                        
+                        <div class="pub-title">
+                            <span id="bold_id">Holistic network for quantifying uncertainties in medical images</span>
                         </div>
-                        <div class="col-md-8 my-4">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span id="bold_id">Classifying Chest X-Ray COVID-19 images via Transfer Learning</span>
-                                </h5>
-                                <span id="bold_id"> Jimut Bahan Pal </span> and <strong><a href="https://nlach.github.io/" target="_blank"> Nilayan Paul </a></strong>
-                                <br />
-                                2021 Ethics and Explainability for Responsible Data Science (EE-RDS), published in IEEE Xplore. (<span id="bold_id">2021</span>)
-                                <br />
-                                <p>
 
-                                    
+                        <div class="pub-authors">
+                            <span id="bold_id"> Jimut Bahan Pal </span>
+                        </div>
 
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#abstractcxr_19" role="button" aria-expanded="false" aria-controls="abstractcxr_19" id="pub-page-btn-font">Abstract</a>
-                                    
+                        <div class="pub-venue">
+                            International MICCAI Brainlesion Workshop, BrainLes 2021, Brainlesion, Glioma, Multiple Sclerosis, Stroke and Traumatic Brain Injuries. (<span id="bold_id">2022</span>)
+                        </div>
 
-                                    
-                                        <a type="button" class="btn btn-sm" href="https://ieeexplore.ieee.org/document/9708580" target="_blank" id="pub-page-btn-font">Article</a>
-                                    
+                        <div class="d-flex flex-wrap justify-content-start mt-2">
+                            
 
-                                    
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="abstractmiccai_qubiq_21">
+                                    <i class="fas fa-align-left"></i> Abstract
+                                </a>
+                            
 
-                                    
-                                        <a class="btn btn-sm" href="../publications/CXR_19/CXR_COVID_19_slide.pdf" target="_blank" id="pub-page-btn-font">Slide</a>
-                                    
+                            
+                                <a class="btn btn-academic" href="https://link.springer.com/chapter/10.1007/978-3-031-09002-8_49" target="_blank">
+                                    <i class="far fa-file-pdf"></i> Article
+                                </a>
+                            
 
-                                    
-                                        <a class="btn btn-sm" href="https://www.youtube.com/watch?v=27ixHn6SP_4" target="_blank" id="pub-page-btn-font">Video</a>
-                                    
+                            
 
-                                    
-                                        <a class="btn btn-sm" href="https://github.com/Jimut123/CXR_Covid-19" target="_blank" id="pub-page-btn-font">Code</a>
-                                    
+                            
+                                <a class="btn btn-academic" href="../publications/MICCAI_QUBIQ_21/Jimut_Bahan_Pal_QUBIQ_MICCAI.pdf" target="_blank">
+                                    <i class="fas fa-chalkboard-teacher"></i> Slide
+                                </a>
+                            
 
-                                   
-                                    
-                                        <a class="btn btn-sm" data-bs-toggle="collapse" href="#bibcxr_19" role="button" aria-expanded="false" aria-controls="bibcxr_19" id="pub-page-btn-font">Bibtex</a>
-                                    
-                                   
-                                </p>
-                                
-                                
-                                    <div class="collapse" id="abstractcxr_19">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            The internal behavior of Deep Neural Network architectures can be difficult to interpret. Certain architectures achieve impressive feats in a particular dataset while failing to show comparable performance in other datasets. Developing an architecture that performs well on a dataset can be a time-consuming affair and computationally intensive process. This study explains the effect of transfer learning by fine-tuning already available state-of-the-art architectures in different datasets and using them to classify Chest X-Ray images with high accuracy. Using transfer learning helps the model learn problem-specific features in a short period. It further shows that different models perform differently in a particular setting for a dataset. Ablation studies show that a combination of smaller structures that gives an overall better result may not give the best result in the combined model. In addition, the “belief” of the model for selecting a particular class is visualized in this study.
-                                        </div>
-                                    </div>
-                                
+                            
+                                <a class="btn btn-academic" href="https://www.youtube.com/watch?v=AaVvNG-ihMU" target="_blank">
+                                    <i class="fas fa-video"></i> Video
+                                </a>
+                            
 
-                                
-                                    <div class="collapse" id="bibcxr_19">
-                                        <div class="card card-body" align="justify" style="color:  rgb(0, 136, 255); ">
-                                            <object data="../publications/CXR_19/9708580.txt" width="100%"></object>
-                                        </div>
-                                    </div>
-                                
+                            
+                                <a class="btn btn-academic" href="https://github.com/Jimut123/MICCAI_QUBIQ_21" target="_blank">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            
 
-                                
-                                
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="bibmiccai_qubiq_21">
+                                    <i class="fas fa-quote-right"></i> BibTeX
+                                </a>
+                            
+                        </div>
+                        
+                        
+                            <div class="collapse" id="abstractmiccai_qubiq_21">
+                                <div class="collapse-box">
+                                    <strong>Abstract:</strong> Variability in delineation is an inherent property for segmenting medical imagery, when images are annotated by a variety of expert annotators. Previous methods have used adversarial training, Monte-Carlo sampling, and dropouts, which might sometimes produce a wide range of segmentation masks that differ from the styles of mask produced by a set of expert annotators. State-of-the-art method uses multiple U-Nets to capture the individual delineations, but it is computationally demanding. To mitigate this problem, a holistic network containing N-Encoder and N-Decoder is proposed, which could individually model the variability of delineation produced by the expert annotators. This will help to create segmentation masks for different tasks of the same dataset through a single network by learning the common features of multiple Encoders via a common channel and passing those features to Decoder. These create one segmentation mask. All the masks are calculated by using weighted loss at each end of the Decoders that show excellent results for some datasets.
+                                </div>
                             </div>
-                        </div>
+                        
+
+                        
+                            <div class="collapse" id="bibmiccai_qubiq_21">
+                                <div class="collapse-box">
+                                    <object data="../publications/MICCAI_QUBIQ_21/miccai_qubiq_21.txt" width="100%" height="200px" style="border:none;"></object>
+                                </div>
+                            </div>
+                        
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+        
+
+            <div class="pub-card">
+                <div class="row g-0 align-items-start">
+                    
+                    <div class="col-md-3 pub-img-col">
+                        <img src="../publications/CXR_19/cxr_19.jpg" class="pub-thumbnail" alt="Classifying Chest X-Ray COVID-19 images via Transfer Learning" />
                     </div>
 
+                    <div class="col-md-9 pub-content-col">
+                        
+                        <div class="pub-title">
+                            <span id="bold_id">Classifying Chest X-Ray COVID-19 images via Transfer Learning</span>
+                        </div>
 
-                
+                        <div class="pub-authors">
+                            <span id="bold_id"> Jimut Bahan Pal </span> and <strong><a href="https://nlach.github.io/" target="_blank"> Nilayan Paul </a></strong>
+                        </div>
 
- </div>
+                        <div class="pub-venue">
+                            2021 Ethics and Explainability for Responsible Data Science (EE-RDS), published in IEEE Xplore. (<span id="bold_id">2021</span>)
+                        </div>
+
+                        <div class="d-flex flex-wrap justify-content-start mt-2">
+                            
+
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractcxr_19" role="button" aria-expanded="false" aria-controls="abstractcxr_19">
+                                    <i class="fas fa-align-left"></i> Abstract
+                                </a>
+                            
+
+                            
+                                <a class="btn btn-academic" href="https://ieeexplore.ieee.org/document/9708580" target="_blank">
+                                    <i class="far fa-file-pdf"></i> Article
+                                </a>
+                            
+
+                            
+
+                            
+                                <a class="btn btn-academic" href="../publications/CXR_19/CXR_COVID_19_slide.pdf" target="_blank">
+                                    <i class="fas fa-chalkboard-teacher"></i> Slide
+                                </a>
+                            
+
+                            
+                                <a class="btn btn-academic" href="https://www.youtube.com/watch?v=27ixHn6SP_4" target="_blank">
+                                    <i class="fas fa-video"></i> Video
+                                </a>
+                            
+
+                            
+                                <a class="btn btn-academic" href="https://github.com/Jimut123/CXR_Covid-19" target="_blank">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            
+
+                            
+                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibcxr_19" role="button" aria-expanded="false" aria-controls="bibcxr_19">
+                                    <i class="fas fa-quote-right"></i> BibTeX
+                                </a>
+                            
+                        </div>
+                        
+                        
+                            <div class="collapse" id="abstractcxr_19">
+                                <div class="collapse-box">
+                                    <strong>Abstract:</strong> The internal behavior of Deep Neural Network architectures can be difficult to interpret. Certain architectures achieve impressive feats in a particular dataset while failing to show comparable performance in other datasets. Developing an architecture that performs well on a dataset can be a time-consuming affair and computationally intensive process. This study explains the effect of transfer learning by fine-tuning already available state-of-the-art architectures in different datasets and using them to classify Chest X-Ray images with high accuracy. Using transfer learning helps the model learn problem-specific features in a short period. It further shows that different models perform differently in a particular setting for a dataset. Ablation studies show that a combination of smaller structures that gives an overall better result may not give the best result in the combined model. In addition, the “belief” of the model for selecting a particular class is visualized in this study.
+                                </div>
+                            </div>
+                        
+
+                        
+                            <div class="collapse" id="bibcxr_19">
+                                <div class="collapse-box">
+                                    <object data="../publications/CXR_19/9708580.txt" width="100%" height="200px" style="border:none;"></object>
+                                </div>
+                            </div>
+                        
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+        
+
+    </div>
 </div>
 
-
-<div id="front-page-font">
-This material is presented to ensure timely dissemination of scholarly and technical work. 
-Copyright and all rights therein are retained by authors or by other copyright holders. 
-All persons copying this information are expected to adhere to the terms and constraints invoked by each author's copyright. 
-In most cases, these works may not be reposted without the explicit permission of the copyright holder.
+<div class="container my-5">
+    <div id="front-page-font" class="text-start text-muted small border-top pt-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        This material is presented to ensure timely dissemination of scholarly and technical work. 
+        Copyright and all rights therein are retained by authors or by other copyright holders. 
+        All persons copying this information are expected to adhere to the terms and constraints invoked by each author's copyright. 
+        In most cases, these works may not be reposted without the explicit permission of the copyright holder.
+    </div>
 </div>
 
-<br />
-
-
-</div>
 
 
       <br><br>

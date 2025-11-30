@@ -105,202 +105,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theme Toggle Example</title>
+    <title>Navigation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
 
     <style>
-        /* Define light theme */
+        /* --- 1. THEME VARIABLES (Colors used by the toggle) --- */
         :root {
-            --background-color: #ffffff;
-            --text-color: #000000;
-            --container-bg: #ffffff;
-            --container-text: #000000;
-            --special-color: #0076f4;
-            --navbar-bg: rgba(255, 255, 255, 0);
-            --navbar-backdrop: blur(2px);
-            --toggler-glow-color: #18a236; /* Green glow color */
+            --site-bg: #ffffff;
+            --site-text: #333333;
+            /* Navbar Specific Variables */
+            --nav-glass-bg: rgba(255, 255, 255, 0.75);
+            --nav-border: rgba(0, 0, 0, 0.05);
+            --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            --nav-text: #444444;
+            --nav-accent: #18a236; /* Green */
+            --nav-hover-bg: rgba(24, 162, 54, 0.08);
         }
 
-        /* Define dark theme */
         [data-theme="dark"] {
-            --background-color: #413f3f;
-            --text-color: #ffffff;
-            --container-bg: #413f3f;
-            --container-text: #ffffff;
-            --special-color: #bb86fc;
-            --navbar-bg: rgba(65, 63, 63, 0.5);
-            --navbar-backdrop: blur(2px);
-            --toggler-glow-color: #18a236; /* Same green glow in dark mode */
+            --site-bg: #121212;
+            --site-text: #f0f0f0;
+            /* Navbar Dark Variables */
+            --nav-glass-bg: rgba(18, 18, 18, 0.75);
+            --nav-border: rgba(255, 255, 255, 0.1);
+            --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            --nav-text: #e0e0e0;
+            --nav-accent: #4ade80; /* Brighter green for dark mode */
+            --nav-hover-bg: rgba(74, 222, 128, 0.15);
         }
 
-        /* Apply themes to the body and all elements */
+        /* --- 2. GLOBAL SITE BACKGROUND (Necessary for theme toggle) --- */
         body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            transition: background-color 0.5s, color 0.5s;
+            background-color: var(--site-bg);
+            color: var(--site-text);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin: 0; /* Reset default margin */
+        }
+        
+        /* NOTE: The 'body div' rule has been DELETED to prevent messing up other sections */
+
+        /* --- 3. SEXY NAVBAR STYLING (Scoped ONLY to .glass-navbar) --- */
+        .glass-navbar {
+            background: var(--nav-glass-bg);
+            backdrop-filter: blur(12px); /* The Glass Effect */
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--nav-border);
+            box-shadow: var(--nav-shadow);
+            padding: 0.8rem 1rem;
+            transition: all 0.3s ease;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
         }
 
-        /* Updated navbar styling */
-        .navbar {
-            background-color: var(--navbar-bg) !important;
-            backdrop-filter: var(--navbar-backdrop);
-            -webkit-backdrop-filter: var(--navbar-backdrop);
-            transition: all 0.5s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        /* Styling the Links */
+        .glass-navbar .nav-link {
+            font-family: 'Poppins', sans-serif;
+            color: var(--nav-text) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* Ensure navbar text is visible in both themes */
-        .navbar .nav-link {
-            color: var(--text-color) !important;
+        /* Icon Animation */
+        .glass-navbar .nav-link i, 
+        .glass-navbar .nav-link img {
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Updated active link styling */
-        .navbar ul li.active a, 
-        .navbar ul li a:hover {
-            background-color: rgba(229, 232, 209, 0.3);
-            font-weight: bold;
+        /* Hover Effect */
+        .glass-navbar .nav-link:hover {
+            background-color: var(--nav-hover-bg);
+            color: var(--nav-accent) !important;
+        }
+        
+        .glass-navbar .nav-link:hover i,
+        .glass-navbar .nav-link:hover img {
+            transform: scale(1.2) rotate(-5deg); /* Playful pop */
         }
 
-        /* Container styling */
-        body div {
-            background-color: var(--container-bg);
-            color: var(--container-text);
-            transition: background-color 0.5s, color 0.5s;
+        /* Active State (Sleek Underline) */
+        .glass-navbar .nav-item.active .nav-link {
+            color: var(--nav-accent) !important;
+            font-weight: 600;
+        }
+        
+        /* The underline bar */
+        .glass-navbar .nav-item {
+            position: relative;
+        }
+        
+        .glass-navbar .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            width: 0%;
+            height: 3px;
+            background: var(--nav-accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
 
-        /* Override specific colors for dark theme */
-        [data-theme="dark"] .btn-primary,
-        [data-theme="dark"] .bg-primary,
-        [data-theme="dark"] .text-primary {
-            background-color: var(--special-color) !important;
-            color: var(--container-text) !important;
+        .glass-navbar .nav-item.active::after {
+            width: 70%;
         }
 
-        #theme-icon {
-            font-size: 2em;
+        /* --- 4. TOGGLE BUTTON & MOBILE --- */
+        #theme-toggle {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.6rem;
+            padding: 5px;
+            border-radius: 50%;
+            transition: transform 0.5s ease;
+            line-height: 1;
+        }
+        
+        /* Spin the sun/moon on hover */
+        #theme-toggle:hover {
+            transform: rotate(45deg) scale(1.1);
+            background-color: var(--nav-hover-bg);
         }
 
-        /* Make navbar container transparent */
-        .navbar .container {
-            background-color: transparent !important;
+        .navbar-toggler {
+            border: none;
+            outline: none !important;
+        }
+        
+        /* Custom Mobile Hamburger Bars */
+        .toggler-bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--nav-text);
+            margin: 5px 0;
+            transition: 0.3s;
+            border-radius: 2px;
         }
 
-        /* NAVBAR TOGGLER GLOW EFFECT */
-        @keyframes glowing-toggler {
-            0% { box-shadow: 0 0 5px var(--toggler-glow-color); }
-            50% { box-shadow: 0 0 20px var(--toggler-glow-color), 0 0 30px var(--toggler-glow-color); }
-            100% { box-shadow: 0 0 5px var(--toggler-glow-color); }
-        }
-
-        /* Apply animation only when toggler is visible (on smaller screens) */
-        @media (max-width: 991.98px) {
-            .navbar-toggler {
-                animation: glowing-toggler 2s infinite;
-                border-color: var(--toggler-glow-color) !important;
+        /* Mobile specific fixes */
+        @media (max-width: 991px) {
+            .glass-navbar .navbar-collapse {
+                background: var(--site-bg); /* Solid background on mobile for readability */
+                padding: 15px;
+                border-radius: 12px;
+                margin-top: 15px;
+                border: 1px solid var(--nav-border);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             }
-            
-            /* Style the toggler icon bars with the same green color */
-            .navbar-toggler-icon {
-                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(24, 162, 54, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+            .glass-navbar .nav-item::after {
+                display: none; /* Disable underline on mobile */
+            }
+            .glass-navbar .nav-item.active .nav-link {
+                border-left: 4px solid var(--nav-accent);
+                background-color: var(--nav-hover-bg);
             }
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light sticky-top">
-    <a class="navbar-brand" style="font-family: Georgia, Times, Times New Roman, serif;">
-        <button id="theme-toggle" class="btn btn-link p-0" style="color: inherit;">
-            <span id="theme-icon">🌞</span>
+<nav class="navbar navbar-expand-lg glass-navbar">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <button id="theme-toggle" aria-label="Switch Theme">
+                <span id="theme-icon">🌞</span>
+            </button>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" 
+            aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="toggler-bar"></span>
+            <span class="toggler-bar"></span>
+            <span class="toggler-bar"></span>
         </button>
-    </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto navbar-center" style="font-family: Georgia, Times, Times New Roman, serif;">
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/"  style="color: #05f270;" class="nav-link">
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+            <ul class="navbar-nav">
+                
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">
                             
-                                <img src="/img/icons/home.svg" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">HOME </span>
+                                <img src="/img/icons/home.svg" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Home</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/publications.html"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/publications.html" class="nav-link">
                             
-                                <img src="/img/icons/publications.png" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">PUBLICATIONS </span>
+                                <img src="/img/icons/publications.png" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Publications</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/blog.html"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/blog.html" class="nav-link">
                             
-                                <img src="/img/icons/blog.svg" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">BLOG </span>
+                                <img src="/img/icons/blog.svg" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Blog</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/projects.html"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/projects.html" class="nav-link">
                             
-                                <img src="/img/icons/projects.jpg" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">PROJECTS </span>
+                                <img src="/img/icons/projects.jpg" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Projects</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/gallery.html"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/gallery.html" class="nav-link">
                             
-                                <img src="/img/icons/gallery.png" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">GALLERY </span>
+                                <img src="/img/icons/gallery.png" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Gallery</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/random.html"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/random.html" class="nav-link">
                             
-                                <img src="/img/icons/certificates.png" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">RANDOM </span>
+                                <img src="/img/icons/certificates.png" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Random</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/search/"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/search/" class="nav-link">
                             
-                                <img src="/img/icons/search.png" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">SEARCH </span>
+                                <img src="/img/icons/search.png" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Search</span>
                         </a>
-                    </div>
-                </li>
-            
-        </ul>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
 </nav>
 
@@ -309,15 +382,16 @@
     const themeIcon = document.getElementById('theme-icon');
     const body = document.body;
 
+    // 1. Check Local Storage on Load
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
         body.setAttribute('data-theme', currentTheme);
         themeIcon.textContent = currentTheme === 'dark' ? '🌜' : '🌞';
     } else {
         body.setAttribute('data-theme', 'light');
-        themeIcon.textContent = '🌞';
     }
 
+    // 2. Toggle Logic
     toggleButton.addEventListener('click', () => {
         const currentTheme = body.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -327,13 +401,14 @@
     });
 </script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+    // 3. Highlight Active Link
     $(function() {
         var url = window.location.href;
-        $(".navbar a").each(function() {
+        $(".glass-navbar a.nav-link").each(function() {
             if (url == (this.href)) {
-                $(this).closest("li").addClass("active");
-                $(this).closest("li").parent().parent().addClass("active");
+                $(this).closest(".nav-item").addClass("active");
             }
         });
     });        
@@ -345,48 +420,87 @@
     <div align="center">  
       <br><br>
       
-      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css?family=Cardo&display=swap" rel="stylesheet"> 
-
-
 <script src="../js/jquery.min.js"></script>
 <script src="../js/parallax.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
 <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
 
+<style>
+  /* --- 3D BACKGROUND CONTAINER --- */
+  #canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Subtle gradient background to enhance the space feel */
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    transition: background 0.5s ease;
+  }
 
-  
-  <link href="https://fonts.googleapis.com/css?family=Cardo&display=swap" rel="stylesheet">
-
-  <!--
-    <h1 style="font-style: font-family: 'Cardo', sans-serif;" > HOME </h1>
-  -->
+  /* Light mode background adjustment via body attribute */
+  body[data-theme="light"] #canvas-container {
+      background: radial-gradient(ellipse at bottom, #f0f2f5 0%, #d9e4f5 100%);
+  }
 
 
-  <div id="pad-container" >
+  /* --- GLASS STYLES --- */
+  .glass-panel {
+      /* Decreased opacity for the panels so the new background shows through better */
+      background: rgba(255, 255, 255, 0.10); 
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: background 0.5s ease, border-color 0.5s ease;
+  }
+
+  .glass-dock {
+      border-radius: 50px;
+      padding: 10px 30px;
+      display: inline-block;
+      margin-top: 10px;
+  }
+
+  .glass-box {
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      margin-top: 10px;
+  }
+</style>
+
+<div id="canvas-container"></div>
+
+<div id="pad-container" >
     <div align="justify" >
       <div class="container" align="justify" id="front-page-font">
         
-        
-      
-        <center>
-            <div> 
-              <!--
-                  <img  class="border shadow-lg p-1 mb-5 rounded" id ="profile_img" 
-                  src="../img/jimut.jpeg" class="rounded mx-auto d-block img-responsive" 
-                  alt="Avatar" width="250" height="250" style="background-color: black;">
-              -->
 
-              <div style="position: relative; width: 235px; height: 235px; margin: 0 auto;">
+
+          <center>
+            <div> 
+              <div class="glass-panel" style="position: relative; width: 235px; height: 235px; margin: 0 auto; border-radius: 50%;">
                 <img src="../img/jimut_2024_qatar_square.png" alt="Avatar" width="235" height="235" style="border-radius: 50%; position: relative; z-index: 1;"> 
+                
                 <svg width="270" height="270" style="position: absolute; top: -17px; left: -17px; z-index: 2; pointer-events: none;">
-                  <!-- Fixed circle outline -->
-                  <circle cx="135" cy="135" r="117.5" fill="none" stroke="rgba(0,255,0,0.1)" stroke-width="1" />
                   
-                  <!-- Rotating second dot -->
-                  <circle cx="135" cy="17.5" r="4" fill="#00ff00">
-                    <animateTransform 
+                  <circle cx="135" cy="135" r="117.5" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                  
+                  <g id="spaceship-group">
+                    
+                    <path d="M120 17.5 L110 14 L110 21 Z" fill="#ff9900">
+                      <animate attributeName="d" values="M120 17.5 L110 14 L110 21 Z; M120 17.5 L108 13 L108 22 Z; M120 17.5 L110 14 L110 21 Z" dur="0.2s" repeatCount="indefinite" />
+                    </path>
+
+                    <path d="M125 17.5 L115 5 L135 17.5 Z" fill="#7f8c8d" /> <path d="M115 5 L120 5 L130 17.5 Z" fill="#c0392b" />   <path d="M125 17.5 L115 30 L135 17.5 Z" fill="#7f8c8d" /> <path d="M115 30 L120 30 L130 17.5 Z" fill="#c0392b" />   <ellipse cx="135" cy="17.5" rx="18" ry="7" fill="#ecf0f1" />
+                    
+                    <ellipse cx="138" cy="17.5" rx="6" ry="3.5" fill="#3498db" />
+                    <ellipse cx="139" cy="16.5" rx="2" ry="1" fill="#ffffff" opacity="0.6" /> <animateTransform 
                       attributeName="transform"
                       type="rotate"
                       from="0 135 135"
@@ -394,70 +508,86 @@
                       dur="60s"
                       repeatCount="indefinite"
                     />
-                  </circle>
+                  </g>
                 </svg>
+
                 <script>
-                  // Set the dot to current seconds position when page loads
                   document.addEventListener('DOMContentLoaded', function() {
-                    const secondDot = document.querySelector('circle[cx="135"][cy="17.5"]');
-                    const now = new Date();
-                    const seconds = now.getSeconds();
-                    const angle = (seconds / 60) * 360;
+                    // Target the GROUP, not an image
+                    const spaceship = document.getElementById('spaceship-group');
                     
-                    // Update the animation to start from current seconds position
-                    const animate = secondDot.querySelector('animateTransform');
-                    animate.setAttribute('from', angle + ' 135 135');
-                    animate.setAttribute('to', (angle + 360) + ' 135 135');
+                    if(spaceship) {
+                        const now = new Date();
+                        const seconds = now.getSeconds();
+                        const angle = (seconds / 60) * 360;
+                        
+                        const animate = spaceship.querySelector('animateTransform');
+                        
+                        if(animate) {
+                        animate.setAttribute('from', angle + ' 135 135');
+                        animate.setAttribute('to', (angle + 360) + ' 135 135');
+                        }
+                    }
                   });
                 </script>
               </div>
               <br><br>
             </div>
-
         </center>
+
+
+
+
 
         <h3 align="center" > <strong> <bold>Jimut Bahan Pal </bold></strong> </h3>
 
         <h3 align="center" id="front-page-font">( জীমূত / जीमूत )</h3> 
 
         <div align="center">
-          <a href="mailto:<full-name-small-letters>@yahoo.com" target="_blank" alt="icon" style="color:white"> <img src="../img/icons/contact.png" width="35"> </a>
-          <a id = "bold_id" href="../files/cv.pdf" target="_blank">  <img src="../img/icons/cv_fp.png" width="27"></a>
-          <a href="https://scholar.google.com/citations?user=uyS3AKkAAAAJ&hl=en" target="_blank" alt="icon" style="color:white"> <img src="../img/icons/google_scholar.jpg" width="25"> </a>
-          <a href="https://github.com/Jimut123" target="_blank" alt="icon" style="color:white"> <img src="../img/icons/github_icon.png" width="40"> </a>
-          <a href="https://www.linkedin.com/in/jimutpal/" target="_blank" alt="icon" style="color:white"> <img src="../img/icons/linkedIn.png" width="25"> </a>
+          <div class="glass-panel glass-dock">
+            <a href="mailto:<full-name-small-letters>@yahoo.com" target="_blank" alt="icon" style="color:white; margin: 0 5px;"> <img src="../img/icons/contact.png" width="35"> </a>
+            <a id="bold_id" href="../files/cv.pdf" target="_blank" style="margin: 0 10px; text-decoration: none;" title="Curriculum Vitae">
+                <i class="fas fa-file-lines" style="font-size: 28px; color: #2c3e50; vertical-align: middle;"></i>
+            </a>
+            <a href="https://scholar.google.com/citations?user=uyS3AKkAAAAJ&hl=en" target="_blank" alt="icon" style="color:white; margin: 0 5px;"> <img src="../img/icons/google_scholar.jpg" width="25"> </a>
+            <a href="https://github.com/Jimut123" target="_blank" alt="icon" style="color:white; margin: 0 5px;"> <img src="../img/icons/github_icon.png" width="40"> </a>
+            <a href="https://www.linkedin.com/in/jimutpal/" target="_blank" alt="icon" style="color:white; margin: 0 5px;"> <img src="../img/icons/linkedIn.png" width="25"> </a>
+          </div>
         </div>
 
 
         <br>
         
         <div align="center" id="front-page-font">
-          <strong>
-            <h5> <span style="color: rgb(217, 61, 61);"> Research Fellow </span> </h5> 
-            <h5> Office: SIC-401, 4th Floor, Kanwal Rekhi (KReSIT) Building. </h5> 
-            <h5> Centre for Machine Intelligence and Data Science. </h5> 
-            <h5> Indian Institute of Technology (IIT) Bombay. </h5> 
-            <h5> Powai, Mumbai, Maharashtra - 400076.</h5>
-          </strong>
+          <div class="glass-panel glass-box" style="max-width: 650px;">
+            <strong>
+              <h5> <span style="color: rgb(217, 61, 61);"> Research Fellow </span> </h5> 
+              <h5> Office: SIC-401, 4th Floor, Kanwal Rekhi (KReSIT) Building. </h5> 
+              <h5> Centre for Machine Intelligence and Data Science. </h5> 
+              <h5> Indian Institute of Technology (IIT) Bombay. </h5> 
+              <h5> Powai, Mumbai, Maharashtra - 400076.</h5>
+            </strong>
+          </div>
         </div>
         <br>
         <br>
         <br>
 
          <h3 id="bold_id">News</h3>
-              <hr style="width:50%;text-align:left;margin-left:0">
-
-            <itemize>
-                <span id="bold_id"> Aug '25 </span> - A <a style="color: rgb(217, 61, 61);" href="../courses/ccp-sig/" target="_blank"> special interest group (CCP-SIG) on competitive coding with Python</a> is being formed. 
-                Members will meet biweekly to discuss and solve algorithmic problems together, this is my last attempt to learn DSA & competitive coding without procastination.
-                <br>
-                
-                <span id="bold_id"> Jan '25 </span> - I am offering <a id="bold_id" href="../courses/vision2025" target="_blank">ACVDL</a> course at RKMVERI. 
-                <br>
-                <span > Oct '24 </span> - One paper accepted at <a href="https://wacv2025.thecvf.com/" target="_blank"  style="color: rgb(217, 61, 61);"> WACV 2025</a>. <br> 
-                <a href="../news_archive.html" style="color: rgb(29, 179, 174);"  target="_blank" align="center"> [News Archives] </a> 
-
-            </itemize>
+              <div class="glass-panel glass-box" style="text-align: left;">
+                  <itemize>
+                      <span id="bold_id"> Aug '25 </span> - A <a style="color: rgb(217, 61, 61);" href="../courses/ccp-sig/" target="_blank"> special interest group (CCP-SIG) on competitive coding with Python</a> is being formed. 
+                      Members will meet biweekly to discuss and solve algorithmic problems together, this is my last attempt to learn DSA & competitive coding without procastination.
+                      <br>
+                      
+                      <span id="bold_id"> Jan '25 </span> - I am offering <a id="bold_id" href="../courses/vision2025" target="_blank">ACVDL</a> course at RKMVERI. 
+                      <br>
+                      <span > Oct '24 </span> - One paper accepted at <a href="https://wacv2025.thecvf.com/" target="_blank"  style="color: rgb(217, 61, 61);"> WACV 2025</a>. <br> 
+                  </itemize>
+                  <div align="center" style="margin-top: 15px;">
+                    <a href="../news_archive.html" style="color: rgb(29, 179, 174);"  target="_blank"> [News Archives] </a> 
+                  </div>
+              </div>
 
           <br>
           <br>
@@ -536,29 +666,7 @@
               <hr style="width:50%;text-align:left;margin-left:0">
 
                 I will be <span >Teaching</span> the following courses (for PMRF) <br><br>
-                  
-                <!-- <table class="table">
-                  <tbody>
-                    <tr>
-                      <td style="font-size:20px;" >RKMVERI</td>
-                      <td style="font-size:20px;" >Spring 2024</td>
-                      <td style="font-size:20px;" ><a href="../courses/vision/offering1_sem2_2024.html" style="color: rgb(0, 136, 255);"> Applications of Computer Vision and Deep Learning (CS411) </a></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                I am a Teaching Assistant for the following courses @ IIT Bombay <br><br>
-              
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td style="font-size:20px;" >IIT Bombay</td>
-                      <td style="font-size:20px;" >Autumn 2023</td>
-                      <td style="font-size:20px;" ><a href="https://www.minds.iitb.ac.in/academics/minor-ai-ds/2-uncategorised/20-ds-203" style="color: rgb(0, 136, 255);"> Programming for Data Science (DS 203)</a></td>
-                    </tr>
-                  </tbody>
-                </table> -->
-
+                
                 <span style="font-size:20px;" >RKMVERI</span> -   
                 <span style="font-size:20px;" >Spring 2025</span> -
                 <span style="font-size:20px;" >(3 credits)</span> -
@@ -662,11 +770,6 @@
               2024 - Got the 1<sup>st</sup> runner up for Generative AI Art Competition at <a href="../news/runner_up.jpg" target="_blank" >ICIP-2024</a>, 
               find the <a href="../news/artwork_icip_2024_genai.png" target="_blank">artwork here</a>; thanks Chandan and Rout!  <br>
                 
-                <!-- 2021 - Qualified in UGC-NET (LS). <br>
-                2016 - Received recognition from Baranagar Municipality for outstanding performance in the ISC examinations. <br>
-                2014 - Received recognition from Baranagar Municipality for outstanding performance in the ICSE examinations.  -->
-                
-
               <br>
               <br>
 
@@ -716,81 +819,174 @@
 
 
 
-   
-<!--
-  <div id="particles-js"></div>
-  <script src="../js/particles.js"></script>
-  <script src="../js/app.js"></script>
--->
 
-<!--  
-          <div class="row text-center" style="gap: 1%;">
+<script>
+    // --- CONFIGURATION ---
+    const BACKGROUND_COLOR = 0x090a0f;
+    
+    // A cinematic palette: Blue, Red, Green (as requested), Gold, and White
+    const STAR_PALETTE = [
+        0x5599ff, // Azure Blue
+        0xff5555, // Red Giant
+        0x55ff55, // Sci-Fi Green
+        0xffcc66, // Gold/Yellow
+        0xffffff, // Pure White
+        0xaabfff  // Pale Blue
+    ];
+    
+    // --- SETUP SCENE ---
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(BACKGROUND_COLOR, 0.002); 
 
-                  <div class="col-lg-2 col-md-12 mb-2" style="width: 100%;">
-                          <div class="card text-black  mb-3 border-0">
-                              <div class="card-body">
-                                  <img src="../img/icons/st_agnes_branch_logo.png" width="100%"/>
-                                  <a  href="https://www.facebook.com/St.AgnesBranchSchool/" target="_blank"> 
-                                    St. Agnes Branch School, IIT KGP </a> <br>
-                                    2002 - 2008
-                                  </a>
-                              </div>
-                          </div>
-                  </div>
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.position.z = 1; 
+    camera.rotation.x = 1.16;
+    camera.rotation.y = -0.12;
+    camera.rotation.z = 0.27;
 
-                  <div class="col-lg-2 col-md-12 mb-2" style="width: 100%;">
-                    <div class="card text-black  mb-3 border-0">
-                        <div class="card-body">
-                                <img src="../img/icons/cms_logo.gif" width="100%"/>
-                                <a  href="http://www.centralmodernschool.in/" target="_blank"> 
-                                  Central Modern School, Baranagar </a> <br>
-                                  2008 - 2016 
-                                  
-                          </div>
-                      </div>
-                  </div>
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    
+    const container = document.getElementById('canvas-container');
+    container.innerHTML = ''; // Clear old canvas if exists
+    container.appendChild(renderer.domElement);
 
-                  <div class="col-lg-2 col-md-12 mb-2" style="width: 100%;">
-                    <div class="card text-black  mb-3 border-0">
-                        <div class="card-body">
-                              <img src="../img/icons/sxc_logo.jpg" width="100%"/>
-                                B.Sc. (Hons.) Computer Science,
-                                <a  href="http://www.sxccal.edu/" target="_blank"> 
-                                St. Xavier's Collge, Kolkata  </a> <br>
-                                Jul '16 - May '19
-                          </div>
-                      </div>
-                  </div>
+    // --- CREATE STAR TEXTURE (Soft Glow) ---
+    function createStarTexture() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 32; canvas.height = 32;
+        const ctx = canvas.getContext('2d');
+        
+        // Radial gradient for soft edges
+        const gradient = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+        gradient.addColorStop(0.2, 'rgba(255, 255, 255, 0.8)');
+        gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.2)');
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 32, 32);
+        
+        return new THREE.CanvasTexture(canvas);
+    }
 
-                  <div class="col-lg-2 col-md-12 mb-2" style="width: 100%;">
-                    <div class="card text-black  mb-3 border-0">
-                        <div class="card-body">
-                              <img src="../img/icons/rkm.png" width="100%"/>
-                                M.Sc. in Computer Science,
-                                <a  href="http://cs.rkmvu.ac.in/" target="_blank"> 
-                                RKMVERI, Belur </a> <br>
-                                July '19 - July '21
-                          </div>
-                      </div>
-                  </div>
+    const starTexture = createStarTexture();
 
-                  <div class="col-lg-2 col-md-12 mb-2" style="width: 100%;">
-                    <div class="card text-black  mb-3 border-0">
-                        <div class="card-body">
-                              <img src="../img/icons/IITB_logo.svg" width="100%"/>
-                                Ph.D.
-                                <a  href="https://www.minds.iitb.ac.in/" target="_blank"> 
-                                  C-MInDS, IIT Bombay </a> <br>
-                                July '22 - Present
-                          </div>
-                      </div>
-                  </div>
-               
-        </div> 
--->
+    // --- HELPER TO CREATE COLORED LAYERS ---
+    function createColoredLayer(count, size, area) {
+        const geo = new THREE.BufferGeometry();
+        const pos = [];
+        const colors = [];
+        const colorHelper = new THREE.Color();
+        
+        for(let i=0; i<count; i++) {
+            // Random Position
+            let x = Math.random() * area - (area/2);
+            let y = Math.random() * area - (area/2);
+            let z = Math.random() * area - (area/2);
+            pos.push(x,y,z);
 
+            // Random Color from Palette
+            const hex = STAR_PALETTE[Math.floor(Math.random() * STAR_PALETTE.length)];
+            colorHelper.setHex(hex);
+            colors.push(colorHelper.r, colorHelper.g, colorHelper.b);
+        }
+        
+        geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+        geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+        
+        const mat = new THREE.PointsMaterial({
+            size: size,
+            map: starTexture,
+            transparent: true,
+            opacity: 0.8,
+            vertexColors: true, // IMPORTANT: Enables individual colors
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
+        });
+        
+        return new THREE.Points(geo, mat);
+    }
 
+    // --- CREATE LAYERS ---
+    // 1. Background Dust (Lots of small stars)
+    const starsBackground = createColoredLayer(3500, 0.4, 600);
+    scene.add(starsBackground);
 
+    // 2. Foreground Stars (Larger, brighter, distinct colors)
+    const starsForeground = createColoredLayer(400, 1.2, 300);
+    scene.add(starsForeground);
+
+    // --- ANIMATION LOOP ---
+    function animate() {
+        // Slow rotation for cinematic feel
+        starsBackground.rotation.y -= 0.0005;
+        starsBackground.rotation.x -= 0.0002;
+
+        starsForeground.rotation.y -= 0.0010;
+        starsForeground.rotation.x -= 0.0005;
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+
+    // --- RESIZE HANDLER ---
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // --- THEME HANDLER ---
+    function updateTheme() {
+        const theme = document.body.getAttribute('data-theme');
+        if (theme === 'light') {
+            // In light mode, colorful stars look messy on white. 
+            // We dampen them to dark slate/grey for readability.
+            scene.fog.color.setHex(0xd9e4f5); 
+            
+            // Override individual colors with a uniform dark color for contrast
+            starsBackground.material.vertexColors = false;
+            starsForeground.material.vertexColors = false;
+            starsBackground.material.color.setHex(0x4a5568);
+            starsForeground.material.color.setHex(0x2d3748);
+            
+            starsBackground.material.opacity = 0.4;
+            starsForeground.material.opacity = 0.5;
+        } else {
+            // Dark Mode: Unleash the colors!
+            scene.fog.color.setHex(0x090a0f);
+            
+            // Re-enable vertex colors to show the Red/Green/Blue
+            starsBackground.material.vertexColors = true;
+            starsForeground.material.vertexColors = true;
+            
+            // Reset base color to white (so vertex colors show through pure)
+            starsBackground.material.color.setHex(0xffffff);
+            starsForeground.material.color.setHex(0xffffff);
+
+            starsBackground.material.opacity = 0.8;
+            starsForeground.material.opacity = 1.0;
+        }
+        
+        starsBackground.material.needsUpdate = true;
+        starsForeground.material.needsUpdate = true;
+    }
+
+    // Trigger update when theme changes
+    const toggleBtn = document.getElementById('theme-toggle');
+    if(toggleBtn) {
+        toggleBtn.addEventListener('click', () => { setTimeout(updateTheme, 50); });
+    }
+    
+    // Check periodically in case body attribute is set by other scripts
+    setTimeout(updateTheme, 100);
+    setInterval(updateTheme, 2000); 
+
+</script>
 
       <br><br>
       

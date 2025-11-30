@@ -105,202 +105,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theme Toggle Example</title>
+    <title>Navigation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
 
     <style>
-        /* Define light theme */
+        /* --- 1. THEME VARIABLES (Colors used by the toggle) --- */
         :root {
-            --background-color: #ffffff;
-            --text-color: #000000;
-            --container-bg: #ffffff;
-            --container-text: #000000;
-            --special-color: #0076f4;
-            --navbar-bg: rgba(255, 255, 255, 0);
-            --navbar-backdrop: blur(2px);
-            --toggler-glow-color: #18a236; /* Green glow color */
+            --site-bg: #ffffff;
+            --site-text: #333333;
+            /* Navbar Specific Variables */
+            --nav-glass-bg: rgba(255, 255, 255, 0.75);
+            --nav-border: rgba(0, 0, 0, 0.05);
+            --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            --nav-text: #444444;
+            --nav-accent: #18a236; /* Green */
+            --nav-hover-bg: rgba(24, 162, 54, 0.08);
         }
 
-        /* Define dark theme */
         [data-theme="dark"] {
-            --background-color: #413f3f;
-            --text-color: #ffffff;
-            --container-bg: #413f3f;
-            --container-text: #ffffff;
-            --special-color: #bb86fc;
-            --navbar-bg: rgba(65, 63, 63, 0.5);
-            --navbar-backdrop: blur(2px);
-            --toggler-glow-color: #18a236; /* Same green glow in dark mode */
+            --site-bg: #121212;
+            --site-text: #f0f0f0;
+            /* Navbar Dark Variables */
+            --nav-glass-bg: rgba(18, 18, 18, 0.75);
+            --nav-border: rgba(255, 255, 255, 0.1);
+            --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            --nav-text: #e0e0e0;
+            --nav-accent: #4ade80; /* Brighter green for dark mode */
+            --nav-hover-bg: rgba(74, 222, 128, 0.15);
         }
 
-        /* Apply themes to the body and all elements */
+        /* --- 2. GLOBAL SITE BACKGROUND (Necessary for theme toggle) --- */
         body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            transition: background-color 0.5s, color 0.5s;
+            background-color: var(--site-bg);
+            color: var(--site-text);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin: 0; /* Reset default margin */
+        }
+        
+        /* NOTE: The 'body div' rule has been DELETED to prevent messing up other sections */
+
+        /* --- 3. SEXY NAVBAR STYLING (Scoped ONLY to .glass-navbar) --- */
+        .glass-navbar {
+            background: var(--nav-glass-bg);
+            backdrop-filter: blur(12px); /* The Glass Effect */
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--nav-border);
+            box-shadow: var(--nav-shadow);
+            padding: 0.8rem 1rem;
+            transition: all 0.3s ease;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
         }
 
-        /* Updated navbar styling */
-        .navbar {
-            background-color: var(--navbar-bg) !important;
-            backdrop-filter: var(--navbar-backdrop);
-            -webkit-backdrop-filter: var(--navbar-backdrop);
-            transition: all 0.5s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        /* Styling the Links */
+        .glass-navbar .nav-link {
+            font-family: 'Poppins', sans-serif;
+            color: var(--nav-text) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* Ensure navbar text is visible in both themes */
-        .navbar .nav-link {
-            color: var(--text-color) !important;
+        /* Icon Animation */
+        .glass-navbar .nav-link i, 
+        .glass-navbar .nav-link img {
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Updated active link styling */
-        .navbar ul li.active a, 
-        .navbar ul li a:hover {
-            background-color: rgba(229, 232, 209, 0.3);
-            font-weight: bold;
+        /* Hover Effect */
+        .glass-navbar .nav-link:hover {
+            background-color: var(--nav-hover-bg);
+            color: var(--nav-accent) !important;
+        }
+        
+        .glass-navbar .nav-link:hover i,
+        .glass-navbar .nav-link:hover img {
+            transform: scale(1.2) rotate(-5deg); /* Playful pop */
         }
 
-        /* Container styling */
-        body div {
-            background-color: var(--container-bg);
-            color: var(--container-text);
-            transition: background-color 0.5s, color 0.5s;
+        /* Active State (Sleek Underline) */
+        .glass-navbar .nav-item.active .nav-link {
+            color: var(--nav-accent) !important;
+            font-weight: 600;
+        }
+        
+        /* The underline bar */
+        .glass-navbar .nav-item {
+            position: relative;
+        }
+        
+        .glass-navbar .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            width: 0%;
+            height: 3px;
+            background: var(--nav-accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
 
-        /* Override specific colors for dark theme */
-        [data-theme="dark"] .btn-primary,
-        [data-theme="dark"] .bg-primary,
-        [data-theme="dark"] .text-primary {
-            background-color: var(--special-color) !important;
-            color: var(--container-text) !important;
+        .glass-navbar .nav-item.active::after {
+            width: 70%;
         }
 
-        #theme-icon {
-            font-size: 2em;
+        /* --- 4. TOGGLE BUTTON & MOBILE --- */
+        #theme-toggle {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.6rem;
+            padding: 5px;
+            border-radius: 50%;
+            transition: transform 0.5s ease;
+            line-height: 1;
+        }
+        
+        /* Spin the sun/moon on hover */
+        #theme-toggle:hover {
+            transform: rotate(45deg) scale(1.1);
+            background-color: var(--nav-hover-bg);
         }
 
-        /* Make navbar container transparent */
-        .navbar .container {
-            background-color: transparent !important;
+        .navbar-toggler {
+            border: none;
+            outline: none !important;
+        }
+        
+        /* Custom Mobile Hamburger Bars */
+        .toggler-bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--nav-text);
+            margin: 5px 0;
+            transition: 0.3s;
+            border-radius: 2px;
         }
 
-        /* NAVBAR TOGGLER GLOW EFFECT */
-        @keyframes glowing-toggler {
-            0% { box-shadow: 0 0 5px var(--toggler-glow-color); }
-            50% { box-shadow: 0 0 20px var(--toggler-glow-color), 0 0 30px var(--toggler-glow-color); }
-            100% { box-shadow: 0 0 5px var(--toggler-glow-color); }
-        }
-
-        /* Apply animation only when toggler is visible (on smaller screens) */
-        @media (max-width: 991.98px) {
-            .navbar-toggler {
-                animation: glowing-toggler 2s infinite;
-                border-color: var(--toggler-glow-color) !important;
+        /* Mobile specific fixes */
+        @media (max-width: 991px) {
+            .glass-navbar .navbar-collapse {
+                background: var(--site-bg); /* Solid background on mobile for readability */
+                padding: 15px;
+                border-radius: 12px;
+                margin-top: 15px;
+                border: 1px solid var(--nav-border);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             }
-            
-            /* Style the toggler icon bars with the same green color */
-            .navbar-toggler-icon {
-                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(24, 162, 54, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+            .glass-navbar .nav-item::after {
+                display: none; /* Disable underline on mobile */
+            }
+            .glass-navbar .nav-item.active .nav-link {
+                border-left: 4px solid var(--nav-accent);
+                background-color: var(--nav-hover-bg);
             }
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light sticky-top">
-    <a class="navbar-brand" style="font-family: Georgia, Times, Times New Roman, serif;">
-        <button id="theme-toggle" class="btn btn-link p-0" style="color: inherit;">
-            <span id="theme-icon">🌞</span>
+<nav class="navbar navbar-expand-lg glass-navbar">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <button id="theme-toggle" aria-label="Switch Theme">
+                <span id="theme-icon">🌞</span>
+            </button>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" 
+            aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="toggler-bar"></span>
+            <span class="toggler-bar"></span>
+            <span class="toggler-bar"></span>
         </button>
-    </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto navbar-center" style="font-family: Georgia, Times, Times New Roman, serif;">
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/"  class="nav-link">
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+            <ul class="navbar-nav">
+                
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">
                             
-                                <img src="/img/icons/home.svg" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">HOME </span>
+                                <img src="/img/icons/home.svg" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Home</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/publications.html"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/publications.html" class="nav-link">
                             
-                                <img src="/img/icons/publications.png" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">PUBLICATIONS </span>
+                                <img src="/img/icons/publications.png" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Publications</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/blog.html"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/blog.html" class="nav-link">
                             
-                                <img src="/img/icons/blog.svg" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">BLOG </span>
+                                <img src="/img/icons/blog.svg" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Blog</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/projects.html"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/projects.html" class="nav-link">
                             
-                                <img src="/img/icons/projects.jpg" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">PROJECTS </span>
+                                <img src="/img/icons/projects.jpg" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Projects</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/gallery.html"  style="color: #05f270;" class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/gallery.html" class="nav-link">
                             
-                                <img src="/img/icons/gallery.png" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">GALLERY </span>
+                                <img src="/img/icons/gallery.png" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Gallery</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/random.html"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/random.html" class="nav-link">
                             
-                                <img src="/img/icons/certificates.png" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">RANDOM </span>
+                                <img src="/img/icons/certificates.png" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Random</span>
                         </a>
-                    </div>
-                </li>
-            
-                <li class="nav-item">
-                    <div class="container pull-left">
-                        <a href="/search/"  class="nav-link">
+                    </li>
+                
+                    <li class="nav-item">
+                        <a href="/search/" class="nav-link">
                             
-                                <img src="/img/icons/search.png" alt="icon" height="25px" width="25px">
                             
-                            <span size="4px" style="color: #18a236;">SEARCH </span>
+                                <img src="/img/icons/search.png" alt="icon" height="20px" width="20px">
+                            
+                            
+                            <span>Search</span>
                         </a>
-                    </div>
-                </li>
-            
-        </ul>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
 </nav>
 
@@ -309,15 +382,16 @@
     const themeIcon = document.getElementById('theme-icon');
     const body = document.body;
 
+    // 1. Check Local Storage on Load
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
         body.setAttribute('data-theme', currentTheme);
         themeIcon.textContent = currentTheme === 'dark' ? '🌜' : '🌞';
     } else {
         body.setAttribute('data-theme', 'light');
-        themeIcon.textContent = '🌞';
     }
 
+    // 2. Toggle Logic
     toggleButton.addEventListener('click', () => {
         const currentTheme = body.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -327,13 +401,14 @@
     });
 </script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+    // 3. Highlight Active Link
     $(function() {
         var url = window.location.href;
-        $(".navbar a").each(function() {
+        $(".glass-navbar a.nav-link").each(function() {
             if (url == (this.href)) {
-                $(this).closest("li").addClass("active");
-                $(this).closest("li").parent().parent().addClass("active");
+                $(this).closest(".nav-item").addClass("active");
             }
         });
     });        
@@ -351,854 +426,954 @@
     <b id="heading-font"> GALLERY </b>
 </h1>
 
-<!-- <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="keywords" content="paesaggio, street-photography, etna, sicilia, fotografia, biancoenero, viaggi"> -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;family=Cardo:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
 
-<link rel="shortcut icon" type="image/x-icon" href="../img/thumbnail.jpg" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-<link href="https://fonts.googleapis.com/css?family=Archivo&amp;display=swap" rel="stylesheet" />
-
-<link href="https://fonts.googleapis.com/css?family=Cardo&amp;display=swap" rel="stylesheet" />
-
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
-
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet" />
-
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="css/magnific-popup.css" />
-
-<link rel="stylesheet" href="css/jquery-ui.css" />
-
-<link rel="stylesheet" href="css/owl.carousel.min.css" />
-
-<link rel="stylesheet" href="css/owl.theme.default.min.css" />
 
 <link rel="stylesheet" href="css/lightgallery.min.css" />
 
-<link rel="stylesheet" href="css/bootstrap-datepicker.css" />
-
-<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css" />
-
-<link rel="stylesheet" href="css/swiper.css" />
-
 <link rel="stylesheet" href="css/aos.css" />
 
-<link rel="stylesheet" href="css/style.css" />
-
-<link rel="shortcut icon" href="images/favicon.ico" />
-
-<script src="js/jquery-3.3.1.min.js"></script>
-
-<script src="js/jquery-migrate-3.0.1.min.js"></script>
-
-<script src="js/jquery-ui.js"></script>
-
-<script src="js/owl.carousel.min.js"></script>
-
-<script src="js/jquery.stellar.min.js"></script>
-
-<script src="js/jquery.countdown.min.js"></script>
-
-<script src="js/jquery.magnific-popup.min.js"></script>
-
-<script src="js/bootstrap-datepicker.min.js"></script>
-
-<script src="js/swiper.min.js"></script>
-
-<script src="js/aos.js"></script>
-
-<script src="js/picturefill.min.js"></script>
-
-<script src="js/lightgallery-all.min.js"></script>
-
-<script src="js/jquery.mousewheel.min.js"></script>
-
-<script src="js/main.js"></script>
-
-<script>
-
-    $(document).ready(function(){
-    $('#lightgallery').lightGallery();
-    });
-
-</script>
+<link rel="stylesheet" href="../css/jimstyle.css" />
 
 <style>
-
-
-.square-thumb-container {
-        position: relative;
-        width: 100%;
-        padding-bottom: 100%; /* Creates a square aspect ratio */
-        overflow: hidden;
-        margin-bottom: 15px;
+    /* Variables matching your theme */
+    :root {
+        --gallery-gap: 20px;
+        --card-radius: 12px;
+        --accent-green: #18a236;
+        --text-dark: #333;
+        --text-muted: #666;
     }
 
+    /* Typography Override */
+    body, #publication-font {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* THE NOTICE BOX (Glassmorphism) */
+    .gallery-notice {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid var(--accent-green);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 30px auto;
+        max-width: 800px;
+        text-align: center;
+        color: var(--text-dark);
+        font-size: 0.95rem;
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-notice:hover {
+        transform: translateY(-2px);
+    }
+
+    .notice-icon {
+        color: var(--accent-green);
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    /* THE IMAGE CARD */
+    .gallery-item {
+        margin-bottom: 25px;
+        padding: 0 10px; /* Spacing between columns */
+    }
+
+    .square-thumb-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 100%; /* Square Aspect Ratio */
+        border-radius: var(--card-radius);
+        overflow: hidden;
+        background-color: #f0f0f0; /* Placeholder color while loading */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* The Image Itself */
     .square-thumb-container img {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover; /* This ensures the image covers the square area while maintaining aspect ratio */
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
-    #front-page-font {
-        text-align: center;
-        margin: 20px 0;
+    /* Hover Effects */
+    .square-thumb-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     }
 
-    #pad-container {
-        padding: 20px;
-    }
-
-    /* Optional: Add hover effect */
     .square-thumb-container:hover img {
-        transform: scale(1.05);
-        transition: transform 0.3s ease;
+        transform: scale(1.1); /* Smooth Zoom */
     }
+
+    /* Overlay Icon on Hover (Optional "Zoom" icon) */
+    .square-thumb-container::after {
+        content: '\f00e'; /* FontAwesome Zoom Icon */
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        color: white;
+        font-size: 2rem;
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 2;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .square-thumb-container:hover::after {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Dark Overlay on Hover */
+    .square-thumb-container::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    .square-thumb-container:hover::before {
+        opacity: 1;
+    }
+
 </style>
 
-<h6 id="front-page-font"> 
-    Kindly click on the images to enhance your viewing experience. <br />
-    Please be aware that these high-resolution images are best enjoyed on devices with a minimum 
-    internet speed of 10 Mbps.  
-</h6>
-
-<p><br /><br /></p>
-
-<div id="pad-container">
-    <div align="justify">
-        <div class="container" id="publication-font">
-
-        <div class="row" id="lightgallery">
-        
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/group_pic_1.jpg" data-sub-html="&lt;h4&gt;With first batch of MS folks&lt;/h4&gt;&lt;p&gt;Hassan, me, Sachin and Prabhat (September 2024)&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/group_pic_1_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/lower_parel.jpg" data-sub-html="&lt;h4&gt;Lower Parel&lt;/h4&gt;&lt;p&gt;High contrast&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/lower_parel_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/shmj_jimut_tmj.jpg" data-sub-html="&lt;h4&gt;With Shreesh Mj and Tamal Mj&lt;/h4&gt;&lt;p&gt;RKMVERI, Kolkata (19th June, 2024)&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/shmj_jimut_tmj_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/sachin_uddeshya_birthday.jpg" data-sub-html="&lt;h4&gt;Sachin's &amp; Uddeshya's birthday&lt;/h4&gt;&lt;p&gt;At Absolute Barbeque, Mumbai (25th July, 2023)&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/sachin_uddeshya_birthday_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/sameer_hills_road.jpg" data-sub-html="&lt;h4&gt;Sameer Hills Roads&lt;/h4&gt;&lt;p&gt;June 10, 2023&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/sameer_hills_road_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/that_side_sameer_hills.jpg" data-sub-html="&lt;h4&gt;That side from top of Sameer hills&lt;/h4&gt;&lt;p&gt;June 10, 2023&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/that_side_sameer_hills_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/this_side_sameer_hills.jpg" data-sub-html="&lt;h4&gt;This side from top of Sameer hills&lt;/h4&gt;&lt;p&gt;June 10, 2023&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/this_side_sameer_hills_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/hazarduari.jpg" data-sub-html="&lt;h4&gt;Hazarduari, Murshidabad&lt;/h4&gt;&lt;p&gt;May 16, 2023&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/hazarduari_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/kila.jpg" data-sub-html="&lt;h4&gt;Old Fort, Murshidabad&lt;/h4&gt;&lt;p&gt;May 16, 2023&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/kila_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/vintage_auto.jpg" data-sub-html="&lt;h4&gt;Vintage Auto&lt;/h4&gt;&lt;p&gt;Somewhere near the CITARA department, Infinity Corridore, IIT Bombay&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/vintage_auto_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/mandir_premises.jpg" data-sub-html="&lt;h4&gt;Mandir, IIT Bombay&lt;/h4&gt;&lt;p&gt;Feb 26, 2023&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/mandir_premises_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/CMInDS_2022.jpg" data-sub-html="&lt;h4&gt;With the amazing folks of CMInDS&lt;/h4&gt;&lt;p&gt;CMInDS party, KRESIT Building, IIT Bombay (2022)&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/CMInDS_2022_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/lake_powai_road.jpg" data-sub-html="&lt;h4&gt;IITB Lake powai road&lt;/h4&gt;&lt;p&gt;Indian Institute of Technology, Bombay (Aug 24, 2022)&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/lake_powai_road_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/rabindra_sarovar.jpg" data-sub-html="&lt;h4&gt;Mini Island&lt;/h4&gt;&lt;p&gt;Ravindra Sarovar, Kolkata, June 18th, 2022&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/rabindra_sarovar_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/mini_akatsuki.jpg" data-sub-html="&lt;h4&gt;22nd May&lt;/h4&gt;&lt;p&gt;Chandan, Akash, Nilayan, Jimut&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/mini_akatsuki_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/design_metcalfe.jpg" data-sub-html="&lt;h4&gt;Design&lt;/h4&gt;&lt;p&gt;Metcalfe Hall, April, 7th 2022&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/design_metcalfe_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/metcalfe_hall.jpg" data-sub-html="&lt;h4&gt;Metcalfe Hall&lt;/h4&gt;&lt;p&gt;Metcalfe Hall Entrance&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/metcalfe_hall_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/astronomy.jpg" data-sub-html="&lt;h4&gt;Astronomy&lt;/h4&gt;&lt;p&gt;Viewing stars and moon (RKMVERI), Feb 27, 2021.&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/astronomy_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/rkmveri_golden.jpg" data-sub-html="&lt;h4&gt;RKMVERI&lt;/h4&gt;&lt;p&gt;Golden RKMVERI, shot by - Saayan Mukherjee  (2021)&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/rkmveri_golden_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/metcalfe_pics_1.jpg" data-sub-html="&lt;h4&gt;Art Gallery&lt;/h4&gt;&lt;p&gt;Metcalfe Hall, April, 7th 2022&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/metcalfe_pics_1_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/me.jpg" data-sub-html="&lt;h4&gt;Jimut&lt;/h4&gt;&lt;p&gt;Metcalfe Hall, April, 7th 2022&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/me_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/graduation.jpg" data-sub-html="&lt;h4&gt;Convocation 2020&lt;/h4&gt;&lt;p&gt;Graduating from St. Xavier's College, Kolkata&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/graduation_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/train_museum_kolkata.jpg" data-sub-html="&lt;h4&gt;Train Museum Kolkata&lt;/h4&gt;&lt;p&gt;Howrah, Aug 2019&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/train_museum_kolkata_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/rkmveri_jimut.jpg" data-sub-html="&lt;h4&gt;Jimut&lt;/h4&gt;&lt;p&gt;Jimut in RKMVERI (Ramkrishna Mission Vivekananda Educational and Research Institute), Belur (2019)&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/rkmveri_jimut_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/st_agnes_reunion.jpg" data-sub-html="&lt;h4&gt;Here's to the flashy lifestyles&lt;/h4&gt;&lt;p&gt;St. Agnes Branch School pals reunion after 17 years. April, 2019. Yup, I miss them!&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/st_agnes_reunion_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/enigma_2019.jpg" data-sub-html="&lt;h4&gt;Enigma - Event Head&lt;/h4&gt;&lt;p&gt;Enigma Coding Event, Science association, 2019&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/enigma_2019_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/Jimut_Aniket_Avijit_2019.jpg" data-sub-html="&lt;h4&gt;Aniket, Jimut and Avijit&lt;/h4&gt;&lt;p&gt;A picture from 2019&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/Jimut_Aniket_Avijit_2019_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/mlcc_sxc_2019.jpg" data-sub-html="&lt;h4&gt;MLCC SXC&lt;/h4&gt;&lt;p&gt;Lecturing at the study jams of MLCC (Machine Learning Crash Course, Google) SXC 2019.&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/mlcc_sxc_2019_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/paikhala_sxcnss_2019.jpg" data-sub-html="&lt;h4&gt;Paikhala NSS visit&lt;/h4&gt;&lt;p&gt;I was the coordinator of this 4rth visit. It is fun to teach the students, who are actually very good at grasping concepts, but unable to study because of financial instability.&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/paikhala_sxcnss_2019_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/agartala_2018.jpg" data-sub-html="&lt;h4&gt;Silhoutte Sunset&lt;/h4&gt;&lt;p&gt;Agartala Diaries, 2019&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/agartala_2018_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/goa_bech_2019.jpg" data-sub-html="&lt;h4&gt;Goa Beach&lt;/h4&gt;&lt;p&gt;Goa Beach, 2019&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/goa_bech_2019_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/bodhi_jimut.jpg" data-sub-html="&lt;h4&gt;Jimut and Bodhi&lt;/h4&gt;&lt;p&gt;Goa diaries, 2019. Jimut (left) and Bodhi (right).&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/bodhi_jimut_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/goa_beach_2.jpg" data-sub-html="&lt;h4&gt;Goa Diaries&lt;/h4&gt;&lt;p&gt;South Goa Beaches&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/goa_beach_2_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/goa_beach_1_2019.jpg" data-sub-html="&lt;h4&gt;Tower House&lt;/h4&gt;&lt;p&gt;Goa, 2019&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/goa_beach_1_2019_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/chaporafort_valley_goa2019.jpg" data-sub-html="&lt;h4&gt;Chapora Fort, Goa&lt;/h4&gt;&lt;p&gt;Chapora fort is in ruins now, but the view of climbing the high valleys worth it.&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/chaporafort_valley_goa2019_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/butterfly_beaches_goa019.jpg" data-sub-html="&lt;h4&gt;Butterfly Island, South Goa&lt;/h4&gt;&lt;p&gt;Goa diaries, 2019. Butterfly Island on some part of the South Goa.&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/butterfly_beaches_goa019_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/cabo_de_ramagoa2019.jpg" data-sub-html="&lt;h4&gt;Cabo De Rama, Goa&lt;/h4&gt;&lt;p&gt;Goa diaries, 2019. Cabo De Rama is one of the popular places for flim shooting in Goa.&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/cabo_de_ramagoa2019_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/museum_goa_2019.jpg" data-sub-html="&lt;h4&gt;Museum, Goa&lt;/h4&gt;&lt;p&gt;Archaeological Museum and Portrait Gallery, Goa, 2019&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/museum_goa_2019_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/st_Augustine_2019.jpg" data-sub-html="&lt;h4&gt;St. Augustine tower&lt;/h4&gt;&lt;p&gt;Goa diaries, 2019&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/st_Augustine_2019_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/goa_road.jpg" data-sub-html="&lt;h4&gt;Roads&lt;/h4&gt;&lt;p&gt;Goa Diaries&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/goa_road_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/boat.jpg" data-sub-html="&lt;h4&gt;Boat&lt;/h4&gt;&lt;p&gt;Goa Diaries&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/boat_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/Harley_Davidson.jpg" data-sub-html="&lt;h4&gt;Harley&lt;/h4&gt;&lt;p&gt;Goa Diaries&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/Harley_Davidson_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/Aguada_fort_goa.jpg" data-sub-html="&lt;h4&gt;Aguada Fort&lt;/h4&gt;&lt;p&gt;Goa Diaries&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/Aguada_fort_goa_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/goa_palolem_2019.jpg" data-sub-html="&lt;h4&gt;Palolem Beach Goa&lt;/h4&gt;&lt;p&gt;South Goa Beaches&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/goa_palolem_2019_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/Analytica_2018.JPG" data-sub-html="&lt;h4&gt;Analytica felicitation&lt;/h4&gt;&lt;p&gt;Head of the Graphics design team, Analytica, 2019, St. Xavier's College, Kolkata&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/Analytica_2018_thumb.JPG" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/gardens_shibpur_018.jpg" data-sub-html="&lt;h4&gt;Botanical Gardens&lt;/h4&gt;&lt;p&gt;Botanical gardens visit with my friends, Bodhi and Soumya. 2018.&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/gardens_shibpur_018_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/jimut_soumya_classic.jpg" data-sub-html="&lt;h4&gt;Jimut and Soumya&lt;/h4&gt;&lt;p&gt;Jimut and Soumya, Indian Museum, 2018&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/jimut_soumya_classic_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/sxc_2016_2019batch.jpg" data-sub-html="&lt;h4&gt;Batch of 2016-2019, SXC.&lt;/h4&gt;&lt;p&gt;St. Xavier's College, Kolkata. 2018.&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/sxc_2016_2019batch_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/nabanna_art.jpg" data-sub-html="&lt;h4&gt;Abstract Art&lt;/h4&gt;&lt;p&gt;Nabanna Art Festival, July 2018&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/nabanna_art_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/ssb_2016.jpg" data-sub-html="&lt;h4&gt;ARMY&lt;/h4&gt;&lt;p&gt;SSB Bhopal 2016&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/ssb_2016_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-                    
-                    
-                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="../img/gallery/3_legged.jpg" data-sub-html="&lt;h4&gt;3 legged race, class 8&lt;/h4&gt;&lt;p&gt;Probably the last remaining picture of me getting an award in sports with Akash Sil&lt;/p&gt;">
-                        <a href="#">
-                            <div class="square-thumb-container">
-                                <img src="..//img/gallery/3_legged_thumb.jpg" alt="IMage" class="img-fluid" />
-                            </div>
-                            
-                        </a>
-                    </div>
-                    
-                
-
-            </div>
-     </div>
+<div class="container">
+    <div class="gallery-notice" data-aos="fade-down">
+        <i class="fas fa-wifi notice-icon"></i>
+        <strong>Viewing Experience:</strong><br />
+        Kindly click on the images to view high-resolution versions. <br />
+        <span style="font-size: 0.85em; color: var(--text-muted);">
+            Best enjoyed on devices with internet speed &gt; 10 Mbps.
+        </span>
     </div>
 </div>
+
+<div id="pad-container">
+    <div class="container" id="publication-font">
+        <div class="row" id="lightgallery">
+        
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/group_pic_1.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;With first batch of MS folks&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Hassan, me, Sachin and Prabhat (September 2024)&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/group_pic_1_thumb.jpg" alt="With first batch of MS folks" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/lower_parel.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Lower Parel&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;High contrast&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/lower_parel_thumb.jpg" alt="Lower Parel" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/shmj_jimut_tmj.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;With Shreesh Mj and Tamal Mj&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;RKMVERI, Kolkata (19th June, 2024)&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/shmj_jimut_tmj_thumb.jpg" alt="With Shreesh Mj and Tamal Mj" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/sachin_uddeshya_birthday.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Sachin's &amp; Uddeshya's birthday&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;At Absolute Barbeque, Mumbai (25th July, 2023)&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/sachin_uddeshya_birthday_thumb.jpg" alt="Sachin's &amp; Uddeshya's birthday" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/sameer_hills_road.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Sameer Hills Roads&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;June 10, 2023&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/sameer_hills_road_thumb.jpg" alt="Sameer Hills Roads" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/that_side_sameer_hills.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;That side from top of Sameer hills&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;June 10, 2023&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/that_side_sameer_hills_thumb.jpg" alt="That side from top of Sameer hills" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/this_side_sameer_hills.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;This side from top of Sameer hills&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;June 10, 2023&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/this_side_sameer_hills_thumb.jpg" alt="This side from top of Sameer hills" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/hazarduari.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Hazarduari, Murshidabad&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;May 16, 2023&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/hazarduari_thumb.jpg" alt="Hazarduari, Murshidabad" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/kila.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Old Fort, Murshidabad&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;May 16, 2023&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/kila_thumb.jpg" alt="Old Fort, Murshidabad" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/vintage_auto.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Vintage Auto&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Somewhere near the CITARA department, Infinity Corridore, IIT Bombay&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/vintage_auto_thumb.jpg" alt="Vintage Auto" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/mandir_premises.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Mandir, IIT Bombay&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Feb 26, 2023&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/mandir_premises_thumb.jpg" alt="Mandir, IIT Bombay" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/CMInDS_2022.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;With the amazing folks of CMInDS&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;CMInDS party, KRESIT Building, IIT Bombay (2022)&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/CMInDS_2022_thumb.jpg" alt="With the amazing folks of CMInDS" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/lake_powai_road.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;IITB Lake powai road&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Indian Institute of Technology, Bombay (Aug 24, 2022)&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/lake_powai_road_thumb.jpg" alt="IITB Lake powai road" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/rabindra_sarovar.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Mini Island&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Ravindra Sarovar, Kolkata, June 18th, 2022&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/rabindra_sarovar_thumb.jpg" alt="Mini Island" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/mini_akatsuki.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;22nd May&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Chandan, Akash, Nilayan, Jimut&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/mini_akatsuki_thumb.jpg" alt="22nd May" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/design_metcalfe.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Design&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Metcalfe Hall, April, 7th 2022&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/design_metcalfe_thumb.jpg" alt="Design" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/metcalfe_hall.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Metcalfe Hall&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Metcalfe Hall Entrance&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/metcalfe_hall_thumb.jpg" alt="Metcalfe Hall" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/astronomy.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Astronomy&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Viewing stars and moon (RKMVERI), Feb 27, 2021.&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/astronomy_thumb.jpg" alt="Astronomy" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/rkmveri_golden.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;RKMVERI&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Golden RKMVERI, shot by - Saayan Mukherjee  (2021)&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/rkmveri_golden_thumb.jpg" alt="RKMVERI" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/metcalfe_pics_1.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Art Gallery&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Metcalfe Hall, April, 7th 2022&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/metcalfe_pics_1_thumb.jpg" alt="Art Gallery" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/me.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Jimut&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Metcalfe Hall, April, 7th 2022&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/me_thumb.jpg" alt="Jimut" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/graduation.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Convocation 2020&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Graduating from St. Xavier's College, Kolkata&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/graduation_thumb.jpg" alt="Convocation 2020" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/train_museum_kolkata.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Train Museum Kolkata&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Howrah, Aug 2019&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/train_museum_kolkata_thumb.jpg" alt="Train Museum Kolkata" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/rkmveri_jimut.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Jimut&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Jimut in RKMVERI (Ramkrishna Mission Vivekananda Educational and Research Institute), Belur (2019)&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/rkmveri_jimut_thumb.jpg" alt="Jimut" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/st_agnes_reunion.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Here's to the flashy lifestyles&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;St. Agnes Branch School pals reunion after 17 years. April, 2019. Yup, I miss them!&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/st_agnes_reunion_thumb.jpg" alt="Here's to the flashy lifestyles" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/enigma_2019.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Enigma - Event Head&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Enigma Coding Event, Science association, 2019&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/enigma_2019_thumb.jpg" alt="Enigma - Event Head" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/Jimut_Aniket_Avijit_2019.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Aniket, Jimut and Avijit&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;A picture from 2019&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/Jimut_Aniket_Avijit_2019_thumb.jpg" alt="Aniket, Jimut and Avijit" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/mlcc_sxc_2019.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;MLCC SXC&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Lecturing at the study jams of MLCC (Machine Learning Crash Course, Google) SXC 2019.&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/mlcc_sxc_2019_thumb.jpg" alt="MLCC SXC" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/paikhala_sxcnss_2019.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Paikhala NSS visit&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;I was the coordinator of this 4rth visit. It is fun to teach the students, who are actually very good at grasping concepts, but unable to study because of financial instability.&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/paikhala_sxcnss_2019_thumb.jpg" alt="Paikhala NSS visit" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/agartala_2018.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Silhoutte Sunset&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Agartala Diaries, 2019&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/agartala_2018_thumb.jpg" alt="Silhoutte Sunset" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/goa_bech_2019.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Goa Beach&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Goa Beach, 2019&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/goa_bech_2019_thumb.jpg" alt="Goa Beach" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/bodhi_jimut.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Jimut and Bodhi&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Goa diaries, 2019. Jimut (left) and Bodhi (right).&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/bodhi_jimut_thumb.jpg" alt="Jimut and Bodhi" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/goa_beach_2.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Goa Diaries&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;South Goa Beaches&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/goa_beach_2_thumb.jpg" alt="Goa Diaries" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/goa_beach_1_2019.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Tower House&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Goa, 2019&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/goa_beach_1_2019_thumb.jpg" alt="Tower House" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/chaporafort_valley_goa2019.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Chapora Fort, Goa&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Chapora fort is in ruins now, but the view of climbing the high valleys worth it.&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/chaporafort_valley_goa2019_thumb.jpg" alt="Chapora Fort, Goa" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/butterfly_beaches_goa019.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Butterfly Island, South Goa&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Goa diaries, 2019. Butterfly Island on some part of the South Goa.&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/butterfly_beaches_goa019_thumb.jpg" alt="Butterfly Island, South Goa" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/cabo_de_ramagoa2019.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Cabo De Rama, Goa&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Goa diaries, 2019. Cabo De Rama is one of the popular places for flim shooting in Goa.&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/cabo_de_ramagoa2019_thumb.jpg" alt="Cabo De Rama, Goa" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/museum_goa_2019.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Museum, Goa&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Archaeological Museum and Portrait Gallery, Goa, 2019&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/museum_goa_2019_thumb.jpg" alt="Museum, Goa" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/st_Augustine_2019.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;St. Augustine tower&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Goa diaries, 2019&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/st_Augustine_2019_thumb.jpg" alt="St. Augustine tower" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/goa_road.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Roads&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Goa Diaries&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/goa_road_thumb.jpg" alt="Roads" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/boat.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Boat&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Goa Diaries&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/boat_thumb.jpg" alt="Boat" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/Harley_Davidson.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Harley&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Goa Diaries&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/Harley_Davidson_thumb.jpg" alt="Harley" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/Aguada_fort_goa.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Aguada Fort&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Goa Diaries&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/Aguada_fort_goa_thumb.jpg" alt="Aguada Fort" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/goa_palolem_2019.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Palolem Beach Goa&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;South Goa Beaches&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/goa_palolem_2019_thumb.jpg" alt="Palolem Beach Goa" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/Analytica_2018.JPG" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Analytica felicitation&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Head of the Graphics design team, Analytica, 2019, St. Xavier's College, Kolkata&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/Analytica_2018_thumb.JPG" alt="Analytica felicitation" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/gardens_shibpur_018.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Botanical Gardens&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Botanical gardens visit with my friends, Bodhi and Soumya. 2018.&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/gardens_shibpur_018_thumb.jpg" alt="Botanical Gardens" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/jimut_soumya_classic.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Jimut and Soumya&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Jimut and Soumya, Indian Museum, 2018&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/jimut_soumya_classic_thumb.jpg" alt="Jimut and Soumya" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/sxc_2016_2019batch.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Batch of 2016-2019, SXC.&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;St. Xavier's College, Kolkata. 2018.&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/sxc_2016_2019batch_thumb.jpg" alt="Batch of 2016-2019, SXC." class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/nabanna_art.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;Abstract Art&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Nabanna Art Festival, July 2018&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/nabanna_art_thumb.jpg" alt="Abstract Art" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/ssb_2016.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;ARMY&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;SSB Bhopal 2016&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/ssb_2016_thumb.jpg" alt="ARMY" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+                
+                
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 gallery-item" data-aos="fade-up" data-src="../img/gallery/3_legged.jpg" data-sub-html="&lt;h4 style='font-family:Poppins'&gt;3 legged race, class 8&lt;/h4&gt;&lt;p style='font-family:Cardo'&gt;Probably the last remaining picture of me getting an award in sports with Akash Sil&lt;/p&gt;">
+                    
+                    <a href="#">
+                        <div class="square-thumb-container">
+                            <img src="..//img/gallery/3_legged_thumb.jpg" alt="3 legged race, class 8" class="img-fluid" />
+                        </div>
+                    </a>
+
+                </div>
+                
+            
+
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+
+<script src="js/lightgallery-all.min.js"></script>
+
+<script src="js/aos.js"></script>
+
+<script>
+    $(document).ready(function(){
+        // Initialize LightGallery
+        $('#lightgallery').lightGallery({
+            thumbnail: true,
+            animateThumb: true,
+            showThumbByDefault: false,
+            download: false, // Cleaner UI
+            counter: true
+        });
+
+        // Initialize Animate On Scroll
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true
+        });
+    });
+</script>
 
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-165703183-1"></script>
 
@@ -1206,7 +1381,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-165703183-1');
 </script>
 
