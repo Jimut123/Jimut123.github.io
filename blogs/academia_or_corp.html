@@ -420,227 +420,330 @@
     <div align="center">  
       <br><br>
       
-      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+      <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="../js/prism.js"></script>
 
-<br>
+<style>
+    /* VARIABLES */
+    :root {
+        /* Colors from your main theme */
+        --background-color: #ffffff;
+        --text-color: #1a202c;
+        
+        --accent-color: #2b6cb0;
+        --quote-border: #18a236;
+        --code-bg: rgba(0, 0, 0, 0.05);
+        --img-caption-color: #666;
+    }
 
-<h1>
-    <b id="heading-font">  What to choose - Academia or Corporate? </b>
+    [data-theme="dark"] {
+        --background-color: #000000 !important;
+        --text-color: #e0e0e0 !important;
+        
+        --accent-color: #63b3ed;
+        --code-bg: rgba(255, 255, 255, 0.1);
+        --img-caption-color: #aaa;
+    }
+
+    /* GLOBAL SETTINGS */
+    body {
+        background-color: var(--background-color); 
+        color: var(--text-color);
+        font-family: 'Cardo', serif; 
+        line-height: 1.8;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* CONTAINER */
+    .blog-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px 100px 20px;
+    }
+
+    /* HEADER */
+    .blog-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .blog-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        color: var(--text-color);
+    }
+
+    .blog-subtitle {
+        font-family: 'Cardo', serif;
+        font-style: italic;
+        font-size: 1.1rem;
+        color: var(--img-caption-color);
+        margin-bottom: 25px;
+        display: block;
+    }
+
+    /* TAGS */
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .tag-pill {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 50px;
+        border: 1px solid;
+        background: transparent;
+    }
+
+    .tag-orangered { color: #ff4500; border-color: #ff4500; }
+    .tag-blue { color: #0076f4; border-color: #0076f4; }
+    .tag-green { color: #18a236; border-color: #18a236; }
+
+    /* CONTENT */
+    .article-content {
+        text-align: justify;
+        font-size: 1.15rem; 
+    }
+
+    .article-content h3 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        color: var(--text-color);
+        border-bottom: 1px solid var(--quote-border); 
+        padding-bottom: 5px;
+        display: inline-block;
+    }
+
+    /* Emphasized Sub-headers */
+    .article-content em {
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.2rem;
+        display: block;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        color: var(--accent-color);
+    }
+
+    .article-content p {
+        margin-bottom: 24px;
+        color: var(--text-color);
+    }
+
+    .article-content a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.2s;
+    }
+    .article-content a:hover {
+        text-decoration: underline;
+    }
+
+    /* IMAGES */
+    .img-wrapper {
+        text-align: center;
+        margin: 40px 0;
+    }
     
-</h1>
-<em>- from a biased perspective from someone who is pursuing academia</em><br><br>
-<span class="keywords-orangered"> &nbsp; Academia &nbsp; </span>
-&nbsp;&nbsp;
-<span class="keywords-blue"> &nbsp; Publishing &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-green">&nbsp; Corporate &nbsp;</span>
+    .img-wrapper img {
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        max-width: 100%;
+        height: auto;
+    }
 
+    .img-row {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
 
+    /* BLOCKQUOTE */
+    blockquote {
+        font-family: 'Poppins', sans-serif;
+        font-style: italic;
+        font-size: 1.1rem;
+        margin: 40px 0;
+        padding: 20px 30px;
+        border-left: 4px solid var(--quote-border);
+        background: var(--code-bg); 
+        border-radius: 0 8px 8px 0;
+        color: var(--text-color);
+    }
 
+</style>
 
+<div class="blog-container">
 
-<div id="pad-container">
-    <div align="center" id="exp-font">
-            <div class="container" align="justify">
-
-                <center>
-                    <img src="blog_img/academia_corp/1_being_diff.png"  width="95%">
-                    <!-- <img src="blog_img/academia_corp/2_blog1.webp"  width="36%"> -->
-                    <br><br>
-                </center>
-
-
-
-
-                <em>Academia or Corporate</em><br> What's My Future Career Choice? This is a question 
-                I often get from my peers. Over the years, my perspective has evolved, 
-                and I now lean more toward academia. Why? <br><br>
-
-                I'm a B.Sc. graduate, which technically means I'm not an engineer. 
-                So, pursuing academia seems like a more likely path. What's driven me so 
-                far are “willpower” and “hope”—the belief that I can solve any problem if 
-                I dedicate enough time and effort. The reward that comes from overcoming 
-                these challenges makes it all worthwhile. <br><br>
-
-                Someone once asked me: If you could go back two years, with all the experience you've 
-                gained from your PhD, would you still choose to pursue it? Without hesitation, 
-                my answer is Yes!<br><br>
-
-
-                <center>
-                    <img src="blog_img/academia_corp/3_phineas_1.png"  width="62%">
-                    <img src="blog_img/academia_corp/5_kitretsu.png"  width="37%">
-                    <br><br>
-                </center>
-
-
-                Since childhood, I've been fascinated by “mad” scientists. Characters like Dr. Heinz 
-                Doofenshmirtz, Phineas and Ferb, and the Japanese series Kiteretsu were early inspirations. 
-                These characters weren't just engineers; they were S-rank scientists who used their basements
-                to create disruptive technologies capable of changing the world. There was always something 
-                superior about the so-called "villains"—their inventions fueled the heroes' journeys to stop 
-                them. After all, it's the “madmen” who create the extraordinary inventions that drive progress.
-                On the other hand, highly talented scientists often operate with a strong sense of philosophy. 
-                They create technology driven by intellectual curiosity combined with art and imagination, 
-                which can lead to peace or war. They create because they must, and no one else can. Scientists 
-                like <a href="https://karpathy.github.io/2016/09/07/phd/" target="_blank"> Andrej Karpathy </a>  
-                have been motivated by sci-fi games like Half-Life from a young age, which have also highlighted 
-                the greatness of science. While I don't endorse the unethical actions of figures like Shirō Ishii, 
-                I believe that doing science ethically is both meaningful and fulfilling.
-                <br><br>
-
-                <center>
-                    <img src="blog_img/academia_corp/6_ww1tank.png"  width="50%">
-                    <img src="blog_img/academia_corp/7_ww2_plane.png"  width="47%">
-                    <br><br>
-                </center>
-
-                War has indeed historically accelerated technological innovation—think of World War I, 
-                where tanks dominated, and World War II when planes transformed the landscape of destruction. 
-                But should we rely on conflict for progress? Is that how the human race has evolved to be? <br><br>
-
-
-                <em>Why Not Corporate?</em>
-
-                I don't feel inclined toward a corporate career at this stage of my life for several reasons. 
-                First and foremost, when you develop something in the corporate world (e.g., as a 
-                software developer), you rarely get personal recognition. The company owns your work, 
-                and you contribute just a fraction of the code. While your contributions may be widely 
-                used, you lack ownership and visibility. Your name won't be remembered unless you work in 
-                open-source, like Linus Torvalds or David Heinemeier Hansson.
-                Some corporate jobs offer higher pay, work-life balance, and enjoyable weekends. 
-                But eventually, the 9-to-5 grind becomes monotonous. As the saying goes, even if you eat 
-                a delicacy every day, it becomes bland. The excitement fades over time, especially 
-                in your 20s and 30s, leading to intellectual and personal stagnation. Your growth becomes 
-                dependent on the company's direction.
-                <br><br>
-
-
-                <center>
-                    <img src="blog_img/academia_corp/8_confused_1.png"  width="48%">
-                    <img src="blog_img/academia_corp/9_controlled.png"  width="48%">
-                    <br><br>
-                </center>
-
-                Moreover, if you work on proprietary tools, you can't quickly transfer those skills to other 
-                jobs, especially after signing NDAs. In contrast, your name is attached to the papers you 
-                publish in academia. You control your research, and your knowledge grows exponentially. 
-                A well-published paper can earn you recognition for years. In academia, you must constantly 
-                update your skills, but that's a part of intellectual growth, unlike in corporate, where you're 
-                boxed into specific roles.
-                <br><br>
-
-
-
-                Doing an average corporate job is much worse than being an average professor in academia. 
-                While corporate jobs pay more, an excellent academic can eventually out-earn software developers 
-                at top companies. Research positions at giants like Meta, Google, or Microsoft differ but often 
-                have limitations. Your research must align with their interests, and research teams are frequently 
-                the first to be cut during resource constraints.<br><br>
-
-                Academia, on the other hand, fosters continuous intellectual growth. There are so many sub-domains 
-                I want to explore, and academia offers the flexibility to do so. Additionally, you meet new people 
-                through conferences and collaborations rather than seeing the same faces daily in a small team. The 
-                routine of a 9-to-5 job would be draining for me. I need the flexibility to work on my own terms, 
-                without rigid oversight, as long as I produce results.<br><br>
-
-
-                <center>
-                    <img src="blog_img/academia_corp/10_thinking.png"  width="46%">
-                    <img src="blog_img/academia_corp/11_blog2.png"  width="48%">
-                    <br><br>
-                </center>
-
-
-                <em>The Challenges of Research</em><br>
-
-                Most of today's research follows trends rather than establishing new foundations, 
-                driven by the pressure to publish quickly. Foundational research takes years and often 
-                fails, like Geoffrey Hinton's work on Restricted Boltzmann Machines before developing 
-                backpropagation. In research, you sometimes must choose between what works and what's 
-                experimental but might fail. Unfortunately, companies push research that profits them 
-                rather than what advances knowledge or human curiosity. This is the reason, a novel 
-                idea may take time to be accepted by the community, and researchers push themselves in 
-                the general hype, which creates a bubble/trend that changes over time. <br><br>
-
-                Some people will dislike your work in academia simply because they don't see their reflections on it. 
-                Others will appreciate the “art” of your research. You will face rejection, even after giving your best
-                effort. But you have to keep pushing. The eyes of an artist are needed to appreciate art, and most 
-                people are not artists—they follow trends or what's popular. People outside your field may criticize 
-                you, but that's part of the process.<br><br>
-                
-                Reviewers, too, may be less qualified than you, but they can reject your work. There are 
-                flaws in the review system, such as double-blind papers being recognizable when authors post 
-                on arXiv. Certain groups or styles are more recognizable and exclusive, creating bias. However, 
-                the pursuit of knowledge must continue despite these flaws. <br><br>
-
-
-                <em>The Cost of Academia</em><br>
-
-                Choosing academia requires sacrifices. As my faculty advisor, Prof. Pushpak, once said, 
-                <i>“In academia, you'll see your corporate friends getting promoted, married, earning triple your salary, 
-                enjoying weekends, and traveling—while you're working hard, often on weekends, before deadlines, 
-                refining work that only a few will recognize.”</i> It can be demoralizing, but your hard work will 
-                pay off in the long run. After your PhD, you'll be in a better position, and those years of 
-                sacrifice will make sense. <br><br>
-
-                Academia is full of highs and lows, but persistence is vital. From a young age, the 
-                education system has often felt broken. I wonder if I would have been better off focusing 
-                on the philosophy of the subjects that I was learning rather than memorizing its contents 
-                for the sake of marks and degree certificates. Interestingly, the education system has put 
-                the younger generation into this rat race of marks and degrees, leading to the devaluation 
-                of education. The core philosophy of the education system should shift from the pursuit of 
-                "high rankings" to a curiosity-driven, student-centered approach that focuses on nurturing 
-                each student's growth, free from unnecessary peer pressure, with the goal of advancing humanity.
-                <br><br>
-
-                <center>
-                    <img src="blog_img/academia_corp/12_grigory_perelman.png"  width="43.3%">
-                    <img src="blog_img/academia_corp/13_nicola_tesla_news.png"  width="55%">
-                    <br><br>
-                </center>
-
-                But your love for research should have boundaries or you will end up like those who have 
-                sacrificed everything for the sake of research. Think of those scientists who gave up 
-                everything for science, like Nikola Tesla, who once said, <i>“All these years I have spent 
-                in the service of mankind brought me nothing but insults and humiliation,”</i> or Grigory 
-                Perelman, whose dedication and sacrifice changed the world.<br><br>
-
-
-                The world is forever evolving, and the progress of the human race is based on change. 
-                Change in perspective, change in ideology, change in technology, etc. Like previously, 
-                we were hunter-gatherers, but now we have created a civilization that works in a coordinated 
-                way, which is the main reason the human race has survived till now, even when facing 
-                large-scale wars, disasters, famines, etc. As the Sanskrit shloka says, "स्वदेशे पूज्यते राजा, विद्वान सर्वत्र पूज्यते," 
-                which means a king is worshipped in his own country whereas the <i>“Pundit”</i>/scholar is worshipped 
-                everywhere he goes. Do you want to be a corporate king who gets worshipped by his juniors for 
-                promotion, or do you want to be a scholar who is recognized worldwide? <br><br>
-
-
-                <em>Regarding 70/90 hours work week</em><br>
-                The idea of working 70-90 hours a week is baffling. Why would anyone commit to such grueling 
-                schedules for a company where their gains are linear, while the company enjoys exponential 
-                profits? How does this help someone grow intellectually? Why work for an organization that 
-                treats its employees as expendable, keeping the profits for itself? Isn't this a form of betrayal?
-                The focus shouldn't just be on the quantity of work but on the quality. We're humans, not machines. 
-                Creativity thrives in balance, and no matter how interesting a task is, doing it endlessly can make 
-                it monotonous. What's the point of fixing the mistakes of previous generations while they sit back and 
-                demand we save them? It feels unfair—like being commanded by those who failed to act when they had the chance.
-                Take China, for instance; they've surged ahead because they acted when the time was right. And now, the 
-                same people who missed that opportunity want us to overwork for them, all while they enjoy disproportionate 
-                pay and comfort. This imbalance is ridiculous. It's no surprise that many workers leave India for better 
-                opportunities. The culture of valuing quantity over quality, and the lack of prestige for great performance, 
-                drives talent away. Here, it feels like you're paid not to grow, but to let your creativity and intellect 
-                stagnate—to become a cog in a robotic system.
-
-                <br><br>
-
-                <i>Special thanks to Chandan, Sourav Rout and Nilayan for their valuable feedback. Also, images are collected From
-                various sources from Google and some are generated, sorry for not finding the references!</i> <br><br>
-
-            </div>
+    <header class="blog-header">
+        <h1 class="blog-title">What to choose - Academia or Corporate?</h1>
+        <span class="blog-subtitle">- from a biased perspective of someone pursuing academia</span>
+        
+        <div class="tag-container">
+            <span class="tag-pill tag-orangered">Academia</span>
+            <span class="tag-pill tag-blue">Publishing</span>
+            <span class="tag-pill tag-green">Corporate</span>
         </div>
+    </header>
+
+    <div class="article-content">
+
+        <div class="img-wrapper">
+            <img src="blog_img/academia_corp/1_being_diff.png" alt="Being Different" width="95%">
+        </div>
+
+        <em>Academia or Corporate?</em>
+        
+        <p>
+            What's My Future Career Choice? This is a question I often get from my peers. Over the years, my perspective has evolved, and I now lean more toward academia. Why?
+        </p>
+
+        <p>
+            I'm a B.Sc. graduate, which technically means I'm not an engineer. So, pursuing academia seems like a more likely path. What's driven me so far are “willpower” and “hope”—the belief that I can solve any problem if I dedicate enough time and effort. The reward that comes from overcoming these challenges makes it all worthwhile.
+        </p>
+
+        <p>
+            Someone once asked me: If you could go back two years, with all the experience you've gained from your PhD, would you still choose to pursue it? Without hesitation, my answer is <strong>Yes!</strong>
+        </p>
+
+        <div class="img-wrapper img-row">
+            <img src="blog_img/academia_corp/3_phineas_1.png" style="width: 60%">
+            <img src="blog_img/academia_corp/5_kitretsu.png" style="width: 35%">
+        </div>
+
+        <p>
+            Since childhood, I've been fascinated by “mad” scientists. Characters like Dr. Heinz Doofenshmirtz, Phineas and Ferb, and the Japanese series Kiteretsu were early inspirations. These characters weren't just engineers; they were S-rank scientists who used their basements to create disruptive technologies capable of changing the world. There was always something superior about the so-called "villains"—their inventions fueled the heroes' journeys to stop them. After all, it's the “madmen” who create the extraordinary inventions that drive progress.
+        </p>
+
+        <p>
+            On the other hand, highly talented scientists often operate with a strong sense of philosophy. They create technology driven by intellectual curiosity combined with art and imagination, which can lead to peace or war. They create because they must, and no one else can. Scientists like <a href="https://karpathy.github.io/2016/09/07/phd/" target="_blank">Andrej Karpathy</a> have been motivated by sci-fi games like Half-Life from a young age, which have also highlighted the greatness of science. While I don't endorse the unethical actions of figures like Shirō Ishii, I believe that doing science ethically is both meaningful and fulfilling.
+        </p>
+
+        <div class="img-wrapper img-row">
+            <img src="blog_img/academia_corp/6_ww1tank.png" style="width: 48%">
+            <img src="blog_img/academia_corp/7_ww2_plane.png" style="width: 45%">
+        </div>
+
+        <p>
+            War has indeed historically accelerated technological innovation—think of World War I, where tanks dominated, and World War II when planes transformed the landscape of destruction. But should we rely on conflict for progress? Is that how the human race has evolved to be?
+        </p>
+
+        <h3>Why Not Corporate?</h3>
+
+        <p>
+            I don't feel inclined toward a corporate career at this stage of my life for several reasons. First and foremost, when you develop something in the corporate world (e.g., as a software developer), you rarely get personal recognition. The company owns your work, and you contribute just a fraction of the code. While your contributions may be widely used, you lack ownership and visibility. Your name won't be remembered unless you work in open-source, like Linus Torvalds or David Heinemeier Hansson.
+        </p>
+
+        <p>
+            Some corporate jobs offer higher pay, work-life balance, and enjoyable weekends. But eventually, the 9-to-5 grind becomes monotonous. As the saying goes, even if you eat a delicacy every day, it becomes bland. The excitement fades over time, especially in your 20s and 30s, leading to intellectual and personal stagnation. Your growth becomes dependent on the company's direction.
+        </p>
+
+        <div class="img-wrapper img-row">
+            <img src="blog_img/academia_corp/8_confused_1.png" style="width: 48%">
+            <img src="blog_img/academia_corp/9_controlled.png" style="width: 48%">
+        </div>
+
+        <p>
+            Moreover, if you work on proprietary tools, you can't quickly transfer those skills to other jobs, especially after signing NDAs. In contrast, your name is attached to the papers you publish in academia. You control your research, and your knowledge grows exponentially. A well-published paper can earn you recognition for years. In academia, you must constantly update your skills, but that's a part of intellectual growth, unlike in corporate, where you're boxed into specific roles.
+        </p>
+
+        <p>
+            Doing an average corporate job is much worse than being an average professor in academia. While corporate jobs pay more, an excellent academic can eventually out-earn software developers at top companies. Research positions at giants like Meta, Google, or Microsoft differ but often have limitations. Your research must align with their interests, and research teams are frequently the first to be cut during resource constraints.
+        </p>
+
+        <p>
+            Academia, on the other hand, fosters continuous intellectual growth. There are so many sub-domains I want to explore, and academia offers the flexibility to do so. Additionally, you meet new people through conferences and collaborations rather than seeing the same faces daily in a small team. The routine of a 9-to-5 job would be draining for me. I need the flexibility to work on my own terms, without rigid oversight, as long as I produce results.
+        </p>
+
+        <div class="img-wrapper img-row">
+            <img src="blog_img/academia_corp/10_thinking.png" style="width: 46%">
+            <img src="blog_img/academia_corp/11_blog2.png" style="width: 48%">
+        </div>
+
+        <h3>The Challenges of Research</h3>
+
+        <p>
+            Most of today's research follows trends rather than establishing new foundations, driven by the pressure to publish quickly. Foundational research takes years and often fails, like Geoffrey Hinton's work on Restricted Boltzmann Machines before developing backpropagation. In research, you sometimes must choose between what works and what's experimental but might fail. Unfortunately, companies push research that profits them rather than what advances knowledge or human curiosity. This is the reason a novel idea may take time to be accepted by the community, and researchers push themselves in the general hype, which creates a bubble/trend that changes over time.
+        </p>
+
+        <p>
+            Some people will dislike your work in academia simply because they don't see their reflections on it. Others will appreciate the “art” of your research. You will face rejection, even after giving your best effort. But you have to keep pushing. The eyes of an artist are needed to appreciate art, and most people are not artists—they follow trends or what's popular. People outside your field may criticize you, but that's part of the process.
+        </p>
+        
+        <p>
+            Reviewers, too, may be less qualified than you, but they can reject your work. There are flaws in the review system, such as double-blind papers being recognizable when authors post on arXiv. Certain groups or styles are more recognizable and exclusive, creating bias. However, the pursuit of knowledge must continue despite these flaws.
+        </p>
+
+        <h3>The Cost of Academia</h3>
+
+        <p>
+            Choosing academia requires sacrifices. As my faculty advisor, Prof. Pushpak, once said:
+        </p>
+
+        <blockquote>
+            “In academia, you'll see your corporate friends getting promoted, married, earning triple your salary, enjoying weekends, and traveling—while you're working hard, often on weekends, before deadlines, refining work that only a few will recognize.”
+        </blockquote>
+
+        <p>
+            It can be demoralizing, but your hard work will pay off in the long run. After your PhD, you'll be in a better position, and those years of sacrifice will make sense.
+        </p>
+
+        <p>
+            Academia is full of highs and lows, but persistence is vital. From a young age, the education system has often felt broken. I wonder if I would have been better off focusing on the philosophy of the subjects that I was learning rather than memorizing its contents for the sake of marks and degree certificates. Interestingly, the education system has put the younger generation into this rat race of marks and degrees, leading to the devaluation of education. The core philosophy of the education system should shift from the pursuit of "high rankings" to a curiosity-driven, student-centered approach that focuses on nurturing each student's growth, free from unnecessary peer pressure, with the goal of advancing humanity.
+        </p>
+
+        <div class="img-wrapper img-row">
+            <img src="blog_img/academia_corp/12_grigory_perelman.png" style="width: 40%">
+            <img src="blog_img/academia_corp/13_nicola_tesla_news.png" style="width: 55%">
+        </div>
+
+        <p>
+            But your love for research should have boundaries or you will end up like those who have sacrificed everything for the sake of research. Think of those scientists who gave up everything for science, like Nikola Tesla, who once said, <i>“All these years I have spent in the service of mankind brought me nothing but insults and humiliation,”</i> or Grigory Perelman, whose dedication and sacrifice changed the world.
+        </p>
+
+        <p>
+            The world is forever evolving, and the progress of the human race is based on change. Change in perspective, change in ideology, change in technology, etc. Like previously, we were hunter-gatherers, but now we have created a civilization that works in a coordinated way, which is the main reason the human race has survived till now, even when facing large-scale wars, disasters, famines, etc. As the Sanskrit shloka says, 
+            <strong>"स्वदेशे पूज्यते राजा, विद्वान सर्वत्र पूज्यते"</strong>, which means a king is worshipped in his own country whereas the <i>“Pundit”</i>/scholar is worshipped everywhere he goes. Do you want to be a corporate king who gets worshipped by his juniors for promotion, or do you want to be a scholar who is recognized worldwide?
+        </p>
+
+        <h3>Regarding 70/90 hours work week</h3>
+
+        <p>
+            The idea of working 70-90 hours a week is baffling. Why would anyone commit to such grueling schedules for a company where their gains are linear, while the company enjoys exponential profits? How does this help someone grow intellectually? Why work for an organization that treats its employees as expendable, keeping the profits for itself? Isn't this a form of betrayal?
+        </p>
+
+        <p>
+            The focus shouldn't just be on the quantity of work but on the quality. We're humans, not machines. Creativity thrives in balance, and no matter how interesting a task is, doing it endlessly can make it monotonous. What's the point of fixing the mistakes of previous generations while they sit back and demand we save them? It feels unfair—like being commanded by those who failed to act when they had the chance.
+        </p>
+
+        <p>
+            Take China, for instance; they've surged ahead because they acted when the time was right. And now, the same people who missed that opportunity want us to overwork for them, all while they enjoy disproportionate pay and comfort. This imbalance is ridiculous. It's no surprise that many workers leave India for better opportunities. The culture of valuing quantity over quality, and the lack of prestige for great performance, drives talent away. Here, it feels like you're paid not to grow, but to let your creativity and intellect stagnate—to become a cog in a robotic system.
+        </p>
+
+        <br>
+        <p style="font-style: italic; font-size: 0.95rem; opacity: 0.8;">
+            Special thanks to Chandan, Sourav Rout and Nilayan for their valuable feedback. Also, images are collected from various sources from Google and some are generated, sorry for not finding the references!
+        </p>
+
+    </div>
 </div>
 
       <br><br>

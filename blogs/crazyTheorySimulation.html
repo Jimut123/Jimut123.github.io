@@ -420,91 +420,194 @@
     <div align="center">  
       <br><br>
       
-      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+      <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<style>
+    /* VARIABLES */
+    :root {
+        /* Light Mode */
+        --background-color: #ffffff;
+        --text-color: #1a202c;
+        --accent-color: #2b6cb0;
+        --quote-border: #18a236;
+        --code-bg: rgba(0, 0, 0, 0.05);
+        --gif-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
 
-<br>
+    [data-theme="dark"] {
+        /* Dark Mode - PITCH BLACK FIX */
+        --background-color: #000000 !important;
+        --text-color: #e0e0e0 !important;
+        --accent-color: #63b3ed;
+        --code-bg: rgba(255, 255, 255, 0.1);
+    }
 
-<h1>
-    <b id="heading-font">  <img src="blog_img/crazycreepy/crazycreepy.gif"  alt="watson GIF"height="40px" width="40px"> Crazy Creepy Theories </b>
+    /* GLOBAL SETTINGS */
+    body {
+        background-color: var(--background-color); 
+        color: var(--text-color);
+        font-family: 'Cardo', serif; 
+        line-height: 1.8;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* CONTAINER */
+    .blog-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px 100px 20px;
+    }
+
+    /* HEADER */
+    .blog-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .blog-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
     
-</h1>
-<center>
-    Why we might live in a Simulation ?
-</center>
+    .blog-subtitle {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 25px;
+        display: block;
+        font-weight: 400;
+    }
 
-<br>
+    /* TAGS */
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-family: 'Poppins', sans-serif;
+    }
 
-<span class="keywords-orangered"> &nbsp; Dream &nbsp; </span>
-&nbsp;&nbsp;
-<span class="keywords-blue"> &nbsp; Fiction &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-green">&nbsp; Deep Thinking &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-yellow">&nbsp; Philosophy &nbsp;</span>
-&nbsp;&nbsp;
+    .tag-pill {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 50px;
+        border: 1px solid;
+        background: transparent;
+    }
 
+    .tag-orangered { color: #ff4500; border-color: #ff4500; }
+    .tag-blue { color: #0076f4; border-color: #0076f4; }
+    .tag-green { color: #18a236; border-color: #18a236; }
+    .tag-yellow { color: #d4af37; border-color: #d4af37; }
 
-<div id="pad-container">
-    <div align="center" id="exp-font">
-        <div class="container" align="justify">
-        <p>
-            Ever heard Elon Musk saying <a href="https://www.space.com/41749-elon-musk-living-in-simulation-rogan-podcast.html" alt="elon talk" target="_blank">
-            We're Probably Living in a Simulation</a> ? Ever thought yourself whether you really live inside the simulation or not? I felt that we all live inside 
-            a simulation, and to be honest there are several limitations of the simulation. Ever wondered what a little snail would think in the middle of the ocean
-            given that it will only travel a maximum of 10 km radius in its lifetime? It will think its infinite. But is ocean infinite? Are we not smaller than the 
-            snail if we compare the scales of ocean: snail and humans: solar system (oops' we haven't gone outside the solar system yet).  <br/><br/>
+    /* CONTENT */
+    .article-content {
+        text-align: justify;
+        font-size: 1.15rem; 
+    }
 
-            Is it not a limitation of human being to not make a technology that cannot travel in the speed of light? Yes... even if we travel at the speed of light, it 
-            will probably take 105,700 light years to explore just a linear manifold of a galaxy. Probably humanity will be over by then if even we make something feasible 
-            as a locomotive with all necessary condition for survival. Let's think of the solar system, isn't it a natural locomotive moving at the speed of 490,000 miles per 
-            hour ? <br/><br/>
+    .article-content p {
+        margin-bottom: 24px;
+        color: var(--text-color);
+    }
 
-            Okay lets think of a limitation to the capability of human brain system. Let's consider the solar system only for our simplicity. Now, we remove Earth from the solar
-            system, we are left with the sun and probably the uncountable little debris  and some planets, and sun, right? Now we remove the planets, we are left with only the 
-            debris  and sun, now we remove the debris  we are left with the sun and now we remove the sun we are left with a very big darker than you expect space (remeber we are
-            only confined to the solar system for now, not considering that would give us light from the stars). Now if we remove the vaccuum space too, what are we left with? can 
-            you visualize? is that filled space or something else? Even if we remove that something else what are we left with? Isn't this like the simulation where our brain is only
-            capable of understanding and visualizing the things that are only present in the solar system? (or probably a subset of the space inside the solar system).<br/><br/>
+    .article-content a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.2s;
+    }
+    .article-content a:hover { text-decoration: underline; }
 
-            Did you ever have Deja Vu? Our brain has an enormous processing power, we all know that, right? Sometimes human beings observe too much unconsciously and the numbers and
-            information is continuously getting crunched in the brain. Now, sometimes we may even have dreams about something that might not have had happened or seen by us but 
-            when we encounter it in the so called real life, we think oh we have seen this before.... looks familiar. This happens to rarest of the people that I have encountered with 
-            and even me, the exact same settings that I have seen in my dreams, comes in the reality when I am able to connect them. Looks like we are looping in time but we are not.<br/><br/>
+    /* Header GIF Styling */
+    .header-gif {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: var(--gif-shadow);
+        vertical-align: middle;
+    }
 
-            What if we are all part of a simulation controlled by higher dimensional beings, we will cease to exist once we die. Ever thought of the fact that life is mostly abstracted?
-            What will happen after you die? Is there is something as infinity? Are there aliens? Who let the dogs out? Was the moon landing faked? Is there something about aliens in the 
-            area 51 etc. all these thoughts are what we might call as abstraction. What if life on Earth is actually easy and we cannot live in the world where the higher dimensional being 
-            controls us. Maybe life is hard there, and maybe time is different there, if even time exists... What if everything you did, experienced, and gone through was just a simulation?
-            Hard to believe right? Yes... but it might be... there is a high chance of being so. Everyone as a child had these questions, how did we come to Earth? Oh, it's the organic decomposition
-            of chemicals to create a holistic and living tissue and then a living organism. What exactly is present in the structure of the chemical composition that makes it conscious and living?
-            Why is it hard for non-living things to move even if their structure and chemical composition is much more similar to a living organism? Is there something as soul or something as death?<br/><br/>
+    /* Highlighted Sections (like Humor/P.S.) */
+    .highlight-box {
+        background: var(--code-bg);
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid var(--quote-border);
+        margin-top: 40px;
+        font-style: italic;
+    }
 
-            What if the people who are considered as the messenger of gods or gods who had possessed super human being qualities had broken some part of the simulation which makes them defy the 
-            simple laws of the solar system? Also, why would this not be a simulation? Humans have restricted powers, even in terms of thinking and hacking the simple laws of nature which takes them 
-            several years to come up with the laws of nature. If we can develop such complex vision system, such complex hearing and thinking system all by ourselves, why can we not transfer the 
-            contents of one mind to another? That might be a reason that human race will evolve at a faster pace than it is supposed to and may eventually break the simulation of perhaps be 
-            aware that we are living in a simulation? Perhaps life on Earth is easy, but what will happen after we die? What is actually consciousness and why can't machine replicate it? It will be 
-            good for robots to exchange consciousness and perhaps have better efficiency by replacing their own part all by themselves? Will that be capable of next generation organisms? Atleast will be 
-            better than humans, they have consciousness, they can even progress to Kardashev scale - 5 level civilization and might eventually be god.<br/><br/>
+</style>
 
+<div class="blog-container">
 
-            What if certain places you visit might be already similar looking to a certain place which you think you have visited and is somewhat similar to 
-            the thing that you might consider is similar? Is that similar to a compression algorithm that the simulation is using? Well, if things are discrete then there will be certain amount of
-            limitation to the system in which you might find that the thing needs to be compressed, but real world has things in Real which is uncountably infinite... but is it? To what extent does the 
-            human perception cannot distinguish between two different distinct objects? Are we not a part of a larger computing entity? since every event is dependent in this world and things like butterfly
-            effect also exists? What if much of the outer space that we explore using telescope is just a false canvas? We might not ever have the capacity to go and check whether that exists or not? or perhaps
-            the things unlock only when we go to a certain vicinity of the object? <br/><br/>
-
-            Humor: What is the probability after reading this article that you might be eliminated from this simulation with all your memories deleted from every entity of this simulation, which will cease to prove that you 
-            ever existed? Well you won't be eliminated if you think that you might not live a simulation which I might also think to some extent for which reason you are still reading this... 
-
-            P.S.: It's better to take these thoughts lightly, nothing will change. Also, live your life without complaining... What if you go to a void of subconscious dark space after you die where you can't do anything?
-        </p>
+    <header class="blog-header">
+        <h1 class="blog-title">
+            <img src="blog_img/crazycreepy/crazycreepy.gif" class="header-gif" alt="icon">
+            Crazy Creepy Theories
+        </h1>
+        <span class="blog-subtitle">Why we might live in a Simulation?</span>
+        
+        <div class="tag-container">
+            <span class="tag-pill tag-orangered">Dream</span>
+            <span class="tag-pill tag-blue">Fiction</span>
+            <span class="tag-pill tag-green">Deep Thinking</span>
+            <span class="tag-pill tag-yellow">Philosophy</span>
         </div>
+    </header>
+
+    <div class="article-content">
+        
+        <p>
+            Ever heard Elon Musk saying <a href="https://www.space.com/41749-elon-musk-living-in-simulation-rogan-podcast.html" target="_blank">We're Probably Living in a Simulation</a>? Ever thought yourself whether you really live inside the simulation or not? I felt that we all live inside a simulation, and to be honest there are several limitations of the simulation. Ever wondered what a little snail would think in the middle of the ocean given that it will only travel a maximum of 10 km radius in its lifetime? It will think its infinite. But is ocean infinite? Are we not smaller than the snail if we compare the scales of ocean: snail and humans: solar system (oops' we haven't gone outside the solar system yet).
+        </p>
+
+        <p>
+            Is it not a limitation of human being to not make a technology that cannot travel in the speed of light? Yes... even if we travel at the speed of light, it will probably take 105,700 light years to explore just a linear manifold of a galaxy. Probably humanity will be over by then if even we make something feasible as a locomotive with all necessary condition for survival. Let's think of the solar system, isn't it a natural locomotive moving at the speed of 490,000 miles per hour?
+        </p>
+
+        <p>
+            Okay lets think of a limitation to the capability of human brain system. Let's consider the solar system only for our simplicity. Now, we remove Earth from the solar system, we are left with the sun and probably the uncountable little debris and some planets, and sun, right? Now we remove the planets, we are left with only the debris and sun, now we remove the debris we are left with the sun and now we remove the sun we are left with a very big darker than you expect space (remeber we are only confined to the solar system for now, not considering that would give us light from the stars). Now if we remove the vaccuum space too, what are we left with? can you visualize? is that filled space or something else? Even if we remove that something else what are we left with? Isn't this like the simulation where our brain is only capable of understanding and visualizing the things that are only present in the solar system? (or probably a subset of the space inside the solar system).
+        </p>
+
+        <p>
+            Did you ever have Deja Vu? Our brain has an enormous processing power, we all know that, right? Sometimes human beings observe too much unconsciously and the numbers and information is continuously getting crunched in the brain. Now, sometimes we may even have dreams about something that might not have had happened or seen by us but when we encounter it in the so called real life, we think oh we have seen this before.... looks familiar. This happens to rarest of the people that I have encountered with and even me, the exact same settings that I have seen in my dreams, comes in the reality when I am able to connect them. Looks like we are looping in time but we are not.
+        </p>
+
+        <p>
+            What if we are all part of a simulation controlled by higher dimensional beings, we will cease to exist once we die. Ever thought of the fact that life is mostly abstracted? What will happen after you die? Is there is something as infinity? Are there aliens? Who let the dogs out? Was the moon landing faked? Is there something about aliens in the area 51 etc. all these thoughts are what we might call as abstraction. What if life on Earth is actually easy and we cannot live in the world where the higher dimensional being controls us. Maybe life is hard there, and maybe time is different there, if even time exists... What if everything you did, experienced, and gone through was just a simulation? Hard to believe right? Yes... but it might be... there is a high chance of being so. Everyone as a child had these questions, how did we come to Earth? Oh, it's the organic decomposition of chemicals to create a holistic and living tissue and then a living organism. What exactly is present in the structure of the chemical composition that makes it conscious and living? Why is it hard for non-living things to move even if their structure and chemical composition is much more similar to a living organism? Is there something as soul or something as death?
+        </p>
+
+        <p>
+            What if the people who are considered as the messenger of gods or gods who had possessed super human being qualities had broken some part of the simulation which makes them defy the simple laws of the solar system? Also, why would this not be a simulation? Humans have restricted powers, even in terms of thinking and hacking the simple laws of nature which takes them several years to come up with the laws of nature. If we can develop such complex vision system, such complex hearing and thinking system all by ourselves, why can we not transfer the contents of one mind to another? That might be a reason that human race will evolve at a faster pace than it is supposed to and may eventually break the simulation of perhaps be aware that we are living in a simulation? Perhaps life on Earth is easy, but what will happen after we die? What is actually consciousness and why can't machine replicate it? It will be good for robots to exchange consciousness and perhaps have better efficiency by replacing their own part all by themselves? Will that be capable of next generation organisms? Atleast will be better than humans, they have consciousness, they can even progress to Kardashev scale - 5 level civilization and might eventually be god.
+        </p>
+
+        <p>
+            What if certain places you visit might be already similar looking to a certain place which you think you have visited and is somewhat similar to the thing that you might consider is similar? Is that similar to a compression algorithm that the simulation is using? Well, if things are discrete then there will be certain amount of limitation to the system in which you might find that the thing needs to be compressed, but real world has things in Real which is uncountably infinite... but is it? To what extent does the human perception cannot distinguish between two different distinct objects? Are we not a part of a larger computing entity? since every event is dependent in this world and things like butterfly effect also exists? What if much of the outer space that we explore using telescope is just a false canvas? We might not ever have the capacity to go and check whether that exists or not? or perhaps the things unlock only when we go to a certain vicinity of the object?
+        </p>
+
+        <div class="highlight-box">
+            <strong>Humor:</strong> What is the probability after reading this article that you might be eliminated from this simulation with all your memories deleted from every entity of this simulation, which will cease to prove that you ever existed? Well you won't be eliminated if you think that you might not live a simulation which I might also think to some extent for which reason you are still reading this...
+            <br><br>
+            <strong>P.S.:</strong> It's better to take these thoughts lightly, nothing will change. Also, live your life without complaining... What if you go to a void of subconscious dark space after you die where you can't do anything?
+        </div>
+
     </div>
 </div>
-
 
       <br><br>
       

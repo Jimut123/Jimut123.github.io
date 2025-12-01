@@ -420,56 +420,181 @@
     <div align="center">  
       <br><br>
       
-      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+      <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<style>
+    /* VARIABLES */
+    :root {
+        /* Light Mode */
+        --background-color: #ffffff;
+        --text-color: #1a202c;
+        --accent-color: #2b6cb0;
+        --quote-border: #18a236;
+        --code-bg: rgba(0, 0, 0, 0.05);
+        --img-caption-color: #666;
+        --gif-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
 
+    [data-theme="dark"] {
+        /* Dark Mode - PITCH BLACK FIX */
+        --background-color: #000000 !important;
+        --text-color: #e0e0e0 !important;
+        --accent-color: #63b3ed;
+        --code-bg: rgba(255, 255, 255, 0.1);
+        --img-caption-color: #aaa;
+    }
 
-<title>
-    Working with IBM Watson
-</title>
+    /* GLOBAL SETTINGS */
+    body {
+        background-color: var(--background-color); 
+        color: var(--text-color);
+        font-family: 'Cardo', serif; 
+        line-height: 1.8;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-<br>
-<h1>
-    <b id="heading-font"><img src="blog_img/watson_imgs/watson.gif"  alt="watson GIF"height="40px" width="40px">  Working with IBM Watson </b>
-</h1>
+    /* CONTAINER */
+    .blog-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px 100px 20px;
+    }
 
+    /* HEADER */
+    .blog-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
 
-<span class="keywords-orangered"> &nbsp; IBM &nbsp; </span>
-&nbsp;&nbsp;
-<span class="keywords-blue"> &nbsp; AI &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-green">&nbsp; Watson &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-yellow">&nbsp; IBM Studio &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-orange">&nbsp; Chatbots &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-deepblue">&nbsp; Image Recognition app &nbsp;</span> 
-<!--
+    .blog-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    /* Header GIF Styling */
+    .header-gif {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: var(--gif-shadow);
+        vertical-align: middle;
+    }
 
-    https://assistant-chat-eu-gb.watsonplatform.net/web/public/e9f349c0-19b7-4131-acde-0c803ab25d36
+    /* TAGS */
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 20px;
+    }
 
-    https://jimutbahanpal.intelaedu.com
+    .tag-pill {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 50px;
+        border: 1px solid;
+        background: transparent;
+    }
 
-    https://jimut-furniture-classifier.eu-gb.mybluemix.net/
---> 
+    .tag-orangered { color: #ff4500; border-color: #ff4500; }
+    .tag-blue { color: #0076f4; border-color: #0076f4; }
+    .tag-green { color: #18a236; border-color: #18a236; }
+    .tag-yellow { color: #d4af37; border-color: #d4af37; }
+    .tag-orange { color: #ffa500; border-color: #ffa500; }
+    .tag-deepblue { color: #00008b; border-color: #00008b; }
 
+    /* CONTENT */
+    .article-content {
+        text-align: justify;
+        font-size: 1.15rem; 
+    }
 
+    .article-content p {
+        margin-bottom: 24px;
+        color: var(--text-color);
+    }
 
+    .article-content em {
+        font-style: italic;
+        color: var(--accent-color);
+    }
 
+    .article-content a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.2s;
+    }
+    .article-content a:hover { text-decoration: underline; }
 
-<div id="pad-container">
-    <div align="center" id="exp-font">
-            <div class="container" align="justify">
-            
+    /* IMAGE STYLING */
+    .img-wrapper {
+        text-align: center;
+        margin: 40px 0;
+    }
+    
+    .img-wrapper img {
+        border-radius: 6px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .caption {
+        font-size: 0.9rem;
+        font-style: italic;
+        color: var(--img-caption-color);
+        display: block;
+        text-align: center;
+    }
+
+</style>
+
+<div class="blog-container">
+
+    <header class="blog-header">
+        <h1 class="blog-title">
+            <img src="blog_img/watson_imgs/watson.gif" class="header-gif" alt="Watson GIF">
+            Working with IBM Watson
+        </h1>
+        
+        <div class="tag-container">
+            <span class="tag-pill tag-orangered">IBM</span>
+            <span class="tag-pill tag-blue">AI</span>
+            <span class="tag-pill tag-green">Watson</span>
+            <span class="tag-pill tag-yellow">IBM Studio</span>
+            <span class="tag-pill tag-orange">Chatbots</span>
+            <span class="tag-pill tag-deepblue">Image Recognition App</span>
+        </div>
+    </header>
+
+    <div class="article-content">
+
+        <p>
             IBM Watson is the <em>"state of the art"</em> solution provider for AI. Watson caught the media and industry attention  
             when it played and won $77,147 (£47,812) in Jeopardy back in 2005, without connecting to any internet and just training on a plethora 
             of text knowledge base. It's Christmas time and I wanted to gift myself an AI,
             just kidding, I am not iron man or stuff, learning NLP and training a model from scratch is a pain in the neck. I wanted something very
             cool which can take very less effort and can make something which suits my need. 
+        </p>
 
-            <br> <br>
-
+        <p>
             I started with IBM watson assistant and was surprised by the fact that almost any kind of assistant can be build without using any
             programming. Well, I am a programmer, and it did hurt my feelings (LOL). I am a little dissapointed that IBM is providing so much freedom
             to create almost anything for almost anyone without knowing the underlying bits and bytes of the architecture and principles in which the thing is to 
@@ -477,9 +602,13 @@
             with speech recognition from an early age before anyone knew it existed. But it also have a downside, the learning curve for learning IBM studio can be
             very steep and sometimes careless mistakes may cause unneccessary results, and banging your head several times wouldnot solve your problem, but to try over
             and over again will. There are a very few bugs in the Watson cloud too, but they are minor, and mostly related to API errors.
+        </p>
 
+        <p>
             So lets see what I have build using IBM watson!
+        </p>
 
+        <p>
             My first creation was a very simple flower shop assistant. I learnt a lot about "entities", "intents", and "dialogues". Intents are keyowords that are associated
             to the watson assistant when we type or speak something in there. The intent specify the underlying meaning and the purpose of the statement which is produced to
             the assitant. They begins with # sign. Like for example #goodbye is an intent, and when we find any kind of sentence which is similar to that, then we may send appropriate 
@@ -490,96 +619,63 @@
             users and so upon answering that question the chatbot will answer the user's question, it may so happen that the user doesn't answer the question and asks a different question,
             in that case of a digression, the chatbot will memorize that a unanswered questioned needs to be answered and so it will perform simultaneous ansewering of questions alongside 
             asking for the necessary information everytime from the user.
+        </p>
 
+        <div class="img-wrapper" id="dialogue_img">
+            <img src="blog_img/watson_imgs/1_structure_assistant.png" alt="dialogue img flowchart layout" style="width: 50%;">
+            <span class="caption">Fig. 1: A layout of the dialogue flowchart using watson assistant</span>
+        </div>
 
-            
-
-            <br/><br/><br/>
-            <center>
-                <img src="blog_img/watson_imgs/1_structure_assistant.png" id = "dialogue_img" alt="dialogue img flowchart layout" height="50%" width="50%">
-            </center>
-            <center>
-                <i>Fig. 1: A layout of the dialogue flowchart using watson assistant</i> 
-            </center>
-            <br>
-            <br/><br/>
-
+        <p>
             After working and designing the IBM watson assistant it's time to deploy! Here you can see the 
-            <a href="https://jimutbahanpal.intelaedu.com" target="_blank" alt="wordpress deployment">actual deployment of the watson in a wordpress site. </a> A very minimalistic
+            <a href="https://jimutbahanpal.intelaedu.com" target="_blank">actual deployment of the watson in a wordpress site.</a> A very minimalistic
             version of a flower shop assitant chatbot. It is said that Chatbots are becoming a need in the industry where the customer care staffs are just 
             getting frustrated by the repition of the same question that they are being asked several times a day. The main fun thing about this chatbot is it will answer all your 
             basic and silly queries about the flower shop as much as possible but when it comes to more difficult questions it will direct you straight to a "virtual employee" in case if
             your answer needs creativity to answer. The watson assistant has almost 10,000 api calls limit for one month when it comes to a default free plan but above that it will charge 
             you some money. It is said that the industries are blooming and it is a cost effective method to apply something like a chatbot to your solutions since this will lead to 
-            saving of time, effort and money which the eployees can use in some creative tasks. The demo of <a href=" https://assistant-chat-eu-gb.watsonplatform.net/web/public/e9f349c0-19b7-4131-acde-0c803ab25d36" alt="trial in studio" target="_blank">trial in studio </a>
-            and <a href="https://jimutbahanpal.intelaedu.com" alt="wordpress deployment" target="_blank"> wordpress deployment </a> of the assistant is shown in 
-            <a href="#assistant_1"><i> Fig. 2 </i></a>, <a href="#assistant_2"><i> Fig. 3 </i></a>  and <a href="#assistant_3"><i> Fig. 4 </i></a> .
+            saving of time, effort and money which the eployees can use in some creative tasks. The demo of <a href=" https://assistant-chat-eu-gb.watsonplatform.net/web/public/e9f349c0-19b7-4131-acde-0c803ab25d36" target="_blank">trial in studio</a>
+            and <a href="https://jimutbahanpal.intelaedu.com" target="_blank">wordpress deployment</a> of the assistant is shown in 
+            <a href="#assistant_1"><i> Fig. 2 </i></a>, <a href="#assistant_2"><i> Fig. 3 </i></a>  and <a href="#assistant_3"><i> Fig. 4 </i></a>.
+        </p>
 
+        <div class="img-wrapper" id="assistant_1">
+            <img src="blog_img/watson_imgs/assistant_1.png" alt="demo of trial in studio" style="width: 30%;">
+            <span class="caption">Fig. 2: A demo of the watson assistant in <a href=" https://assistant-chat-eu-gb.watsonplatform.net/web/public/e9f349c0-19b7-4131-acde-0c803ab25d36" target="_blank"> studio.</a></span>
+        </div>
 
+        <div class="img-wrapper" id="assistant_2">
+            <img src="blog_img/watson_imgs/assistant_2.png" alt="another demo" style="width: 30%;">
+            <span class="caption">Fig. 3: Another demo of the watson assistant in <a href=" https://assistant-chat-eu-gb.watsonplatform.net/web/public/e9f349c0-19b7-4131-acde-0c803ab25d36" target="_blank"> studio.</a></span>
+        </div>
 
-            <br/><br/>
-            <center>
-                <img src="blog_img/watson_imgs/assistant_1.png" id = "assistant_1" alt="demo of trial in studio and  wordpress deployment" height="30%" width="30%">
-            </center>
-            <center>
-                <i>Fig. 2: A demo of the watson assistant in <a href=" https://assistant-chat-eu-gb.watsonplatform.net/web/public/e9f349c0-19b7-4131-acde-0c803ab25d36" alt="trial in studio" target="_blank"> studio. </a> </i> 
-            </center>
-            <br>
-           
+        <div class="img-wrapper" id="assistant_3">
+            <img src="blog_img/watson_imgs/assistant_3.png" alt="wordpress deployment" style="width: 30%;">
+            <span class="caption">Fig. 4: A demo of the watson assistant in <a href="https://jimutbahanpal.intelaedu.com" target="_blank"> wordpress site.</a></span>
+        </div>
 
-            <center>
-                <img src="blog_img/watson_imgs/assistant_2.png" id = "assistant_2" alt="demo of trial in studio and  wordpress deployment" height="30%" width="30%">
-            </center>
-            <center>
-                <i>Fig. 3: Another demo of the watson assistant in <a href=" https://assistant-chat-eu-gb.watsonplatform.net/web/public/e9f349c0-19b7-4131-acde-0c803ab25d36" alt="trial in studio" target="_blank"> studio.</a> </i> 
-            </center>
-            <br>
-            
-
-            <center>
-                <img src="blog_img/watson_imgs/assistant_3.png" id = "assistant_3" alt="demo of trial in studio and  wordpress deployment" height="30%" width="30%">
-            </center>
-            <center>
-                <i>Fig. 4: A demo of the watson assistant in <a href="https://jimutbahanpal.intelaedu.com" alt="wordpress deployment" target="_blank"> wordpress site. </a> </i> 
-            </center>
-            <br>
-            <br/><br/>
-        
-
+        <p>
             After all these hard work, it was time to celebrate! (Watson: We don't do that here). I created another application using Watson visual recognition
             and using all the tools provided by the deepbluemix. Here is the
-            <a href="https://jimut-furniture-classifier.eu-gb.mybluemix.net/" target="_blank" alt="jimut's furniture application"> demo of that application </a>, also shown in <a href="#vision_app"><i> Fig. 5 </i></a>. 
+            <a href="https://jimut-furniture-classifier.eu-gb.mybluemix.net/" target="_blank"> demo of that application </a>, also shown in <a href="#vision_app"><i> Fig. 5 </i></a>. 
             The purpose of the vision application is very simple, it detects furniture, i.e., table, chairs and beds. It doesn't return anything if you give some
             negative examples like a basketball court, or maybe a picture of animal.
+        </p>
 
+        <div class="img-wrapper" id="vision_app">
+            <img src="blog_img/watson_imgs/chair_detected.png" alt="demo of vision application" style="width: 90%;">
+            <span class="caption">Fig. 5: A demo of <a href="https://jimut-furniture-classifier.eu-gb.mybluemix.net/" target="_blank"> Watson vision application.</a></span>
+        </div>
 
-             <br/><br/>
-            <center>
-                <img src="blog_img/watson_imgs/chair_detected.png" id = "vision_app" alt="demo of vision application" height="90%" width="90%">
-            </center>
-            <center>
-                <i>Fig. 5: A demo of <a href="https://jimut-furniture-classifier.eu-gb.mybluemix.net/" target="_blank" alt="jimut's furniture application"> Watson vision application.</a> </i> 
-            </center>
-            <br>
+        <p>
+            At last here is a bonus <a href="#bonus"><i> picture </i></a>for you, Be happy, keep smiling, and happy learning!
+        </p>
 
+        <div class="img-wrapper" id="bonus">
+            <img src="blog_img/watson_imgs/tricky_images.png" alt="tricky images" style="width: 80%;">
+            <span class="caption">Fig. 6: Some of the tricky images which even the humans find confusing to classify! LOL.</span>
+        </div>
 
-            At last here is a bonus  <a href="#bonus"><i> picture </i></a>for you, Be happy, keep smiling, and happy learning!
-
-
-
-
-            <center>
-                <img src="blog_img/watson_imgs/tricky_images.png" id = "bonus" alt="tricky images" height="80%" width="80%">
-            </center>
-            <center>
-                <i>Fig. 6: Some of the tricky images which even the humans find confusing to classify! LOL. </i> 
-            </center>
-            <br>
-            <br/><br/>
-
-
-
-            </div>
     </div>
 </div>
 

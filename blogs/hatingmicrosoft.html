@@ -420,36 +420,183 @@
     <div align="center">  
       <br><br>
       
-      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+      <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<style>
+    /* VARIABLES */
+    :root {
+        /* Light Mode */
+        --background-color: #ffffff;
+        --text-color: #1a202c;
+        --accent-color: #2b6cb0;
+        --quote-border: #18a236;
+        --code-bg: rgba(0, 0, 0, 0.05);
+        --gif-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
 
-<br>
+    [data-theme="dark"] {
+        /* Dark Mode - PITCH BLACK FIX */
+        --background-color: #000000 !important;
+        --text-color: #e0e0e0 !important;
+        --accent-color: #63b3ed;
+        --code-bg: rgba(255, 255, 255, 0.1);
+    }
 
-<h1>
-    <b id="heading-font">  <img src="blog_img/micr0s0ft/linux.gif"  alt="watson GIF"height="40px" width="40px"> Why I prefer Linux over Windows O.S.</b>
+    /* GLOBAL SETTINGS */
+    body {
+        background-color: var(--background-color); 
+        color: var(--text-color);
+        font-family: 'Cardo', serif; 
+        line-height: 1.8;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* CONTAINER */
+    .blog-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px 100px 20px;
+    }
+
+    /* HEADER */
+    .blog-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .blog-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
     
-</h1>
-<center>
-    A very opinionated view
-</center>
+    .blog-subtitle {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 25px;
+        display: block;
+        font-weight: 400;
+    }
 
-<br>
-<span class="keywords-orangered"> &nbsp; Windows &nbsp; </span>
-&nbsp;&nbsp;
-<span class="keywords-blue"> &nbsp; Linux &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-green">&nbsp; Debate &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-yellow">&nbsp; Power &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-orange">&nbsp; Freedom &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-deepblue">&nbsp; Tux Lord &nbsp;</span> 
+    /* TAGS */
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-family: 'Poppins', sans-serif;
+    }
 
+    .tag-pill {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 50px;
+        border: 1px solid;
+        background: transparent;
+    }
 
-<div id="pad-container">
-    <div  align="center" id="exp-font">
-        <div class="container" align="justify">
+    .tag-orangered { color: #ff4500; border-color: #ff4500; }
+    .tag-blue { color: #0076f4; border-color: #0076f4; }
+    .tag-green { color: #18a236; border-color: #18a236; }
+    .tag-yellow { color: #d4af37; border-color: #d4af37; }
+    .tag-orange { color: #ffa500; border-color: #ffa500; }
+    .tag-deepblue { color: #00008b; border-color: #00008b; }
+
+    /* CONTENT */
+    .article-content {
+        text-align: justify;
+        font-size: 1.15rem; 
+    }
+
+    .article-content p {
+        margin-bottom: 24px;
+        color: var(--text-color);
+    }
+
+    .article-content a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.2s;
+    }
+    .article-content a:hover { text-decoration: underline; }
+
+    /* Header GIF Styling */
+    .header-gif {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: var(--gif-shadow);
+        vertical-align: middle;
+    }
+
+    /* Image Styling */
+    .img-wrapper {
+        text-align: center;
+        margin: 40px 0;
+    }
+    
+    .img-wrapper img {
+        border-radius: 6px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        max-width: 100%;
+        height: auto;
+    }
+
+    .caption {
+        font-size: 0.9rem;
+        font-style: italic;
+        color: #666;
+        margin-top: 10px;
+        display: block;
+    }
+
+    /* Lists */
+    ul, ol {
+        padding-left: 20px;
+        margin-bottom: 24px;
+    }
+    li {
+        margin-bottom: 10px;
+    }
+
+</style>
+
+<div class="blog-container">
+
+    <header class="blog-header">
+        <h1 class="blog-title">
+            <img src="blog_img/micr0s0ft/linux.gif" class="header-gif" alt="icon">
+            Why I prefer Linux over Windows O.S.
+        </h1>
+        <span class="blog-subtitle">A very opinionated view</span>
+        
+        <div class="tag-container">
+            <span class="tag-pill tag-orangered">Windows</span>
+            <span class="tag-pill tag-blue">Linux</span>
+            <span class="tag-pill tag-green">Debate</span>
+            <span class="tag-pill tag-yellow">Power</span>
+            <span class="tag-pill tag-orange">Freedom</span>
+            <span class="tag-pill tag-deepblue">Tux Lord</span>
+        </div>
+    </header>
+
+    <div class="article-content">
+
         <p>
         I swear Windows XP was my first operating system. There are a couple of reasons to love windows like its intuitive GUI, the games you could play as a kid,
         the memories you made when you first used a computer. The only reason Linux isn't used as widely as windows because it doesn't comes packaged with your computer
@@ -460,12 +607,12 @@
         (Source: Google according to Torvalds). Here is a picture of OS stats captured by the cookies used in websites as shown <a href="#stats">below</a>, which is more accurate 
         than others.
         </p>
-        <br>
-        <center>
-            <img src="blog_img/micr0s0ft/windows.png" id = "stats" alt="OS stats" height="50%" width="50%"><br>
-            Figure showing statistics of O.S. users - Circa: 2019 (Source: <a href="https://en.wikipedia.org/wiki/Usage_share_of_operating_systems" target="_blank">Wikipedia</a>)
-        </center>
-        <br>
+
+        <div class="img-wrapper" id="stats">
+            <img src="blog_img/micr0s0ft/windows.png" alt="OS stats" style="width: 50%;">
+            <span class="caption">Figure showing statistics of O.S. users - Circa: 2019 (Source: <a href="https://en.wikipedia.org/wiki/Usage_share_of_operating_systems" target="_blank">Wikipedia</a>)</span>
+        </div>
+
         <p>
         The reason why I hate windows is when I started using Linux. The first reason being prone to VIRUS. I just don't understand why is it so easy to hack windows when the 
         code is propietary. It is because almost 98% of the people use only windows when it comes to a personal computer. Most people actually doesn't buy the side softwares and 
@@ -497,121 +644,72 @@
 
         <p>
         There are a several other reasons to hate Microsoft when it comes to a more higher perspective and when it comes from the company policy perspective (credits: <a href="https://stallman.org/microsoft.html" target="_blank"> Dr. Richard Stallman </a> [SO LET ME JUST PLAGIARISE THE POINTS]):
+        </p>
         
         <ul>
-
-	  <li>
-	    Microsoft is running
-	    <a href="http://techrights.org/2017/02/27/microsoft-novell-v2-via-azure/">a
-	    patent protection racket</a>, threatening to sue users of
-	    free software.
-	  </li>
-
-	    <li>
-		Microsoft's principal wrong is distributing a
-		<a href="http://gnu.org/philosophy/free-software-even-more-important.html">nonfree operating
-		    system</a>, Microsoft Windows.
-		<br />
-		    That system is jam-packed with
-		    <a href="http://gnu.org/proprietary/malware-microsoft.html">malicious functionalities</a>,
-		    including surveillance of users, DRM, censorship and
-		    a universal back door.
-	    </li>
-
-	    <li>
-		Microsoft
-		<a href="http://www.theguardian.com/technology/2016/feb/02/microsoft-downloading-windows-10-automatic-update">tricked
-		    users</a> into "upgrading" to Windows 10.
-	    </li>
-	    <li>
-	    Microsoft Windows 10 <a href="https://www.cnet.com/news/microsoft-windows-10-forced-updates-auto-restarts-are-the-worst/">forced software changes can sabotage the user terribly</a> if Microsoft chooses an inconvenient time to do them. Since the article is in the mainstream media, it suggests only to buy another computer that serves a master that doesn't do this particular form of nastiness. It completely ignores the possibility of installing a free operating system in the PC&mdash;which doesn't even require buying a new computer.  
-	    </li>
-	    <li>
-		Microsoft tablets and phones impose
-		<a href="http://www.itworld.com/article/2832657/operating-systems/microsoft-metro-app-store-lock-down.html">censorship
-		    of applications</a>.
-	    </li>
-
-	    <li>
-		Microsoft's chatbot in China threatens people who communicate
-		<a href="http://chinadigitaltimes.net/2016/11/microsofts-chinese-chatbot-encounters-sensitive-words/">using
-		    prohibited words</a>.
-	    </li>
-
-	    <li>
-	      <p>
-            Microsoft 
-                <a href="https://www.vice.com/en_us/article/43kv4q/microsoft-human-contractors-listened-to-xbox-owners-homes-kinect-cortana">recorded
-                    users of Xboxes</a> and had human workers listen to the
-                    recordings.</p>
-                    <p>
-                    Morally I see no difference between having human workers
-                    listen and having speech-recognition systems listen.
-                    Both intrude on privacy.</p>
+            <li>
+                Microsoft is running <a href="http://techrights.org/2017/02/27/microsoft-novell-v2-via-azure/">a patent protection racket</a>, threatening to sue users of free software.
             </li>
 
             <li>
-            Microsoft
-            <a href="http://noooxml.wikidot.com/">forced a ridiculous</a> "open"
-            standard, OOXML (used in DOCX files), through the International
-            Standards Organization by corrupting most of the national
-            standards organizations that voted.
-            <br />
-            The specifications document was so long that it would be difficult for
-            anyone else to implement it properly.  When the proposed standard was
-            submitted through the usual track, experienced evaluators rejected it
-            for many good reasons.
-            <br />
-            Microsoft responded using a special override procedure in which its
-            money buy the support of many of the voting countries, thus bypassing
-            proper evaluation and demonstrating that ISO can be bought.
+                Microsoft's principal wrong is distributing a <a href="http://gnu.org/philosophy/free-software-even-more-important.html">nonfree operating system</a>, Microsoft Windows.
+                <br />
+                That system is jam-packed with <a href="http://gnu.org/proprietary/malware-microsoft.html">malicious functionalities</a>, including surveillance of users, DRM, censorship and a universal back door.
             </li>
 
             <li>
-            Microsoft pressured nearly all manufacturers of PCs to pay for a
-            Windows license for every machine sold,
-            <a href="http://www.linfo.org/microsoft_tax.html">thus charging every
-                purchaser for a Windows license</a>.
-            <br />
-            This is referred to sardonically as the "Microsoft tax".
-            <br />
-            (Wherever that page says "Linux" it actually means the
-            <a href="http://gnu.org/gnu/linux-and-gnu.html">GNU/Linux</a>
-            operating system rather than Linux proper.)
-            <br />
-            The fee doesn't force you to run Windows on your PC, but it is an
-            injustice nonetheless.  One way to avoid it is to buy hardware
-            that is
-            <a href="http://fsf.org/resources/hw">never sold with Windows</a>.
-            <br />
-            Some countries have laws under which users have sued for the right to
-            get a reimbursement for the Windows license.  Exercising that right is
-            a hassle, but doing so is useful as it puts pressure on the system
-            Microsoft has set up.  However, the existence of an inconvenient
-            escape path, limited to a few countries, has no effect on the judgment
-            that Microsoft's practices are an injustice and deserve condemnation.
+                Microsoft <a href="http://www.theguardian.com/technology/2016/feb/02/microsoft-downloading-windows-10-automatic-update">tricked users</a> into "upgrading" to Windows 10.
             </li>
 
+            <li>
+                Microsoft Windows 10 <a href="https://www.cnet.com/news/microsoft-windows-10-forced-updates-auto-restarts-are-the-worst/">forced software changes can sabotage the user terribly</a> if Microsoft chooses an inconvenient time to do them. Since the article is in the mainstream media, it suggests only to buy another computer that serves a master that doesn't do this particular form of nastiness. It completely ignores the possibility of installing a free operating system in the PC&mdash;which doesn't even require buying a new computer.  
+            </li>
+
+            <li>
+                Microsoft tablets and phones impose <a href="http://www.itworld.com/article/2832657/operating-systems/microsoft-metro-app-store-lock-down.html">censorship of applications</a>.
+            </li>
+
+            <li>
+                Microsoft's chatbot in China threatens people who communicate <a href="http://chinadigitaltimes.net/2016/11/microsofts-chinese-chatbot-encounters-sensitive-words/">using prohibited words</a>.
+            </li>
+
+            <li>
+                Microsoft <a href="https://www.vice.com/en_us/article/43kv4q/microsoft-human-contractors-listened-to-xbox-owners-homes-kinect-cortana">recorded users of Xboxes</a> and had human workers listen to the recordings. Morally I see no difference between having human workers listen and having speech-recognition systems listen. Both intrude on privacy.
+            </li>
+
+            <li>
+                Microsoft <a href="http://noooxml.wikidot.com/">forced a ridiculous</a> "open" standard, OOXML (used in DOCX files), through the International Standards Organization by corrupting most of the national standards organizations that voted.
+                <br />
+                The specifications document was so long that it would be difficult for anyone else to implement it properly. When the proposed standard was submitted through the usual track, experienced evaluators rejected it for many good reasons.
+                <br />
+                Microsoft responded using a special override procedure in which its money buy the support of many of the voting countries, thus bypassing proper evaluation and demonstrating that ISO can be bought.
+            </li>
+
+            <li>
+                Microsoft pressured nearly all manufacturers of PCs to pay for a Windows license for every machine sold, <a href="http://www.linfo.org/microsoft_tax.html">thus charging every purchaser for a Windows license</a>.
+                <br />
+                This is referred to sardonically as the "Microsoft tax".
+                <br />
+                (Wherever that page says "Linux" it actually means the <a href="http://gnu.org/gnu/linux-and-gnu.html">GNU/Linux</a> operating system rather than Linux proper.)
+                <br />
+                The fee doesn't force you to run Windows on your PC, but it is an injustice nonetheless. One way to avoid it is to buy hardware that is <a href="http://fsf.org/resources/hw">never sold with Windows</a>.
+                <br />
+                Some countries have laws under which users have sued for the right to get a reimbursement for the Windows license. Exercising that right is a hassle, but doing so is useful as it puts pressure on the system Microsoft has set up. However, the existence of an inconvenient escape path, limited to a few countries, has no effect on the judgment that Microsoft's practices are an injustice and deserve condemnation.
+            </li>
         </ul>
-        </p>
 
         <p>
         If you are reading this and you are anti-open-sourced, then here are some more nuisance for you to make your blood warm (credits: <a href="https://abhattacharyea.dev/" target="_blank"> Aniket </a>):
-        <ol>
-        <li> What is the similarity between a computer and an AC? - Both becomes useless when windows are opened. </li>
-        <li>  There's a reason there is "Linux on Windows", because Windows is not meant for "sane programming". </li>
-        <li> By the time a windows user starts writing code after updating the OS and installing 200gb of software, a Linux user will have moved on to his 5th failed startup.</li>
         </p>
 
+        <ol>
+            <li> What is the similarity between a computer and an AC? - Both becomes useless when windows are opened. </li>
+            <li> There's a reason there is "Linux on Windows", because Windows is not meant for "sane programming". </li>
+            <li> By the time a windows user starts writing code after updating the OS and installing 200gb of software, a Linux user will have moved on to his 5th failed startup.</li>
+        </ol>
 
-        </div>
     </div>
 </div>
-
-
-
-
-
 
       <br><br>
       

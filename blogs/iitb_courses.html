@@ -420,222 +420,350 @@
     <div align="center">  
       <br><br>
       
-      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+      <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<style>
+    /* VARIABLES */
+    :root {
+        --background-color: #ffffff;
+        --text-color: #1a202c;
+        --accent-color: #2b6cb0;
+        --quote-border: #18a236;
+        --code-bg: rgba(0, 0, 0, 0.05);
+        --glass-bg: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(0, 0, 0, 0.1);
+    }
 
+    [data-theme="dark"] {
+        --background-color: #000000 !important;
+        --text-color: #e0e0e0 !important;
+        --accent-color: #63b3ed;
+        --code-bg: rgba(255, 255, 255, 0.1);
+        --glass-bg: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(255, 255, 255, 0.1);
+    }
 
-<h1>
-    <b id="heading-font"> My AI/ML track in IIT Bombay </b>
-</h1>
-<center>
-    From some of the best Profs of India
-</center>
-<br>
+    /* GLOBAL */
+    body {
+        background-color: var(--background-color); 
+        color: var(--text-color);
+        font-family: 'Cardo', serif; 
+        line-height: 1.8;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-<span class="keywords-orangered"> &nbsp; IITB &nbsp; </span>
-&nbsp;&nbsp;
-<span class="keywords-blue"> &nbsp; Courses &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-green">&nbsp; Deep Learning &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-yellow">&nbsp; AI/ML &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-orange">&nbsp; Computer Vision &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-deepblue">&nbsp; Materials &nbsp;</span> 
+    /* CONTAINER */
+    .course-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px 100px 20px;
+    }
 
+    /* HEADER */
+    .course-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
 
+    .course-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        color: var(--text-color);
+    }
+    
+    .course-subtitle {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 25px;
+        display: block;
+        font-weight: 400;
+    }
 
+    /* TAGS */
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-family: 'Poppins', sans-serif;
+    }
 
-<div id="pad-container">
-    <div  align="center" id="exp-font">
-            <div class="container" align="justify">
+    .tag-pill {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 50px;
+        border: 1px solid;
+        background: transparent;
+    }
 
-                <i><small> Log: </small></i><br>
-                </i><small> Dec' 22: Updated IE-643 and CS-725 </small></i> <br>
-                </i><small> May' 23: Updated DS-899, CS-726 and CS-736 </small></i> <br>
-                </i><small> May' 24: Updated CS-772 </small></i> <br>
-                <br><br>
-            
-                Inspired from <a href="https://theshadow29.github.io/AI-Course-Selection-IITB/" target="_blank" alt="blog"> this </a>
-                and <a href="https://huyenchip.com/2018/03/30/guide-to-Artificial-Intelligence-Stanford.html" target="_blank" alt="blog"> this </a>post, 
+    .tag-orangered { color: #ff4500; border-color: #ff4500; }
+    .tag-blue { color: #0076f4; border-color: #0076f4; }
+    .tag-green { color: #18a236; border-color: #18a236; }
+    .tag-yellow { color: #d4af37; border-color: #d4af37; }
+    .tag-orange { color: #ffa500; border-color: #ffa500; }
+    .tag-deepblue { color: #00008b; border-color: #00008b; }
+
+    /* CONTENT */
+    .article-content {
+        text-align: justify;
+        font-size: 1.1rem; 
+    }
+
+    /* Modern Header for Course Sections */
+    .article-content h4 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.4rem;
+        margin-top: 50px;
+        margin-bottom: 15px;
+        color: var(--text-color);
+        border-left: 4px solid var(--accent-color);
+        padding-left: 15px;
+        display: block;
+    }
+
+    .article-content p {
+        margin-bottom: 24px;
+        color: var(--text-color);
+    }
+
+    .article-content a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.2s;
+    }
+    .article-content a:hover { text-decoration: underline; }
+    
+    /* Log/Info Box (Glassmorphism) */
+    .info-box {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        backdrop-filter: blur(5px);
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 40px;
+        font-size: 0.95rem;
+    }
+    
+    .info-box small {
+        display: block;
+        margin-bottom: 5px;
+        color: #888;
+    }
+
+    /* Lists */
+    ul {
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
+    ul li {
+        margin-bottom: 8px;
+    }
+
+</style>
+
+<div class="course-container">
+
+    <header class="course-header">
+        <h1 class="course-title">My AI/ML track in IIT Bombay</h1>
+        <span class="course-subtitle">From some of the best Profs of India</span>
+        
+        <div class="tag-container">
+            <span class="tag-pill tag-orangered">IITB</span>
+            <span class="tag-pill tag-blue">Courses</span>
+            <span class="tag-pill tag-green">Deep Learning</span>
+            <span class="tag-pill tag-yellow">AI/ML</span>
+            <span class="tag-pill tag-orange">Computer Vision</span>
+            <span class="tag-pill tag-deepblue">Materials</span>
+        </div>
+    </header>
+
+    <div class="article-content">
+        
+        <div class="info-box">
+            <strong>Log:</strong>
+            <small>Dec' 22: Updated IE-643 and CS-725</small>
+            <small>May' 23: Updated DS-899, CS-726 and CS-736</small>
+            <small>May' 24: Updated CS-772</small>
+            <br>
+            <p style="margin-bottom: 0;">
+                Inspired from <a href="https://theshadow29.github.io/AI-Course-Selection-IITB/" target="_blank">this</a> and <a href="https://huyenchip.com/2018/03/30/guide-to-Artificial-Intelligence-Stanford.html" target="_blank">this</a> post, 
                 I am sharing my views and materials that were generated by taking some of the courses, here at IIT Bombay, for my future reference. 
                 The materials that I am sharing here are generally my own intellectual property, like course presentations, 
                 reports etc. This is an ongoing blog and will be updated at the end of each semester. To be honest there are no 
                 such AI/ML tracks here at IIT Bombay, but one can make according to their requirements. I am enrolled here as a 
                 PhD in C-MInDS department, and for some obvious obligatory reasons, I need to do an AI/ML track which was curated 
-                by my supervisor, since he is the best in recommending courses. <br><br>
+                by my supervisor, since he is the best in recommending courses.
+            </p>
+        </div>
 
-                <h4 id="bold_id">Deep Learning - Theory and Practice (IE-643) </h4><br>
+        <h4 id="bold_id">Deep Learning - Theory and Practice (IE-643)</h4>
+        <p>
+            This is from the IEOR department, and one of my favorite courses taught by P. Balamurugan. The depth and breadth covered in this course 
+            is just amazing, exactly what is needed by a student. There are no such requirements for this course, except one 
+            needs to be comfortable with Python3 and should have some knowledge of machine learning and Pytorch. When I joined 
+            the course, I didn't have any experience of Pytorch, since I used to do everything in either Tensorflow or Keras, 
+            but I picked it along the way. This might be a bit difficult to those folks who don't like math and extensive coding, 
+            but DL/ML is all about coding, math and creating new technology. So, if you are really into Deep Learning and need 
+            to take a course, I will surely recommend this one.
+        </p>
+        <p>
+            Another good thing about this course is, this course does not have an end-semester exam, but one needs to do a 
+            good project to finish the course requirement. To be honest, this form of teaching is necessary, since there is 
+            nothing to gain from rote learning. When creating new technology, one should know the concepts, not memorize 
+            formulas and solve sums. This course is open book too, and the questions are a bit difficult, if you don't 
+            prepare regularly.
+        </p>
+        <p>
+            So, for me I had to do a <a href="../blogs/IITB_Courses/IE643/Zero1_IE643_CourseProject_Prep.pdf" target="_blank">pre-mid-sem presentation</a>, 
+            a <a href="../blogs/IITB_Courses/IE643/Zero1_IE643_CourseProject_MidtermReview.pdf" target="_blank">post mid-sem presentation</a>, an 
+            <a href="../blogs/IITB_Courses/IE643/Zero1_IE643_CourseProject_EndtermReview.pdf" target="_blank">end-sem presentation</a> along with the
+            <a href="../blogs/IITB_Courses/IE643/Zero1_IE643_CourseProject_EndtermReview_EndTermReport.pdf" target="_blank">report</a> of 
+            an interesting project which fetched me an AP grade. I did learn a lot from this course, and we also coded some stuff from scratch, and wrote 
+            a <a href="../blogs/IITB_Courses/IE643/IE643_22D1594_CHALLENGE_REPORT.pdf" target="_blank">report on detecting camouflaged objects</a>. 
+            The assignments were challenging and very relevant to the coursework, which challenges you to do things differently.
+        </p>
 
-                This is from the IEOR department, and one of my favorite courses taught by P. Balamurugan. The depth and breadth covered in this course 
-                is just amazing, exactly what is needed by a student. There are no such requirements for this course, except one 
-                needs to be comfortable with Python3 and should have some knowledge of machine learning and Pytorch. When I joined 
-                the course, I didn't have any experience of Pytorch, since I used to do everything in either Tensorflow or Keras, 
-                but I picked it along the way. This might be a bit difficult to those folks who don't like math and extensive coding, 
-                but DL/ML is all about coding, math and creating new technology. So, if you are really into Deep Learning and need 
-                to take a course, I will surely recommend this one. <br> <br>
+        <h4 id="bold_id">Foundations of Machine Learning (CS-725)</h4>
+        <p>
+            This course is a necessity, in case you are willing to take the Advanced Machine Learning course. 
+            This course is taught by Preethi Jyothi. The materials offered in this course are lucid and this also 
+            has an open book exam. If you are taking this course, you have to take one quiz, mid-sem exam, end-sem 
+            exam and one project, which can be done in a team of 3 to 5. There is flexibility and one can choose any 
+            topic one wishes to explore in the future. We had some tough assignments, 
+            and it took a whole week to find the best hyper-parameters. I really learned a lot, since I never expected that we need to put so much 
+            effort on just hyper-parameter tuning when building things from scratch, which the normal libraries takes care of internally. 
+            For the project, the main team members who contributed were Prateek Chanda (ex Microsoft Research) and Sandarbh Yadav (ex Oracle). 
+            I could have contributed much in this project, but I had some other stuff too, hence 
+            teamwork paid off. We made the best <a href="../blogs/IITB_Courses/CS725/report.pdf" target="_blank">report</a> and 
+            <a href="../blogs/IITB_Courses/CS725/presentation.pdf" target="_blank">presentation</a> for this course.
+        </p>
+        <p>
+            This course covers the foundations of machine learning. If you are into core-statistical-ml you can take this course. 
+            Deep leaning folks need to take this course, since this covers some basic foundations which will be required by other 
+            advanced courses. Don't expect the exams to be easy, just because it is open-book, it is the reverse here in IIT Bombay, 
+            all the courses have unique question papers, which are created from previous iteration of the courses, and will compel 
+            you to think naturally even with all the materials in hand.
+        </p>
 
-                Another good thing about this course is, this course does not have an end-semester exam, but one needs to do a 
-                good project to finish the course requirement. To be honest, this form of teaching is necessary, since there is 
-                nothing to gain from rote learning. When creating new technology, one should know the concepts, not memorize 
-                formulas and solve sums. This course is open book too, and the questions are a bit difficult, if you don't 
-                prepare regularly.  <br> <br>
+        <h4 id="bold_id">Communication Skills (DS-899)</h4>
+        <p>
+            This might look like one of the redundant courses at first glance (for it being a P/NP course), 
+            but this is a gem. At least respect the fact that the best profs in India are giving their 
+            precious time for this course for you, which they could actually utilize in their research. We had all 
+            the good faculties from each of the departments come, pitch, and assign homework. Yeah, the homework 
+            might be a bit tiring if you have other commitments like RnD and difficult courses since each of 
+            the assignments takes a minimum of 5 hours of commitment. We did learn a lot of different perspectives 
+            which trained us to become better and more skillful academicians. The course is well structured, and 
+            expect one assignment every week. Don't miss the classes since attendance is mandatory here.
+            Here are some of the materials generated from this course:
+        </p>
+        <ul>
+            <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_1_proof.pdf" target="_blank">Week-1: General Proof for Hamming Codes</a> </li>
+            <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_2_articles.pdf" target="_blank">Week-2: Use of articles</a> </li>
+            <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_3_plag.pdf" target="_blank">Week-3: About Plagiarism</a> </li>
+            <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_4_scientific_method.pdf" target="_blank">Week-4: Scientific writing</a> </li>
+            <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_5_technical_writings.pdf" target="_blank">Week-5: Technical writing</a> </li>
+            <li> Week-6: - off </li>
+            <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_7_reading_skills.pdf" target="_blank">Week-7: Reading skills</a> </li>
+            <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_8_data_representation.pdf" target="_blank">Week-8: Data representation</a> </li>
+            <li> Week-9: - off </li>
+            <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_10_drones_agriculture.pdf" target="_blank">Week-10: Presentation</a> </li>
+        </ul>
 
-                So, for me I had to do a <a href="../blogs/IITB_Courses/IE643/Zero1_IE643_CourseProject_Prep.pdf" target="_blank" alt="pre-mid-term"> pre-mid-sem presentation </a>, 
-                a <a href="../blogs/IITB_Courses/IE643/Zero1_IE643_CourseProject_MidtermReview.pdf" target="_blank" alt="post-mid-term"> post mid-sem presentation </a> an 
-                <a href="../blogs/IITB_Courses/IE643/Zero1_IE643_CourseProject_EndtermReview.pdf" target="_blank" alt="end-term"> end-sem presentation </a> along with the
-                <a href="../blogs/IITB_Courses/IE643/Zero1_IE643_CourseProject_EndtermReview_EndTermReport.pdf" target="_blank" alt="end-term"> report </a> of 
-                an interesting project which fetched me an AP grade. I did learn a lot from this course, and we also coded some stuff from scratch, and wrote 
-                a <a href="../blogs/IITB_Courses/IE643/IE643_22D1594_CHALLENGE_REPORT.pdf" target="_blank" alt="challenge report">report on detecting camouflaged objects</a>. 
-                The assignments were challenging and very relevant to the coursework, 
-                which challenges you to do things differently. <br> <br>
+        <h4 id="bold_id">Advanced Machine Learning (CS-726)</h4>
+        <p>
+            The course is taught by Prof. Sunita Sarawagi. The way she relates the explainable 
+            and classic Probabilistic Graphical Models with Deep Learning is just on a different 
+            level. This is one of a kind course specifically designed for those students who want 
+            to pursue research in Machine Learning and the advanced concepts of Deep Learning. 
+            Though this is a conceptually loaded course, one might want to learn these concepts 
+            again, even after the course ends. I liked the part where we were taught about 
+            Generative Networks, where there were several variants of it, and I would like to 
+            revisit the material once again from time to time. I think it is entirely okay not 
+            to do good in this course since stuff from the last 50 years is taught in a 4 months 
+            period, but I would definitely recommend this course once you have made up your mind 
+            to do research in core Machine Learning. Another piece of advice would be to start the 
+            project from the beginning, which we didn't (I would also like to genuinely thank my 
+            team members for saving me); we procrastinated till the last date due 
+            to various reasons and made the report and presentation the day before the submission. 
+            Here is a sample of the 
+            <a href="../blogs/IITB_Courses/CS726/report_ass_2.pdf" target="_blank">assignment</a> 
+            submitted by us, and also the course 
+            <a href="../blogs/IITB_Courses/CS726/CS_726_Presentation.pdf" target="_blank">presentation</a> 
+            and 
+            <a href="../blogs/IITB_Courses/CS726/CS726_course_project.pdf" target="_blank">report</a>.
+        </p>
 
+        <h4 id="bold_id">Medical Image Computing (CS-736)</h4>
+        <p>
+            This course is taught by none other than my own advisor, Prof. Suyash P. Awate. 
+            I think these links 
+            ([<a href="https://dampeeiitb.wordpress.com/cs-736-algorithms-for-medical-image-processing/" target="_blank">link1</a>] 
+            and [<a href="https://theshadow29.github.io/AI-Course-Selection-IITB/" target="_blank">link2</a>])
+            have better reviews of the course. I highly recommend taking this course since this is one of a kind. 
+            There are a lot of evergreen classic Machine Learning topics that are essential for 
+            practicing theoretical and applied DL, which are thoroughly taught here. The only 
+            piece of advice I would like to give is to practice the materials regularly, rather 
+            than cramming up for 2 days before the exam. Things really go blank if you cram up 
+            before the night, this is a mathematically loaded course, so pay attention to detail, 
+            and don't neglect even a single line from the slide. 
+            If this is the first time you are learning about topics related to 
+            statistics and algorithms, then this course will be very difficult for you. 
+            Make sure you have the required prerequisites for the course. Also, all the good 
+            students (senior year BTechs from all the departments) take this course (they already 
+            have a fair understanding of all the topics covered in this course) hence the competition 
+            is really tough for this course (at least for me). Make very short notes and make 
+            sure you are able to re-create the fundamental knowledge of topics depicted in the 
+            slides exactly, using those notes.
+        </p>
 
-                <h4 id="bold_id">  Foundations of Machine Learning (CS-725) </h4><br>
+        <h4 id="bold_id">Deep Learning for Natural Language Processing (CS-772)</h4>
+        <p>
+            This is taught by one of the most senior faculty of CSE-IITB, Pushpak Bhattacharyya, who is known for
+            creating the foundations of NLP in India. I am glad that my guide recommended this course, 
+            and there was a lot to learn from this course. This course is taught differently, which I 
+            would ideally follow when teaching my courses, where practical knowledge is paid much 
+            attention to by giving more weightage to course projects and assignments. There is more 
+            focus on insights rather than information. He starts with foundational topics like perceptron 
+            and covers most parts of Deep Learning, which is widely studied in most courses. Since the 
+            instructor is famous for linguistics, this course tries to teach you why things are going 
+            wrong when things are going wrong inside the neural network, i.e., focus on explainability 
+            and logical analysis. The materials taught in this course are pretty common, but the instructor's 
+            insight won't be available in most of the courses. I personally think that quizzes and exams are 
+            not very important in life, focus on learning, no need to worry when you are getting negative marks, 
+            take chances and learn more. We had assignments, course projects, quizzes, mid sem, and end sem. 
+            I will recommend taking this course, and also recommend taking the beginner NLP course, which wasn't 
+            taken by me. Here are the <a href="IITB_Courses/CS772/assignment_1.pdf" target="_blank">Assignment-1</a>, 
+            <a href="IITB_Courses/CS772/assignment_2.pdf" target="_blank">Assignment-2</a>, 
+            <a href="IITB_Courses/CS772/midterm_pres.pdf" target="_blank">Midsem Project</a> and 
+            <a href="IITB_Courses/CS772/endsem_pres.pdf" target="_blank">Endsem Project</a> presentations for the course.
+        </p>
 
-                This course is a necessity, in case you are willing to take the Advanced Machine Learning course. 
-                This course is taught by Preethi Jyothi. The materials offered in this course are lucid and this also 
-                has an open book exam. If you are taking this course, you have to take one quiz, mid-sem exam, end-sem 
-                exam and one project, which can be done in a team of 3 to 5. There is flexibility and one can choose any 
-                topic one wishes to explore in the future. We had some tough assignments, 
-                and it took a whole week to find the best hyper-parameters. I really learned a lot, since I never expected that we need to put so much 
-                effort on just hyper-parameter tuning when building things from scratch, which the normal libraries takes care of internally. 
-                For the project, the main team members who contributed were Prateek Chanda (ex Microsoft Research) and Sandarbh Yadav (ex Oracle). 
-                I could have contributed much in this project, but I had some other stuff too, hence 
-                teamwork paid off. We made the best  <a href="../blogs/IITB_Courses/CS725/report.pdf" target="_blank" alt="report cs-725">report </a>and 
-                <a href="../blogs/IITB_Courses/CS725/presentation.pdf" target="_blank" alt="presentation">presentation</a> for this course. <br> <br>
+        <h4 id="bold_id">Epilogue</h4>
+        <p>
+            This ends my course list in Machine Learning. I personally feel that there is a 
+            lot to learn from. Life is just learning things continuously, and courses are just a 
+            part of that learning. New things will come and go, and those who adapt and learn to new 
+            things fast can survive. To create foundational changes in the knowledge of human existence, 
+            one must invest considerable time. I would suggest you choose a track, like going into Machine 
+            Learning, Quantum Computing, Mathematics, or Cyber Security, and invest your life in learning 
+            different topics from different sources, focusing on what you want to do rather than learning 
+            everything. Don't be like, “Oh! I have topped this course, so I must know everything in this, I 
+            don't need to learn more.” Continuously learn whenever possible and open your mind to particular 
+            ideas that interest you. <span style="color: crimson; font-weight: bold;">Also, please take courses at your own risk... All the best!</span>
+        </p>
 
-                This course covers the foundations of machine learning. If you are into core-statistical-ml you can take this course. 
-                Deep leaning folks need to take this course, since this covers some basic foundations which will be required by other 
-                advanced courses. Don't expect the exams to be easy, just because it is open-book, it is the reverse here in IIT Bombay, 
-                all the courses have unique question papers, which are created from previous iteration of the courses, and will compel 
-                you to think naturally even with all the materials in hand.  <br> <br>
-
-
-                <h4 id="bold_id"> Communication Skills (DS-899) </h4><br>
-
-                This might look like one of the redundant courses at first glance (for it being a P/NP course), 
-                but this is a gem. At least respect the fact that the best profs in India are giving their 
-                precious time for this course for you, which they could actually utilize in their research. We had all 
-                the good faculties from each of the departments come, pitch, and assign homework. Yeah, the homework 
-                might be a bit tiring if you have other commitments like RnD and difficult courses since each of 
-                the assignments takes a minimum of 5 hours of commitment. We did learn a lot of different perspectives 
-                which trained us to become better and more skillful academicians. The course is well structured, and 
-                expect one assignment every week. Don't miss the classes since attendance is mandatory here.
-                Here are some of the materials generated from this course:<br><br>
-
-                
-                <ul>
-                    <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_1_proof.pdf" target="_blank" alt="report"> Week-1: General Proof for Hamming Codes</a>. </li>
-                    <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_2_articles.pdf" target="_blank" alt="report"> Week-2: Use of articles</a>. </li>
-                    <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_3_plag.pdf" target="_blank" alt="report"> Week-3: About Plagiarism</a>. </li>
-                    <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_4_scientific_method.pdf" target="_blank" alt="report">Week-4: Scientific writing</a>. </li>
-                    <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_5_technical_writings.pdf" target="_blank" alt="report">Week-5: Technical writing</a>. </li>
-                    <li> Week-6: - off. </li>
-                    <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_7_reading_skills.pdf" target="_blank" alt="report">Week-7: Reading skills</a>. </li>
-                    <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_8_data_representation.pdf" target="_blank" alt="report">Week-8: Data representation</a>. </li>
-                    <li> Week-9: - off. </li>
-                    <li> <a href="../blogs/IITB_Courses/COMM_SKILLS/week_10_drones_agriculture.pdf" target="_blank" alt="report">Week-10: Presentation</a>. </li>
-                </ul>
-
-                <br> <br>
-                
-                <h4 id="bold_id"> Advanced Machine Learning (CS-726) </h4><br>
-
-
-                The course is taught by Prof. Sunita Sarawagi. The way she relates the explainable 
-                and classic Probabilistic Graphical Models with Deep Learning is just on a different 
-                level. This is one of a kind course specifically designed for those students who want 
-                to pursue research in Machine Learning and the advanced concepts of Deep Learning. 
-                Though this is a conceptually loaded course, one might want to learn these concepts 
-                again, even after the course ends. I liked the part where we were taught about 
-                Generative Networks, where there were several variants of it, and I would like to 
-                revisit the material once again from time to time. I think it is entirely okay not 
-                to do good in this course since stuff from the last 50 years is taught in a 4 months 
-                period, but I would definitely recommend this course once you have made up your mind 
-                to do research in core Machine Learning. Another piece of advice would be to start the 
-                project from the beginning, which we didn't (I would also like to genuinely thank my 
-                team members for saving me); we procrastinated till the last date due 
-                to various reasons and made the report and presentation the day before the submission. 
-                Here is a sample of the 
-                <a href="../blogs/IITB_Courses/CS726/report_ass_2.pdf" target="_blank" alt="assignment">assignment</a> 
-                submitted by us, and also the course 
-                <a href="../blogs/IITB_Courses/CS726/CS_726_Presentation.pdf" target="_blank" alt="presentation">presentation</a> 
-                and 
-                <a href="../blogs/IITB_Courses/CS726/CS726_course_project.pdf" target="_blank" alt="report">report</a>.
-
-                <br> <br>
-                
-                <h4 id="bold_id"> Medical Image Computing (CS-736) </h4><br>
-
-                
-
-
-
-                This course is taught by none other than my own advisor, Prof. Suyash P. Awate. 
-                I think these links 
-                ([<a href="https://dampeeiitb.wordpress.com/cs-736-algorithms-for-medical-image-processing/" target="_blank" alt="link1">link1</a>] 
-                and [<a href="https://theshadow29.github.io/AI-Course-Selection-IITB/" target="_blank" alt="link1">link2</a>])
-                have better reviews of the course. I highly recommend taking this course since this is one of a kind. 
-                There are a lot of evergreen classic Machine Learning topics that are essential for 
-                practicing theoretical and applied DL, which are thoroughly taught here. The only 
-                piece of advice I would like to give is to practice the materials regularly, rather 
-                than cramming up for 2 days before the exam. Things really go blank if you cram up 
-                before the night, this is a mathematically loaded course, so pay attention to detail, 
-                and don't neglect even a single line from the slide. 
-                If this is the first time you are learning about topics related to 
-                statistics and algorithms, then this course will be very difficult for you. 
-                Make sure you have the required prerequisites for the course. Also, all the good 
-                students (senior year BTechs from all the departments) take this course (they already 
-                have a fair understanding of all the topics covered in this course) hence the competition 
-                is really tough for this course (at least for me). Make very short notes and make 
-                sure you are able to re-create the fundamental knowledge of topics depicted in the 
-                slides exactly, using those notes. 
-                
-
-                <br> <br>
-                
-                <h4 id="bold_id"> Deep Learning for Natural Language Processing (CS-772) </h4><br>
-
-                This is taught by one of the most senior faculty of CSE-IITB, Pushpak Bhattacharyya, who is known for
-                creating the foundations of NLP in India. I am glad that my guide recommended this course, 
-                and there was a lot to learn from this course. This course is taught differently, which I 
-                would ideally follow when teaching my courses, where practical knowledge is paid much 
-                attention to by giving more weightage to course projects and assignments. There is more 
-                focus on insights rather than information. He starts with foundational topics like perceptron 
-                and covers most parts of Deep Learning, which is widely studied in most courses. Since the 
-                instructor is famous for linguistics, this course tries to teach you why things are going 
-                wrong when things are going wrong inside the neural network, i.e., focus on explainability 
-                and logical analysis. The materials taught in this course are pretty common, but the instructor's 
-                insight won't be available in most of the courses. I personally think that quizzes and exams are 
-                not very important in life, focus on learning, no need to worry when you are getting negative marks, 
-                take chances and learn more. We had assignments, course projects, quizzes, mid sem, and end sem. 
-                I will recommend taking this course, and also recommend taking the beginner NLP course, which wasn't 
-                taken by me. Here are the <a href="IITB_Courses/CS772/assignment_1.pdf" alt="assgn-1" target="_blank"> Assignment-1</a>, 
-                <a href="IITB_Courses/CS772/assignment_2.pdf" alt="assgn-2" target="_blank"> Assignment-2</a>, 
-                <a href="IITB_Courses/CS772/midterm_pres.pdf" alt="assgn-2" target="_blank"> Midsem Project</a> and 
-                <a href="IITB_Courses/CS772/endsem_pres.pdf" alt="assgn-2" target="_blank"> Endsem Project</a> presentations for the course.
-
-                <br> <br>
-
-                <h4 id="bold_id"> Epilogue </h4><br>
-                
-
-                This ends my course list in Machine Learning. I personally feel that there is a 
-                lot to learn from. Life is just learning things continuously, and courses are just a 
-                part of that learning. New things will come and go, and those who adapt and learn to new 
-                things fast can survive. To create foundational changes in the knowledge of human existence, 
-                one must invest considerable time. I would suggest you choose a track, like going into Machine 
-                Learning, Quantum Computing, Mathematics, or Cyber Security, and invest your life in learning 
-                different topics from different sources, focusing on what you want to do rather than learning 
-                everything. Don't be like, “Oh! I have topped this course, so I must know everything in this, I 
-                don't need to learn more.” Continuously learn whenever possible and open your mind to particular 
-                ideas that interest you. <span style="color: crimson;"> Also, please take courses at your own risk... All the best! </span>
-
-
-
-            </div>
     </div>
 </div>
 

@@ -420,738 +420,843 @@
     <div align="center">  
       <br><br>
       
-      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+      <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<style>
+    /* VARIABLES */
+    :root {
+        /* Light Mode */
+        --background-color: #ffffff;
+        --text-color: #1a202c;
+        --accent-color: #2b6cb0;
+        
+        --card-bg: rgba(255, 255, 255, 0.7);
+        --card-border: rgba(0, 0, 0, 0.1);
+        --card-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        
+        --meta-color: #666;
+    }
 
-<br>
+    [data-theme="dark"] {
+        /* Dark Mode - Pitch Black Fix */
+        --background-color: #000000 !important;
+        --text-color: #e0e0e0 !important;
+        --accent-color: #63b3ed;
+        
+        --card-bg: rgba(30, 30, 30, 0.7);
+        --card-border: rgba(255, 255, 255, 0.1);
+        --meta-color: #aaa;
+    }
 
-<h1>
-    <b id="heading-font">  JBP Scripts</b>
-</h1>
+    /* GLOBAL SETTINGS */
+    body {
+        background-color: var(--background-color); 
+        color: var(--text-color);
+        font-family: 'Cardo', serif; 
+        line-height: 1.8;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-<br>
-<span class="keywords-orangered"> &nbsp; PDFs &nbsp; </span>
-&nbsp;&nbsp;
-<span class="keywords-blue"> &nbsp; Writings &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-green">&nbsp; Assignments &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-yellow">&nbsp; Mini Projects &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-orange">&nbsp; Latex &nbsp;</span>
-&nbsp;&nbsp;
+    /* CONTAINER */
+    .blog-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px 100px 20px;
+    }
 
+    /* HEADER */
+    .script-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
 
+    .script-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        color: var(--text-color);
+    }
 
+    /* TAGS */
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
 
-<div id="pad-container">
-    <div  align="center" id="exp-font">
-            <div class="container" align="justify">
+    .tag-pill {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 50px;
+        border: 1px solid;
+        background: transparent;
+        font-family: 'Poppins', sans-serif;
+    }
 
-                This page will have PDF's of all the writings that I will do in leisure time! Style inspired by Edsger Wybe Dijkstra's <em>EWD<em> scripts.
-                <br/>
-                <br/>
-                <ul>
-                
-                    <li> 
-                        11-06-2021 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_043_Thesis_Sat_term_project.pdf" alt="Segmentation of satellite imagery - Term Project" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Segmentation of satellite imagery - Term Project 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        11-02-2021 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_042_Mrinmay_Proposal.pdf" alt="Generating ASCII art from images via Unsupervised Learning" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Generating ASCII art from images via Unsupervised Learning 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        11-12-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_041_Inception.pdf" alt="A note on Inception the movie" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            A note on Inception the movie 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        25-04-2021 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_040_Sat_pres.pdf" alt="Segmentation of Satellite Imagery" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Segmentation of Satellite Imagery 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        17-12-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_039_VT_Thesis.pdf" alt="Art should entertain and educate (Thanks Seshadri)" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Art should entertain and educate (Thanks Seshadri) 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        2019 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_038_39387.jpg" alt="Eisamay (Hall of fame)" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Eisamay (Hall of fame) 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        2015 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_037_TTIS_eok_2015.jpg" alt="Essence of Knowledge, 2015, TTIS article (Hall of fame)" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Essence of Knowledge, 2015, TTIS article (Hall of fame) 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        2019 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_036_voyage_2018.jpg" alt="Moulding my childhood" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Moulding my childhood 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        2019 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_035_vol3_xcryptus.pdf" alt="New Approach to generate, regenerate, encode and compress 3D structures using complex functions (short version of paper)" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            New Approach to generate, regenerate, encode and compress 3D structures using complex functions (short version of paper) 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        2018 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_034_vol2_xcryptus.pdf" alt="Basics of Machine Learning" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Basics of Machine Learning 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        17-02-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_033_2002.05886.pdf" alt="How to cluster nearest unique nodes from different classes using JJCluster in Wisp application?" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            How to cluster nearest unique nodes from different classes using JJCluster in Wisp application? 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        12-01-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_032_2001.11302.pdf" alt="A Deeper Look into Hybrid Images" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            A Deeper Look into Hybrid Images 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        12-02-2018 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_031_CAPTCHA.pdf" alt="Deceiving Computers in Reverse Turing Test through Deep Learning" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Deceiving Computers in Reverse Turing Test through Deep Learning 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        12-02-2018 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_030_173-IJCSE-05793.pdf" alt="Real Time Object Detection Can be Embedded on Low Powered Devices" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Real Time Object Detection Can be Embedded on Low Powered Devices 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        12-09-2018 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_029_V6I10-0031.pdf" alt="Botnets - A constant threat to cyberspace" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Botnets - A constant threat to cyberspace 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        31-12-2018 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_028_169-IJCSE-05473.pdf" alt="New approach to Generate, Re-Generate, Encode, and Compress 3D structures using polynomial equations" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            New approach to Generate, Re-Generate, Encode, and Compress 3D structures using polynomial equations 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        28-11-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_027.pdf" alt="Write a brief note on the Rashomon effect based on the Japanese movie Rashomon. How do you relate it to the contemporary world and your personal life? How do you equip yourself to deal with this effect?" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Write a brief note on the Rashomon effect based on the Japanese movie Rashomon. How do you relate it to the contemporary world and your personal life? How do you equip yourself to deal with this effect? 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        29-10-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_024.pdf" alt="A note on "The Alchemist" by Paulo Coelho" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            A note on "The Alchemist" by Paulo Coelho 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        13-09-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_023.pdf" alt="Kungfu Panda as a motivational movie" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Kungfu Panda as a motivational movie 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        02-09-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_022.pdf" alt="English as a global language for communication" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            English as a global language for communication 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        26-06-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_021.pdf" alt="CAPTCHA Beamer Slides" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            CAPTCHA Beamer Slides 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        26-06-2020 - [<a href="https://youtu.be/jgivEfiu-rM" alt="yt-vid" target="_blank"> youtube video </a>] - 
-                       
-                        <a href="https://docs.google.com/presentation/d/e/2PACX-1vQQr-p8SVF6rdC3zWQs_Abw6kaK3zISQd9P1MinzZQxC30iPEGkRrACIUm4d0AymVaUQTBhjNe5lyyM/pub?start=false&loop=false&delayms=3000#slide=id.gc6f90357f_0_0" alt="Oral CV Presentation" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Oral CV Presentation 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        25-06-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_019.pdf" alt="Assignment - 5 (CC)" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Assignment - 5 (CC) 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        21-06-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_018.pdf" alt="Assignment - 4 (CC)" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Assignment - 4 (CC) 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        18-06-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_017.pdf" alt="Assignment - 3 (CC)" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Assignment - 3 (CC) 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        06-06-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_016.pdf" alt="Assignment - 2 (CC)" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Assignment - 2 (CC) 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/10.31219/osf.io/89c64" alt="10.31219/osf.io/89c64" target="_blank">10.31219/osf.io/89c64 </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        22-05-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_015.pdf" alt="Assignment - 1 (CC)" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Assignment - 1 (CC) 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/10.31219/osf.io/gyk67" alt="10.31219/osf.io/gyk67" target="_blank">10.31219/osf.io/gyk67 </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        18-05-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_014.pdf" alt="Implementing some of the Advanced Computer Vision Algorithms" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Implementing some of the Advanced Computer Vision Algorithms 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/None" alt="None" target="_blank">None </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        15-05-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_013.pdf" alt="Camera Calibration and Fundamental Matrix Estimation with RANSAC" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Camera Calibration and Fundamental Matrix Estimation with RANSAC 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         url: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3619887" alt="JBP_013" target="_blank">SSRN manuscript</a>
-                         )
+    .tag-orangered { color: #ff4500; border-color: #ff4500; }
+    .tag-blue { color: #0076f4; border-color: #0076f4; }
+    .tag-green { color: #18a236; border-color: #18a236; }
+    .tag-yellow { color: #d4af37; border-color: #d4af37; }
+    .tag-orange { color: #ffa500; border-color: #ffa500; }
 
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        02-05-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_012.pdf" alt="Image stitching and Disparity" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Image stitching and Disparity 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        26-04-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_011.pdf" alt="Implementing my own Cam-Scanner" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Implementing my own Cam-Scanner 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/10.31219/osf.io/q832u" alt="10.31219/osf.io/q832u" target="_blank">10.31219/osf.io/q832u </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        04-04-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_010.pdf" alt="Detecting features via Modified Harris Corners and matching them through SIFT" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Detecting features via Modified Harris Corners and matching them through SIFT 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/10.31219/osf.io/j3g9w" alt="10.31219/osf.io/j3g9w" target="_blank">10.31219/osf.io/j3g9w </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        11-03-2020 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_009.pdf" alt="Traditional Lines and Circles detector" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Traditional Lines and Circles detector 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/10.31219/osf.io/sf4ye" alt="10.31219/osf.io/sf4ye" target="_blank">10.31219/osf.io/sf4ye </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        20-02-2020 - 
-                       
-                        <a href="../files/notes/dbms_as1.pdf" alt="ER diagram" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            ER diagram 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        28-06-2019 - 
-                       
-                        <a href="../files/notes/note_03.pdf" alt="A note on Binary Relations" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            A note on Binary Relations 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        16-11-2019 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_008.pdf" alt="Playing a class of Game using CNN with a Focus on Runner Games" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Playing a class of Game using CNN with a Focus on Runner Games 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/10.31219/osf.io/d34pu" alt="10.31219/osf.io/d34pu" target="_blank">10.31219/osf.io/d34pu </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        08-11-2019 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_007.pdf" alt="Summary of Ch - 1 from India and her Problems" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Summary of Ch - 1 from India and her Problems 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/10.31219/osf.io/j9bhv" alt="10.31219/osf.io/j9bhv" target="_blank">10.31219/osf.io/j9bhv </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        04-11-2019 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_006.pdf" alt="How to cluster nearest unique nodes from different classes using JJCluster in Wisp application?" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            How to cluster nearest unique nodes from different classes using JJCluster in Wisp application? 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/10.31219/osf.io/32fkd" alt="10.31219/osf.io/32fkd" target="_blank">10.31219/osf.io/32fkd </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        26-10-2019 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_005.pdf" alt="Reinforcement Learning" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Reinforcement Learning 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/10.31219/osf.io/dz6sx" alt="10.31219/osf.io/dz6sx" target="_blank">10.31219/osf.io/dz6sx </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        27-07-2019 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_004.pdf" alt="Wisp - A preference based location finder application" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Wisp - A preference based location finder application 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/10.31219/osf.io/y5hk9" alt="10.31219/osf.io/y5hk9" target="_blank">10.31219/osf.io/y5hk9 </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        2018 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_003.pdf" alt="Does exposed JSON data make paid e-songs vulnerable?" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Does exposed JSON data make paid e-songs vulnerable? 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/10.31219/osf.io/sxenh" alt="10.31219/osf.io/sxenh" target="_blank">10.31219/osf.io/sxenh </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        27th Aug, 2019 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_002.pdf" alt="Designing of search agents using Pacman" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Designing of search agents using Pacman 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/10.31219/osf.io/rnsy6" alt="10.31219/osf.io/rnsy6" target="_blank">10.31219/osf.io/rnsy6 </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        11th Aug, 2019 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_001.pdf" alt="Politics of Education in India" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            Politics of Education in India 
-                        </a>
-                         
-                         
-                         -
-                         (
-                         DOI: <a href="https://dx.doi.org/10.31219/osf.io/qvtke" alt="10.31219/osf.io/qvtke" target="_blank">10.31219/osf.io/qvtke </a>
-                         )
-                         
-                    </li>
-		    <br>
-                
-                    <li> 
-                        19th April, 2019 - 
-                       
-                        <a href="../files/JBP_SCRIPTS/JBP_000.pdf" alt="MLCC SXC Week 2" target="_blank"> 
-                            
-                                <img src="../img/icons/pdf.png" height="30px" width="30px">
-                            
-                            MLCC SXC Week 2 
-                        </a>
-                         
-                         
-                    </li>
-		    <br>
-                
-                </ul>
-               
-        </div >
-    </div >
-</div >
+    /* INTRO TEXT */
+    .intro-text {
+        text-align: center;
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+        color: var(--text-color);
+        font-style: italic;
+    }
 
+    /* GRID LAYOUT */
+    .script-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
 
+    /* SCRIPT CARD */
+    .script-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .script-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border-color: var(--accent-color);
+    }
+
+    /* Date Badge */
+    .script-date {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.75rem;
+        color: var(--meta-color);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Main Link (PDF) */
+    .script-link {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--text-color);
+        text-decoration: none;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 15px;
+        flex-grow: 1; /* Push meta to bottom */
+    }
+
+    .script-link i {
+        color: #e74c3c; /* PDF Red Color */
+        font-size: 1.5rem;
+        margin-top: 2px;
+    }
+
+    .script-link:hover {
+        color: var(--accent-color);
+        text-decoration: none;
+    }
+
+    /* Meta Links (DOI/URL) */
+    .script-meta {
+        border-top: 1px solid var(--card-border);
+        padding-top: 12px;
+        font-size: 0.85rem;
+        font-family: 'Poppins', sans-serif;
+        color: var(--meta-color);
+    }
+
+    .script-meta a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .script-meta a:hover {
+        text-decoration: underline;
+    }
+
+</style>
+
+<div class="blog-container">
+
+    <header class="script-header">
+        <h1 class="script-title">JBP Scripts</h1>
+        
+        <div class="tag-container">
+            <span class="tag-pill tag-orangered">PDFs</span>
+            <span class="tag-pill tag-blue">Writings</span>
+            <span class="tag-pill tag-green">Assignments</span>
+            <span class="tag-pill tag-yellow">Mini Projects</span>
+            <span class="tag-pill tag-orange">Latex</span>
+        </div>
+    </header>
+
+    <div class="intro-text">
+        This page will have PDF's of all the writings that I will do in leisure time! Style inspired by Edsger Wybe Dijkstra's <em>EWD</em> scripts.
+    </div>
+
+    <div class="script-grid">
+
+        
+            <div class="script-card">
+                
+                <div class="script-date">11-06-2021</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_043_Thesis_Sat_term_project.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Segmentation of satellite imagery - Term Project</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">11-02-2021</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_042_Mrinmay_Proposal.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Generating ASCII art from images via Unsupervised Learning</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">11-12-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_041_Inception.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>A note on Inception the movie</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">25-04-2021</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_040_Sat_pres.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Segmentation of Satellite Imagery</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">17-12-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_039_VT_Thesis.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Art should entertain and educate (Thanks Seshadri)</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">2019</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_038_39387.jpg" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Eisamay (Hall of fame)</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">2015</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_037_TTIS_eok_2015.jpg" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Essence of Knowledge, 2015, TTIS article (Hall of fame)</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">2019</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_036_voyage_2018.jpg" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Moulding my childhood</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">2019</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_035_vol3_xcryptus.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>New Approach to generate, regenerate, encode and compress 3D structures using complex functions (short version of paper)</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">2018</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_034_vol2_xcryptus.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Basics of Machine Learning</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">17-02-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_033_2002.05886.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>How to cluster nearest unique nodes from different classes using JJCluster in Wisp application?</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">12-01-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_032_2001.11302.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>A Deeper Look into Hybrid Images</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">12-02-2018</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_031_CAPTCHA.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Deceiving Computers in Reverse Turing Test through Deep Learning</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">12-02-2018</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_030_173-IJCSE-05793.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Real Time Object Detection Can be Embedded on Low Powered Devices</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">12-09-2018</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_029_V6I10-0031.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Botnets - A constant threat to cyberspace</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">31-12-2018</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_028_169-IJCSE-05473.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>New approach to Generate, Re-Generate, Encode, and Compress 3D structures using polynomial equations</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">28-11-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_027.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Write a brief note on the Rashomon effect based on the Japanese movie Rashomon. How do you relate it to the contemporary world and your personal life? How do you equip yourself to deal with this effect?</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">29-10-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_024.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>A note on "The Alchemist" by Paulo Coelho</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">13-09-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_023.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Kungfu Panda as a motivational movie</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">02-09-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_022.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>English as a global language for communication</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">26-06-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_021.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>CAPTCHA Beamer Slides</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">26-06-2020 - [<a href="https://youtu.be/jgivEfiu-rM" alt="yt-vid" target="_blank"> youtube video </a>]</div>
+
+                <a href="https://docs.google.com/presentation/d/e/2PACX-1vQQr-p8SVF6rdC3zWQs_Abw6kaK3zISQd9P1MinzZQxC30iPEGkRrACIUm4d0AymVaUQTBhjNe5lyyM/pub?start=false&loop=false&delayms=3000#slide=id.gc6f90357f_0_0" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Oral CV Presentation</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">25-06-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_019.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Assignment - 5 (CC)</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">21-06-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_018.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Assignment - 4 (CC)</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">18-06-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_017.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Assignment - 3 (CC)</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">06-06-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_016.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Assignment - 2 (CC)</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/10.31219/osf.io/89c64" target="_blank">10.31219/osf.io/89c64</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">22-05-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_015.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Assignment - 1 (CC)</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/10.31219/osf.io/gyk67" target="_blank">10.31219/osf.io/gyk67</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">18-05-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_014.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Implementing some of the Advanced Computer Vision Algorithms</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/None" target="_blank">None</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">15-05-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_013.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Camera Calibration and Fundamental Matrix Estimation with RANSAC</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-external-link-alt"></i> URL: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3619887" target="_blank">SSRN manuscript</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">02-05-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_012.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Image stitching and Disparity</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">26-04-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_011.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Implementing my own Cam-Scanner</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/10.31219/osf.io/q832u" target="_blank">10.31219/osf.io/q832u</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">04-04-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_010.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Detecting features via Modified Harris Corners and matching them through SIFT</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/10.31219/osf.io/j3g9w" target="_blank">10.31219/osf.io/j3g9w</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">11-03-2020</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_009.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Traditional Lines and Circles detector</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/10.31219/osf.io/sf4ye" target="_blank">10.31219/osf.io/sf4ye</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">20-02-2020</div>
+
+                <a href="../files/notes/dbms_as1.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>ER diagram</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">28-06-2019</div>
+
+                <a href="../files/notes/note_03.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>A note on Binary Relations</span>
+                </a>
+
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">16-11-2019</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_008.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Playing a class of Game using CNN with a Focus on Runner Games</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/10.31219/osf.io/d34pu" target="_blank">10.31219/osf.io/d34pu</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">08-11-2019</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_007.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Summary of Ch - 1 from India and her Problems</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/10.31219/osf.io/j9bhv" target="_blank">10.31219/osf.io/j9bhv</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">04-11-2019</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_006.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>How to cluster nearest unique nodes from different classes using JJCluster in Wisp application?</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/10.31219/osf.io/32fkd" target="_blank">10.31219/osf.io/32fkd</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">26-10-2019</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_005.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Reinforcement Learning</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/10.31219/osf.io/dz6sx" target="_blank">10.31219/osf.io/dz6sx</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">27-07-2019</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_004.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Wisp - A preference based location finder application</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/10.31219/osf.io/y5hk9" target="_blank">10.31219/osf.io/y5hk9</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">2018</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_003.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Does exposed JSON data make paid e-songs vulnerable?</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/10.31219/osf.io/sxenh" target="_blank">10.31219/osf.io/sxenh</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">27th Aug, 2019</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_002.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Designing of search agents using Pacman</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/10.31219/osf.io/rnsy6" target="_blank">10.31219/osf.io/rnsy6</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">11th Aug, 2019</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_001.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Politics of Education in India</span>
+                </a>
+
+                
+                    <div class="script-meta">
+                        <i class="fas fa-link"></i> DOI: <a href="https://dx.doi.org/10.31219/osf.io/qvtke" target="_blank">10.31219/osf.io/qvtke</a>
+                    </div>
+                
+
+            </div>
+        
+            <div class="script-card">
+                
+                <div class="script-date">19th April, 2019</div>
+
+                <a href="../files/JBP_SCRIPTS/JBP_000.pdf" target="_blank" class="script-link">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>MLCC SXC Week 2</span>
+                </a>
+
+                
+
+            </div>
+        
+
+    </div>
+</div>
 
       <br><br>
       

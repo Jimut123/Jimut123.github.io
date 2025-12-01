@@ -420,75 +420,213 @@
     <div align="center">  
       <br><br>
       
-      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+      <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<style>
+    /* VARIABLES */
+    :root {
+        /* Light Mode */
+        --background-color: #ffffff;
+        --text-color: #1a202c;
+        --accent-color: #2b6cb0; /* Blue accent for tech */
+        --game-icon-color: #ff4500; /* Orange for gaming vibe */
+        
+        --card-bg: rgba(255, 255, 255, 0.7);
+        --card-border: rgba(0, 0, 0, 0.1);
+        --card-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
 
-<br>
+    [data-theme="dark"] {
+        /* Dark Mode - Pitch Black Fix */
+        --background-color: #000000 !important;
+        --text-color: #e0e0e0 !important;
+        --accent-color: #63b3ed;
+        
+        --card-bg: rgba(30, 30, 30, 0.7);
+        --card-border: rgba(255, 255, 255, 0.1);
+    }
 
-<h1>
-    <b id="heading-font">  My Games</b>
-</h1>
+    /* GLOBAL SETTINGS */
+    body {
+        background-color: var(--background-color); 
+        color: var(--text-color);
+        font-family: 'Cardo', serif; 
+        line-height: 1.8;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-<span class="keywords-orangered"> &nbsp; 2D Games &nbsp; </span>
-&nbsp;&nbsp;
-<span class="keywords-blue"> &nbsp; 3D Games  &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-green">&nbsp; Unity &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-yellow">&nbsp; Javascript &nbsp;</span>
-&nbsp;&nbsp;
+    /* CONTAINER */
+    .blog-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px 100px 20px;
+    }
 
+    /* HEADER */
+    .game-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
 
+    .game-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        color: var(--text-color);
+    }
 
-<div id="pad-container">
-    <div  align="center" id="exp-font">
-            <div class="container" align="justify">
+    /* PILL TAGS */
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+        font-family: 'Poppins', sans-serif;
+    }
 
-                These are the games developed by me using Unity3D <a id="bold_id">(please wait patiently while the game loads)</a> and JS. 
-                These are mostly compiled to WEBGL framework for HTML. You can play these games
-                in a PC by using web browser online under the same domain.
-                <br>
-                <br>
-                <ul>
-                    <li> 
-                        <a href="../games/SuperSpartyBrothers/index.html" alt="SuperSpartyBrothers" target="_blank"> 
-                            SuperSpartyBrothers
-                        </a>
-                    </li>
-                    <li> 
-                        <a href="../games/BoxShooter2/index.html" alt="box shooter 2" target="_blank"> 
-                            Box Shooter 2
-                        </a>
-                    </li>
-                    <li> 
-                        <a href="../games/Breakout2D/mdn_breakout.html" alt="Breakout2D" target="_blank"> 
-                            Breakout 2D
-                        </a>
+    .tag-pill {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 50px;
+        border: 1px solid;
+        background: transparent;
+    }
 
-                    </li>
+    .tag-orangered { color: #ff4500; border-color: #ff4500; }
+    .tag-blue { color: #0076f4; border-color: #0076f4; }
+    .tag-green { color: #18a236; border-color: #18a236; }
+    .tag-yellow { color: #d4af37; border-color: #d4af37; }
 
-                    <li> 
-                        <a href="../games/JumpAndRoll2D/index.html" alt="JumpAndRoll2D" target="_blank"> 
-                            JumpAndRoll2D
-                        </a>
-                    </li>
-                    <li> 
-                        <a href="../games/RollerMadness2/index.html" alt="RollerMadness2" target="_blank"> 
-                            RollerMadness2
-                        </a>
-                    </li>
-                    <li> 
-                        <a href="../games/pong_classic/index.html" alt="Classic Pong game" target="_blank"> 
-                            Classic Pong Game in JS-HTML
-                        </a>
-                    </li>
-                </ul>
-               
-            </div >
-        </div >
-    </div >
-    
+    /* CONTENT TEXT */
+    .intro-text {
+        text-align: justify;
+        font-size: 1.1rem; 
+        margin-bottom: 40px;
+    }
 
+    .intro-text a#bold_id {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        color: var(--accent-color);
+        font-size: 0.9rem;
+    }
+
+    /* GAME GRID SYSTEM */
+    .game-list-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    /* GAME CARD */
+    .game-link-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+        text-decoration: none !important;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .game-link-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border-color: var(--game-icon-color);
+    }
+
+    /* Icon Style */
+    .game-icon {
+        font-size: 2rem;
+        color: var(--game-icon-color);
+        margin-bottom: 15px;
+        transition: transform 0.2s;
+    }
+
+    .game-link-card:hover .game-icon {
+        transform: scale(1.2) rotate(-10deg);
+    }
+
+    /* Text Style */
+    .game-name {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--text-color);
+    }
+
+</style>
+
+<div class="blog-container">
+
+    <header class="game-header">
+        <h1 class="game-title">My Games</h1>
+        
+        <div class="tag-container">
+            <span class="tag-pill tag-orangered">2D Games</span>
+            <span class="tag-pill tag-blue">3D Games</span>
+            <span class="tag-pill tag-green">Unity</span>
+            <span class="tag-pill tag-yellow">Javascript</span>
+        </div>
+    </header>
+
+    <div class="intro-text">
+        These are the games developed by me using Unity3D <a id="bold_id">(please wait patiently while the game loads)</a> and JS. 
+        These are mostly compiled to WEBGL framework for HTML. You can play these games
+        in a PC by using web browser online under the same domain.
+    </div>
+
+    <div class="game-list-grid">
+        
+        <a href="../games/SuperSpartyBrothers/index.html" target="_blank" class="game-link-card">
+            <i class="fas fa-gamepad game-icon"></i>
+            <span class="game-name">SuperSpartyBrothers</span>
+        </a>
+
+        <a href="../games/BoxShooter2/index.html" target="_blank" class="game-link-card">
+            <i class="fas fa-bullseye game-icon"></i>
+            <span class="game-name">Box Shooter 2</span>
+        </a>
+
+        <a href="../games/Breakout2D/mdn_breakout.html" target="_blank" class="game-link-card">
+            <i class="fas fa-th game-icon"></i>
+            <span class="game-name">Breakout 2D</span>
+        </a>
+
+        <a href="../games/JumpAndRoll2D/index.html" target="_blank" class="game-link-card">
+            <i class="fas fa-running game-icon"></i>
+            <span class="game-name">JumpAndRoll2D</span>
+        </a>
+
+        <a href="../games/RollerMadness2/index.html" target="_blank" class="game-link-card">
+            <i class="fas fa-bowling-ball game-icon"></i>
+            <span class="game-name">RollerMadness2</span>
+        </a>
+
+        <a href="../games/pong_classic/index.html" target="_blank" class="game-link-card">
+            <i class="fas fa-table-tennis game-icon"></i>
+            <span class="game-name">Classic Pong Game in JS-HTML</span>
+        </a>
+
+    </div>
+
+</div>
 
       <br><br>
       

@@ -420,31 +420,157 @@
     <div align="center">  
       <br><br>
       
-      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+      <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<style>
+    /* VARIABLES */
+    :root {
+        /* Light Mode */
+        --background-color: #ffffff;
+        --text-color: #1a202c;
+        --accent-color: #2b6cb0;
+        --card-bg: rgba(255, 255, 255, 0.7);
+        --card-border: rgba(0, 0, 0, 0.1);
+        --card-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        --meta-color: #666;
+    }
 
-<br>
+    [data-theme="dark"] {
+        /* Dark Mode - Pitch Black Fix */
+        --background-color: #000000 !important;
+        --text-color: #e0e0e0 !important;
+        --accent-color: #63b3ed;
+        --card-bg: rgba(30, 30, 30, 0.7);
+        --card-border: rgba(255, 255, 255, 0.1);
+        --meta-color: #aaa;
+    }
 
-<h1>
-    <b id="heading-font"> Old Stuffs from Codepen </b>
-    
-</h1>
+    /* GLOBAL SETTINGS */
+    body {
+        background-color: var(--background-color); 
+        color: var(--text-color);
+        font-family: 'Cardo', serif; 
+        line-height: 1.8;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
+    /* CONTAINER */
+    .blog-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px 100px 20px;
+    }
 
-<div id="pad-container">
-    <div  align="center" id="exp-font">
-        <div class="container" align="justify">
+    /* HEADER */
+    .page-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
 
-            <ul>
+    .page-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        color: var(--text-color);
+    }
 
-                <li> June 30, 2017 - <a href="../blogs/old_stuffs/owl_city/owl_city.html" target="_blank"> Owl City - Adam Young</a></li>.
-                <li> June 24, 2016 - <a href="../blogs/old_stuffs/create_img_js.html" target="_blank"> CREATING AN IMAGE FROM SCRATCH </a></li>.
-                <li> June 24, 2016 - <a href="../blogs/old_stuffs/steganography.html" target="_blank"> STEGANOGRAPHY</a></li>.
-                <li> June 24, 2016 - <a href="../blogs/old_stuffs/modd_img_js.html" target="_blank"> MODIFYING AN IMAGE</a></li>.
-            </ul>
+    /* GRID LAYOUT */
+    .codepen-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
 
-        </div>
+    /* CARD STYLE */
+    .codepen-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .codepen-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        border-color: var(--accent-color);
+    }
+
+    /* Icon */
+    .card-icon {
+        font-size: 2rem;
+        color: var(--accent-color);
+        margin-bottom: 15px;
+    }
+
+    /* Text */
+    .card-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--text-color);
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+    .card-date {
+        font-family: 'Cardo', serif;
+        font-size: 0.9rem;
+        color: var(--meta-color);
+        margin-top: auto; /* Push to bottom */
+        font-style: italic;
+        border-top: 1px solid var(--card-border);
+        padding-top: 10px;
+        margin-top: 15px;
+    }
+
+</style>
+
+<div class="blog-container">
+
+    <header class="page-header">
+        <h1 class="page-title">Old Stuffs from Codepen</h1>
+    </header>
+
+    <div class="codepen-grid">
+
+        <a href="../blogs/old_stuffs/owl_city/owl_city.html" target="_blank" class="codepen-card">
+            <i class="fab fa-codepen card-icon"></i>
+            <span class="card-title">Owl City - Adam Young</span>
+            <span class="card-date">June 30, 2017</span>
+        </a>
+
+        <a href="../blogs/old_stuffs/create_img_js.html" target="_blank" class="codepen-card">
+            <i class="fas fa-image card-icon"></i>
+            <span class="card-title">CREATING AN IMAGE FROM SCRATCH</span>
+            <span class="card-date">June 24, 2016</span>
+        </a>
+
+        <a href="../blogs/old_stuffs/steganography.html" target="_blank" class="codepen-card">
+            <i class="fas fa-user-secret card-icon"></i>
+            <span class="card-title">STEGANOGRAPHY</span>
+            <span class="card-date">June 24, 2016</span>
+        </a>
+
+        <a href="../blogs/old_stuffs/modd_img_js.html" target="_blank" class="codepen-card">
+            <i class="fas fa-edit card-icon"></i>
+            <span class="card-title">MODIFYING AN IMAGE</span>
+            <span class="card-date">June 24, 2016</span>
+        </a>
+
     </div>
+
 </div>
 
       <br><br>

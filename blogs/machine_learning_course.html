@@ -420,185 +420,337 @@
     <div align="center">  
       <br><br>
       
-      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+      <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<style>
+    /* VARIABLES */
+    :root {
+        /* Light Mode Defaults */
+        --background-color: #ffffff;
+        --ml-accent: #2b6cb0;
+        --card-bg: rgba(255, 255, 255, 0.7);
+        --card-border: rgba(255, 255, 255, 0.6);
+        --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+        --text-color: #333;
+    }
 
-<br>
+    [data-theme="dark"] {
+        /* Dark Mode Overrides - FIXED */
+        --background-color: #000000 !important; /* Pitch Black */
+        --card-bg: rgba(30, 30, 30, 0.7);
+        --card-border: rgba(255, 255, 255, 0.1);
+        --text-color: #e0e0e0;
+        --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    }
 
-<h1>
-    <b id="heading-font"> Practical Machine Learning </b>
-</h1>
+    /* GLOBAL */
+    body {
+        font-family: 'Cardo', serif;
+        color: var(--text-color);
+        background-color: var(--background-color);
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-<span class="keywords-orangered"> &nbsp; Machine Learning &nbsp; </span>
-&nbsp;&nbsp;
-<span class="keywords-blue"> &nbsp; Deep Learning &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-green">&nbsp; Keras &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-yellow">&nbsp; Tensorflow &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-orange">&nbsp; Pytorch &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-deepblue">&nbsp; Notebooks &nbsp;</span> 
+    /* HEADER */
+    .ml-header {
+        text-align: center;
+        margin: 40px 0;
+    }
 
-<br>
+    .ml-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: var(--text-color);
+    }
+
+    /* TAGS */
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .tag-pill {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 5px 15px;
+        border-radius: 20px;
+        border: 1px solid;
+        background: transparent;
+        letter-spacing: 0.5px;
+    }
+
+    .tag-orangered { color: #ff4500; border-color: #ff4500; }
+    .tag-blue { color: #0076f4; border-color: #0076f4; }
+    .tag-green { color: #18a236; border-color: #18a236; }
+    .tag-yellow { color: #d4af37; border-color: #d4af37; }
+    .tag-orange { color: #ffa500; border-color: #ffa500; }
+    .tag-deepblue { color: #00008b; border-color: #00008b; }
+
+    /* INTRO TEXT */
+    .intro-text {
+        max-width: 800px;
+        margin: 0 auto 50px auto;
+        text-align: justify;
+        line-height: 1.6;
+        font-size: 1.1rem;
+        padding: 0 20px;
+        color: var(--text-color);
+    }
+
+    /* GRID SYSTEM */
+    .ml-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* NOTEBOOK CARD */
+    .ml-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .ml-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        border-color: var(--ml-accent);
+    }
+
+    /* Card Image */
+    .ml-card-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--card-border);
+    }
+
+    /* Card Body */
+    .ml-card-body {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ml-card-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        color: var(--text-color);
+    }
+
+    .ml-card-date {
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 10px;
+        font-style: italic;
+    }
+
+    .ml-card-text {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+        line-height: 1.5;
+        flex-grow: 1;
+    }
+
+    /* Card Footer Actions */
+    .ml-card-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: auto;
+    }
+
+    .tech-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 4px;
+        object-fit: contain;
+    }
+
+    /* Modern Button */
+    .btn-notebook {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.85rem;
+        padding: 6px 16px;
+        border: 1px solid var(--ml-accent);
+        color: var(--ml-accent);
+        background: transparent;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: all 0.2s;
+        display: inline-block;
+    }
+
+    .btn-notebook:hover {
+        background: var(--ml-accent);
+        color: #fff;
+        text-decoration: none;
+    }
+</style>
 
 <div id="pad-container">
-    <div align="center" id="exp-font">
-            <div class="container" align="justify">
-                Here I will share my notebooks which was made during Machine Learning Course. These are mainly focussed
-                on artificial data generation and fundamentals of Machine Learning. This is an ongoing blog site and I will
-                be updating this a lot. <br/><br/><br/>
+    
+    <header class="ml-header">
+        <h1 class="ml-title">Practical Machine Learning</h1>
+        
+        <div class="tag-container">
+            <span class="tag-pill tag-orangered">Machine Learning</span>
+            <span class="tag-pill tag-blue">Deep Learning</span>
+            <span class="tag-pill tag-green">Keras</span>
+            <span class="tag-pill tag-yellow">Tensorflow</span>
+            <span class="tag-pill tag-orange">Pytorch</span>
+            <span class="tag-pill tag-deepblue">Notebooks</span>
+        </div>
+    </header>
 
-
-                
-                <div class="row">
-		
-
-                    <div class="col-sm-4  top-buffer" align="center">
-
-                        <a href="ML/ColabTricks.html" target="_blank">
-                            <div class="card" style="width:320px">
-                              <img class="card-img-top" src="../blogs/blog_img/ML/colab_favicon.png" alt="Card image">
-                              <div class="card-body">
-                                <h4 class="card-title">0. Colab Tricks  </h4>
-                                <p class="card-text">Dated: 16.10.2020 ,Various Examples of tricks using Colab.</p>
-                                <img src="../blogs/blog_img/ML/keras_tf.jpg" width="40" height="40">
-                                <a href="ML/ColabTricks.html" class="btn btn-primary" target="_blank">See Notebook</a>
-                              </div>
-                            </div>
-                        </a>
-
-                    </div>
-
-                    <div class="col-sm-4  top-buffer" align="center">
-
-                        <a href="ML/LinearRegression-1.html" target="_blank">
-                            <div class="card" style="width:320px">
-                              <img class="card-img-top" src="../blogs/blog_img/ML/1_LinearRegression.png" alt="Card image">
-                              <div class="card-body">
-                                <h4 class="card-title">1. Linear Regression  </h4>
-                                <p class="card-text">Dated: 16.1.2020 ,Various Examples of Linear Regression using custom generated dataset tried.</p>
-                                <img src="../blogs/blog_img/ML/keras_tf.jpg" width="40" height="40">
-                                <a href="ML/LinearRegression-1.html" class="btn btn-primary" target="_blank">See Notebook</a>
-                              </div>
-                            </div>
-                        </a>
-
-                    </div>
-
-                    <div class="col-sm-4  top-buffer" align="center">
-                        <a href="ML/LogisticRegression-2.html" target="_blank">
-                            <div class="card" style="width:320px">
-                              <img class="card-img-top" src="../blogs/blog_img/ML/2_LogisticRegression.png" alt="Card image">
-                              <div class="card-body">
-                                <h4 class="card-title"> 2. Logistic Regression </h4>
-                                <p class="card-text">Dated: 26.1.2020, Various Examples of Logistic Regression using custom generated dataset tried.</p>
-                                <img src="../blogs/blog_img/ML/keras_tf.jpg" width="40" height="40">
-                                <a href="ML/LogisticRegression-2.html" class="btn btn-primary" target="_blank">See Notebook</a>
-                              </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4  top-buffer " align="center">
-                        <a href="ML/PolynomialRegressionLASSO-3.html" target="_blank">
-                            <div class="card" style="width:320px">
-                              <img class="card-img-top" src="../blogs/blog_img/ML/3_PolyLasso.png" alt="Card image">
-                              <div class="card-body">
-                                <h4 class="card-title">3. Polynomial Regression and LASSO </h4>
-                                <p class="card-text"> Dated: 6.2.2020, Regularization using LASSO used to reduce overfitting. </p>
-                                <img src="../blogs/blog_img/ML/keras_tf.jpg" width="40" height="40">
-                                <a href="ML/PolynomialRegressionLASSO-3.html" class="btn btn-primary" target="_blank">See Notebook</a>
-                              </div>
-                            </div>
-                        </a>
-                    </div>
-
-
-                     <div class="col-sm-4 top-buffer" align="center">
-                        <a href="ML/kNN-4.html" target="_blank">
-                            <div class="card" style="width:320px">
-                              <img class="card-img-top" src="../blogs/blog_img/ML/4_knn.png" alt="Card image">
-                              <div class="card-body">
-                                <h4 class="card-title">4. K-Nearest Neighbour </h4>
-                                <p class="card-text"> Dated: 16.2.2020, A taste of Clustering Algorithm.</p>
-                                <img src="../blogs/blog_img/ML/keras_tf.jpg" width="40" height="40">
-                                <a href="ML/kNN-4.html" class="btn btn-primary" target="_blank">See Notebook</a>
-                              </div>
-                            </div>
-                        </a>
-                    </div>
-
-                     <div class="col-sm-4 top-buffer" align="center">
-                        <a href="ML/nnKeras-5.html" target="_blank">
-                            <div class="card" style="width:320px">
-                              <img class="card-img-top" src="../blogs/blog_img/ML/5_nn.png" alt="Card image">
-                              <div class="card-body">
-                                <h4 class="card-title">5. Neural Networks using Keras </h4>
-                                <p class="card-text"> Dated: 16.3.2020, Various experiments using Keras</p>
-                                <img src="../blogs/blog_img/ML/keras_tf.jpg" width="40" height="40">
-                                <a href="ML/nnKeras-5.html" class="btn btn-primary" target="_blank">See Notebook</a>
-                              </div>
-                            </div>
-                        </a>
-                    </div>
- 
-                     <div class="col-sm-4 top-buffer" align="center">
-                        <a href="ML/CNN_TransferLearning_6.html" target="_blank">
-                            <div class="card" style="width:320px">
-                              <img class="card-img-top" src="../blogs/blog_img/ML/6_tl.png" alt="Card image">
-                              <div class="card-body">
-                                <h4 class="card-title">6. CNN Transfer Learning </h4>
-                                <p class="card-text"> Dated: 17.4.2020, First taste of Transfer Learning using Keras.</p>
-                                <img src="../blogs/blog_img/ML/keras_tf.jpg" width="40" height="40">
-                                <a href="ML/CNN_TransferLearning_6.html" class="btn btn-primary" target="_blank">See Notebook</a>
-                              </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 top-buffer" align="center">
-                      <a href="ML/CNN_TransferLearning_6.html" target="_blank">
-                          <div class="card" style="width:320px">
-                            <img class="card-img-top" src="../blogs/blog_img/ML/7_autoencoders.png" alt="Card image">
-                            <div class="card-body">
-                              <h4 class="card-title">7. Autoencoders and its' variants </h4>
-                              <p class="card-text"> Dated: 11.10.2020, Denoising, Reconstructing, and other autoencoders.</p>
-                              <img src="../blogs/blog_img/ML/keras_tf.jpg" width="40" height="40">
-                              <a href="ML/ML2_Assignment_1_Autoencoders.html" class="btn btn-primary" target="_blank">See Notebook</a>
-                              <br/>
-                              <img src="../blogs/blog_img/ML/pytorch.jpg" width="40" height="40"> 
-                              <a href="ML/ML2_Pytorch_Autoencoder.html" class="btn btn-primary" target="_blank">See Notebook</a>
-                            </div>
-                          </div>
-                      </a>
-                  </div>
-
-                  <div class="col-sm-4 top-buffer" align="center">
-                    <a href="ML/ML2_Assignment_2_GANS.html" target="_blank">
-                        <div class="card" style="width:320px">
-                          <img class="card-img-top" src="../blogs/blog_img/ML/8_FM_GANS.png" alt="Card image">
-                          <div class="card-body">
-                            <h4 class="card-title">8. DCGAN </h4>
-                            <p class="card-text"> Dated: 06.11.2020 DCGAN on FASHION MNIST dataset.</p>
-                            <img src="../blogs/blog_img/ML/keras_tf.jpg" width="40" height="40">
-                            <a href="ML/ML2_Assignment_2_GANS.html" class="btn btn-primary" target="_blank">See Notebook</a>
-                            <br/>
-                          </div>
-                        </div>
-                    </a>
-                </div>
-
-
-               </div>
-
-
-            </div>
+    <div class="intro-text">
+        <p>Here I will share my notebooks which were made during my Machine Learning Course. These are mainly focused on artificial data generation and the fundamentals of Machine Learning. This is an ongoing blog site and I will be updating this frequently.</p>
     </div>
-</div>
 
+    <div class="ml-grid">
 
+        <div class="ml-card">
+            <img src="../blogs/blog_img/ML/colab_favicon.png" class="ml-card-img" alt="Colab">
+            <div class="ml-card-body">
+                <div class="ml-card-title">0. Colab Tricks</div>
+                <div class="ml-card-date">16.10.2020</div>
+                <p class="ml-card-text">Various examples of useful tricks using Google Colab.</p>
+                <div class="ml-card-actions">
+                    <img src="../blogs/blog_img/ML/keras_tf.jpg" class="tech-icon">
+                    <a href="ML/ColabTricks.html" class="btn-notebook" target="_blank">View Notebook</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ml-card">
+            <img src="../blogs/blog_img/ML/1_LinearRegression.png" class="ml-card-img" alt="Linear Regression">
+            <div class="ml-card-body">
+                <div class="ml-card-title">1. Linear Regression</div>
+                <div class="ml-card-date">16.1.2020</div>
+                <p class="ml-card-text">Various experiments with Linear Regression using custom generated datasets.</p>
+                <div class="ml-card-actions">
+                    <img src="../blogs/blog_img/ML/keras_tf.jpg" class="tech-icon">
+                    <a href="ML/LinearRegression-1.html" class="btn-notebook" target="_blank">View Notebook</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ml-card">
+            <img src="../blogs/blog_img/ML/2_LogisticRegression.png" class="ml-card-img" alt="Logistic Regression">
+            <div class="ml-card-body">
+                <div class="ml-card-title">2. Logistic Regression</div>
+                <div class="ml-card-date">26.1.2020</div>
+                <p class="ml-card-text">Examples of Logistic Regression on custom datasets.</p>
+                <div class="ml-card-actions">
+                    <img src="../blogs/blog_img/ML/keras_tf.jpg" class="tech-icon">
+                    <a href="ML/LogisticRegression-2.html" class="btn-notebook" target="_blank">View Notebook</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ml-card">
+            <img src="../blogs/blog_img/ML/3_PolyLasso.png" class="ml-card-img" alt="Poly Lasso">
+            <div class="ml-card-body">
+                <div class="ml-card-title">3. Polynomial Regression & LASSO</div>
+                <div class="ml-card-date">6.2.2020</div>
+                <p class="ml-card-text">Regularization using LASSO to reduce overfitting in polynomial models.</p>
+                <div class="ml-card-actions">
+                    <img src="../blogs/blog_img/ML/keras_tf.jpg" class="tech-icon">
+                    <a href="ML/PolynomialRegressionLASSO-3.html" class="btn-notebook" target="_blank">View Notebook</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ml-card">
+            <img src="../blogs/blog_img/ML/4_knn.png" class="ml-card-img" alt="KNN">
+            <div class="ml-card-body">
+                <div class="ml-card-title">4. K-Nearest Neighbour</div>
+                <div class="ml-card-date">16.2.2020</div>
+                <p class="ml-card-text">A taste of clustering algorithms using KNN.</p>
+                <div class="ml-card-actions">
+                    <img src="../blogs/blog_img/ML/keras_tf.jpg" class="tech-icon">
+                    <a href="ML/kNN-4.html" class="btn-notebook" target="_blank">View Notebook</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ml-card">
+            <img src="../blogs/blog_img/ML/5_nn.png" class="ml-card-img" alt="NN">
+            <div class="ml-card-body">
+                <div class="ml-card-title">5. Neural Networks using Keras</div>
+                <div class="ml-card-date">16.3.2020</div>
+                <p class="ml-card-text">Various foundational neural network experiments using Keras.</p>
+                <div class="ml-card-actions">
+                    <img src="../blogs/blog_img/ML/keras_tf.jpg" class="tech-icon">
+                    <a href="ML/nnKeras-5.html" class="btn-notebook" target="_blank">View Notebook</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ml-card">
+            <img src="../blogs/blog_img/ML/6_tl.png" class="ml-card-img" alt="Transfer Learning">
+            <div class="ml-card-body">
+                <div class="ml-card-title">6. CNN Transfer Learning</div>
+                <div class="ml-card-date">17.4.2020</div>
+                <p class="ml-card-text">First taste of Transfer Learning using Keras models.</p>
+                <div class="ml-card-actions">
+                    <img src="../blogs/blog_img/ML/keras_tf.jpg" class="tech-icon">
+                    <a href="ML/CNN_TransferLearning_6.html" class="btn-notebook" target="_blank">View Notebook</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ml-card">
+            <img src="../blogs/blog_img/ML/7_autoencoders.png" class="ml-card-img" alt="Autoencoders">
+            <div class="ml-card-body">
+                <div class="ml-card-title">7. Autoencoders & Variants</div>
+                <div class="ml-card-date">11.10.2020</div>
+                <p class="ml-card-text">Denoising, Reconstructing, and other Autoencoder architectures.</p>
+                <div class="ml-card-actions" style="gap: 10px;">
+                    <img src="../blogs/blog_img/ML/keras_tf.jpg" class="tech-icon">
+                    <a href="ML/ML2_Assignment_1_Autoencoders.html" class="btn-notebook" target="_blank">Keras</a>
+                    <a href="ML/ML2_Pytorch_Autoencoder.html" class="btn-notebook" target="_blank">Pytorch</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ml-card">
+            <img src="../blogs/blog_img/ML/8_FM_GANS.png" class="ml-card-img" alt="DCGAN">
+            <div class="ml-card-body">
+                <div class="ml-card-title">8. DCGAN</div>
+                <div class="ml-card-date">06.11.2020</div>
+                <p class="ml-card-text">Deep Convolutional GANs on the FASHION MNIST dataset.</p>
+                <div class="ml-card-actions">
+                    <img src="../blogs/blog_img/ML/keras_tf.jpg" class="tech-icon">
+                    <a href="ML/ML2_Assignment_2_GANS.html" class="btn-notebook" target="_blank">View Notebook</a>
+                </div>
+            </div>
+        </div>
+
+    </div> </div>
 
       <br><br>
       

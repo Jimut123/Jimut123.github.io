@@ -426,252 +426,572 @@
     <b id="heading-font"> BLOGS </b>
 </h1>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&amp;family=Cardo:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+
 <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
 
-<link href="https://fonts.googleapis.com/css?family=Cardo&amp;display=swap" rel="stylesheet" />
+<style>
+    /* --- VARIABLES --- */
+    :root {
+        --blog-accent: #2b6cb0;
+        --glow-color: rgba(43, 108, 176, 0.3);
+        --icon-bg: #ffffff;
+        --text-color: #333;
+        --card-bg: rgba(255, 255, 255, 0.6);
+        --card-border: rgba(255, 255, 255, 0.5);
+    }
 
-<h6 id="front-page-font"> My blog should not be taken to reflect the views of any organization I'm affiliated with.  </h6>
-<p><br /><br /></p>
+    [data-theme="dark"] {
+        --blog-accent: #63b3ed;
+        --glow-color: rgba(99, 179, 237, 0.6); /* Brighter glow in dark mode */
+        --icon-bg: #ffffff; /* Keep icons on white so black text/logos show up */
+        --text-color: #f0f0f0;
+        --card-bg: rgba(30, 30, 30, 0.6);
+        --card-border: rgba(255, 255, 255, 0.1);
+    }
+
+    /* --- TYPOGRAPHY --- */
+    #front-page-font {
+        font-family: 'Cardo', serif;
+        font-style: italic;
+        color: #777;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* --- BLOG LIST CONTAINER --- */
+    .blog-list {
+        list-style: none;
+        padding: 0;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    /* --- THE BLOG CARD (Sexy & Modern) --- */
+    .blog-item {
+        display: flex;
+        align-items: center;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 15px 25px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none; /* Remove default link underline */
+        color: var(--text-color);
+    }
+
+    .blog-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: var(--text-color);
+    }
+
+    /* --- THE GLOWING ICON ORB --- */
+    .icon-orb {
+        width: 45px;
+        height: 45px;
+        background: var(--icon-bg);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        flex-shrink: 0;
+        
+        /* The Glow Magic */
+        box-shadow: 0 0 15px var(--glow-color);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Intensify glow on hover */
+    .blog-item:hover .icon-orb {
+        box-shadow: 0 0 25px var(--blog-accent);
+        transform: scale(1.1) rotate(5deg);
+    }
+
+    .icon-orb img {
+        height: 24px;
+        width: 24px;
+        object-fit: contain;
+    }
+
+    /* --- TEXT STYLING --- */
+    .blog-date {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.85rem;
+        color: #888;
+        margin-right: 15px;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    .blog-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-color);
+        transition: color 0.2s;
+    }
+
+    .blog-item:hover .blog-title {
+        color: var(--blog-accent);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+        .blog-item {
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+        .icon-orb {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+        .blog-date {
+            margin-right: 0;
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+        }
+    }
+</style>
 
 <div id="pad-container">
-    <div align="center" id="exp-font">
-            <div class="container" align="justify">
-                
-                <ul>
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/space_bot.png" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         27 June 2025 -
-                             <a href="../blogs/machines_and_consciousness.html" target="_blank"> Are We Becoming Machines, or Are Machines Becoming Us? </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/question.svg" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         21 Sept 2024 -
-                             <a href="../blogs/academia_or_corp.html" target="_blank"> What to choose - Academia or Corporate? </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/iitb_logo.png" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         23 Jan 2024 -
-                             <a href="../blogs/IITB_OLD" target="_blank"> Old IIT Bombay Pictures </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/arrow_icons.png" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         1 Dec 2023 -
-                             <a href="../blogs/nostalgic_games.html" target="_blank"> Nostalgic Games </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/dreams.png" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         7 July 2023 -
-                             <a href="../blogs/dreams.html" target="_blank"> Dreams </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/courses.png" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         11 December 2022 -
-                             <a href="../blogs/iitb_courses.html" target="_blank"> My AI/ML track in IIT Bombay </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/anime.jpg" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         18 April 2022 -
-                             <a href="../blogs/anime_op.html" target="_blank"> My favourite Anime Characters from every anime I have watched </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/pytorch_logo.png" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         21 April 2021 -
-                             <a href="../blogs/MNIST_rank_17.html" target="_blank"> Let's make a MNIST classifier over 99.57% accuracy using Pytorch </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/death.jpg" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         20 Sept 2020 -
-                             <a href="../blogs/crazyTheorySimulation.html" target="_blank"> Crazy Creepy Theories </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/ml.png" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         22 July 2020 -
-                             <a href="../blogs/machine_learning_course.html" target="_blank"> Practical Machine Learning </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/microsoft.png" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         22 December 2019 -
-                             <a href="../blogs/hatingmicrosoft.html" target="_blank"> Why I prefer Linux over Windows O.S. (opinionated view) </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/watson_logo.png" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         22 December 2019 -
-                             <a href="../blogs/workingWithWatson.html" target="_blank"> Working with IBM Watson </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/graph.jpg" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         9 October 2019 -
-                             <a href="../blogs/jjc_wisp.html" target="_blank"> Visualizations generated by JJCluster (Jimut-Jisnoo Cluster) algorithm </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/cnn_ai.png" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         19 September 2019 -
-                             <a href="../blogs/cnn_games_ai.html" target="_blank"> Playing a class of games using CNN </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/blog.png" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         11 August 2019 -
-                             <a href="../blogs/JBP_Scripts.html" target="_blank"> JBP Scripts - My PDF Writings </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/math_notes.png" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         28 July 2019 -
-                             <a href="../blogs/binary_relation_note/note_03.html" target="_blank"> A note on Binary Relations </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="../img/icons/blogs/games.svg" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         13 June 2019 -
-                             <a href="../blogs/myGames.html" target="_blank"> My Games Link </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="./img/icons/blogs/algo.svg" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         4 June 2019 -
-                             <a href="../blogs/allPairs.html" target="_blank"> All Pairs Algorithm using C++ </a>
-                         
-                    </li>
-		    <br />
-                    
-                    
-                    <li>
-                        
-                            <img src="./img/icons/blogs/codepen_icon.png" alt="icon" height="30" width="30" /> 
-                        
-                         
-                         (Archived) June 2017 -
-                             <a href="../blogs/codepen.html" target="_blank"> Codepen Stuffs </a>
-                         
-                    </li>
-		    <br />
-                    
-                </ul>
-            </div>
-    </div>
-</div>
+    
+    <h6 id="front-page-font"> 
+        My blog should not be taken to reflect the views of any organization I'm affiliated with. 
+    </h6>
+    <br /><br />
 
+    <div class="container">
+        <ul class="blog-list">
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/machines_and_consciousness.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/space_bot.png" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">27 June 2025</span>
+                        
+
+                        <span class="blog-title">Are We Becoming Machines, or Are Machines Becoming Us?</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/academia_or_corp.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/question.svg" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">21 Sept 2024</span>
+                        
+
+                        <span class="blog-title">What to choose - Academia or Corporate?</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/IITB_OLD" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/iitb_logo.png" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">23 Jan 2024</span>
+                        
+
+                        <span class="blog-title">Old IIT Bombay Pictures</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/nostalgic_games.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/arrow_icons.png" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">1 Dec 2023</span>
+                        
+
+                        <span class="blog-title">Nostalgic Games</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/dreams.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/dreams.png" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">7 July 2023</span>
+                        
+
+                        <span class="blog-title">Dreams</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/iitb_courses.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/courses.png" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">11 December 2022</span>
+                        
+
+                        <span class="blog-title">My AI/ML track in IIT Bombay</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/anime_op.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/anime.jpg" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">18 April 2022</span>
+                        
+
+                        <span class="blog-title">My favourite Anime Characters from every anime I have watched</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/MNIST_rank_17.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/pytorch_logo.png" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">21 April 2021</span>
+                        
+
+                        <span class="blog-title">Let's make a MNIST classifier over 99.57% accuracy using Pytorch</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/crazyTheorySimulation.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/death.jpg" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">20 Sept 2020</span>
+                        
+
+                        <span class="blog-title">Crazy Creepy Theories</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/machine_learning_course.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/ml.png" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">22 July 2020</span>
+                        
+
+                        <span class="blog-title">Practical Machine Learning</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/hatingmicrosoft.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/microsoft.png" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">22 December 2019</span>
+                        
+
+                        <span class="blog-title">Why I prefer Linux over Windows O.S. (opinionated view)</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/workingWithWatson.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/watson_logo.png" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">22 December 2019</span>
+                        
+
+                        <span class="blog-title">Working with IBM Watson</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/jjc_wisp.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/graph.jpg" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">9 October 2019</span>
+                        
+
+                        <span class="blog-title">Visualizations generated by JJCluster (Jimut-Jisnoo Cluster) algorithm</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/cnn_games_ai.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/cnn_ai.png" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">19 September 2019</span>
+                        
+
+                        <span class="blog-title">Playing a class of games using CNN</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/JBP_Scripts.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/blog.png" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">11 August 2019</span>
+                        
+
+                        <span class="blog-title">JBP Scripts - My PDF Writings</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/binary_relation_note/note_03.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/math_notes.png" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">28 July 2019</span>
+                        
+
+                        <span class="blog-title">A note on Binary Relations</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/myGames.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="../img/icons/blogs/games.svg" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">13 June 2019</span>
+                        
+
+                        <span class="blog-title">My Games Link</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/allPairs.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="./img/icons/blogs/algo.svg" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">4 June 2019</span>
+                        
+
+                        <span class="blog-title">All Pairs Algorithm using C++</span>
+                    </a>
+                </li>
+
+                
+            
+            
+                
+                
+                <li>
+                    <a href="../blogs/codepen.html" target="_blank" class="blog-item">
+                        
+                        <div class="icon-orb">
+                            
+                                <img src="./img/icons/blogs/codepen_icon.png" alt="icon" /> 
+                            
+                        </div>
+
+                        
+                            <span class="blog-date">(Archived) June 2017</span>
+                        
+
+                        <span class="blog-title">Codepen Stuffs</span>
+                    </a>
+                </li>
+
+                
+            
+        </ul>
+    </div>
+
+</div>
 
 
       <br><br>

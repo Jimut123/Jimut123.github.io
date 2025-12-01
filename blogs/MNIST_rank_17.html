@@ -420,59 +420,202 @@
     <div align="center">  
       <br><br>
       
-      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+      <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<style>
+    /* VARIABLES */
+    :root {
+        /* Light Mode */
+        --background-color: #ffffff;
+        --text-color: #1a202c;
+        --accent-color: #2b6cb0;
+        --code-bg: #f5f5f5;
+        --console-bg: #1e1e1e; /* Dark background for console logs even in light mode for contrast */
+        --console-text: #ffffff;
+        --img-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
 
-<br>
+    [data-theme="dark"] {
+        /* Dark Mode */
+        --background-color: #000000 !important;
+        --text-color: #e0e0e0 !important;
+        --accent-color: #63b3ed;
+        --code-bg: #111111;
+    }
 
-<h1>
-    <b id="heading-font">  Let's make a MNIST classifier over 99.57% accuracy using Pytorch </b>
-</h1>
+    /* GLOBAL */
+    body {
+        background-color: var(--background-color); 
+        color: var(--text-color);
+        font-family: 'Cardo', serif; 
+        line-height: 1.8;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-<br>
-<span class="keywords-orangered"> &nbsp; MNIST &nbsp; </span>
-&nbsp;&nbsp;
-<span class="keywords-blue"> &nbsp; Deep Learning &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-green">&nbsp; Pytorch &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-yellow">&nbsp; Inner Ensemble &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-orange">&nbsp; Python3 &nbsp;</span>
-&nbsp;&nbsp;
+    /* CONTAINER */
+    .blog-container {
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 40px 20px 100px 20px;
+    }
 
+    /* HEADER */
+    .blog-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
 
-<!--http://hilite.me/-->
+    .blog-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        color: var(--text-color);
+    }
 
-<div id="pad-container">
-    <div  align="center" id="exp-font">
-            <div class="container" align="justify">
+    /* TAGS */
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-family: 'Poppins', sans-serif;
+    }
 
-                On 16 th October, 2020, I thought of using  Pytorch  to create a near SOTA 
-                classifier for the simplest Computer Vision dataset – MNIST, introduced 
-                by Yaan LeCun. Current state of the art is about <b> 99.84% </b> using 
-                <a href="https://arxiv.org/abs/2001.09136v5" target="_blank" > Capsule networks</a>. 
-                I wanted to test out different interesting architectural style 
-                for creating internal ensembles of the model, and for that experiment, I used Pytorch!
+    .tag-pill {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 50px;
+        border: 1px solid;
+        background: transparent;
+    }
 
-                <br> <br>
+    .tag-orangered { color: #ff4500; border-color: #ff4500; }
+    .tag-blue { color: #0076f4; border-color: #0076f4; }
+    .tag-green { color: #18a236; border-color: #18a236; }
+    .tag-yellow { color: #d4af37; border-color: #d4af37; }
+    .tag-orange { color: #ffa500; border-color: #ffa500; }
 
-                Firstly, let's install the uncommon dependencies, given, you have installed the common ones!
-                <br> <br>
+    /* CONTENT */
+    .article-content {
+        text-align: justify;
+        font-size: 1.1rem; 
+    }
+    
+    .article-content p {
+        margin-bottom: 24px;
+        color: var(--text-color);
+    }
 
-<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+    .article-content a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.2s;
+    }
+    .article-content a:hover { text-decoration: underline; }
+
+    /* CODE BLOCKS (Syntax Highlighted) */
+    .code-wrapper {
+        margin: 30px 0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        background: #111111; /* Always dark for code */
+    }
+
+    /* CONSOLE OUTPUT BLOCKS (The Fix) */
+    /* Distinct style for logs/output to ensure visibility */
+    .console-output {
+        background-color: var(--console-bg);
+        color: var(--console-text) !important; /* Force White Text */
+        padding: 20px;
+        border-radius: 8px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        margin: 30px 0;
+        border-left: 4px solid var(--accent-color); /* Accent line */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .console-output pre {
+        margin: 0;
+        white-space: pre-wrap; /* Wrap long lines */
+        color: inherit; /* Inherit the forced white */
+    }
+
+    /* IMAGE STYLES */
+    .img-wrapper {
+        text-align: center;
+        margin: 40px 0;
+    }
+    
+    .img-wrapper img {
+        border-radius: 6px;
+        box-shadow: var(--img-shadow);
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* PDF EMBED */
+    .pdf-wrapper {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--img-shadow);
+        margin: 40px 0;
+        border: 1px solid rgba(0,0,0,0.1);
+    }
+
+</style>
+
+<div class="blog-container">
+
+    <header class="blog-header">
+        <h1 class="blog-title">Let's make a MNIST classifier over 99.57% accuracy using Pytorch</h1>
+        
+        <div class="tag-container">
+            <span class="tag-pill tag-orangered">MNIST</span>
+            <span class="tag-pill tag-blue">Deep Learning</span>
+            <span class="tag-pill tag-green">Pytorch</span>
+            <span class="tag-pill tag-yellow">Inner Ensemble</span>
+            <span class="tag-pill tag-orange">Python3</span>
+        </div>
+    </header>
+
+    <div class="article-content">
+        
+        <p>
+            On 16th October, 2020, I thought of using Pytorch to create a near SOTA 
+            classifier for the simplest Computer Vision dataset – MNIST, introduced 
+            by Yaan LeCun. Current state of the art is about <b>99.84%</b> using 
+            <a href="https://arxiv.org/abs/2001.09136v5" target="_blank">Capsule networks</a>. 
+            I wanted to test out different interesting architectural styles 
+            for creating internal ensembles of the model, and for that experiment, I used Pytorch!
+        </p>
+
+        <p>Firstly, let's install the uncommon dependencies, given, you have installed the common ones!</p>
+
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
+<pre style="margin: 0; line-height: 125%">
 <span style="color: #ffffff">!</span> <span style="color: #ffffff">pip</span> <span style="color: #ffffff">install</span> <span style="color: #ffffff">hiddenlayer</span> <span style="color: #ffffff">graphviz</span> <span style="color: #ffffff">torchviz</span>
-</pre></div>
-                <br> <br>
+</pre>
+            </div>
+        </div>
 
-                So, let's dive into the code. <br> <br>
+        <p>So, let's dive into the code.</p>
+        <p>Firstly, the basic imports,</p>
 
-                Firstly, the basic imports, <br><br>
-
-                
-
-
-<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
+<pre style="margin: 0; line-height: 125%">
 <span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">numpy</span> <span style="color: #fb660a; font-weight: bold">as</span> <span style="color: #ffffff">np</span>
 <span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">torch</span>
 <span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">torch.nn</span> <span style="color: #fb660a; font-weight: bold">as</span> <span style="color: #ffffff">nn</span>
@@ -482,38 +625,43 @@
 <span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">torch.nn.functional</span> <span style="color: #fb660a; font-weight: bold">as</span> <span style="color: #ffffff">F</span>
 <span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">timeit</span>
 <span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">unittest</span>
-                </pre></div>
-                <br><br>
+</pre>
+            </div>
+        </div>
 
-                We need to add seeds for reproducibility of results in other machines 
+        <p>We need to add seeds for reproducibility of results in other machines</p>
 
-                <br><br>
-
-<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
+<pre style="margin: 0; line-height: 125%">
 <span style="color: #ffffff">torch.manual_seed(</span><span style="color: #0086f7; font-weight: bold">0</span><span style="color: #ffffff">)</span>
 <span style="color: #ffffff">torch.backends.cudnn.deterministic</span> <span style="color: #ffffff">=</span> <span style="color: #fb660a; font-weight: bold">True</span>
 <span style="color: #ffffff">torch.backends.cudnn.benchmark</span> <span style="color: #ffffff">=</span> <span style="color: #fb660a; font-weight: bold">False</span>
 <span style="color: #ffffff">np.random.seed(</span><span style="color: #0086f7; font-weight: bold">0</span><span style="color: #ffffff">)</span>
-                </pre></div>
-                <br><br>
+</pre>
+            </div>
+        </div>
 
+        <p>For running in GPUs, we need to use ‘cuda’, which can be achieved with the following piece of code</p>
 
-                For running in GPUs, we need to use ‘cuda’, which can be achieved with the following piece of code
-                
-                <br><br>
-<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
+<pre style="margin: 0; line-height: 125%">
 <span style="color: #ffffff">device</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">torch.device(</span><span style="color: #0086d2">&#39;cuda&#39;</span> <span style="color: #fb660a; font-weight: bold">if</span> <span style="color: #ffffff">torch.cuda.is_available()</span> <span style="color: #fb660a; font-weight: bold">else</span> <span style="color: #0086d2">&#39;cpu&#39;</span><span style="color: #ffffff">)</span>
-                </pre></div>
-                <br><br>
+</pre>
+            </div>
+        </div>
 
-                Computer vision datasets can be trained and tested with high accuracy via image 
-                augmentations, we have used Cropping, resizing, colour jittering, rotation and 
-                random affine transform to make extensive data augmentation. We have also used 
-                the mean and standard deviation to normalize the images during training, which 
-                will make the deep learning model easier to train. 
+        <p>
+            Computer vision datasets can be trained and tested with high accuracy via image 
+            augmentations, we have used Cropping, resizing, colour jittering, rotation and 
+            random affine transform to make extensive data augmentation. We have also used 
+            the mean and standard deviation to normalize the images during training, which 
+            will make the deep learning model easier to train.
+        </p>
 
-                <br><br>
-<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
 <pre style="margin: 0; line-height: 125%">
 <span style="color: #008800; font-style: italic; background-color: #0f140f"># define a transforms for preparing the dataset</span>
 <span style="color: #ffffff">transform</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">transforms.Compose([</span>
@@ -529,53 +677,57 @@
 <span style="color: #008800; font-style: italic; background-color: #0f140f"># normalise the images with mean and std of the dataset</span>
 <span style="color: #ffffff">transforms.Normalize((</span><span style="color: #0086f7; font-weight: bold">0.1307</span><span style="color: #ffffff">,),</span> <span style="color: #ffffff">(</span><span style="color: #0086f7; font-weight: bold">0.3081</span><span style="color: #ffffff">,))</span> 
 <span style="color: #ffffff">])</span>
-                </pre></div>
-                <br><br>
+</pre>
+            </div>
+        </div>
 
+        <p>
+            After setting the basic stuffs, we will load the dataset into train and test part, 
+            which are imported and downloaded from the datasets module.
+        </p>
 
-                After setting the basic stuffs, we will load the dataset into train and test part, 
-                which are imported and downloaded from the  datasets module. 
-                <br><br>
-
-<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
+<pre style="margin: 0; line-height: 125%">
 <span style="color: #008800; font-style: italic; background-color: #0f140f"># Load the MNIST training, test datasets using `torchvision.datasets.MNIST` </span>
 <span style="color: #008800; font-style: italic; background-color: #0f140f"># using the transform defined above</span>
 
 <span style="color: #ffffff">train_dataset</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">datasets.MNIST(</span><span style="color: #0086d2">&#39;./data&#39;</span><span style="color: #ffffff">,train=</span><span style="color: #fb660a; font-weight: bold">True</span><span style="color: #ffffff">,transform=transform,download=</span><span style="color: #fb660a; font-weight: bold">True</span><span style="color: #ffffff">)</span>
 <span style="color: #ffffff">test_dataset</span> <span style="color: #ffffff">=</span>  <span style="color: #ffffff">datasets.MNIST(</span><span style="color: #0086d2">&#39;./data&#39;</span><span style="color: #ffffff">,train=</span><span style="color: #fb660a; font-weight: bold">False</span><span style="color: #ffffff">,transform=transform,download=</span><span style="color: #fb660a; font-weight: bold">True</span><span style="color: #ffffff">)</span>
-                </pre></div>
-                <br><br>
+</pre>
+            </div>
+        </div>
 
-                This is a relatively small dataset with 60K images, but for large datasets we need to 
-                use batch-size, which will store the images in primary memory from the secondary memory
-                before sending it to GPUs. This will create a certain amount of bottleneck in computation,
-                but this is the standard thing to do, when we are dealing with massive amounts of data. 
+        <p>
+            This is a relatively small dataset with 60K images, but for large datasets we need to 
+            use batch-size, which will store the images in primary memory from the secondary memory
+            before sending it to GPUs. This will create a certain amount of bottleneck in computation,
+            but this is the standard thing to do, when we are dealing with massive amounts of data.
+        </p>
 
-                <br><br>
-
-<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
+<pre style="margin: 0; line-height: 125%">
 <span style="color: #008800; font-style: italic; background-color: #0f140f"># create dataloaders for training and test datasets</span>
 <span style="color: #008800; font-style: italic; background-color: #0f140f"># use a batch size of 32 and set shuffle=True for the training set</span>
 
 <span style="color: #ffffff">train_dataloader</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">Data.DataLoader(dataset=train_dataset,</span> <span style="color: #ffffff">batch_size=</span><span style="color: #0086f7; font-weight: bold">128</span><span style="color: #ffffff">,</span> <span style="color: #ffffff">shuffle=</span><span style="color: #fb660a; font-weight: bold">True</span><span style="color: #ffffff">)</span>
 <span style="color: #ffffff">test_dataloader</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">Data.DataLoader(dataset=test_dataset,</span> <span style="color: #ffffff">batch_size=</span><span style="color: #0086f7; font-weight: bold">128</span><span style="color: #ffffff">,</span> <span style="color: #ffffff">shuffle=</span><span style="color: #fb660a; font-weight: bold">True</span><span style="color: #ffffff">)</span>
-                </pre></div>
-                <br><br>
+</pre>
+            </div>
+        </div>
 
-                Now it’s time to build our Deep Neural Network Model! The architecture is some-what shown below. 
+        <p>Now it’s time to build our Deep Neural Network Model! The architecture is some-what shown below.</p>
 
-                <br><br>
+        <div class="pdf-wrapper">
+            <embed src="../blogs/MNIST_SOTA/MNIST-TEST1.pdf#zoom=FitH" width="100%" height="800px" />
+        </div>
+        
+        <p>The Pytorch code can be written as:</p>
 
-                <center>
-                    <embed src="../blogs/MNIST_SOTA/MNIST-TEST1.pdf#zoom=FitH" width="100%" height="1930px" />
-                </center>
-                <br><br>
-                
-
-                The Pytorch code can be written as: 
-                <br><br>
-
-                <!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
+<pre style="margin: 0; line-height: 125%">
 <span style="color: #008800; font-style: italic; background-color: #0f140f"># My Net</span>
 
 <span style="color: #fb660a; font-weight: bold">class</span> <span style="color: #ffffff">Net(nn.Module):</span>
@@ -677,60 +829,68 @@
 
         <span style="color: #ffffff">output</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">F.log_softmax(out,</span> <span style="color: #ffffff">dim=</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span>
         <span style="color: #fb660a; font-weight: bold">return</span> <span style="color: #ffffff">output</span>
-    </pre></div>
-    <br><br>
-            We can now use the model to set it to GPU.
-            <br><br>
+</pre>
+            </div>
+        </div>
 
-            <!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+        <p>We can now use the model to set it to GPU.</p>
+
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
+<pre style="margin: 0; line-height: 125%">
 <span style="color: #ffffff">model</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">Net().to(device)</span>
-            </pre></div>
-            <br><br>
-            
-            We can even check the parameters:
-            <br><br>
-<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+</pre>
+            </div>
+        </div>
+        
+        <p>We can even check the parameters:</p>
+
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
+<pre style="margin: 0; line-height: 125%">
 <span style="color: #ffffff">print(model.parameters)</span>
-</pre></div>
-            <br><br>
+</pre>
+            </div>
+        </div>
 
-            Which will result in:
-            <br><br>
+        <p>Which will result in:</p>
 
-            <pre>
-                &lt;bound method Module.parameters of Net(
-                (conv11): Conv2d(1, 16, kernel_size=(3, 3), stride=(1, 1))
-                (conv12): Conv2d(1, 16, kernel_size=(5, 5), stride=(1, 1))
-                (conv13): Conv2d(1, 16, kernel_size=(7, 7), stride=(1, 1))
-                (conv14): Conv2d(1, 16, kernel_size=(9, 9), stride=(1, 1))
-                (conv21): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1))
-                (conv22): Conv2d(16, 32, kernel_size=(5, 5), stride=(1, 1))
-                (conv23): Conv2d(16, 32, kernel_size=(7, 7), stride=(1, 1))
-                (conv24): Conv2d(16, 32, kernel_size=(9, 9), stride=(1, 1))
-                (conv31): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1))
-                (conv32): Conv2d(32, 64, kernel_size=(5, 5), stride=(1, 1))
-                (conv33): Conv2d(32, 64, kernel_size=(7, 7), stride=(1, 1))
-                (conv34): Conv2d(32, 64, kernel_size=(9, 9), stride=(1, 1))
-                (maxpool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
-                (dropout1): Dropout(p=0.25, inplace=False)
-                (dropout2): Dropout(p=0.5, inplace=False)
-                (fc11): Linear(in_features=7744, out_features=256, bias=True)
-                (fc12): Linear(in_features=4096, out_features=256, bias=True)
-                (fc13): Linear(in_features=1600, out_features=256, bias=True)
-                (fc14): Linear(in_features=256, out_features=256, bias=True)
-                (fc21): Linear(in_features=256, out_features=128, bias=True)
-                (fc22): Linear(in_features=256, out_features=128, bias=True)
-                (fc23): Linear(in_features=256, out_features=128, bias=True)
-                (fc24): Linear(in_features=256, out_features=128, bias=True)
-                (fc33): Linear(in_features=512, out_features=10, bias=True)
-                )&gt;
-            </pre>
-            
-            <br><br>
-            It is good to have unit test modules in case of bigger code bases. 
-            <br><br>
+        <div class="console-output">
+<pre>
+&lt;bound method Module.parameters of Net(
+(conv11): Conv2d(1, 16, kernel_size=(3, 3), stride=(1, 1))
+(conv12): Conv2d(1, 16, kernel_size=(5, 5), stride=(1, 1))
+(conv13): Conv2d(1, 16, kernel_size=(7, 7), stride=(1, 1))
+(conv14): Conv2d(1, 16, kernel_size=(9, 9), stride=(1, 1))
+(conv21): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1))
+(conv22): Conv2d(16, 32, kernel_size=(5, 5), stride=(1, 1))
+(conv23): Conv2d(16, 32, kernel_size=(7, 7), stride=(1, 1))
+(conv24): Conv2d(16, 32, kernel_size=(9, 9), stride=(1, 1))
+(conv31): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1))
+(conv32): Conv2d(32, 64, kernel_size=(5, 5), stride=(1, 1))
+(conv33): Conv2d(32, 64, kernel_size=(7, 7), stride=(1, 1))
+(conv34): Conv2d(32, 64, kernel_size=(9, 9), stride=(1, 1))
+(maxpool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+(dropout1): Dropout(p=0.25, inplace=False)
+(dropout2): Dropout(p=0.5, inplace=False)
+(fc11): Linear(in_features=7744, out_features=256, bias=True)
+(fc12): Linear(in_features=4096, out_features=256, bias=True)
+(fc13): Linear(in_features=1600, out_features=256, bias=True)
+(fc14): Linear(in_features=256, out_features=256, bias=True)
+(fc21): Linear(in_features=256, out_features=128, bias=True)
+(fc22): Linear(in_features=256, out_features=128, bias=True)
+(fc23): Linear(in_features=256, out_features=128, bias=True)
+(fc24): Linear(in_features=256, out_features=128, bias=True)
+(fc33): Linear(in_features=512, out_features=10, bias=True)
+)&gt;
+</pre>
+        </div>
 
-            <!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">unittest</span>
+        <p>It is good to have unit test modules in case of bigger code bases.</p>
+
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
+<pre style="margin: 0; line-height: 125%"><span style="color: #fb660a; font-weight: bold">import</span> <span style="color: #ffffff">unittest</span>
 
 <span style="color: #fb660a; font-weight: bold">class</span> <span style="color: #ffffff">TestImplementations(unittest.TestCase):</span>
     
@@ -759,15 +919,18 @@
 
 <span style="color: #ffffff">suite</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">unittest.TestLoader().loadTestsFromModule(TestImplementations())</span>
 <span style="color: #ffffff">unittest.TextTestRunner().run(suite)</span>
-</pre></div>
-<br><br>
- 
+</pre>
+            </div>
+        </div>
 
-                    In the training function, we will pass the data by iterating over the data loaders to model in GPU.
-                    We will use the optimizer to calculate the loss, and we will record the losses for plotting in a graph. 
+        <p>
+            In the training function, we will pass the data by iterating over the data loaders to model in GPU.
+            We will use the optimizer to calculate the loss, and we will record the losses for plotting in a graph.
+        </p>
 
-                    <br><br>
-<!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #ffffff">losses_1</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">[]</span>
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
+<pre style="margin: 0; line-height: 125%"><span style="color: #ffffff">losses_1</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">[]</span>
     <span style="color: #ffffff">losses_2</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">[]</span>
 
     <span style="color: #fb660a; font-weight: bold">def</span> <span style="color: #ff0086; font-weight: bold">train</span><span style="color: #ffffff">(model,</span> <span style="color: #ffffff">device,</span> <span style="color: #ffffff">train_loader,</span> <span style="color: #ffffff">optimizer,</span> <span style="color: #ffffff">epoch):</span>
@@ -793,13 +956,15 @@
                     <span style="color: #0086f7; font-weight: bold">100.</span> <span style="color: #ffffff">*</span> <span style="color: #ffffff">batch_idx</span> <span style="color: #ffffff">/</span> <span style="color: #ffffff">len(train_loader),</span> <span style="color: #ffffff">loss.item()))</span>
                 <span style="color: #ffffff">losses_1.append(loss.item())</span>
                 <span style="color: #ffffff">losses_2.append(</span><span style="color: #0086f7; font-weight: bold">100.</span> <span style="color: #ffffff">*</span> <span style="color: #ffffff">batch_idx</span> <span style="color: #ffffff">/</span> <span style="color: #ffffff">len(train_loader))</span>
-            
-    </pre></div>
-    <br><br>
+</pre>
+            </div>
+        </div>
 
-    Similarly, for test dataset,
-    <br><br>
-    <!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #ffffff">accuracy</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">[]</span>
+        <p>Similarly, for test dataset,</p>
+
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
+<pre style="margin: 0; line-height: 125%"><span style="color: #ffffff">accuracy</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">[]</span>
 <span style="color: #ffffff">avg_loss</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">[]</span>
 <span style="color: #fb660a; font-weight: bold">def</span> <span style="color: #ff0086; font-weight: bold">test</span><span style="color: #ffffff">(model,</span> <span style="color: #ffffff">device,</span> <span style="color: #ffffff">test_loader):</span>
     <span style="color: #ffffff">model.eval()</span>
@@ -824,12 +989,15 @@
         <span style="color: #0086f7; font-weight: bold">100.</span> <span style="color: #ffffff">*</span> <span style="color: #ffffff">correct</span> <span style="color: #ffffff">/</span> <span style="color: #ffffff">len(test_loader.dataset)))</span>
     <span style="color: #ffffff">avg_loss.append(test_loss)</span>
     <span style="color: #ffffff">accuracy.append(</span><span style="color: #0086f7; font-weight: bold">100.</span> <span style="color: #ffffff">*</span> <span style="color: #ffffff">correct</span> <span style="color: #ffffff">/</span> <span style="color: #ffffff">len(test_loader.dataset))</span>
-</pre></div>
+</pre>
+            </div>
+        </div>
 
-    <br><br>
-    We can also adjust the learning rate, before firing up for training!
-    <br><br>
-    <!-- HTML generated using hilite.me --><div style="background: #111111; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #ffffff">model</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">Net().to(device)</span>
+        <p>We can also adjust the learning rate, before firing up for training!</p>
+
+        <div class="code-wrapper">
+            <div style="background: #111111; overflow:auto;width:auto;padding:.8em;">
+<pre style="margin: 0; line-height: 125%"><span style="color: #ffffff">model</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">Net().to(device)</span>
 <span style="color: #ffffff">learning_rate</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">[]</span>
 <span style="color: #fb660a; font-weight: bold">def</span> <span style="color: #ff0086; font-weight: bold">adjust_learning_rate</span><span style="color: #ffffff">(optimizer,</span> <span style="color: #ffffff">iter,</span> <span style="color: #ffffff">each):</span>
     <span style="color: #008800; font-style: italic; background-color: #0f140f"># sets the learning rate to the initial LR decayed by 0.1 every &#39;each&#39; iterations</span>
@@ -853,83 +1021,71 @@
   <span style="color: #ffffff">test(model,</span> <span style="color: #ffffff">device,</span> <span style="color: #ffffff">test_dataloader)</span>
 <span style="color: #ffffff">stop</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">timeit.default_timer()</span>
 <span style="color: #ffffff">print(</span><span style="color: #0086d2">&#39;Total time taken: {} seconds&#39;</span><span style="color: #ffffff">.format(int(stop</span> <span style="color: #ffffff">-</span> <span style="color: #ffffff">start)))</span>
-</pre></div>
+</pre>
+            </div>
+        </div>
 
+        <p>After training for 100 epochs, we get a test accuracy of, <b>99.57%</b>, which is great, without doing any fancy stuffs!</p>
 
-    <br><br>
-        After training for 100 epochs, we get a test accuracy of, <b> 99.57%</b>, which is great, 
-        without doing any fancy stuffs!
-    <br><br>
-    <pre>
-
+        <div class="console-output">
+<pre>
 Learning rate =  4.3766309037604346e-05
-Train Epoch: 99 [0/60000 (0%)]	Loss: 0.000113
-Train Epoch: 99 [12800/60000 (21%)]	Loss: 0.000007
-Train Epoch: 99 [25600/60000 (43%)]	Loss: 0.000006
-Train Epoch: 99 [38400/60000 (64%)]	Loss: 0.000010
-Train Epoch: 99 [51200/60000 (85%)]	Loss: 0.000027
+Train Epoch: 99 [0/60000 (0%)]  Loss: 0.000113
+Train Epoch: 99 [12800/60000 (21%)] Loss: 0.000007
+Train Epoch: 99 [25600/60000 (43%)] Loss: 0.000006
+Train Epoch: 99 [38400/60000 (64%)] Loss: 0.000010
+Train Epoch: 99 [51200/60000 (85%)] Loss: 0.000027
 
 Test set: Average loss: 0.0211, Accuracy: 9957/10000 (100%)
 
 Total time taken: 7074 seconds
-    </pre>
-    <br><br>
-            
-            The images for variation of Learning rate can be shown below:
-            <br><br>
-            <b> (P.S. look for the typo) </b>
-            <br><br>
+</pre>
+        </div>
 
-            <center>
-                <img src="../blogs/MNIST_SOTA/loss.png" height="70%" width="70%">
-            </center>
+        <p>The images for variation of Learning rate can be shown below:</p>
+        <p><b>(P.S. look for the typo)</b></p>
 
-            Similarly, the average accuracy, average loss, and loss are shown below:
+        <div class="img-wrapper">
+            <img src="../blogs/MNIST_SOTA/loss.png" style="width: 70%;">
+        </div>
 
-            <br><br>
+        <p>Similarly, the average accuracy, average loss, and loss are shown below:</p>
 
-            <center>
-                <img src="../blogs/MNIST_SOTA/Avg_acc_1.png" height="70%" width="70%">
-            </center>
-            <br><br>
+        <div class="img-wrapper">
+            <img src="../blogs/MNIST_SOTA/Avg_acc_1.png" style="width: 70%;">
+        </div>
 
-            <center>
-                <img src="../blogs/MNIST_SOTA/Avg_loss_1.png" height="70%" width="70%">
-            </center>
-            <br><br>
-            
-            
+        <div class="img-wrapper">
+            <img src="../blogs/MNIST_SOTA/Avg_loss_1.png" style="width: 70%;">
+        </div>
 
-            <center>
-                <img src="../blogs/MNIST_SOTA/loss_1.png" height="70%" width="70%">
-            </center>
-            <br><br>
+        <div class="img-wrapper">
+            <img src="../blogs/MNIST_SOTA/loss_1.png" style="width: 70%;">
+        </div>
 
+        <p>
             The model can be downloaded from 
             <a href="MNIST_SOTA/1_model_MNIST_3579_Adam_0.95_100e.pth"><b>here</b></a>.
-            <br><br>
+        </p>
 
-            You can use the model by loading it in Pytorch!
-            <br><br>
+        <p>You can use the model by loading it in Pytorch!</p>
 
+        <p>
             It takes lot of innovative methods, to surpass the current state of the art accuracy. 
             If anyone can beat that, it will result in a new paper in a reputed journal. It looks
             like the model has got into its limit and the test accuracy is fluctuating between <b>99.57 %</b>
             and 99.53%. Here is the basic framework for the work, now you are all set up to explore a
-            new domain of competition, via novel methods! 
-            <br><br>
+            new domain of competition, via novel methods!
+        </p>
 
-
+        <p>
             Find the notebook [<a href="../blogs/MNIST_SOTA/down/1_MNIST_TEST.html" target="_blank"><b>here</b></a>]
-            <br><br>
-            <b>Still then, Happy Coding!</b>
-            <br><br>
-                    
-        </div >
-    </div >
-</div >
+        </p>
 
+        <p><b>Still then, Happy Coding!</b></p>
 
+    </div>
+</div>
 
       <br><br>
       

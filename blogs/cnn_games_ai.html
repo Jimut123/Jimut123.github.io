@@ -420,302 +420,418 @@
     <div align="center">  
       <br><br>
       
-      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+      <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* VARIABLES */
+    :root {
+        /* Light Mode */
+        --background-color: #ffffff;
+        --text-color: #1a202c;
+        --accent-color: #2b6cb0;
+        --quote-border: #18a236;
+        --code-bg: rgba(0, 0, 0, 0.05);
+        --gif-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    [data-theme="dark"] {
+        /* Dark Mode - PITCH BLACK FIX */
+        --background-color: #000000 !important;
+        --text-color: #e0e0e0 !important;
+        --accent-color: #63b3ed;
+        --code-bg: rgba(255, 255, 255, 0.1);
+    }
+
+    /* GLOBAL SETTINGS */
+    body {
+        background-color: var(--background-color); 
+        color: var(--text-color);
+        font-family: 'Cardo', serif; 
+        line-height: 1.8;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* CONTAINER */
+    .blog-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px 100px 20px;
+    }
+
+    /* HEADER */
+    .blog-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .blog-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* TAGS */
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .tag-pill {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 50px;
+        border: 1px solid;
+        background: transparent;
+    }
+
+    .tag-orangered { color: #ff4500; border-color: #ff4500; }
+    .tag-blue { color: #0076f4; border-color: #0076f4; }
+    .tag-green { color: #18a236; border-color: #18a236; }
+    .tag-yellow { color: #d4af37; border-color: #d4af37; }
+    .tag-orange { color: #ffa500; border-color: #ffa500; }
+    .tag-deepblue { color: #00008b; border-color: #00008b; }
+
+    /* CONTENT */
+    .article-content {
+        text-align: justify;
+        font-size: 1.1rem; 
+    }
+    
+    .article-content h3 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.6rem;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        color: var(--text-color);
+        border-left: 4px solid var(--accent-color);
+        padding-left: 15px;
+    }
+
+    .article-content p {
+        margin-bottom: 24px;
+        color: var(--text-color);
+    }
+
+    .article-content a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.2s;
+    }
+    .article-content a:hover { text-decoration: underline; }
+
+    /* Header GIF Styling */
+    .header-gif {
+        width: 55px;
+        height: 40px;
+        border-radius: 4px;
+        box-shadow: var(--gif-shadow);
+        vertical-align: middle;
+    }
+
+    /* Video Wrapper */
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        background: #000;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    /* Image Wrapper */
+    .img-wrapper {
+        text-align: center;
+        margin: 40px 0;
+    }
+    
+    .img-wrapper img {
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        max-width: 100%;
+        height: auto;
+    }
+
+    .caption {
+        font-size: 0.9rem;
+        font-style: italic;
+        color: #666;
+        margin-top: 10px;
+        display: block;
+        text-align: center;
+    }
+
+    /* Script Embedding Wrapper */
+    .script-embed {
+        margin: 30px 0;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    /* Button */
+    .btn-slide {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.9rem;
+        padding: 8px 24px;
+        border: 2px solid var(--accent-color);
+        color: var(--accent-color);
+        border-radius: 50px;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 20px;
+        transition: all 0.2s;
+    }
+    .btn-slide:hover {
+        background: var(--accent-color);
+        color: #fff;
+        text-decoration: none;
+    }
+
+</style>
+
+<div class="blog-container">
+
+    <header class="blog-header">
+        <h1 class="blog-title">
+            <img src="blog_img/cnn_ai/trex.gif" class="header-gif" alt="Dino GIF">
+            Playing a class of games using CNN
+        </h1>
+        
+        <div class="tag-container">
+            <span class="tag-pill tag-orangered">CNN</span>
+            <span class="tag-pill tag-blue">Dino Game</span>
+            <span class="tag-pill tag-green">Deep Learning</span>
+            <span class="tag-pill tag-yellow">Keras</span>
+            <span class="tag-pill tag-orange">Tensorflow</span>
+            <span class="tag-pill tag-deepblue">AI</span>
+        </div>
+
+        <a href="../files/JBP_SCRIPTS/JBP_008.pdf" target="_blank" class="btn-slide">Slide PDF</a>
+    </header>
+
+    <div class="article-content">
+
+        <h3>Introduction</h3>
+        
+        <p>
+            Convolutional Neural Network (CNN) can do a lot of things that were previously considered almost impossible (I am taking about 1960's here).
+            After the invention of CNN for digit recognition by <em>Yann Lee Cunn et al.</em>, deep learning and Machine learning have gained a tremendous boost
+            in almost every nook and corner of IT industry. Machine Learning is itself a very old topic, but earlier, there were no computational power to manifest
+            such enormous computation and store such huge quantities of data. Due to the growth of hardware technologies (and constant growth by Moore's Law), there is
+            a huge demand for this subject in recent industry. A person who is qualified enough to solve Machine Learning tasks are paid almost double, to those who
+            are just software engineers. Almost every IT department seeks an analyst who can crunch information from the data to predict the future and make the company 
+            aware of the policies that it needs to make. One of the greatest development in the field of Machine Learning is image recognition. Though there are several algorithms
+            which focusses on playing of games and particular use of deep reinforcement learning, our experiment explores the concept of a rather simple model of automating games.
+            The model that we have used is developed over the years by eminent researchers by trial and errors. We have tweaked some of the parameters and shown that just 
+            by seeing and learning, the computer can perform a lot of tasks which can automate many things in day to day life.
+        </p>
+
+        <div class="video-wrapper" id="yt_video_ppt_dino_cnn">
+            <iframe src="https://www.youtube.com/embed/MBvTg_sID_U" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <span class="caption">Video 1: Beamer presentation for Communicative English Course on this topic.</span>
+
+        <p>
+            A CNN when applied in image recognition, acts on an image. That is, if we want to apply something using CNN into video, we have to extract the frames, and work on it. 
+            The CNN might take about 0.4 second to do the job, then it is still a very bad algorithm, since there are 60 frames in one second and to act on real time systems, it shall
+            be able to do atleast 30 operations per second. Though scientists are working consistently on this matter of improving the efficiency of algorithms which can be embedded 
+            and shall be working on very low powered devices <a href="#jimut_mobilenet_paper"><u>[1]</u></a>.
+        </p>
+
+        <h3>Our Approach</h3>
+        
+        <p>
+            Here, we will design and talk about those games (a certain class of games which are extremely simple to play) which will can be played automatically, and will see what is the exact 
+            power of CNN in solving and automating tasks. There are rather very advanced models like the one which plays Go (alpha go), and others which uses advanced concepts of machine learning.
+            The question was <span><i>"Can CNN play pong game?"</i></span>. Firstly we have designed and used <a href="https://pythonprogramming.net/pong-ai-tensorflowjs-tutorial/" target="blank">pong game,</a> designed by Harrison and 
+            applied it to our <a href="../games/pong_classic/index.html" target="_blank">version</a>. The answer lies by asking ourself another question, i.e., can we predict the next move of the player when we are playing one to one 
+            with computer by <span><i>just looking at a static image?</i></span> as shown in <i>Fig. 1</i>.
+        </p>
+
+        <div class="img-wrapper" id="questionAI">
+            <img src="blog_img/cnn_ai/pong_ques.png" alt="question AI" style="width: 70%;">
+            <span class="caption">Fig. 1: Which direction (up or down?) shall the right paddle move?</span>
+        </div>
+
+        <p>
+            The answer is NO, we can't predict the move of the Pong by just looking at the image. But, if we are given that the ball is moving towards the player (right paddle), then we may
+            assume that the player might want to go down (just think of an invisible ray coming from the ball and hitting the wall), else, if the ball goes to the direction of the 
+            computer, then the player has the tendency to go upward direction (or may be stationary, though it completely depends on how the player is going to act then ). Due to the fact that 
+            we are unaware of the direction of the ball, we may sometime move the paddle "Up" or sometime move the paddle "Down". We might even ignore the cases when the ball is moving away from 
+            the player to the computer, since it may be a waste of computation (the AI needs to act only when the ball is coming towards itself). This thing can be sucessfully modelled by using 
+            reinforcement learning or some variations of LSTM (Long short term memory model). Our aim is to explore only those subsets of game which are easily and sucessfully played by CNN.
+        </p>
+
+        <p>
+            Nevertheless, we have made it play, which almost saves the ball from hitting the wall many times, but it doesn't (or rarely) makes score against the Robot computer (since we have tested 
+            it with simple CNN model). The video of the performance of the AI is shown in Video 2. The poor performance of the AI is due to the fact that for making the 
+            moves, we need to consider other pictures too (i.e., at least some previous pictures). 
+        </p>
+
+        <div class="video-wrapper" id="yt_video_pong_cnn">
+            <iframe src="https://www.youtube.com/embed/fstrysR7ZBA" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <span class="caption">Video 2: CNN trained pong AI rarely saves the ball from hitting the right wall</span>
 
 
-<br>
+        <h3>Tutorial</h3>
+        
+        <p>
+            Let's see how we have done this using Python 3. Firstly we need to build a system which can collect the data for the training of the AI. For a CNN to get trained, we need labelled data. For this, we have written a 
+            <a href="#script1_collect_data">script</a>. The purpose of this script is it takes the action as one hot encoded value (i.e.,a map of  number corresponding to the actions), and stores the actions in a 
+            CSV (comma separated value) file. The line number corresponds to the frame of the images, and we collect the corresponding image and store it in a different folder. The images obtained are shown in Fig. 2. 
+            Unlike Harrison, we have used the <span>"human touch"</span>, by not training it with Robot Pong AI (which calculates the move with the help of certain mathematical constraint and then acts accordingly).
+            The human touch can help the AI do incredeble things, like increasing the speed of the paddle by consistently pressing one button, but in the case of the AI which is trained using the Robot, it would look like the AI is acting optimally
+            everytime by using mathematical constraint, which means it can't do the <span>miracle</span>. In other words, the AI can't take decisions like speeding up when the ball is coming at a high pace towards the paddle, and will be 
+            unable to save the ball. By looking at the video we cannot determine whether it is the AI or the human that is playing, since the AI learns from human and this makes any machine learning AI to perform tasks that the human can perform exactly the 
+            same way.
+        </p>
 
-<h1>
-    <b id="heading-font">  <img src="blog_img/cnn_ai/trex.gif"  alt="watson GIF"height="40px" width="55px"> Playing a class of games using CNN</b>
-</h1>
+        <div class="script-embed" id="script1_collect_data">
+            <script src="https://gist.github.com/Jimut123/f3b2e6f42ccfa02c6245b645770cc1a3.js"></script>
+        </div>
+        <span class="caption">Script 1: A script in Python3 to create the data for training.</span>
 
-<span class="keywords-orangered"> &nbsp; CNN &nbsp; </span>
-&nbsp;&nbsp;
-<span class="keywords-blue"> &nbsp; Dino Game &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-green">&nbsp; Deep Learning &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-yellow">&nbsp; Keras &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-orange">&nbsp; Tensorflow &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-deepblue">&nbsp; AI &nbsp;</span> 
+        <div class="img-wrapper" id="2k_images">
+            <img src="blog_img/cnn_ai/cnn_ai_images.png" alt="images" style="width: 70%;">
+            <span class="caption">Fig. 2: The images collected for training.</span>
+        </div>
 
-<br> <br>
+        <p>
+            After the data collection, we need to train it. The Python3 <a href="#script2_training">script</a> for training is shown. This is the Cifar-10 model, which has created a benchmark around the year 2015.
+        </p>
 
-[<a href="../files/JBP_SCRIPTS/JBP_008.pdf" alt="pdf slide" target="_blank"> Slide PDF </a>] 
+        <div class="script-embed" id="script2_training">
+            <script src="https://gist.github.com/Jimut123/f54b792f5c4e3ad242c545984d82f888.js"></script>
+        </div>
+        <span class="caption">Script 2: A script in Python3 to train the data.</span>
 
+        <p>
+            We have trained it on Colab (google collaboratory) using the GPU runtime, by uploading the data in a zip file, unziping it there and downloading the trained .h5py model and testing it on our local machine.
+            The most awesome thing about google <a href="https://colab.research.google.com/notebooks/gpu.ipynb#scrollTo=eG8w0N9zjRhM" target="_blank">collaboratory</a> is that it is free, and uses <a href="https://cloud.google.com/blog/products/ai-machine-learning/nvidia-tesla-t4-gpus-now-available-in-beta" target="_blank">NVIDIA Tesla T4 GPUs</a>.
+            After downloading the .h5py file, which was trained in a few minutes, we used this <a href="script3_run_ai"> script</a> to let the <a href="#yt_video_pong_cnn">pong AI </a>run in our local machine. 
+        </p>
 
-
-<div id="pad-container">
-    <div  align="center" id="exp-font">
-            <div class="container" align="justify">
-                <h3> Introduction </h3>
-                <br>
-                Convolutional Neural Network (CNN) can do a lot of things that were previously considered almost impossible (I am taking about 1960's here).
-                After the invention of CNN for digit recognition by <em> Yann Lee Cunn et al. </em>, deep learning and Machine learning have gained a tremendous boost
-                in almost every nook and corner of IT industry. Machine Learning is itself a very old topic, but earlier, there were no computational power to manifest
-                such enormous computation and store such huge quantities of data. Due to the growth of hardware technologies (and constant growth by Moore's Law), there is
-                a huge demand for this subject in recent industry. A person who is qualified enough to solve Machine Learning tasks are paid almost double, to those who
-                are just software engineers. Almost every IT department seeks an analyst who can crunch information from the data to predict the future and make the company 
-                aware of the policies that it needs to make. One of the greatest development in the field of Machine Learning is image recognition. Though there are several algorithms
-                which focusses on playing of games and particular use of deep reinforcement learning, our experiment explores the concept of a rather simple model of automating games.
-                The model that we have used is developed over the years by eminent researchers by trial and errors. We have tweaked some of the parameters and shown that just 
-                by seeing and learning, the computer can perform a lot of tasks which can automate many things in day to day life.
-                <br>
-                <p>
-                <center>
-                <span id="yt_video_ppt_dino_cnn">
-                    <iframe width="55%" height="315" src="https://www.youtube.com/embed/MBvTg_sID_U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </span>
-                <center>
-                    <i>Video 1: Beamer presentation for Communicative English Course on this topic.</i> 
-                </center>
-                </center>
-                </p>
-                <br>
-
-                <p>
-                A CNN when applied in image recognition, acts on an image. That is, if we want to apply something using CNN into video, we have to extract the frames, and work on it. 
-                The CNN might take about 0.4 second to do the job, then it is still a very bad algorithm, since there are 60 frames in one second and to act on real time systems, it shall
-                be able to do atleast 30 operations per second. Though scientists are working consistently on this matter of improving the efficiency of algorithms which can be embedded 
-                and shall be working on very low powered devices <a href="#jimut_mobilenet_paper"><u>[1]</u></a>.
-                </p>
-                <br>
-                <br>
-
-                <h3> Our Approach </h3>
-                <br>
-                Here, we will design and talk about those games (a certain class of games which are extremely simple to play) which will can be played automatically, and will see what is the exact 
-                power of CNN in solving and automating tasks. There are rather very advanced models like the one which plays Go (alpha go), and others which uses advanced concepts of machine learning.
-                The question was <span id="bold_id"><i>"Can CNN play pong game?"</i></span>. Firstly we have designed and used <a href="https://pythonprogramming.net/pong-ai-tensorflowjs-tutorial/" alt="sentdex codes" target="blank">pong game,</a> designed by Harrison and 
-                applied it to our <a href="../games/pong_classic/index.html" alt="pong game local" target="_blank">version</a>. The answer lies by asking ourself another question, i.e., can we predict the next move of the player when we are playing one to one 
-                with computer by <span id="bold_id"><i>just looking at a static image?</i></span> as shown in <a href="#questionAI"><i> Fig. 1 </i></a>.
-
-                <br/>
-                <br/>
-                <center>
-                    <img src="blog_img/cnn_ai/pong_ques.png" id = "questionAI" alt="question AI" height="70%" width="70%">
-                </center>
-                <center>
-                    <i>Fig. 1: Which direction (up or down?) shall the right paddle move?</i> 
-                </center>
-                <br>
-
-                The answer is NO, we can't predict the move of the Pong by just looking at the image. But, if we are given that the ball is moving towards the player (right paddle), then we may
-                assume that the player might want to go down (just think of an invisible ray coming from the ball and hitting the wall), else, if the ball goes to the direction of the 
-                computer, then the player has the tendency to go upward direction (or may be stationary, though it completely depends on how the player is going to act then ). Due to the fact that 
-                we are unaware of the direction of the ball, we may sometime move the paddle "Up" or sometime move the paddle "Down". We might even ignore the cases when the ball is moving away from 
-                the player to the computer, since it may be a waste of computation (the AI needs to act only when the ball is coming towards itself). This thing can be sucessfully modelled by using 
-                reinforcement learning or some variations of LSTM (Long short term memory model). Our aim is to explore only those subsets of game which are easily and sucessfully played by CNN.
-
-                Nevertheless, we have made it play, which almost saves the ball from hitting the wall many times, but it doesn't (or rarely) makes score against the Robot computer (since we have tested 
-                it with simple CNN model). The video of the performance of the AI is shown in <a href="#yt_video_pong_cnn">Video 1</a>. The poor performance of the AI is due to the fact that for making the 
-                moves, we need to consider other pictures too (i.e., at least some previous pictures). 
-                <br>
-                <br>
-                &nbsp
-                <center>
-                <span id="yt_video_pong_cnn">
-                    <iframe width="55%" height="315" src="https://www.youtube.com/embed/fstrysR7ZBA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </span>
-                </center>
-                <center>
-                    <i>Video 2: CNN trained pong AI rarely saves the ball from hitting the right wall</i> 
-                </center>
-                <br>
-                <br>
-
-                <h3> Tutorial </h3>
-                <br>
-                Let's see how we have done this using Python 3. Firstly we need to build a system which can collect the data for the training of the AI. For a CNN to get trained, we need labelled data. For this, we have written a 
-                <a href="#script1_collect_data">script</a>. The purpose of this script is it takes the action as one hot encoded value (i.e.,a map of  number corresponding to the actions), and stores the actions in a 
-                CSV (comma separated value) file. The line number corresponds to the frame of the images, and we collect the corresponding image and store it in a different folder. The images obtained are shown in <a href="#2k_images">Fig. 2</a>. 
-                Unlike Harrison, we have used the <span id="bold_id">"human touch"</span>, by not training it with Robot Pong AI (which calculates the move with the help of certain mathematical constraint and then acts accordingly).
-                The human touch can help the AI do incredeble things, like increasing the speed of the paddle by consistently pressing one button, but in the case of the AI which is trained using the Robot, it would look like the AI is acting optimally
-                everytime by using mathematical constraint, which means it can't do the <span id="bold_id">miracle</span>. In other words, the AI can't take decisions like speeding up when the ball is coming at a high pace towards the paddle, and will be 
-                unable to save the ball. By looking at the video we cannot determine whether it is the AI or the human that is playing, since the AI learns from human and this makes any machine learning AI to perform tasks that the human can perform exactly the 
-                same way.
-
-                &nbsp
-                <br>
-                &nbsp
-                <br>
-                <span id="script1_collect_data">
-                    <script src="https://gist.github.com/Jimut123/f3b2e6f42ccfa02c6245b645770cc1a3.js"></script>
-                </span>
-
-                <center>
-                    <i>Script 1: A script in Python3 to create the data for training.</i> 
-                </center>
-                &nbsp
-                <br>
-
-                <center>
-                    <img src="blog_img/cnn_ai/cnn_ai_images.png" id = "2k_images" alt="images" height="70%" width="70%">
-                </center>
-                <center>
-                    <i>Fig. 2: The images collected for training.</i> 
-                </center>
-                &nbsp
-                <br>
-
-                After the data collection, we need to train it. The Python3 <a href="#script2_training">script</a> for training is shown. This is the Cifar-10 model, which has created a benchmark around the year 2015.
-
-                &nbsp
-                <br>
-                &nbsp
-                <br>
-                <span id="script2_training">
-                    <script src="https://gist.github.com/Jimut123/f54b792f5c4e3ad242c545984d82f888.js"></script>
-                    
-                </span>
-                <center>
-                    <i>Script 2: A script in Python3 to train the data.</i> 
-                </center>
-                &nbsp
-                <br>
-                &nbsp
-                <br>
-                We have trained it on Colab (google collaboratory) using the GPU runtime, by uploading the data in a zip file, unziping it there and downloading the trained .h5py model and testing it on our local machine.
-                The most awesome thing about google <a href="https://colab.research.google.com/notebooks/gpu.ipynb#scrollTo=eG8w0N9zjRhM" target="_blank">collaboratory</a> is that it is free, and uses <a href="https://cloud.google.com/blog/products/ai-machine-learning/nvidia-tesla-t4-gpus-now-available-in-beta" target="_blank" alt="T4">NVIDIA Tesla T4 GPUs</a>.
-                After downloading the .h5py file, which was trained in a few minutes, we used this <a href="script3_run_ai"> script</a> to let the <a href="#yt_video_pong_cnn">pong AI </a>run in our local machine. 
-                &nbsp
-                <br>
-                &nbsp
-                <br>
-                <span id="script3_run_ai">
-                    <script src="https://gist.github.com/Jimut123/6fcc90002d82f14f0dfa679f1c8e2f58.js"></script>
-                </span>
-
-                <center>
-                    <i>Script 3: A script in Python3 to run the AI on local machine.</i> 
-                </center>
-                &nbsp
-                <br>
-                
-                <br>
-
-                <h3>Conclusions </h3>
-                <br>
-                
-                When training the AI for 2k images, we get the result as shown in <a href="#err_Acc_2k_img">Fig. 3</a>. This result is pretty amazing, and gives over 85% accuracy on train and test set.
-                Since this is only 2000 images, (for up action = 1K images and for down action= another 1K image) this doesn't fall in the domain of big data. When we are using 30K images, which very minutely falls in the domain of big data (very very minutely), we see how the model is actually
-                affecting the train and test images as shown in <a href="#30k_images"> Fig. 4</a>.
-                <center>
-                    <img src="blog_img/cnn_ai/cnn_2k.png" id = "err_Acc_2k_img" alt="images" height="70%" width="70%">
-                </center>
-                <center>
-                    <i>Fig. 3: The results obtained by training 2k images.</i> 
-                </center>
-                &nbsp
-                <br>
-                <br>
-
-                <center>
-                    <img src="blog_img/cnn_ai/cnn_30k.png" id = "30k_images" alt="images" height="70%" width="70%">
-                </center>
-                <center>
-                    <i>Fig. 4: The results obtained by training 30k images.</i> 
-                </center>
-                &nbsp
-                <br>
-                &nbsp
-                <br>
-                This shows that the game cannot perform good when we are training it with more data. The accuracy of about 56% on the train and 50% on the test data shows that it will not perform well, we need to use a different model. 
-                When the data is more, the model have to perform well, if it is not performing well, (when not giving at least 90% accuracy) we need to change our model (without thinking anything else).
-                &nbsp
-                <br>
-                &nbsp
-                <br>
-                <h3>Your task</h3>
-                &nbsp
-                <br>
-                We have seen that this model doesn't perform well in the case of Pong AI, but we haven't tried for Dino game as shown in <a href="#google_dino">Fig. 5 </a>(which is inbuilt in google chrome browser). 
-                Your task (should you choose to accept it), shall be to implement this set up for dino game. From intuition we can almost tell the next move by looking at the picture of the dino game, but it may happen that the speed increases over 
-                time so, the CNN AI is not able to determine the time for jump when it has not looked the future. For that I have build this <a href="../games/JumpAndRoll2D/index.html" alt="jump and roll" target="_blank">game </a>named as jump and roll 2D.
-                This is a dino clone, but with constant speed. The CNN shall give over 90% accuracy for this game, and shall be able to perform satisfactory. The only problem with this game is it is very hard to collect the data for such a booring game like this.
-                But nonetheless, you can use the classic Dino game inbuilt in chrome to make the AI work for only "day time". 
-                &nbsp
-                <br>
-                
-                
-
-                <center>
-                    <img src="blog_img/cnn_ai/google_dino.png" id = "google_dino" alt="images" height="70%" width="70%">
-                </center>
-                <center>
-                    <i>Fig. 5: The famous Dino Game, look ma, no internet!</i> 
-                </center>
-                &nbsp
-                <br>
-                &nbsp
-                <br>
-
-                It is bound to give satisfactory result.  When done  <a href="mailto:jimutbahanpal@yahoo.com" >mail me your result!</a>
-                Till then, happy learning!
-                
-                &nbsp
-                <br>
-                <br>
-
-                <h3>#Update: </h3>
-                <p>
-
-                After working with the data that I collected by playing a hacked version (minimal) of the Google's Dino Game, I got some satisfactory results. The result wasn't perfect because
-                of the lag in my PC to collect the data of the screenshot at the moment when I pressed the "Jumping action" (spacebar or uparrow). But, nonetheless, lets see the video of the dino game 
-                in <a href="#yt_video_dino_cnn"> action:</a>
-
-                </p>
-                <p>
-                <center>
-                <span id="yt_video_dino_cnn">
-                    <iframe width="55%" height="315" src="https://www.youtube.com/embed/nQw8KtcOynA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </span>
-                <center>
-                    <i>Video 3: CNN trained dino AI satisfactorily saves itself from hitting and colliding</i> 
-                </center>
-                </center>
-                </p>
-
-                Even from stats perspective we can see the <a href="#acc_dino"> accuracy </a> and <a href="#err_dino"> error</a> in the following figures.
-
-                <center>
-                    <img src="blog_img/cnn_ai/accuracy_dino_1.png" id = "acc_dino" alt="images" height="70%" width="70%">
-                </center>
-
-                <center>
-                    <i>Fig. 6: The accuracy of Dino AI obtained by training 2k images.</i> 
-                </center>
-                <center>
-                    <img src="blog_img/cnn_ai/loss_dino_2.png" id = "err_dino" alt="images" height="70%" width="70%">
-                </center>
-                <center>
-                    <i>Fig. 7: The error of Dino AI obtained by training 2k images.</i> 
-                </center>
-                <br><br>
-                Finally our implementation of the model is shown in <a href="#model_our">Fig. 8</a>.
-                <br><br>
-                <center>
-                    <img src="blog_img/cnn_ai/our_implementation.png" id = "model_our" alt="images" height="50%" width="50%">
-                </center>
-                <center>
-                    <i>Fig. 8: Our implementation of the CIFAR-10 model.</i> 
-                </center>
+        <div class="script-embed" id="script3_run_ai">
+            <script src="https://gist.github.com/Jimut123/6fcc90002d82f14f0dfa679f1c8e2f58.js"></script>
+        </div>
+        <span class="caption">Script 3: A script in Python3 to run the AI on local machine.</span>
 
 
-                <br>
-                <br>
-                <h3>References</h3>
-                <br>
-                1. <span id="jimut_mobilenet_paper">  Jimut Bahan Pal, Shalabh Agarwal, “Real Time Object Detection Can be Embedded on Low Powered Devices”, International Journal of Computer Sciences and Engineering, Vol.7, Issue.2, pp.1005-1009, 2019. </span>
-                &nbsp
-                <br>
-                2. <a href="../blogs/cnn_games_ai_ipynb.html" alt="ipynb file" target="_blank"> The Jupyter Notebook for Colab. </a>
-            </div>
+        <h3>Conclusions</h3>
+        
+        <p>
+            When training the AI for 2k images, we get the result as shown in Fig. 3. This result is pretty amazing, and gives over 85% accuracy on train and test set.
+            Since this is only 2000 images, (for up action = 1K images and for down action= another 1K image) this doesn't fall in the domain of big data. When we are using 30K images, which very minutely falls in the domain of big data (very very minutely), we see how the model is actually
+            affecting the train and test images as shown in Fig. 4.
+        </p>
+
+        <div class="img-wrapper" id="err_Acc_2k_img">
+            <img src="blog_img/cnn_ai/cnn_2k.png" alt="images" style="width: 70%;">
+            <span class="caption">Fig. 3: The results obtained by training 2k images.</span>
+        </div>
+
+        <div class="img-wrapper" id="30k_images">
+            <img src="blog_img/cnn_ai/cnn_30k.png" alt="images" style="width: 70%;">
+            <span class="caption">Fig. 4: The results obtained by training 30k images.</span>
+        </div>
+
+        <p>
+            This shows that the game cannot perform good when we are training it with more data. The accuracy of about 56% on the train and 50% on the test data shows that it will not perform well, we need to use a different model. 
+            When the data is more, the model have to perform well, if it is not performing well, (when not giving at least 90% accuracy) we need to change our model (without thinking anything else).
+        </p>
+
+        <h3>Your task</h3>
+        
+        <p>
+            We have seen that this model doesn't perform well in the case of Pong AI, but we haven't tried for Dino game as shown in Fig. 5 (which is inbuilt in google chrome browser). 
+            Your task (should you choose to accept it), shall be to implement this set up for dino game. From intuition we can almost tell the next move by looking at the picture of the dino game, but it may happen that the speed increases over 
+            time so, the CNN AI is not able to determine the time for jump when it has not looked the future. For that I have build this <a href="../games/JumpAndRoll2D/index.html" target="_blank">game </a>named as jump and roll 2D.
+            This is a dino clone, but with constant speed. The CNN shall give over 90% accuracy for this game, and shall be able to perform satisfactory. The only problem with this game is it is very hard to collect the data for such a booring game like this.
+            But nonetheless, you can use the classic Dino game inbuilt in chrome to make the AI work for only "day time". 
+        </p>
+
+        <div class="img-wrapper" id="google_dino">
+            <img src="blog_img/cnn_ai/google_dino.png" alt="images" style="width: 70%;">
+            <span class="caption">Fig. 5: The famous Dino Game, look ma, no internet!</span>
+        </div>
+
+        <p>
+            It is bound to give satisfactory result. When done <a href="mailto:jimutbahanpal@yahoo.com">mail me your result!</a>
+            Till then, happy learning!
+        </p>
+
+        <h3>#Update:</h3>
+        
+        <p>
+            After working with the data that I collected by playing a hacked version (minimal) of the Google's Dino Game, I got some satisfactory results. The result wasn't perfect because
+            of the lag in my PC to collect the data of the screenshot at the moment when I pressed the "Jumping action" (spacebar or uparrow). But, nonetheless, lets see the video of the dino game 
+            in action:
+        </p>
+
+        <div class="video-wrapper" id="yt_video_dino_cnn">
+            <iframe src="https://www.youtube.com/embed/nQw8KtcOynA" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <span class="caption">Video 3: CNN trained dino AI satisfactorily saves itself from hitting and colliding</span>
+
+        <p>Even from stats perspective we can see the accuracy and error in the following figures.</p>
+
+        <div class="img-wrapper" id="acc_dino">
+            <img src="blog_img/cnn_ai/accuracy_dino_1.png" alt="images" style="width: 70%;">
+            <span class="caption">Fig. 6: The accuracy of Dino AI obtained by training 2k images.</span>
+        </div>
+
+        <div class="img-wrapper" id="err_dino">
+            <img src="blog_img/cnn_ai/loss_dino_2.png" alt="images" style="width: 70%;">
+            <span class="caption">Fig. 7: The error of Dino AI obtained by training 2k images.</span>
+        </div>
+
+        <p>Finally our implementation of the model is shown in Fig. 8.</p>
+
+        <div class="img-wrapper" id="model_our">
+            <img src="blog_img/cnn_ai/our_implementation.png" alt="images" style="width: 50%;">
+            <span class="caption">Fig. 8: Our implementation of the CIFAR-10 model.</span>
+        </div>
+
+
+        <h3>References</h3>
+        <p>
+            1. <span id="jimut_mobilenet_paper"> Jimut Bahan Pal, Shalabh Agarwal, “Real Time Object Detection Can be Embedded on Low Powered Devices”, International Journal of Computer Sciences and Engineering, Vol.7, Issue.2, pp.1005-1009, 2019. </span>
+        </p>
+        <p>
+            2. <a href="../blogs/cnn_games_ai_ipynb.html" target="_blank"> The Jupyter Notebook for Colab. </a>
+        </p>
+
     </div>
 </div>
-
 
       <br><br>
       

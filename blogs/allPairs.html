@@ -420,320 +420,420 @@
     <div align="center">  
       <br><br>
       
-      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+      <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="../js/prism.js"></script>
 
-<br>
-
-<h1>
-    <b id="heading-font">  All Pairs Algorithm</b>
-</h1>
-<span class="keywords-orangered"> &nbsp; All-pairs &nbsp; </span>
-&nbsp;&nbsp;
-<span class="keywords-blue"> &nbsp; Dijkstra &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-green">&nbsp; algorithm &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-yellow">&nbsp; optimisation &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-orange">&nbsp; Graph &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-deepblue">&nbsp; C++ &nbsp;</span> 
-
-
-<div id="pad-container">
-    <div  align="center" id="exp-font">
-            <div class="container" align="justify">
-
-                <p>
-                <a id="bold_id">Dijkstra</a>'s algorithm is an important topic in graph theory, where we can find the shortest path 
-                between two possible points in a graph. However, we can find the paths if they are having a cost &gt; or =  0. This is an 
-                implementation of All pairs algorithm, where the cost is &gt; or =  0.
-                <br>
-                <br>
-                </p>
-                <center>
-                    <div>
-                        <img src="../blogs/blog_img/Dijkstra_Animation.gif" alt="djktras algorithm in execution" height="70%" width="70%">
-                    </div>
-                    <a id="bold_id"> Fig. 1: A visualisation of Dijkstra's algorithm. </a>
-                    Source : <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" alt="wiki-page" target="_blank"> Wikipedia</a>.
-                </center>
-                <br>
-                <br>
-                <p>
-                The main motive of this algorithm is to minimise the distance between two points in a map. Since this is a 
-                farely old algorithm, it is quite slow and takes a lot of space in the memory. There are several other algorithms
-                that we can study, but this forms the basis of graph theory.
-                <br>
-                </p>
-                <br>
-                <p>
-                <center>
-                    <div>
-                        <img src="../blogs/blog_img/Floyd-Warshall_example.svg" alt="Floyd warshall algorithm's graph" height="70%" width="70%">
-                    </div>
-                    <a id="bold_id"> Fig. 2: A visualisation of the graph of Floyd warshall algorithm algorithm. </a>
-                    Source : <a href="https://en.wikipedia.org/wiki/File:Floyd-Warshall_example.svg" alt="wiki-page" target="_blank"> Wikipedia</a>.
-                </center>
-                <br>
-                <p>
-
-                <p>
-                The basic algorithm is as follows, Note this is in layman's term:
-                <br>
-                </p>
-                
-                
-                    <pre>
-
-                    <a id="bold_id">INF</a> <- A very large number
-                    Input the number of nodes as <a style="font-weight:bold;">N</a>
-                    Initialise an array <a id="bold_id">A</a> <- <a id="bold_id">[N+1][N+1] </a> to <a id="bold_id">INF</a>
-                    <a id="bold_id">A[i][j]</a> <- <a id="bold_id">0</a> where <a id="bold_id">i = j</a>
-
-                    for <a id="bold_id"> K = 1 </a> to <a id="bold_id"> N </a> do:
-                        for <a id="bold_id"> I = 1 </a> to <a id="bold_id"> N </a> do:
-                            for <a id="bold_id"> J = I+1 </a> to <a id="bold_id"> N </a> do:
-                                if <a id="bold_id">A[K][J] > A[K][I] + A[I][J]</a> 
-                                    <a id="bold_id">A[K][J] =  A[K][I] + A[I][J] </a>
-                                    <a id="bold_id">A[J][K] =  A[K][I] + A[I][J] </a>
-                                endif
-                            endfor
-                        endfor
-                    endfor
-
-                    <a id="bold_id">A</a> <- Will contain the cost matrix
-                    <a id="bold_id">A[source][dest]</a> <- Will have the cost from source to destination
-                    </pre>
-                    <br>
-                
-
-                So let's start coding in GOD's language i.e., C++ : 
-                <br>
-
-                Let's import the necessary libraires:
-                <br>
-
-
-                <pre><code class="language-cpp" >
-                    /*
-                    * Floyd-Warshall - All pairs algorithm, written in CPP. Author: Jimut Bahan Pal.
-                    * 4rth June, 2019.
-                    */
-                    #include &lt;iostream&gt;            // for input output
-                    #include &lt;bits/stdc++.h&gt;       // for templates, just in case 
-                    #include &lt;iomanip&gt;             // for formatting and stuffs!
-                    using namespace std;           // for standard namespace, else use std:: for everything!
-                </code></pre>
-                    
-                <br>
-
-                Now let's define the infinity. Here, it shall be a very big number which shouldn't be considered as an input.
-
-                <br>
-                <pre><code class="language-cpp">
-                    #define INF 999999
-                </code></pre>
-
-                <br>
-
-                We now can initialise the cost matrix, by taking the numbers as input. The N will the the total number of nodes
-                as input. We have to initialise each element in the matrix to infinity. We then have to set the elements to 0
-                where i=j, after that we will print it, and here's how we will do it.
-                <br>
-                <pre><code class="language-cpp">
-                    
-                    int main()
-                    {
-                        int N;
-                        cin>>N;
-
-                        int matrix[N+1][N+1];
-                        for(int i=1;i<=N;i++)
-                            for(int j=1;j<=N;j++)
-                            {
-                                matrix[i][j]=INF;
-                                if(i==j)
-                                    matrix[i][j]=0;
-                            }
-
-                        cout<<"\n Initial cost matrix :=> \n\n";
-                        
-                        for(int i=1;i<=N;i++)
-                        {
-                            for(int j=1;j<=N;j++)
-                            {
-                                cout<< setw(7)<< matrix[i][j];
-                            }
-                            cout<<"\n";
-                        }
-
-                </code></pre>
-                <br>
-                For a sample input of a graph which have 6 nodes and 7 verteces, with cost as shown, we will have to input like this:
-                Note: First line have the total number of verteces, second line have total number of connections and the third line
-                have each connections, starting node, ending node and the cost. <br>
-                Then the initial cost matrix is displayed in the terminal like the following:
-                <br>
-                <pre>
-                6   
-                7
-
-                1 2 4
-                1 3 9
-                2 3 3
-                2 4 7
-                3 4 9
-                4 5 9
-                5 6 6
-
-                Initial cost matrix :=> 
-
-                0 999999 999999 999999 999999 999999
-                999999      0 999999 999999 999999 999999
-                999999 999999      0 999999 999999 999999
-                999999 999999 999999      0 999999 999999
-                999999 999999 999999 999999      0 999999
-                999999 999999 999999 999999 999999      0
-
-                </pre>
-                <br>
-                Then we have to take the cost for each of the vertex that are available as link. We will then print the 
-                matrix for visualisation.
-                <br>
-                <pre><code class="language-cpp">
-                    int T,i,j,cost;
-                    cin>>T;	
-                    while(T--)
-                    {
-                        cin>>i>>j>>cost;
-                        matrix[i][j]=cost;
-                        matrix[j][i]=cost;
-                    }
-                    
-                    cout<<"\n Next cost matrix :=> \n\n";
-                    //disp_matrix(matrix,N);
-
-                    for(int i=1;i<=N;i++)
-                    {
-                        for(int j=1;j<=N;j++)
-                        {
-                            cout<< setw(6)<< matrix[i][j]<<" ";
-                        }
-                        cout<<"\n";
-                    }
-                </code></pre>
-                <br>
-                The output of this code segment in the terminal will be:
-                <br>
-                <pre>
-
-                Next cost matrix :=> 
-
-                    0      4      9 999999 999999 999999 
-                    4      0      3      7 999999 999999 
-                    9      3      0      9 999999 999999 
-                999999      7      9      0      9 999999 
-                999999 999999 999999      9      0      6 
-                999999 999999 999999 999999      6      0 
-
-                </pre>
-                <br>
-                Then we will perform the main part of the algorithm, where we will optimise the cost by brute force.
-                <br>
-                <pre><code class="language-cpp">
-                    for(int k=1;k<=N;k++)
-                    {
-                        for(int i=1;i<=N;i++)
-                        {
-
-                            for(int j=i+1;j<=N;j++)
-                            {
-                                if(matrix[k][j]>matrix[k][i]+matrix[i][j])
-                                {
-                                    matrix[k][j]=matrix[k][i]+matrix[i][j];
-                                    matrix[j][k]=matrix[k][i]+matrix[i][j];
-                                }
-                            }
-                        }
-                    }
-                </code></pre>
-                <br>
-
-                Hence, the matrix is optimised, and we print the matrix.
-                <br>
-
-                <pre><code class="language-cpp">
-
-                    cout<<"\n Final cost matrix :=> \n\n";
-                    
-                    for(int i=1;i<=N;i++)
-                    {
-                        cout<< setw(6)<< i<<" ";
-                    }
-                    cout<< endl;
-
-                    cout<< setw(6)<<"-------";
-                    for(int i=1;i<=N;i++)
-                    {
-                        cout<< setw(6) <<"-------";
-                    }
-                    cout<< endl;
-                    for(int i=1;i<=N;i++)
-                    {
-                        cout<< i<<"|";
-                        for(int j=1;j<=N;j++)
-                        {
-                            cout<< setw(6)<< matrix[i][j]<<" ";
-                        }
-                        cout<<"\n";
-                    }
-                    return 0;
-                }
-
-            </code></pre>
-            <br>
-            The final output of the cost matrix generated upon optimisation via djiktras algorithm will be something like:
-            <br>
-            <pre>
-                Final cost matrix :=> 
-
-                    1      2      3      4      5      6 
-                -------------------------------------------------
-                1|     0      4      7     11     20     26 
-                2|     4      0      3      7     16     22 
-                3|     7      3      0      9     18     24 
-                4|    11      7      9      0      9     15 
-                5|    20     16     18      9      0      6 
-                6|    26     22     24     15      6      0 
-
-            </pre>
-            <br>
-
-            So we have sucessfully implemented out Dijkstra's algorithm using GOD's language. Next, we will see how to solve the 
-            same problem in a different algorithm which is quite optimised in terms of space and time complexity! 
-            <br>
-            <br>
-            <a id="bold_id">Till then.... Happy coding!</a>
-
-            <br>
-            
-            <br>
-            <br>
-            <center>
-                <a href="mailto:jimutbahanpal@yahoo.com" >Comments disabled temporarily. Mail please.</a>
-            </center>
-            </div >
-        </div >
-    </div >
-    
-
-    <style>
-    #bold_id{
-        font-weight:bold;
+<style>
+    /* VARIABLES */
+    :root {
+        /* Light Mode */
+        --background-color: #ffffff;
+        --text-color: #1a202c;
+        --accent-color: #2b6cb0;
+        --quote-border: #18a236;
+        --code-bg: #1e1e1e; /* Dark Terminal Style */
+        --code-text: #d4d4d4;
+        --img-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-    </style>
+
+    [data-theme="dark"] {
+        /* Dark Mode - PITCH BLACK FIX */
+        --background-color: #000000 !important;
+        --text-color: #e0e0e0 !important;
+        --accent-color: #63b3ed;
+        --code-bg: #111111;
+    }
+
+    /* GLOBAL */
+    body {
+        background-color: var(--background-color); 
+        color: var(--text-color);
+        font-family: 'Cardo', serif; 
+        line-height: 1.8;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* CONTAINER */
+    .blog-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px 100px 20px;
+    }
+
+    /* HEADER */
+    .blog-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .blog-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        color: var(--text-color);
+    }
+
+    /* TAGS */
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .tag-pill {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 50px;
+        border: 1px solid;
+        background: transparent;
+    }
+
+    .tag-orangered { color: #ff4500; border-color: #ff4500; }
+    .tag-blue { color: #0076f4; border-color: #0076f4; }
+    .tag-green { color: #18a236; border-color: #18a236; }
+    .tag-yellow { color: #d4af37; border-color: #d4af37; }
+    .tag-orange { color: #ffa500; border-color: #ffa500; }
+    .tag-deepblue { color: #00008b; border-color: #00008b; }
+
+    /* CONTENT */
+    .article-content {
+        text-align: justify;
+        font-size: 1.1rem; 
+    }
+
+    .article-content p {
+        margin-bottom: 24px;
+        color: var(--text-color);
+    }
+
+    .article-content a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.2s;
+    }
+    .article-content a:hover { text-decoration: underline; }
+
+    /* CODE BLOCKS */
+    pre {
+        background-color: var(--code-bg);
+        color: var(--code-text);
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        box-shadow: var(--img-shadow);
+        border: 1px solid rgba(255,255,255,0.1);
+        margin: 30px 0;
+    }
+
+    code.language-cpp {
+        color: inherit; /* Inherit from pre */
+    }
+
+    /* IMAGE STYLES */
+    .img-wrapper {
+        text-align: center;
+        margin: 40px 0;
+    }
+    
+    .img-wrapper img {
+        border-radius: 6px;
+        box-shadow: var(--img-shadow);
+        max-width: 100%;
+        height: auto;
+        background: #fff; /* Ensure transparency doesn't break */
+        padding: 10px;
+    }
+
+    .caption {
+        font-size: 0.9rem;
+        font-style: italic;
+        color: #666;
+        margin-top: 10px;
+        display: block;
+        text-align: center;
+    }
+
+    /* BOLD ID FIX */
+    #bold_id {
+        font-weight: 700;
+        color: var(--text-color);
+    }
+
+</style>
+
+<div class="blog-container">
+
+    <header class="blog-header">
+        <h1 class="blog-title">All Pairs Algorithm</h1>
+        
+        <div class="tag-container">
+            <span class="tag-pill tag-orangered">All-pairs</span>
+            <span class="tag-pill tag-blue">Dijkstra</span>
+            <span class="tag-pill tag-green">Algorithm</span>
+            <span class="tag-pill tag-yellow">Optimisation</span>
+            <span class="tag-pill tag-orange">Graph</span>
+            <span class="tag-pill tag-deepblue">C++</span>
+        </div>
+    </header>
+
+    <div class="article-content">
+
+        <p>
+            <span id="bold_id">Dijkstra</span>'s algorithm is an important topic in graph theory, where we can find the shortest path 
+            between two possible points in a graph. However, we can find the paths if they are having a cost &gt; or = 0. This is an 
+            implementation of All pairs algorithm, where the cost is &gt; or = 0.
+        </p>
+
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Dijkstra_Animation.gif" alt="djktras algorithm in execution" style="width: 70%;">
+            <span class="caption">Fig. 1: A visualisation of Dijkstra's algorithm. Source : <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" target="_blank"> Wikipedia</a>.</span>
+        </div>
+
+        <p>
+            The main motive of this algorithm is to minimise the distance between two points in a map. Since this is a 
+            farely old algorithm, it is quite slow and takes a lot of space in the memory. There are several other algorithms
+            that we can study, but this forms the basis of graph theory.
+        </p>
+
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Floyd-Warshall_example.svg" alt="Floyd warshall algorithm's graph" style="width: 70%;">
+            <span class="caption">Fig. 2: A visualisation of the graph of Floyd warshall algorithm algorithm. Source : <a href="https://en.wikipedia.org/wiki/File:Floyd-Warshall_example.svg" target="_blank"> Wikipedia</a>.</span>
+        </div>
+
+        <p>The basic algorithm is as follows, Note this is in layman's term:</p>
+        
+        <pre>
+<span id="bold_id">INF</span> <- A very large number
+Input the number of nodes as <span style="font-weight:bold;">N</span>
+Initialise an array <span id="bold_id">A</span> <- <span id="bold_id">[N+1][N+1] </span> to <span id="bold_id">INF</span>
+<span id="bold_id">A[i][j]</span> <- <span id="bold_id">0</span> where <span id="bold_id">i = j</span>
+
+for <span id="bold_id"> K = 1 </span> to <span id="bold_id"> N </span> do:
+    for <span id="bold_id"> I = 1 </span> to <span id="bold_id"> N </span> do:
+        for <span id="bold_id"> J = I+1 </span> to <span id="bold_id"> N </span> do:
+            if <span id="bold_id">A[K][J] > A[K][I] + A[I][J]</span> 
+                <span id="bold_id">A[K][J] =  A[K][I] + A[I][J] </span>
+                <span id="bold_id">A[J][K] =  A[K][I] + A[I][J] </span>
+            endif
+        endfor
+    endfor
+endfor
+
+<span id="bold_id">A</span> <- Will contain the cost matrix
+<span id="bold_id">A[source][dest]</span> <- Will have the cost from source to destination
+</pre>
+
+        <p>So let's start coding in GOD's language i.e., C++ :</p>
+        <p>Let's import the necessary libraires:</p>
+
+        <pre><code class="language-cpp">
+/*
+* Floyd-Warshall - All pairs algorithm, written in CPP. Author: Jimut Bahan Pal.
+* 4rth June, 2019.
+*/
+#include &lt;iostream&gt;            // for input output
+#include &lt;bits/stdc++.h&gt;       // for templates, just in case 
+#include &lt;iomanip&gt;             // for formatting and stuffs!
+using namespace std;           // for standard namespace, else use std:: for everything!
+</code></pre>
+
+        <p>Now let's define the infinity. Here, it shall be a very big number which shouldn't be considered as an input.</p>
+
+        <pre><code class="language-cpp">
+#define INF 999999
+</code></pre>
+
+        <p>
+            We now can initialise the cost matrix, by taking the numbers as input. The N will the the total number of nodes
+            as input. We have to initialise each element in the matrix to infinity. We then have to set the elements to 0
+            where i=j, after that we will print it, and here's how we will do it.
+        </p>
+
+        <pre><code class="language-cpp">
+int main()
+{
+    int N;
+    cin>>N;
+
+    int matrix[N+1][N+1];
+    for(int i=1;i<=N;i++)
+        for(int j=1;j<=N;j++)
+        {
+            matrix[i][j]=INF;
+            if(i==j)
+                matrix[i][j]=0;
+        }
+
+    cout<<"\n Initial cost matrix :=> \n\n";
+    
+    for(int i=1;i<=N;i++)
+    {
+        for(int j=1;j<=N;j++)
+        {
+            cout<< setw(7)<< matrix[i][j];
+        }
+        cout<<"\n";
+    }
+</code></pre>
+
+        <p>
+            For a sample input of a graph which have 6 nodes and 7 verteces, with cost as shown, we will have to input like this:
+            Note: First line have the total number of verteces, second line have total number of connections and the third line
+            have each connections, starting node, ending node and the cost. <br>
+            Then the initial cost matrix is displayed in the terminal like the following:
+        </p>
+
+        <pre>
+6   
+7
+
+1 2 4
+1 3 9
+2 3 3
+2 4 7
+3 4 9
+4 5 9
+5 6 6
+
+Initial cost matrix :=> 
+
+0 999999 999999 999999 999999 999999
+999999      0 999999 999999 999999 999999
+999999 999999      0 999999 999999 999999
+999999 999999 999999      0 999999 999999
+999999 999999 999999 999999      0 999999
+999999 999999 999999 999999 999999      0
+</pre>
+
+        <p>Then we have to take the cost for each of the vertex that are available as link. We will then print the matrix for visualisation.</p>
+
+        <pre><code class="language-cpp">
+    int T,i,j,cost;
+    cin>>T; 
+    while(T--)
+    {
+        cin>>i>>j>>cost;
+        matrix[i][j]=cost;
+        matrix[j][i]=cost;
+    }
+    
+    cout<<"\n Next cost matrix :=> \n\n";
+    //disp_matrix(matrix,N);
+
+    for(int i=1;i<=N;i++)
+    {
+        for(int j=1;j<=N;j++)
+        {
+            cout<< setw(6)<< matrix[i][j]<<" ";
+        }
+        cout<<"\n";
+    }
+</code></pre>
+
+        <p>The output of this code segment in the terminal will be:</p>
+
+        <pre>
+Next cost matrix :=> 
+
+    0      4      9 999999 999999 999999 
+    4      0      3      7 999999 999999 
+    9      3      0      9 999999 999999 
+999999      7      9      0      9 999999 
+999999 999999 999999      9      0      6 
+999999 999999 999999 999999      6      0 
+</pre>
+
+        <p>Then we will perform the main part of the algorithm, where we will optimise the cost by brute force.</p>
+
+        <pre><code class="language-cpp">
+    for(int k=1;k<=N;k++)
+    {
+        for(int i=1;i<=N;i++)
+        {
+
+            for(int j=i+1;j<=N;j++)
+            {
+                if(matrix[k][j]>matrix[k][i]+matrix[i][j])
+                {
+                    matrix[k][j]=matrix[k][i]+matrix[i][j];
+                    matrix[j][k]=matrix[k][i]+matrix[i][j];
+                }
+            }
+        }
+    }
+</code></pre>
+
+        <p>Hence, the matrix is optimised, and we print the matrix.</p>
+
+        <pre><code class="language-cpp">
+    cout<<"\n Final cost matrix :=> \n\n";
+    
+    for(int i=1;i<=N;i++)
+    {
+        cout<< setw(6)<< i<<" ";
+    }
+    cout<< endl;
+
+    cout<< setw(6)<<"-------";
+    for(int i=1;i<=N;i++)
+    {
+        cout<< setw(6) <<"-------";
+    }
+    cout<< endl;
+    for(int i=1;i<=N;i++)
+    {
+        cout<< i<<"|";
+        for(int j=1;j<=N;j++)
+        {
+            cout<< setw(6)<< matrix[i][j]<<" ";
+        }
+        cout<<"\n";
+    }
+    return 0;
+}
+</code></pre>
+
+        <p>The final output of the cost matrix generated upon optimisation via djiktras algorithm will be something like:</p>
+
+        <pre>
+Final cost matrix :=> 
+
+    1      2      3      4      5      6 
+-------------------------------------------------
+1|     0      4      7     11     20     26 
+2|     4      0      3      7     16     22 
+3|     7      3      0      9     18     24 
+4|    11      7      9      0      9     15 
+5|    20     16     18      9      0      6 
+6|    26     22     24     15      6      0 
+</pre>
+
+        <p>
+            So we have sucessfully implemented out Dijkstra's algorithm using GOD's language. Next, we will see how to solve the 
+            same problem in a different algorithm which is quite optimised in terms of space and time complexity!
+        </p>
+
+        <p style="text-align:center; margin-top: 40px; font-weight: bold; color: var(--accent-color);">Till then.... Happy coding!</p>
+
+        <p style="text-align:center; margin-top: 20px; font-style: italic; font-size: 0.9rem;">
+            <a href="mailto:jimutbahanpal@yahoo.com">Comments disabled temporarily. Mail please.</a>
+        </p>
+
+    </div>
+</div>
 
       <br><br>
       

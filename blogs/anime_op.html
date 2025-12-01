@@ -420,43 +420,192 @@
     <div align="center">  
       <br><br>
       
-      <link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
+      <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<style>
+    /* VARIABLES */
+    :root {
+        /* Light Mode */
+        --background-color: #ffffff;
+        --text-color: #1a202c;
+        --accent-color: #ff4500; /* Orange-Red for Anime */
+        --quote-border: #18a236;
+        --quote-bg: rgba(0, 0, 0, 0.03);
+        --img-caption-color: #666;
+    }
 
-<br>
+    [data-theme="dark"] {
+        /* Dark Mode - PITCH BLACK FIX */
+        --background-color: #000000 !important;
+        --text-color: #e0e0e0 !important;
+        --accent-color: #ff6347;
+        --quote-bg: rgba(255, 255, 255, 0.08);
+        --img-caption-color: #aaa;
+    }
 
-<h1>
-    <b id="heading-font"> My favourite Anime Characters from every anime I have watched </b>
+    /* GLOBAL */
+    body {
+        background-color: var(--background-color); 
+        color: var(--text-color);
+        font-family: 'Cardo', serif; 
+        line-height: 1.8;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* CONTAINER */
+    .blog-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px 100px 20px;
+    }
+
+    /* HEADER */
+    .blog-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .blog-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        color: var(--text-color);
+    }
     
-</h1>
-<center>
-    Some of my favourite characters are mostly villains x_x
-</center>
+    .blog-subtitle {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        color: var(--img-caption-color);
+        margin-bottom: 25px;
+        display: block;
+        font-weight: 400;
+    }
 
-<br>
+    /* TAGS */
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-family: 'Poppins', sans-serif;
+    }
 
-<span class="keywords-orangered"> &nbsp; Anime &nbsp; </span>
-&nbsp;&nbsp;
-<span class="keywords-blue"> &nbsp; Fiction &nbsp;</span>
-&nbsp;&nbsp;
-<span class="keywords-yellow"> &nbsp; Philosophy &nbsp;</span>
-&nbsp;&nbsp;
+    .tag-pill {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 50px;
+        border: 1px solid;
+        background: transparent;
+    }
 
+    .tag-orangered { color: #ff4500; border-color: #ff4500; }
+    .tag-blue { color: #0076f4; border-color: #0076f4; }
+    .tag-yellow { color: #d4af37; border-color: #d4af37; }
 
+    /* CONTENT */
+    .article-content {
+        text-align: justify;
+        font-size: 1.15rem; 
+    }
 
-<div id="pad-container">
-    <div  align="center" id="exp-font">
-        <div class="container" align="justify">
+    /* Section Headers (Anime Names) */
+    .article-content h2 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin-top: 60px;
+        margin-bottom: 20px;
+        color: var(--text-color);
+        border-left: 4px solid var(--accent-color);
+        padding-left: 15px;
+    }
+    
+    /* Source Anime Titles */
+    .source-anime {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--img-caption-color);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 60px;
+        margin-bottom: -40px; /* Pull close to the character name */
+        display: block;
+    }
 
-            
-            <h2> From <i>Naruto </i></h2><br>
-            <h2>Madara Uchiha</h2><br>
+    .article-content p {
+        margin-bottom: 24px;
+        color: var(--text-color);
+    }
 
+    /* Quotes */
+    .anime-quote {
+        font-family: 'Poppins', sans-serif;
+        font-style: italic;
+        font-size: 1.05rem;
+        margin: 30px 0;
+        padding: 25px 30px;
+        background: var(--quote-bg);
+        border-radius: 8px;
+        color: var(--text-color);
+        white-space: pre-line; /* Preserves your line breaks in quotes */
+        line-height: 1.6;
+    }
+
+    /* IMAGES */
+    .img-wrapper {
+        text-align: center;
+        margin: 40px 0;
+    }
+    
+    .img-wrapper img {
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        max-width: 100%;
+        height: auto;
+    }
+
+    .img-caption {
+        display: block;
+        margin-top: 10px;
+        font-size: 0.9rem;
+        font-style: italic;
+        color: var(--img-caption-color);
+    }
+
+</style>
+
+<div class="blog-container">
+
+    <header class="blog-header">
+        <h1 class="blog-title">My favourite Anime Characters from every anime I have watched</h1>
+        <span class="blog-subtitle">Some of my favourite characters are mostly villains x_x</span>
+        
+        <div class="tag-container">
+            <span class="tag-pill tag-orangered">Anime</span>
+            <span class="tag-pill tag-blue">Fiction</span>
+            <span class="tag-pill tag-yellow">Philosophy</span>
+        </div>
+    </header>
+
+    <div class="article-content">
+
+        <span class="source-anime">From Naruto</span>
+        <h2>Madara Uchiha</h2>
+
+        <p>
             Madara Uchiha is a GOD. He is the only being who has no weaknesses, hence even the writer didn't 
-            know how to kill him. Here is the speech which I truly admire: <br><br>
+            know how to kill him. Here is the speech which I truly admire:
+        </p>
 
-            <a id="bold_id">
-
+        <div class="anime-quote">
             Wake up to reality.
 
             Nothing ever goes as planned in this accursed world. The longer you live, the more 
@@ -480,32 +629,30 @@
             I am... the Ghost of the Uchiha.
 
             For truly this reality... is a Hell.
+        </div>
 
-            </a><br><br>
-
+        <p>
             The fact that he fought the whole shinobi world along with all the tailed beasts single 
             handedly shows the power and determination of this character. He is the founder of the Uchiha 
-            Clan, which runs the show. <br><br>
+            Clan, which runs the show.
+        </p>
 
-            <center>
-                <img src="../blogs/blog_img/Anime/3_madara.png" width="50%" height="50%">
-                <center> <i> Madara Uchiha </i> </center>
-            </center>
-            <br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/3_madara.png" style="width: 50%">
+            <span class="img-caption">Madara Uchiha</span>
+        </div>
 
-            <center>
-                <img src="../blogs/blog_img/Anime/18_madara1.jpg" width="50%" height="50%">
-                <center> <i> Madara Uchiha </i> </center>
-            </center>
-            <br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/18_madara1.jpg" style="width: 50%">
+            <span class="img-caption">Madara Uchiha</span>
+        </div>
 
-            <center>
-                <img src="../blogs/blog_img/Anime/19_madara2.png" width="50%" height="50%">
-                <center> <i> Madara Uchiha </i> </center>
-            </center>
-            <br>
-            <br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/19_madara2.png" style="width: 50%">
+            <span class="img-caption">Madara Uchiha</span>
+        </div>
 
+        <p>
             My take from this anime is there are no villains and heroes in this world. We admire heroes as kids, 
             but as we grow old, we learn to understand the philosophy of villains. After all, everyone is born 
             with a pure heart. Everyone is controlled and exploited by some other's decision in one or another 
@@ -515,10 +662,10 @@
             No matter how hard you try, an Asian will be better than you. Someone's life's work might be someone's 
             weekend's work, it all depends. Success is relative. It might thrill someone for achieving something, 
             but other may consider such achievements meaningless, he/she may have such achievements for breakfast. 
-            The greatest men are unnoticed. 
-            
-            <br><br>
-            
+            The greatest men are unnoticed.
+        </p>
+        
+        <p>
             Being the best has their own set of consequences, which might not always be good. 
             Ultimately, everyone is cursed by their own destiny and fate, which are unavoidable. Whatever happens will 
             happen eventually, how much hard you try to stop it. Karma is a real thing, and destiny cannot be avoided.
@@ -527,9 +674,9 @@
             this idea of a society in such a way that everyone is bound to live within its norms. Humans have made 
             themselves the only thing that has meaningful existence in this universe, which might not be true. 
             We are specks of solar dust anyway, and our existence is merely a process of manipulating atoms.
+        </p>
 
-            <br><br>
-
+        <p>
             The power balance in everyone's life remains almost the same. It's extremely unlikely that a person 
             is extremely well in both sports and academics. He/She may be very good in academics but may suffer 
             from disease. It is necessary to find happiness in nothingness. One who has a bad and childhood full 
@@ -537,23 +684,22 @@
             works, and an unknown power works in support, protecting the balance. The reverse is also true, hence 
             everything in this world is balanced. Getting everything and knowing everything beforehand can make the 
             present very boring.
-            
-            <br><br>
-
+        </p>
+        
+        <p>
             Also, as a character, Naruto was very dumb in the beginning. It's not always to set out bias towards 
             the outstanding ones. The real fun is when a guy with average intelligence surpasses everyone just by 
-            rigorous training and by the will and determination of never giving up.<br><br>
+            rigorous training and by the will and determination of never giving up.
+        </p>
 
 
-            <h2>Itachi Uchiha</h2><br>
-
+        <h2>Itachi Uchiha</h2>
+        <p>
             He is the prodigy who could have surpassed Madara Uchiha. His sacrifice for the village will 
-            be remembered. He thought like a Hokage at the age of 7. <br><br>
-            
-            Here are some of his quotes: <br><br>
-
-            <a id="bold_id">
-
+            be remembered. He thought like a Hokage at the age of 7.
+        </p>
+        
+        <div class="anime-quote">
             Even the strongest of opponents always has a weakness. Knowledge and awareness are vague, and perhaps 
             better called illusions. People live their lives bound by what they accept as correct and true. That's 
             how they define Reality. But what does it mean to be “correct” or “true”? Merely vague concepts… Their 
@@ -563,185 +709,161 @@
             perfection exists. That is, I think why we are born able to absorb things... and by comparing ourselves
             with something else we can finally head in a good direction. It is not wise to judge others based on your 
             own preconceptions and by their appearances. Those who cannot acknowledge themselves will eventually fail.
-            
-            </a>
-            <br><br>
+        </div>
+
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/4_itachi.jpg" style="width: 50%">
+            <span class="img-caption">Itachi Uchiha</span>
+        </div>
 
 
-            <center>
-                <img src="../blogs/blog_img/Anime/4_itachi.jpg" width="50%" height="50%">
-                <center> <i> Itachi Uchiha </i> </center>
-            </center>
-            <br>
-
-            <h2>Uchiha Clan</h2><br>
-
+        <h2>Uchiha Clan</h2>
+        <p>
             To be honest, all the strongest and the prominent members of Uchiha are cool. 
-            They possess extraordinary power which only the Senjus can rival. <br><br>
+            They possess extraordinary power which only the Senjus can rival.
+        </p>
+
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/2_uchiha_members.jpeg" style="width: 50%">
+            <span class="img-caption">Clan of the Uchihas</span>
+        </div>
 
 
-            <center>
-                <img src="../blogs/blog_img/Anime/2_uchiha_members.jpeg" width="50%" height="50%">
-                <center> <i> Clan of the Uchihas </i> </center>
-            </center>
-            <br>
-
-            <h2>Akatsuki</h2><br>
-
+        <h2>Akatsuki</h2>
+        <p>
             These are probably the coolest villains in the anime history. They are so cool that 
             even two members can destroy a single village. They were mainly assigned to capture 
             the tailed beasts, which probably a whole arsenal of any village will fail to achieve.
             All the members of Akatsuki are at Hokage level and are extremely professional and 
-            efficient in completing their tasks in time. <br><br>
+            efficient in completing their tasks in time.
+        </p>
+
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/1_Akatsuki_Ranked.webp" style="width: 50%">
+            <span class="img-caption">Akatsuki</span>
+        </div>
+
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/5_madara.webp" style="width: 50%">
+            <span class="img-caption">Madara never said that</span>
+        </div>
 
 
-            <center>
-                <img src="../blogs/blog_img/Anime/1_Akatsuki_Ranked.webp" width="50%" height="50%">
-                <center> <i> Akatsuki </i> </center>
-            </center>
-            <br>
-           
-
-            <center>
-                <img src="../blogs/blog_img/Anime/5_madara.webp" width="50%" height="50%">
-                <center> <i> Madara never said that </i> </center>
-            </center>
-            <br>
-
-
-            <h2> From <i>Akame ga Kill! </i></h2><br>
-            <h2>Esdeath</h2><br>
-
+        <span class="source-anime">From Akame ga Kill!</span>
+        <h2>Esdeath</h2>
+        <p>
             Well, I thought I will put Gojo before Esdeath, but it wouldn't be fair. She is the 
             empire's strongest and coldest character. Probably the best female character in the 
             anime world. She brings back memories of someone whom I have seen in real life :) The 
             saddest part of this anime is all the best characters dies at the end, including Esdeath.
-            She leads the Jaegars team. <br><br>
+            She leads the Jaegars team.
+        </p>
 
-            <center>
-                <img src="../blogs/blog_img/Anime/6_esdeath.jpg" width="50%" height="50%">
-                <center> <i> Esdeath </i> </center>
-            </center>
-            <br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/6_esdeath.jpg" style="width: 50%">
+            <span class="img-caption">Esdeath</span>
+        </div>
 
-
-            <center>
-                <img src="../blogs/blog_img/Anime/7_jaegars.webp" width="50%" height="50%">
-                <center> <i> Jaegars </i> </center>
-            </center>
-            <br>
-            <br>
-            <br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/7_jaegars.webp" style="width: 50%">
+            <span class="img-caption">Jaegars</span>
+        </div>
 
 
-            <!------------------------------------------------------------------------------------>
-            <h2>From <i>That Time I Got Reincarnated as a Slime </i></h2><br>
-            <h2>Diablo a.k.a. "Noir"</h2><br>
-
+        <span class="source-anime">From That Time I Got Reincarnated as a Slime</span>
+        <h2>Diablo a.k.a. "Noir"</h2>
+        <p>
             Being one of the strongest butlers of the Demon Lord Rimuru, he is part of the top four. He is one of the 
             earliest existing demons, rivaling the powers of the Demon Lords. Whatever spell you cast against him, 
             everything is useless. He stays as a loyal servant of Rimuru, but only a few of the oldest and strongest 
             existing Demon Lords know about his existence. This character has a different charm, being one of 
-            the strongest, he chooses to remain undercover most of the time. <br>
+            the strongest, he chooses to remain undercover most of the time.
+        </p>
 
-            <center>
-                <img src="../blogs/blog_img/Anime/diablo_new.jpg" width="40%" height="40%">
-                <center> <i> Diablo, a.k.a. The Primodial "Black" Noir </i> </center>
-            </center>
-            <br>
-            <br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/diablo_new.jpg" style="width: 40%">
+            <span class="img-caption">Diablo, a.k.a. The Primodial "Black" Noir</span>
+        </div>
 
 
-            <!------------------------------------------------------------------------------------>
-            <h2>From <i>Solo Levelling </i></h2><br>
-            <h2>Sung Jin-woo a.k.a. "The Shadow Monarch"</h2><br>
-
+        <span class="source-anime">From Solo Levelling</span>
+        <h2>Sung Jin-woo a.k.a. "The Shadow Monarch"</h2>
+        <p>
             Once considered one of the weakest hunters in the world, this young man—son of Korea's first awakened hunter—is chosen 
             by the creator of the System to become its Player. Gifted with unmatched determination and an unbreakable will to 
             survive any trial, he eventually evolves into the Shadow Monarch. Living in a world governed by a visible System, he 
             gains the power to level up, acquire legendary-tier weapons, and train relentlessly. After years of growth and hardship, 
             he rises to become one of the most powerful hunters, finally achieving everything he once dreamed of.
-            <br><br>
+        </p>
+
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/jinwoo_new.jpg" style="width: 40%">
+            <span class="img-caption">Sung Jin-woo</span>
+        </div>
 
 
-            <center>
-                <img src="../blogs/blog_img/Anime/jinwoo_new.jpg" width="40%" height="40%">
-                <center> <i> Sung Jin-woo </i> </center>
-            </center>
-            <br>
-            <br>
-
-
-            <!------------------------------------------------------------------------------------>
-
-
-
-            <h2>From <i>Jujutsu Kaisen </i></h2><br>
-            <h2>Gojo Satoru</h2><br>
-
+        <span class="source-anime">From Jujutsu Kaisen</span>
+        <h2>Gojo Satoru</h2>
+        <p>
             Overpowered Kakashi, level 1000 boss who is replaying the game just for fun. 
-            He is the strongest sorcerer and the strongest character in the jujutsu world. <br><br>
+            He is the strongest sorcerer and the strongest character in the jujutsu world.
+        </p>
+        <p>My man just woke up one day, and started to speak facts. Some of his famous quotes are:</p>
 
-            My man just woke up one day, and started to speak facts. Some of his famous quotes are: <br><br>
-
-            <a id="bold_id">
+        <div class="anime-quote">
             Dying to win and risking death to win are completely different. <br>
             When Granted Everything, You Can't Do Anything. <br>
             But no matter how many allies you have around you, when you die, you'll be alone. <br>
-            Love Is The Most Twisted Curse Of All. <br> 
+            Love Is The Most Twisted Curse Of All.
+        </div>
 
-            </a> <br><br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/8_gojo.jpg" style="width: 50%">
+            <span class="img-caption">Gojo Satoru</span>
+        </div>
 
-            <center>
-                <img src="../blogs/blog_img/Anime/8_gojo.jpg" width="50%" height="50%">
-                <center> <i> Gojo Satoru </i> </center>
-            </center>
-            <br>
+        <h2>Yuta Okkotsu</h2>
+        <p>Gojo's cousin, seriously depressed, but super strong character.</p>
 
-            <h2>Yuta Okkotsu</h2><br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/9_Yuta_Okkotsu_Images.jpeg" style="width: 50%">
+            <span class="img-caption">Yuta Okkotsu</span>
+        </div>
 
-            Gojo's cousin, seriously depressed, but super strong character. <br><br>
 
-            <center>
-                <img src="../blogs/blog_img/Anime/9_Yuta_Okkotsu_Images.jpeg" width="50%" height="50%">
-                <center> <i> Yuta Okkotsu </i> </center>
-            </center>
-            <br>
-
-            <h2>From <i> Chainsaw Man </i></h2><br>
-            <h2> Makima aka 'Control Devil' </h2><br>
-
+        <span class="source-anime">From Chainsaw Man</span>
+        <h2>Makima aka 'Control Devil'</h2>
+        <p>
             Being the charming character, one might think she is saving the humanity, 
             since she is with the good-side, but the truth is she is the real antagonist 
             of the series, and one of my favorite characters. Her powers are unknown and 
-            of unimaginable magnitude. <br><br>
+            of unimaginable magnitude.
+        </p>
 
-            <center>
-                <img src="../blogs/blog_img/Anime/makima.png" width="50%" height="50%">
-                <center> <i> Makima </i> </center>
-            </center>
-            <br>
-
-
-            <h2>From <i>Demon Slayer: Kimetsu no Yaiba</i> </h2><br>
-            <h2>Giyu Tomioka</h2><br>
-
-            <center>
-                <img src="../blogs/blog_img/Anime/giyu_tomioka.jpg" width="50%" height="50%">
-                <center> <i> Giyu Tomioka </i> </center>
-            </center>
-            <br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/makima.png" style="width: 50%">
+            <span class="img-caption">Makima</span>
+        </div>
 
 
+        <span class="source-anime">From Demon Slayer: Kimetsu no Yaiba</span>
+        <h2>Giyu Tomioka</h2>
+        
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/giyu_tomioka.jpg" style="width: 50%">
+            <span class="img-caption">Giyu Tomioka</span>
+        </div>
 
-            <h2> From <i>Death Note</i> </h2><br>
-            <h2>Ryuga Hideki</h2><br>
 
+        <span class="source-anime">From Death Note</span>
+        <h2>Ryuga Hideki</h2>
+        <p>
             Super smart, but dies just because he was friend with his murderer. 
             He is a prodigy and I would recommend Death Note to everyone. 
-            Here is his famous saying <br><br>
+            Here is his famous saying:
+        </p>
 
-            <a id="bold_id">
+        <div class="anime-quote">
             There are many types of monsters in this world, monsters who will not show themselves and who cause 
             trouble. Monsters who abduct children, monsters who devour dreams, monsters who suck blood, and, 
             monsters who always tell lies. Lying monsters are a real nuisance, they are much more cunning than 
@@ -749,140 +871,122 @@
             even though they've never experienced hunger. They study even though they have no interest in academics. 
             They seek friendship even though they do not know how to love. If I were to encounter such a monster, I 
             would likely be eaten by it, because in truth, I am that monster.
-            </a> <br><br>
+        </div>
+
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/10_L.jpg" style="width: 50%">
+            <span class="img-caption">Ryuga Hideki aka 'L'</span>
+        </div>
 
 
-            <center>
-                <img src="../blogs/blog_img/Anime/10_L.jpg" width="50%" height="50%">
-                <center> <i> Ryuga Hideki aka 'L' </i> </center>
-            </center>
-            <br>
-
-
-            <h2>From  <i> Classroom of the Elite</i> </h2><br>
-            <h2>Kiyotaka Ayanokoji</h2><br>
-
+        <span class="source-anime">From Classroom of the Elite</span>
+        <h2>Kiyotaka Ayanokoji</h2>
+        <p>
             “Genius lives only one storey above madness.” This guy was created in the white room 
             (a mysterious organization), where you sacrifice childhood to be an exceptionally 
             talented student of the country. He has displayed tremendous ability in every field 
             he was trained in since childhood, right from studies to sports. To experience how 
             the world works in real life, he has been admitted to a school where he chooses to 
-            remain average. 
-            
-            “It takes great talent and skill to conceal one’s talent and skill.”
-            
-
+            remain average.
+        </p>
+        <div class="anime-quote">“It takes great talent and skill to conceal one’s talent and skill.”</div>
+        <p>
             He doesn’t have such social skills as other candidates of the class, 
             but the things that he does without them are truly exceptional.
             He is a true genius and stays to remain average, to lie below the radar, 
             where in real life, he is the best student the system has seen. He rarely 
             takes part in the front lines and controls the class from behind.
+        </p>
 
-            <br><br>
-
-
-            <center>
-                <img src="../blogs/blog_img/Anime/Kiyotaka_Ayanokoji.jpg" width="50%" height="50%">
-                <center> <i> Kiyotaka Ayanokoji </i> </center>
-            </center>
-            <br>
-
-            <h2> From <i>Noragami</i> </h2><br>
-            <h2>Yato</h2><br>
-
-            <br><br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/Kiyotaka_Ayanokoji.jpg" style="width: 50%">
+            <span class="img-caption">Kiyotaka Ayanokoji</span>
+        </div>
 
 
-            <center>
-                <img src="../blogs/blog_img/Anime/yato_yukine.png" width="50%" height="50%">
-                <center> <i> Yato with his regelia Yukine </i> </center>
-            </center>
-            <br>
+        <span class="source-anime">From Noragami</span>
+        <h2>Yato</h2>
 
-            <h2> From <i> One-Punch Man</i> </h2><br>
-            <h2>Saitama</h2><br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/yato_yukine.png" style="width: 50%">
+            <span class="img-caption">Yato with his regelia Yukine</span>
+        </div>
 
+
+        <span class="source-anime">From One-Punch Man</span>
+        <h2>Saitama</h2>
+        <p>
             This character shows us that for being super strong, one need to work tremendously hard. 
             He worked so hard that all this hair fell off. He probably is the strongest hero, but he 
-            stays at the bottom for specific reasons.<br><br>
+            stays at the bottom for specific reasons.
+        </p>
+        <div class="anime-quote">In exchange for power, maybe I've lost something that is essential to being human.</div>
 
-            <a id="bold_id">
-            In exchange for power, maybe I've lost something that is essential to being human. <br>
-            </a><br><br>
-
-            <center>
-                <img src="../blogs/blog_img/Anime/11_saitama.jpg" width="50%" height="50%">
-                <center> <i> Saitama </i> </center>  
-            </center>
-            <br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/11_saitama.jpg" style="width: 50%">
+            <span class="img-caption">Saitama</span>
+        </div>
 
 
-
-            <h2>From <i> Maou Gakuin no Futekigousha (The Misfit of Demon King Academy) </i></h2><br>
-            <h2>Anos Voldigoad</h2><br>
-
+        <span class="source-anime">From Maou Gakuin no Futekigousha (The Misfit of Demon King Academy)</span>
+        <h2>Anos Voldigoad</h2>
+        <p>
             Anos tells us that everything depends on the user, not weapon. For example, if one is an expert, 
             he doesn't have to use legendary weapons for doing extra-ordinary damage, they can cause extra-ordinary 
             damage with normal weapons. Similarly, a naïve user cannot cause extra-ordinary damage even if he is given 
-            legendary weapons. He being the lord of the devils, and enormous powers, shows substantial charm from episode 1. <br><br>
+            legendary weapons. He being the lord of the devils, and enormous powers, shows substantial charm from episode 1.
+        </p>
 
-            <center>
-                <img src="../blogs/blog_img/Anime/anos_voldigoad.jpg" width="50%" height="50%">
-                <center> <i> Anos Voldigoad </i> </center>  
-            </center>
-            <br>
-
-
-            <h2> From <i>Mob Psycho 100 </i></h2><br>
-            <h2>Shigeo Kageyama </h2><br>
-
-            Resembles saitama but has mistic powers. <br><br>
-
-            <center>
-                <img src="../blogs/blog_img/Anime/12_kageyama.jpg" width="50%" height="50%">
-                <center> <i> Kageyama </i> </center> 
-            </center>
-            <br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/anos_voldigoad.jpg" style="width: 50%">
+            <span class="img-caption">Anos Voldigoad</span>
+        </div>
 
 
-            <h2> From <i>Tokyo Ghoul </i></h2><br>
-            <h2>Rize Kamishiro</h2><br>
+        <span class="source-anime">From Mob Psycho 100</span>
+        <h2>Shigeo Kageyama</h2>
+        <p>Resembles saitama but has mistic powers.</p>
 
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/12_kageyama.jpg" style="width: 50%">
+            <span class="img-caption">Kageyama</span>
+        </div>
+
+
+        <span class="source-anime">From Tokyo Ghoul</span>
+        <h2>Rize Kamishiro</h2>
+        <p>
             The anime takes its turns. I would not recommend this to anyone except the first and second seasons. 
             She is the source of power for Kaneki Ken, since her Ghoul parts were transplanted to Kaneki Ken, 
             the protagonist of the story. Though Kaneki took her powers to new heights, by training and 
-            patiently enduring. <br><br>
+            patiently enduring.
+        </p>
 
-
-
-            <a id="bold_id">
+        <div class="anime-quote">
             There's no such thing as fate. It's simply a combination of one circumstance and the next. <br>
             There are times when you have to give up on one thing to preserve the other.
-            </a> <br><br>
-            
+        </div>
 
-            <center>
-                <img src="../blogs/blog_img/Anime/13_rize_tokyo_ghoul.jpg" width="50%" height="50%">
-                <center> <i> Rize </i> </center> 
-            </center>
-            <br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/13_rize_tokyo_ghoul.jpg" style="width: 50%">
+            <span class="img-caption">Rize</span>
+        </div>
 
-            <h2>Kaneki Ken</h2><br>
-
+        <h2>Kaneki Ken</h2>
+        <p>
             He wanted to make sure that ghouls and humans co-existed peacefully. 
-            He is one of the strongest members of the Aogiri tree. <br><br>
+            He is one of the strongest members of the Aogiri tree.
+        </p>
 
-            <center>
-                <img src="../blogs/blog_img/Anime/14_tokyo_ghoul.jpg" width="50%" height="50%">
-                <center> <i> Kaneki Ken </i> </center> 
-            </center>
-            <br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/14_tokyo_ghoul.jpg" style="width: 50%">
+            <span class="img-caption">Kaneki Ken</span>
+        </div>
 
 
-
-            <!------------------------------------------------------------------------------------>
-            <h2>From <i>Re-Creators</i></h2><br>
-            <h2>Altair </h2><br>
+        <span class="source-anime">From Re-Creators</span>
+        <h2>Altair</h2>
+        <p>
             Altair shares similarities with Esdeath, but she is even more ruthless and devoid of morality. 
             Driven by a desire for destruction, she sets out to annihilate every anime world connected to the 
             protagonist. As one of the most powerful creations, her strength grows daily, fueled by the thoughts and 
@@ -890,81 +994,62 @@
             Ultimately, she finds solace in reuniting with her creator and chooses to reside in a universe of her own 
             making. Altair is a poignant example of how villains are often shaped by the world around them—she became 
             one not out of desire, but because she was given no other choice.
+        </p>
 
-            <br><br>
-            <center>
-                <img src="../blogs/blog_img/Anime/altair_new.webp" width="40%" height="40%">
-                <center> <i> Altair </i> </center>
-            </center>
-            <br>
-            <br>
-            <!------------------------------------------------------------------------------------>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/altair_new.webp" style="width: 40%">
+            <span class="img-caption">Altair</span>
+        </div>
 
 
+        <span class="source-anime">From Plunderer</span>
+        <h2>Licht Bach</h2>
+        <p>The strongest member of the 7 aces. His true powers are still unknown.</p>
+
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/15_LightBach.webp" style="width: 50%">
+            <span class="img-caption">Licht Bach</span>
+        </div>
 
 
-            <h2> From <i>Plunderer </i></h2><br>
-            <h2>Licht Bach</h2><br>
+        <span class="source-anime">From Beyblade</span>
+        <h2>Kai</h2>
+        <p>The cool chartacter that we admired during our childhood. He was the strongest side character and probably the most loved character because of his attitude.</p>
 
-            The strongest member of the 7 aces. His true powers are still unknown. <br><br>
-
-            <center>
-                <img src="../blogs/blog_img/Anime/15_LightBach.webp" width="50%" height="50%">
-                <center> <i> Licht Bach </i> </center> 
-            </center>
-            <br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/16_kai.jpg" style="width: 50%">
+            <span class="img-caption">Kai</span>
+        </div>
 
 
-            <h2> From <i>Beyblade </i></h2><br>
-            <h2>Kai</h2><br>
+        <span class="source-anime">From Charlotte</span>
+        <h2>Yu Otosaka</h2>
 
-            The cool chartacter that we admired during our childhood. He was the strongest 
-            side character and probably the most loved character because of his attitude. <br><br>
-
-            <center>
-                <img src="../blogs/blog_img/Anime/16_kai.jpg" width="50%" height="50%">
-                <center> <i> Kai </i> </center> 
-            </center>
-            <br>
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/Otosaka.jpg" style="width: 50%">
+            <span class="img-caption">Yu</span>
+        </div>
 
 
-            <h2> From <i> Charlotte </i></h2><br>
-            <h2>Yu Otosaka</h2><br>
-
-             <br><br>
-
-            <center>
-                <img src="../blogs/blog_img/Anime/Otosaka.jpg" width="50%" height="50%">
-                <center> <i> Yu </i> </center> 
-            </center>
-            <br>
-
-
-            
-            <h2> From <i> Case Closed </i></h2><br>
-            <h2>Detective Conan</h2><br>
-
+        <span class="source-anime">From Case Closed</span>
+        <h2>Detective Conan</h2>
+        <p>
             The smart kid that we all wanted to be sometime in our life. I am not sure how long the 
             episode chain will continue, but looks like he will not age yet. He was drugged to a younger 
-            form but he had not been able to find his culprits yet.  <br><br>
+            form but he had not been able to find his culprits yet.
+        </p>
 
-            <center>
-                <img src="../blogs/blog_img/Anime/17_conan.jpg" width="50%" height="50%">
-                <center> <i> Detective Conan </i> </center> 
-            </center>
-            <br>
-
-            Note: The pictures are not mine and were collected from different sources available on the internet.
-            
-
-           
-            
-            
+        <div class="img-wrapper">
+            <img src="../blogs/blog_img/Anime/17_conan.jpg" style="width: 50%">
+            <span class="img-caption">Detective Conan</span>
         </div>
+
+        <p style="text-align: center; font-size: 0.85rem; opacity: 0.7; margin-top: 50px;">
+            Note: The pictures are not mine and were collected from different sources available on the internet.
+        </p>
+
     </div>
 </div>
-
-
 
       <br><br>
       
