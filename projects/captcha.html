@@ -1,44 +1,236 @@
-<link rel="stylesheet" href="../css/bootstrap.min.css"></link>
-<script type="text/javascript"  src="../js/bootstrap.min.js"></script>
-<script type="text/javascript"  src="../js/jquery-3.2.1.slim.min.js"></script>
-<script type="text/javascript"  src="../js/popper.min.js"></script>
-
-
-<link rel='stylesheet' id='wsl-widget-css'  href='https://mdbootstrap.com/wp-content/plugins/wordpress-social-login/assets/css/style.css?ver=5.1.1' type='text/css' media='all' />
-
-<link rel='stylesheet' id='compiled.css-css'  href='https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled-4.8.0.min.css?ver=4.8.0' type='text/css' media='all' />
-
-
-<link rel="shortcut icon" type="image/x-icon" href="../img/thumbnail.jpg">
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
-
-<!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/js/mdb.min.js"></script>
-
-<link rel = "stylesheet" type = "text/css" href = "../css/jimstyle.css" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>captcha.html</title>
-
-
-  </head>
-
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>captcha.html</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cardo:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
+
+    <style>
+        /* VARIABLES */
+        :root {
+            /* Light Mode */
+            --background-color: #ffffff;
+            --text-color: #1a202c;
+            --accent-color: #2b6cb0;
+            
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+            
+            --icon-bg: #f0f0f0;
+            --icon-hover: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode - Pitch Black Fix */
+            --background-color: #000000 !important;
+            --text-color: #e0e0e0 !important;
+            --accent-color: #63b3ed;
+            
+            --card-bg: rgba(30, 30, 30, 0.7);
+            --card-border: rgba(255, 255, 255, 0.1);
+            
+            --icon-bg: #1a1a1a;
+            --icon-hover: #333;
+        }
+
+        /* GLOBAL RESET */
+        body {
+            background-color: var(--background-color); 
+            color: var(--text-color);
+            font-family: 'Cardo', serif; 
+            line-height: 1.8;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Fix for Bootstrap messing up global links */
+        a { color: var(--accent-color); }
+        a:hover { color: var(--accent-color); text-decoration: underline; }
+
+        /* MAIN CONTAINER */
+        .project-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 80vh;
+        }
+
+        /* HEADER SECTION */
+        .project-header {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+
+        .project-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        /* LINKS BAR (The Icons) */
+        .links-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .links-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: #888;
+            margin-right: 10px;
+            font-style: italic;
+        }
+
+        .icon-btn {
+            width: 45px;
+            height: 45px;
+            background: var(--icon-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            text-decoration: none !important;
+            transition: all 0.2s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .icon-btn:hover {
+            background: var(--accent-color);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .icon-btn img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        /* CONTENT BOX (Glassmorphism) */
+        .glass-content {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        .short-desc {
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+
+        /* GITHUB CARD FIX */
+        .gh-card-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .gh-card-wrapper img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        /* MEDIA SECTION (Images & Video) */
+        .media-wrapper {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .media-wrapper img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        /* RESPONSIVE VIDEO */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            background: #000;
+            margin-top: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-label {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        /* PURPOSE SECTION */
+        .purpose-header {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+            color: var(--text-color);
+        }
+
+        /* FOOTER FIX */
+        .footer-wrapper {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -355,89 +547,69 @@
 </body>
 </html>
 
-<br><br>
-    
-<br>
-      
-        <br>
-        <u><h1 align="center"> Deceiving computers in Reverse Turing Test through Deep Learning </h1></u>
-      
-      <br><br>
-    <body>
+    <div class="project-container">
+        
+        
+            <div class="project-header">
+                <h1 class="project-title">Deceiving computers in Reverse Turing Test through Deep Learning</h1>
+            </div>
+        
+
+        <div class="links-bar">
+            <span class="links-label">View Full Project on:</span>
+
             
-      <div id="pad-container-proj">
-          <div align="justify" id="exp-font">
+                <a href="https://github.com/Jimut123/CAPTCHA" class="icon-btn" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            
+            
+            
 
-            <div class="container">
-            <div align="center">
-              <em><i> View Full Project on: </i></em>
+            
 
-              
-                  <a href = "https://github.com/Jimut123/CAPTCHA" target="_blank"><i class="fab fa-github"></i></a>
-              
-              
-              
-              
+            
 
-              
+            
 
-              
+            
+        </div>
 
-              
 
-              
-            </div>
-            <br>
-              
-                <div align="center" >Project about breaking CAPTCHAs with Deep Learning </div>
-              
+        <div class="glass-content">
+            
+            
+                <div class="short-desc">
+                    Project about breaking CAPTCHAs with Deep Learning
+                </div>
+            
 
-              <br/>
+            
+                <div class="gh-card-wrapper">
+                    <a href="https://github.com/jimut123/">
+                        <img src="https://gh-card.dev/repos/jimut123/.svg" alt="Github Card">
+                    </a>
+                </div>
+            
 
-              
-                  <a href="https://github.com/jimut123/"><center><img  src="https://gh-card.dev/repos/jimut123/.svg"></center></center></a>
-              
-             </div>
-          </div>
+        </div>
+
+
+        <div class="glass-content">
+            
+            
+
+            
+
+        </div>
+
+
+        
+
     </div>
 
-    <br><br>
-
- 
-    <div id="pad-container-proj">
-
-          <div align="justify" id="exp-font">
-              <div class="container">
-              <center>
-              
-              </center>
-
-              
-
-              <br>
-              
-            </div>
-        </div>
-      </div>
-
-    <br>
-
-    <br><br>
-
-    <div id="pad-container-proj">
-          <div align="justify" id="exp-font">
-              <div class="container">
+    <div class="footer-wrapper">
         
-          
-        </div>
-      </div>
-    </div>
-    </body>
-        
-     <br><br>
-
-<div align="center">
-  
 
 
   <!-- Footer -->
@@ -454,15 +626,7 @@
   <!-- Footer -->
 
 
+    </div>
 
-</div>
+</body>
 </html>
-
-<style>
-.footer{
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-
-}
-</style>
