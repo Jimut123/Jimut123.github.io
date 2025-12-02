@@ -288,12 +288,12 @@
 
         /* --- 2. NAVBAR STYLING --- */
         .glass-navbar {
-            background: var(--nav-glass-bg);
+            background: var(--nav-glass-bg) !important;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--nav-border);
             box-shadow: var(--nav-shadow);
-            padding: 0.8rem 1rem;
+            padding: 0.8rem 1rem !important;
             transition: all 0.3s ease;
             position: sticky;
             top: 0;
@@ -318,17 +318,15 @@
         /* ICON STYLING */
         .glass-navbar .nav-link img {
             transition: transform 0.2s ease, filter 0.3s ease;
-            /* Apply the Gray Filter Variable */
             filter: var(--icon-filter);
         }
 
         /* HOVER EFFECTS */
         .glass-navbar .nav-link:hover {
-            background-color: var(--nav-hover-bg);
+            background-color: var(--nav-hover-bg) !important;
             color: var(--nav-accent) !important;
         }
         
-        /* On hover, remove gray filter to show original color (or inverted color in dark mode) */
         .glass-navbar .nav-link:hover img {
             transform: scale(1.2) rotate(-5deg);
             filter: var(--icon-filter-hover);
@@ -340,7 +338,6 @@
             font-weight: 600;
         }
         
-        /* Active State Icon - Always show color */
         .glass-navbar .nav-item.active .nav-link img {
             filter: var(--icon-filter-hover);
         }
@@ -373,32 +370,59 @@
             transition: transform 0.3s;
         }
         #theme-toggle:hover { transform: rotate(45deg) scale(1.1); }
+        #theme-toggle:focus { outline: none; }
 
-        /* --- 4. MOBILE HAMBURGER FIX --- */
-        .navbar-toggler {
+        /* --- 4. CUSTOM HAMBURGER BUTTON (RENAMED CLASSES) --- */
+        .custom-menu-btn {
             border: none;
-            outline: none !important;
-            padding: 5px;
+            background: transparent;
+            cursor: pointer;
+            padding: 10px;
+            width: 45px;
+            height: 45px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            position: relative;
+            z-index: 1031;
         }
         
-        .toggler-bar {
+        /* Show hamburger only on mobile */
+        @media (max-width: 991px) {
+            .custom-menu-btn {
+                display: flex;
+            }
+        }
+        
+        .custom-menu-btn:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        
+        .menu-line {
             display: block;
-            width: 25px;
+            width: 26px;
             height: 3px;
             background-color: var(--nav-text);
-            margin: 5px 0;
-            transition: 0.3s;
+            transition: all 0.3s ease-in-out;
             border-radius: 2px;
-            pointer-events: none;
         }
 
-        .navbar-toggler[aria-expanded="true"] .toggler-bar:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 6px);
+        /* X transformation when open */
+        .custom-menu-btn.menu-open .menu-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
             background-color: var(--nav-accent);
         }
-        .navbar-toggler[aria-expanded="true"] .toggler-bar:nth-child(2) { opacity: 0; }
-        .navbar-toggler[aria-expanded="true"] .toggler-bar:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -6px);
+
+        .custom-menu-btn.menu-open .menu-line:nth-child(2) { 
+            opacity: 0; 
+            transform: translateX(20px);
+        }
+
+        .custom-menu-btn.menu-open .menu-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
             background-color: var(--nav-accent);
         }
 
@@ -414,7 +438,7 @@
             .glass-navbar .nav-item::after { display: none; }
             .glass-navbar .nav-item.active .nav-link {
                 border-left: 4px solid var(--nav-accent);
-                background-color: var(--nav-hover-bg);
+                background-color: var(--nav-hover-bg) !important;
             }
         }
     </style>
@@ -430,11 +454,10 @@
             </button>
         </div>
 
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mainNav" 
-            aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="toggler-bar"></span>
-            <span class="toggler-bar"></span>
-            <span class="toggler-bar"></span>
+        <button class="custom-menu-btn" type="button" id="menuToggle" aria-label="Toggle navigation">
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
         </button>
 
         <div class="collapse navbar-collapse justify-content-end" id="mainNav">
@@ -545,6 +568,30 @@
         body.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         themeIcon.textContent = newTheme === 'dark' ? '🌜' : '🌞';
+    });
+
+    // Custom Menu Toggle
+    const menuBtn = document.getElementById('menuToggle');
+    const navCollapse = $('#mainNav');
+    
+    menuBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Toggle the menu-open class
+        menuBtn.classList.toggle('menu-open');
+        
+        // Toggle Bootstrap collapse
+        navCollapse.collapse('toggle');
+    });
+    
+    // Sync menu-open class with collapse state
+    navCollapse.on('show.bs.collapse', function() {
+        menuBtn.classList.add('menu-open');
+    });
+    
+    navCollapse.on('hide.bs.collapse', function() {
+        menuBtn.classList.remove('menu-open');
     });
 
     // Active Link Logic
