@@ -1,0 +1,1 @@
+* The navigation icon should be glowy, since it is camoflauging in dark background.

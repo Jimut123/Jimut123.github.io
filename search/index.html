@@ -39,95 +39,124 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
     <style>
         /* --- 1. THEME VARIABLES --- */
         :root {
-            /* Global Colors */
             --site-bg: #ffffff;
             --site-text: #333333;
             
-            /* Navbar Specifics (Light Mode) */
-            --nav-glass: rgba(255, 255, 255, 0.85);
+            /* Light Mode Navbar */
+            --nav-glass-bg: rgba(255, 255, 255, 0.85);
             --nav-border: rgba(0, 0, 0, 0.05);
-            --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-            --nav-link-color: #555555;
-            --nav-accent: #18a236; /* Your Green */
+            --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            --nav-text: #444444;
+            --nav-accent: #18a236;
             --nav-hover-bg: rgba(24, 162, 54, 0.1);
         }
 
         [data-theme="dark"] {
-            /* Global Colors */
             --site-bg: #121212;
             --site-text: #f0f0f0;
             
-            /* Navbar Specifics (Dark Mode) */
-            --nav-glass: rgba(18, 18, 18, 0.85);
+            /* Dark Mode Navbar */
+            --nav-glass-bg: rgba(18, 18, 18, 0.85);
             --nav-border: rgba(255, 255, 255, 0.1);
             --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            --nav-link-color: #e0e0e0;
-            --nav-accent: #4ade80; /* Brighter green */
+            --nav-text: #e0e0e0;
+            --nav-accent: #4ade80;
             --nav-hover-bg: rgba(74, 222, 128, 0.15);
         }
 
-        /* --- 2. BASE STYLES --- */
         body {
             background-color: var(--site-bg);
             color: var(--site-text);
-            transition: background-color 0.4s ease, color 0.4s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
             margin: 0;
-            font-family: 'Poppins', sans-serif; /* Modern Font */
         }
 
-        /* --- 3. GLASS NAVBAR --- */
+        /* --- 2. NAVBAR STYLING --- */
         .glass-navbar {
-            background: var(--nav-glass);
-            backdrop-filter: blur(12px); /* The Blur Effect */
+            background: var(--nav-glass-bg);
+            backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--nav-border);
             box-shadow: var(--nav-shadow);
             padding: 0.8rem 1rem;
-            transition: all 0.4s ease;
-            z-index: 9999;
+            transition: all 0.3s ease;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
         }
 
-        /* --- 4. LINKS & ITEMS --- */
+        /* Link Styling */
         .glass-navbar .nav-link {
             font-family: 'Poppins', sans-serif;
-            color: var(--nav-link-color) !important;
+            color: var(--nav-text) !important;
             font-weight: 500;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             padding: 8px 16px !important;
             border-radius: 8px;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* Hover Effect */
+        /* --- 3. IMAGE FILTER LOGIC (THE FIX) --- */
+        
+        /* DEFAULT (Light Mode): Make images Grayscale */
+        .glass-navbar .nav-link img {
+            transition: all 0.3s ease;
+            filter: grayscale(100%) opacity(0.7) !important;
+        }
+
+        /* DARK MODE: Invert images (Black -> White) */
+        [data-theme="dark"] .glass-navbar .nav-link img {
+            filter: grayscale(100%) invert(1) opacity(0.9) !important;
+        }
+
+        /* HOVER (Light Mode): Restore Original Color */
+        .glass-navbar .nav-link:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%) opacity(1) !important;
+        }
+
+        /* HOVER (Dark Mode): Keep White + Add Glow */
+        [data-theme="dark"] .glass-navbar .nav-link:hover img {
+            transform: scale(1.1);
+            filter: invert(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)) !important;
+        }
+
+        /* Hover Background for Link */
         .glass-navbar .nav-link:hover {
-            color: var(--nav-accent) !important;
             background-color: var(--nav-hover-bg);
-            transform: translateY(-1px);
+            color: var(--nav-accent) !important;
         }
 
-        /* Active State (Underline) */
-        .glass-navbar .nav-item {
-            position: relative;
-            margin: 0 5px;
-        }
-
+        /* Active State */
         .glass-navbar .nav-item.active .nav-link {
             color: var(--nav-accent) !important;
             font-weight: 600;
         }
+        
+        /* Make active icon colored/white */
+        .glass-navbar .nav-item.active .nav-link img {
+            filter: grayscale(0%) opacity(1) !important;
+        }
+        [data-theme="dark"] .glass-navbar .nav-item.active .nav-link img {
+            filter: invert(1) opacity(1) !important;
+        }
 
+        /* Underline Animation */
+        .glass-navbar .nav-item { position: relative; }
         .glass-navbar .nav-item::after {
             content: '';
             position: absolute;
-            bottom: 0px;
+            bottom: 2px;
             left: 50%;
             width: 0%;
             height: 3px;
@@ -136,71 +165,60 @@
             transform: translateX(-50%);
             border-radius: 2px;
         }
+        .glass-navbar .nav-item.active::after { width: 70%; }
 
-        .glass-navbar .nav-item.active::after {
-            width: 60%; /* Width of the active underline */
-        }
-
-        /* --- 5. THEME TOGGLE BUTTON --- */
+        /* --- 4. TOGGLE BUTTON --- */
         #theme-toggle {
             background: transparent;
             border: none;
             cursor: pointer;
-            font-size: 1.5rem;
-            padding: 5px 10px;
+            font-size: 1.6rem;
+            padding: 5px;
             border-radius: 50%;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.5s ease;
             line-height: 1;
+            color: var(--nav-text);
         }
+        #theme-toggle:hover { transform: rotate(45deg) scale(1.1); }
 
-        #theme-toggle:hover {
-            transform: rotate(25deg) scale(1.2);
-            background-color: var(--nav-hover-bg);
-        }
-
-        /* --- 6. MOBILE HAMBURGER --- */
+        /* --- 5. MOBILE HAMBURGER --- */
         .navbar-toggler {
             border: none;
             outline: none !important;
-            padding: 0;
+            padding: 5px;
         }
-
+        
         .toggler-bar {
             display: block;
             width: 25px;
             height: 3px;
-            background-color: var(--nav-link-color);
+            background-color: var(--nav-text);
             margin: 5px 0;
             transition: 0.3s;
             border-radius: 2px;
+            pointer-events: none;
         }
 
-        /* Hamburger Animation when open */
         .navbar-toggler[aria-expanded="true"] .toggler-bar:nth-child(1) {
             transform: rotate(45deg) translate(5px, 6px);
             background-color: var(--nav-accent);
         }
-        .navbar-toggler[aria-expanded="true"] .toggler-bar:nth-child(2) {
-            opacity: 0;
-        }
+        .navbar-toggler[aria-expanded="true"] .toggler-bar:nth-child(2) { opacity: 0; }
         .navbar-toggler[aria-expanded="true"] .toggler-bar:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -6px);
             background-color: var(--nav-accent);
         }
 
-        /* Mobile Dropdown Styling */
         @media (max-width: 991px) {
             .glass-navbar .navbar-collapse {
                 background: var(--site-bg);
-                border: 1px solid var(--nav-border);
-                margin-top: 15px;
                 padding: 15px;
                 border-radius: 12px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                margin-top: 15px;
+                border: 1px solid var(--nav-border);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             }
-            .glass-navbar .nav-item.active::after {
-                display: none; /* No underline on mobile */
-            }
+            .glass-navbar .nav-item::after { display: none; }
             .glass-navbar .nav-item.active .nav-link {
                 border-left: 4px solid var(--nav-accent);
                 background-color: var(--nav-hover-bg);
@@ -213,21 +231,20 @@
 <nav class="navbar navbar-expand-lg sticky-top glass-navbar">
     
     <a class="navbar-brand">
-        <button id="theme-toggle" class="btn btn-link p-0" style="color: inherit;">
+        <button id="theme-toggle" aria-label="Switch Theme">
             <span id="theme-icon">🌞</span>
         </button>
     </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mainNav" 
+        aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="toggler-bar"></span>
         <span class="toggler-bar"></span>
         <span class="toggler-bar"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse justify-content-end" id="mainNav">
         <ul class="navbar-nav">
-            
             
                 <li class="nav-item">
                     <a href="/" class="nav-link">
@@ -306,24 +323,25 @@
                     </a>
                 </li>
             
-
         </ul>
     </div>
 </nav>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
-    // 1. Theme Toggling Logic
     const toggleButton = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
     const body = document.body;
 
+    // Theme Logic
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
         body.setAttribute('data-theme', currentTheme);
         themeIcon.textContent = currentTheme === 'dark' ? '🌜' : '🌞';
     } else {
         body.setAttribute('data-theme', 'light');
-        themeIcon.textContent = '🌞';
     }
 
     toggleButton.addEventListener('click', () => {
@@ -333,20 +351,13 @@
         localStorage.setItem('theme', newTheme);
         themeIcon.textContent = newTheme === 'dark' ? '🌜' : '🌞';
     });
-</script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script type="text/javascript">
-    // 2. Active Link Logic
+    // Active Link Logic
     $(function() {
         var url = window.location.href;
-        
-        // Loop through all nav links
         $(".glass-navbar a.nav-link").each(function() {
-            // Check if href matches current url
             if (url == (this.href)) {
-                $(this).closest("li").addClass("active");
+                $(this).closest(".nav-item").addClass("active");
             }
         });
     });        
