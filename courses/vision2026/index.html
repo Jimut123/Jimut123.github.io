@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS411: Apps of CV & Deep Learning | Spring 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- ETHEREAL ICE BLUE PALETTE --- */
+        :root {
+            --bg-base: #f0f9ff;         
+            --glass-surface: rgba(255, 255, 255, 0.12); 
+            --glass-border: rgba(186, 230, 253, 0.3);
+            --glass-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.08);
+            --text-dark: #0c4a6e;       
+            --text-med: #075985;        
+            --text-light: #0369a1;      
+            --primary-blue: #0ea5e9;   
+            --accent-cyan: #22d3ee;     
+            --alert-bg: rgba(224, 242, 254, 0.25);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-base);
+            background-image: 
+                radial-gradient(circle at 15% 25%, rgba(186, 230, 253, 0.5) 0%, transparent 50%),
+                radial-gradient(circle at 85% 15%, rgba(125, 211, 252, 0.4) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(224, 242, 254, 0.6) 0%, transparent 55%),
+                radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 75%, rgba(14, 165, 233, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at 40% 60%, rgba(186, 230, 253, 0.4) 0%, transparent 40%);
+            background-attachment: fixed;
+            background-size: cover;
+            min-height: 100vh;
+            animation: etherealFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes etherealFloat {
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+        }
+
+        @keyframes gentleGlow {
+            0%, 100% { 
+                box-shadow: 0 8px 32px rgba(59, 130, 246, 0.08), 
+                            0 0 40px rgba(14, 165, 233, 0.05),
+                            inset 0 0 20px rgba(255, 255, 255, 0.1); 
+            }
+            50% { 
+                box-shadow: 0 12px 40px rgba(59, 130, 246, 0.12), 
+                            0 0 60px rgba(14, 165, 233, 0.08),
+                            inset 0 0 30px rgba(255, 255, 255, 0.15); 
+            }
+        }
+
+        @keyframes waterRipple {
+            0% { 
+                background-position: 0% 50%;
+                transform: scale(1);
+            }
+            50% { 
+                background-position: 100% 50%;
+                transform: scale(1.02);
+            }
+            100% { 
+                background-position: 0% 50%;
+                transform: scale(1);
+            }
+        }
+
+        a { 
+            text-decoration: none; 
+            color: var(--primary-blue); 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+        }
+        a:hover { 
+            color: var(--accent-cyan); 
+            text-shadow: 0 0 8px rgba(34, 211, 238, 0.4); 
+        }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: sticky;
+            top: 20px;
+            width: 90%;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.15); 
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50px; 
+            z-index: 1000;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.08), 
+                        0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+            transition: all 0.4s ease;
+        }
+
+        nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.12), 
+                        0 0 0 1px rgba(255, 255, 255, 0.4) inset,
+                        0 0 60px rgba(14, 165, 233, 0.1);
+        }
+
+        .logo { 
+            font-weight: 800; 
+            font-size: 1.1rem; 
+            color: var(--text-med); 
+            letter-spacing: -0.5px; 
+        }
+        
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { 
+            color: var(--text-med); 
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a:hover { 
+            color: var(--primary-blue); 
+        }
+
+        .hamburger { display: none; cursor: pointer; user-select: none; }
+        .bar { 
+            display: block; width: 25px; height: 3px; margin: 5px auto; 
+            transition: all 0.3s ease; background-color: var(--text-med); border-radius: 3px; 
+        }
+
+        /* --- HERO --- */
+        header { padding: 8rem 5% 4rem; text-align: center; }
+
+        .header-glass-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.12); 
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1), 
+                        0 0 0 1px rgba(255, 255, 255, 0.25) inset;
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: gentleGlow 4s ease-in-out infinite, waterRipple 8s ease-in-out infinite;
+            transform-style: preserve-3d;
+            transition: all 0.4s ease;
+        }
+
+        .header-glass-content:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-5px) scale(1.01);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p { 
+            color: var(--text-med); 
+            font-size: 1.1rem; 
+            margin: 0 auto 1.5rem; 
+            max-width: 650px; 
+            font-weight: 500;
+        }
+
+        .icon-svg {
+            width: 18px; height: 18px; vertical-align: middle; fill: var(--text-med); margin-right: 5px;
+        }
+
+        .course-meta {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.2); padding: 1rem 2rem;
+            border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.25);
+            color: var(--text-med); font-weight: 600; margin-top: 1rem;
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.05) inset,
+                        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            backdrop-filter: blur(15px);
+        }
+
+        .meta-item { display: flex; align-items: center; }
+
+        /* --- SECTIONS --- */
+        section { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
+
+        .section-container {
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.1); 
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.08),
+                        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            animation: waterRipple 10s ease-in-out infinite;
+        }
+
+        .section-container:hover {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.12),
+                        0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+                        0 0 60px rgba(14, 165, 233, 0.08);
+            transform: translateY(-3px);
+        }
+
+        h2 {
+            color: var(--text-dark); font-size: 2rem; margin-bottom: 2rem;
+            display: inline-block; 
+            border-bottom: 3px solid var(--primary-blue);
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan));
+            filter: blur(4px);
+            opacity: 0.6;
+        }
+
+        h3 { color: var(--text-med); margin-bottom: 1rem; }
+
+        .announcement-banner {
+            background: var(--alert-bg); 
+            border-left: 4px solid var(--primary-blue);
+            padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;
+            color: var(--text-dark);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex; align-items: flex-start; gap: 1rem;
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.06),
+                        0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+            backdrop-filter: blur(20px);
+        }
+
+        /* --- TABLE --- */
+        .table-container { 
+            overflow-x: auto; 
+            border-radius: 16px; 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.06),
+                        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            margin-top: 2rem;
+            backdrop-filter: blur(20px);
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .syllabus-table {
+            width: 100%; border-collapse: separate; border-spacing: 0;
+            background: rgba(255, 255, 255, 0.08); 
+            min-width: 600px;
+        }
+        
+        .syllabus-table th, .syllabus-table td { 
+            padding: 1rem; 
+            text-align: left; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            font-size: 0.95rem; 
+            vertical-align: top;
+        }
+        
+        .syllabus-table th { 
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.4) 0%, rgba(6, 182, 212, 0.4) 100%);
+            backdrop-filter: blur(15px);
+            color: var(--text-dark); 
+            font-weight: 700; 
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1) inset;
+        }
+        
+        .syllabus-table tr:hover td { 
+            background-color: rgba(224, 242, 254, 0.2); 
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.05) inset;
+        }
+        
+        .date-col { white-space: nowrap; color: var(--text-light); font-weight: 600; }
+        
+        .resource-links { 
+            display: flex; 
+            flex-wrap: wrap;
+            gap: 0.5rem; 
+            margin-top: 0.2rem; 
+        }
+        
+        /* Color-coded pills */
+        .res-pill {
+            font-size: 0.75rem; padding: 4px 10px; border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.03);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Red - Attendance */
+        .res-pill.red {
+            border: 1px solid rgba(220, 38, 38, 0.4);
+            color: #dc2626;
+            background: rgba(254, 226, 226, 0.5);
+        }
+        .res-pill.red:hover { 
+            background: rgba(220, 38, 38, 0.3); 
+            color: #991b1b; 
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2),
+                        0 0 20px rgba(239, 68, 68, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Blue - Slides, Notes */
+        .res-pill.blue {
+            border: 1px solid rgba(14, 165, 233, 0.4);
+            color: #0284c7;
+            background: rgba(224, 242, 254, 0.5);
+        }
+        .res-pill.blue:hover { 
+            background: rgba(14, 165, 233, 0.3); 
+            color: #075985; 
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2),
+                        0 0 20px rgba(34, 211, 238, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Green - Code, NB-X */
+        .res-pill.green {
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #16a34a;
+            background: rgba(220, 252, 231, 0.5);
+        }
+        .res-pill.green:hover { 
+            background: rgba(34, 197, 94, 0.3); 
+            color: #15803d; 
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2),
+                        0 0 20px rgba(74, 222, 128, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Gray - Guidelines, Recording, Paper, etc. */
+        .res-pill.gray {
+            border: 1px solid rgba(100, 116, 139, 0.4);
+            color: #475569;
+            background: rgba(241, 245, 249, 0.5);
+        }
+        .res-pill.gray:hover { 
+            background: rgba(100, 116, 139, 0.3); 
+            color: #334155; 
+            box-shadow: 0 4px 12px rgba(100, 116, 139, 0.2),
+                        0 0 20px rgba(148, 163, 184, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .guest-row td { background: rgba(34, 211, 238, 0.08); }
+        .guest-badge { 
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.6), rgba(14, 165, 233, 0.6)); 
+            color: var(--text-dark); 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            font-size: 0.7rem; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            margin-right: 5px; 
+            box-shadow: 0 2px 8px rgba(34, 211, 238, 0.15); 
+            backdrop-filter: blur(10px);
+        }
+
+        /* --- GRID --- */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        
+        .grid-3 > div {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border-radius: 16px; 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem; 
+            transition: all 0.4s ease; 
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.06),
+                        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+        }
+        
+        .grid-3 > div:hover { 
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-5px); 
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.12),
+                        0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+                        0 0 40px rgba(14, 165, 233, 0.08);
+        }
+
+        /* --- BUTTON --- */
+        .btn {
+            display: inline-block; 
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.6), rgba(6, 182, 212, 0.6));
+            color: white !important; 
+            padding: 0.7rem 1.5rem; 
+            border-radius: 12px; 
+            margin-top: 1rem;
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 16px rgba(14, 165, 233, 0.2),
+                        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .btn:hover {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.8), rgba(6, 182, 212, 0.8));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3),
+                        0 0 0 1px rgba(255, 255, 255, 0.4) inset,
+                        0 0 40px rgba(34, 211, 238, 0.2);
+        }
+        
+        /* --- FOOTER --- */
+        footer {
+            background: rgba(255,255,255,0.1); 
+            backdrop-filter: blur(20px);
+            color: var(--text-med); 
+            text-align: center; 
+            padding: 2rem; 
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2); 
+            font-size: 0.9rem;
+            box-shadow: 0 -4px 16px rgba(59, 130, 246, 0.05);
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            header { padding: 6rem 5% 3rem; }
+            section { padding: 3rem 5%; }
+            .hamburger { display: block; }
+            .course-meta { flex-direction: column; gap: 0.5rem; align-items: center; }
+            .header-glass-content { padding: 2rem; }
+            .section-container { padding: 1.5rem; }
+            
+            /* Transform table into cards on mobile */
+            .table-container {
+                border: none;
+                background: transparent;
+                box-shadow: none;
+                overflow: visible;
+            }
+            
+            .syllabus-table {
+                min-width: 0;
+                border: 0;
+                background: transparent;
+            }
+            
+            .syllabus-table thead {
+                display: none;
+            }
+            
+            .syllabus-table tbody {
+                display: block;
+            }
+            
+            .syllabus-table tr {
+                display: block;
+                margin-bottom: 1rem;
+                background: rgba(255, 255, 255, 0.15);
+                backdrop-filter: blur(20px);
+                border-radius: 12px;
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                padding: 1.2rem;
+                box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
+            }
+            
+            .syllabus-table tr.guest-row {
+                background: rgba(34, 211, 238, 0.12);
+            }
+            
+            .syllabus-table td {
+                display: block;
+                text-align: left;
+                padding: 0.3rem 0;
+                border: none;
+            }
+            
+            .syllabus-table td:before {
+                content: attr(data-label);
+                font-weight: 700;
+                color: var(--primary-blue);
+                display: block;
+                margin-bottom: 0.3rem;
+                font-size: 0.85rem;
+            }
+            
+            .syllabus-table td.date-col:before {
+                content: 'Date';
+            }
+            
+            .syllabus-table td:nth-child(2):before {
+                content: 'Time';
+            }
+            
+            .syllabus-table td:nth-child(3):before {
+                content: 'Topic';
+            }
+            
+            .syllabus-table td:nth-child(4):before {
+                content: 'Materials';
+            }
+            
+            .syllabus-table td:nth-child(3) {
+                margin-bottom: 0.5rem;
+            }
+            
+            .date-col {
+                font-weight: 700;
+                color: var(--primary-blue);
+                font-size: 0.9rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 5%;
+                width: 90%;
+                background: white;
+                border: 1px solid rgba(14, 165, 233, 0.3);
+                border-radius: 20px;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 1rem 0;
+                box-shadow: 0 10px 50px rgba(59, 130, 246, 0.25),
+                            0 0 0 1px rgba(14, 165, 233, 0.2) inset;
+                opacity: 0;
+                pointer-events: none;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                opacity: 1;
+                pointer-events: all;
+                transform: translateY(0);
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(14, 165, 233, 0.15);
+                font-weight: 700;
+                font-size: 1rem;
+                color: var(--text-med);
+            }
+            
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+            
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            
+            .grid-3 { 
+                grid-template-columns: 1fr; 
+                gap: 1.5rem; 
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"> CS411: Applications of Computer Vision and Deep Learning </div>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#about" onclick="toggleMenu()">Details</a>
+            <a href="#schedule" onclick="toggleMenu()">Schedule</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="header-glass-content">
+            
+            <h1>Applications of Computer Vision and Deep Learning</h1>
+            <p>RKMVERI CS/BDA | Spring 2026</p>
+            
+            <div class="course-meta">
+                <div class="meta-item">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <span><strong>Instructor:</strong> Jimut Bahan Pal</span>
+                </div>
+                <div class="meta-item">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                    <span><strong>Credits:</strong> 3</span>
+                </div>
+                <div class="meta-item">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    <span><strong>Total Hours:</strong> 50 hrs</span>
+                </div>
+            </div>
+            <br>
+            <a href="#" class="btn">View Grade Sheet</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="section-container">
+            <h2>Course Details</h2>
+            
+            <div class="announcement-banner">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0c4a6e" stroke-width="2" style="min-width: 24px;">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <div>
+                    <strong>Attendance Policy:</strong> 
+                    Credited students must maintain at least <strong>75% attendance</strong> to receive a grade.
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <div>
+                    <h3>Comprehensive Curriculum</h3>
+                    <p>Commencing with foundational <strong>Python3</strong>, we advance toward pragmatic implementation using <strong>OpenCV</strong> and <strong>PyTorch</strong>, bridging the gap between theoretical math and deployment-ready applications.</p>
+                </div>
+                <div>
+                    <h3>Hands-on Learning</h3>
+                    <p>This tutorial-driven program blends theory with immersive tutorials. It is designed for those enthusiastic about applying classical and cutting-edge deep learning algorithms to real-world scenarios.</p>
+                </div>
+                <div>
+                    <h3>Research & Industry Focus</h3>
+                    <p>Participants attain mastery in designing models for <strong>classification, segmentation, and LLMs</strong>, critical skills for creating real-world applications in both industry and research domains.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; background: #f8fafc; padding: 2rem; border-radius: 8px;">
+                <h3 style="margin-top: 0;">Course Curriculum</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; font-size: 0.95rem;">
+                    <ul style="list-style-type: none; padding: 0; margin: 0;">
+                        <li>• Overview & PyTorch Basics</li>
+                        <li>• Theory: Softmax, Cross-Entropy</li>
+                        <li>• Building Classification Pipelines</li>
+                        <li>• DNN Parameter Calculation</li>
+                        <li>• Variational Auto-Encoders (VAE)</li>
+                        <li>• DL-based Segmentation Methods</li>
+                        <li>• CNNs (DLNLP Guest Lecture)</li>
+                    </ul>
+                    <ul style="list-style-type: none; padding: 0; margin: 0;">
+                        <li>• Transformers & BERT (Dipta MJ)</li>
+                        <li>• Transformer-based Models & Tricks</li>
+                        <li>• Large Language Models (LLMs)</li>
+                        <li>• LLM Training & Tuning</li>
+                        <li>• LLM Reasoning & Evaluation</li>
+                        <li>• Agentic LLMs</li>
+                        <li>• Current Trends in AI</li>
+                    </ul>
+                </div>
+            </div>
+
+            <br>
+            <p style="font-size: 0.9rem; opacity: 0.8;">
+                * We actively use <strong>Google Space</strong> for communication and slide sharing. 
+                <a href="https://mail.google.com/chat/u/0/#chat/space/AAQAogGJfvA" target="_blank" style="color: #ff0000; font-weight: 600;">Join the Google Space here.</a>
+            </p>
+        </div>
+    </section>
+
+    <section id="schedule">
+        <div class="section-container">
+            <h2>Schedule & Materials</h2>
+            <p>Lecture videos are updated after each session. <a href="#">[View Mirrors]</a></p>
+            
+            <!-- Single Responsive Table -->
+            <div class="table-container">
+                <table class="syllabus-table">
+                    <thead>
+                        <tr>
+                            <th width="15%">Date</th>
+                            <th width="15%">Time</th>
+                            <th width="50%">Topic</th>
+                            <th width="20%">Materials</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="date-col">15-01-2026</td>
+                            <td>5:00 - 8:30 PM</td>
+                            <td><strong>Lec-1:</strong> Overview & General Introductions</td>
+                            <td><div class="resource-links">
+                                <a href="#" class="res-pill blue">Slides</a> 
+                                <a href="#" class="res-pill blue">Notes</a>
+                                <a href="#" class="res-pill red">Attendance</a>
+                            </div></td>
+                        </tr>
+                        
+                        <tr class="guest-row">
+                            <td class="date-col">15-02-2026</td>
+                            <td>10:00 - 1:00 PM</td>
+                            <td><span class="guest-badge">Guest</span><strong>Special Lecture:</strong> Industry Applications of CV</td>
+                            <td><div class="resource-links">
+                                <a href="#" class="res-pill gray">Recording</a>
+                                <a href="#" class="res-pill red">Attendance</a>
+                            </div></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="date-col">15-03-2026</td>
+                            <td>9:00 - 12:00 AM</td>
+                            <td><strong>Final Exam</strong></td>
+                            <td><div class="resource-links">
+                                <a href="#" class="res-pill gray">Guidelines</a>
+                            </div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>CS411: Applications of Computer Vision and Deep Learning</strong> | Spring 2026</p>
+        <p style="margin-top: 0.5rem;">Instructor: <a href="https://jimut123.github.io/" target="_blank">Jimut Bahan Pal</a> | RKMVERI</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll with offset for sticky nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 100;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
