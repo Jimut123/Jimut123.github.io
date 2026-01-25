@@ -1,13 +1,13 @@
-Date: 18-01-2026
+Date: 25-01-2026
 Time: 8:30 - 11:30 P.M. (3.0 hrs) 
 
 --------------------------------------------------------------------------------------------------
 Name	                Department      Roll Number     Credit/Audit        Present/Absent
 --------------------------------------------------------------------------------------------------
-Dhrupad Dutta           BDA             B2330028        Credit              
-Indranil Ganguly        BDA             B2430048        Credit
-Prithwish Ganguly       CS              B2430034        Credit                            
-Niladri Ghosh           CS              B2430100        Credit
-Raihan Uddin            CS              B2430070        Credit
-Sayan Das               CS              B2430035        Credit
+Dhrupad Dutta           BDA             B2330028        Credit              Present
+Indranil Ganguly        BDA             B2430048        Credit              Present
+Prithwish Ganguly       CS              B2430034        Credit              Present       
+Niladri Ghosh           CS              B2430100        Credit              Present
+Raihan Uddin            CS              B2430070        Credit              Present
+Sayan Das               CS              B2430035        Credit              Present
 --------------------------------------------------------------------------------------------------
