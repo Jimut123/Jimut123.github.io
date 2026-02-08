@@ -248,6 +248,18 @@ h2::after {
 
 h3 { color: var(--text-med); margin-bottom: 1rem; }
 
+
+.assignment-row td {
+    background: rgba(239, 68, 68, 0.25);
+    font-weight: 600;
+}
+
+.assignment-row {
+    background: rgba(239, 68, 68, 0.25);
+    border-left: 4px solid #dc2626;
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.1) inset;
+}
+
 .announcement-banner {
     background: var(--alert-bg); 
     border-left: 4px solid var(--primary-blue);
