@@ -1,8 +1,8 @@
 Name                      Roll Number     Credit/Audit    Department      Attendance %   
 -------------------------------------------------------------------------------------
 Prithwish Ganguly         B2430034        Credit          CS              100.00        %
-Raihan Uddin              B2430070        Credit          CS              100.00        %
 Sayan Das                 B2430035        Credit          CS              100.00        %
-Dhrupad Dutta             B2330028        Credit          BDA             87.50         %
-Indranil Ganguly          B2430048        Credit          BDA             87.50         %
-Niladri Ghosh             B2430100        Credit          CS              87.50         %
+Dhrupad Dutta             B2330028        Credit          BDA             90.00         %
+Indranil Ganguly          B2430048        Credit          BDA             90.00         %
+Niladri Ghosh             B2430100        Credit          CS              90.00         %
+Raihan Uddin              B2430070        Credit          CS              80.00         %
