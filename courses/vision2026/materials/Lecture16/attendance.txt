@@ -1,5 +1,5 @@
 Date: 09-05-2026
-Time: 10:00 - 11:00 PM (1.0 hours)
+Time: 10:00 - 11:30 PM (1.5 hours)
 
 --------------------------------------------------------------------------------------------------
 Name	                Department      Roll Number     Credit/Audit        Present/Absent
