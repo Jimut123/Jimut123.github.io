@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Notes</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+    <button class="back-button" onclick="window.history.back()">
+        &larr; Back
+    </button>
+
+    <div class="container">
+        <header>
+            <h1>C++ notes for revision</h1>
+            <p>Notes, syntax and coding style</p>
+        </header>
+
+        <main>
+            <h2>1. Modern C++ Smart Pointers</h2>
+            <p>Using raw pointers often leads to memory leaks. Modern C++ introduced smart pointers via the <code>&lt;memory&gt;</code> header to manage object lifecycles automatically.</p>
+
+            <pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;memory&gt;
+#include &lt;vector&gt;
+
+class Processor {
+public:
+    Processor() { std::cout &lt;&lt; "Processor Created\n"; }
+    ~Processor() { std::cout &lt;&lt; "Processor Destroyed\n"; }
+    void run() { std::cout &lt;&lt; "Running calculations...\n"; }
+};
+
+int main() {
+    // std::unique_ptr ensures single ownership
+    std::unique_ptr&lt;Processor&gt; ptr = std::make_unique&lt;Processor&gt;();
+    ptr-&gt;run();
+
+    // No delete needed. Memory is freed when 'ptr' goes out of scope.
+    return 0;
+}
+            </code></pre>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+
+/* Light/Dark Mode adaptability for the main reading area */
+:root {
+    --bg-color: #f9f9f9;
+    --text-color: #333333;
+    --heading-color: #111111;
+    --link-color: #0066cc;
+    --border-color: #dddddd;
+    --inline-code-bg: #e8e8e8;
+    --font-main: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    --font-code: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #1e1e1e;
+        --text-color: #cccccc;
+        --heading-color: #eeeeee;
+        --link-color: #4da6ff;
+        --border-color: #444444;
+        --inline-code-bg: #2d2d2d;
+    }
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    flex: 1;
+}
+
+/* Centered Header Title */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+header h1 { font-size: 2.8rem; margin-bottom: 0.2em; margin-top: 0; }
+header p { color: #888; font-size: 1.1rem; margin-top: 0; }
+
+h2, h3 { color: var(--heading-color); line-height: 1.3; margin-top: 1.5em; }
+h2 { font-size: 1.6rem; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+p { margin-bottom: 1.2em; }
+a { color: var(--link-color); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Inline code styling */
+code:not([class*="language-"]) {
+    background-color: var(--inline-code-bg);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-family: var(--font-code);
+    font-size: 0.9em;
+    color: #d25252;
+}
+
+/* ---------------------------------------------------------
+    Custom Xcode Dark Theme for Prism.js
+    --------------------------------------------------------- */
+pre[class*="language-"], code[class*="language-"] {
+    color: #ffffff;
+    background: #292a30; /* Deep Xcode background */
+    font-family: var(--font-code);
+    font-size: 0.9em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.6;
+    tab-size: 4;
+    hyphens: none;
+}
+
+pre[class*="language-"] {
+    padding: 1.5em;
+    margin: 1.5em 0;
+    border-radius: 8px;
+    overflow: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Syntax Colors */
+.token.comment, .token.prolog, .token.doctype, .token.cdata { color: #7f8c98; font-style: italic; }
+.token.punctuation { color: #ffffff; }
+.token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol, .token.deleted { color: #d0bf69; }
+.token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted { color: #fc6a5d; }
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string { color: #ffffff; }
+.token.atrule, .token.attr-value, .token.keyword, .token.directive, .token.macro { color: #fc5fa3; }
+.token.function { color: #a167e6; }
+.token.class-name, .token.type { color: #5dd8ff; }
+.token.regex, .token.important, .token.variable { color: #5dd8ff; }
+
+/* Copy Button Customization */
+div.code-toolbar > .toolbar {
+    opacity: 1;
+    right: 1em;
+    top: 1em;
+}
+div.code-toolbar > .toolbar button {
+    background: #444;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-size: 0.8em;
+    transition: all 0.2s;
+}
+div.code-toolbar > .toolbar button:hover {
+    background: #fc5fa3;
+    color: #fff;
+    box-shadow: 0 0 8px rgba(252, 95, 163, 0.4);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #888;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+}
+
+
+
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+    opacity: 0.7;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+    z-index: 1000;
+}
+
+.back-button:hover {
+    opacity: 1;
+    background-color: rgba(128, 128, 128, 0.2);
+}
+
+/* Adjust placement slightly on smaller screens */
+@media (max-width: 600px) {
+    .back-button {
+        top: 10px;
+        left: 10px;
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
