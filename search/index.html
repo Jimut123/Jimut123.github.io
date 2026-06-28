@@ -4,26 +4,18 @@
 <title>Search | Jimut Bahan Pal's Website</title>
 
 
-<script type="text/javascript"  src="../js/bootstrap.min.js"></script>
-
-<script type="text/javascript"  src="../js/jquery-3.2.1.slim.min.js"></script>
-<script type="text/javascript"  src="../js/popper.min.js"></script>
-
-
-<link rel='stylesheet' id='wsl-widget-css'  href='https://mdbootstrap.com/wp-content/plugins/wordpress-social-login/assets/css/style.css?ver=5.1.1' type='text/css' media='all' />
-
-<link rel='stylesheet' id='compiled.css-css'  href='https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled-4.8.0.min.css?ver=4.8.0' type='text/css' media='all' />
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
 
 <link rel="shortcut icon" type="image/x-icon" href="../img/thumbnail.jpg">
 
 
 <!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
 <!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
     
@@ -36,10 +28,6 @@
     <title>Navigation</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/jimstyle.css" />
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 
     <style>
         /* --- 1. THEME VARIABLES --- */
@@ -263,7 +251,7 @@
         </button>
     </a>
 
-    <button class="custom-menu-btn" type="button" id="menuToggle" aria-label="Toggle navigation">
+<button class="custom-menu-btn" type="button" id="menuToggle" aria-label="Toggle navigation" aria-controls="mainNav" aria-expanded="false">
         <span class="menu-line"></span>
         <span class="menu-line"></span>
         <span class="menu-line"></span>
@@ -354,7 +342,6 @@
 </nav>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     const toggleButton = document.getElementById('theme-toggle');
@@ -378,28 +365,32 @@
         themeIcon.textContent = newTheme === 'dark' ? '🌜' : '🌞';
     });
 
-    // Custom Menu Toggle
+    // Mobile menu toggle (works without Bootstrap collapse plugin)
     const menuBtn = document.getElementById('menuToggle');
-    const navCollapse = $('#mainNav');
-    
+    const navCollapse = document.getElementById('mainNav');
+
+    function setMenuState(isOpen) {
+        menuBtn.classList.toggle('menu-open', isOpen);
+        navCollapse.classList.toggle('show', isOpen);
+        menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
     menuBtn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        
-        // Toggle the menu-open class
-        menuBtn.classList.toggle('menu-open');
-        
-        // Toggle Bootstrap collapse
-        navCollapse.collapse('toggle');
+        setMenuState(!navCollapse.classList.contains('show'));
     });
-    
-    // Sync menu-open class with collapse state
-    navCollapse.on('show.bs.collapse', function() {
-        menuBtn.classList.add('menu-open');
+
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 991 && !menuBtn.contains(e.target) && !navCollapse.contains(e.target)) {
+            setMenuState(false);
+        }
     });
-    
-    navCollapse.on('hide.bs.collapse', function() {
-        menuBtn.classList.remove('menu-open');
+
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 991) {
+            setMenuState(false);
+        }
     });
 
     // Active Link Logic
@@ -410,7 +401,7 @@
                 $(this).closest(".nav-item").addClass("active");
             }
         });
-    });        
+    });
 </script>
 
 </body>
@@ -532,7 +523,6 @@ if (!doNotTrack) {
     });
 
 </script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
