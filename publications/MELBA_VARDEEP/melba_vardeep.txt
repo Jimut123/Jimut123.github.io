@@ -1,0 +1,13 @@
+@article{melba:2026:017:pal,
+    title = "Learning a Sampling-Free Variational DNN Plugin from Tiny Training Sets to Refine OOD Segmentation With Uncertainty Estimation",
+    author = "Pal, Jimut B. and Awate, Suyash P.",
+    journal = "Machine Learning for Biomedical Imaging",
+    volume = "2026",
+    issue = "June 2026 issue",
+    year = "2026",
+    pages = "327--358",
+    issn = "2766-905X",
+    doi = "https://doi.org/10.59275/j.melba.2026-6d54",
+    url = "https://melba-journal.org/2026:017"
+}
+

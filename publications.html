@@ -25,8 +25,10 @@
 
 
 
-<!-- Bootstrap core JavaScript -->
+<!-- jQuery must be loaded before Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
+<!-- Bootstrap core JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
@@ -653,6 +655,89 @@
                 <div class="row g-0 align-items-start">
                     
                     <div class="col-md-3 pub-img-col">
+                        <img src="../publications/MELBA_VARDEEP/melba_vardeep.png" class="pub-thumbnail" alt="Learning a Sampling-Free Variational DNN Plugin from Tiny Training Sets to Refine OOD Segmentation With Uncertainty Estimation" />
+                    </div>
+
+                    <div class="col-md-9 pub-content-col">
+                        
+                        <div class="pub-title">
+                            <span id="bold_id">Learning a Sampling-Free Variational DNN Plugin from Tiny Training Sets to Refine OOD Segmentation With Uncertainty Estimation</span>
+                        </div>
+
+                        <div class="pub-authors">
+                            <span id="bold_id"> Jimut Bahan Pal</span> and <a href="https://www.cse.iitb.ac.in/~suyash/index.html"> Suyash P. Awate </a>
+                        </div>
+
+                        <div class="pub-venue">
+                            Journal of Machine Learning for Biomedical Imaging (MELBA) 2026
+                        </div>
+
+                        <div class="d-flex flex-wrap justify-content-start mt-2">
+                            
+
+                            
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#abstractshape_prior_melba" href="#abstractshape_prior_melba" role="button" aria-expanded="false" aria-controls="abstractshape_prior_melba">
+                                    <i class="fas fa-align-left"></i> Abstract
+                                </a>
+                            
+
+                            
+                                <a class="btn btn-academic" href="../publications/MELBA_VARDEEP/melba_vardeep.pdf" target="_blank">
+                                    <i class="far fa-file-pdf"></i> Article
+                                </a>
+                            
+
+                            
+
+                            
+                                <a class="btn btn-academic" href="../publications/MELBA_VARDEEP/melba_vardeep_slide.pdf" target="_blank">
+                                    <i class="fas fa-chalkboard-teacher"></i> Slide
+                                </a>
+                            
+
+                            
+                                <a class="btn btn-academic" href="https://www.youtube.com/watch?v=OVh2hxhT2Rw" target="_blank">
+                                    <i class="fas fa-video"></i> Video
+                                </a>
+                            
+
+                            
+
+                            
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#bibshape_prior_melba" href="#bibshape_prior_melba" role="button" aria-expanded="false" aria-controls="bibshape_prior_melba">
+                                    <i class="fas fa-quote-right"></i> BibTeX
+                                </a>
+                            
+                        </div>
+                        
+                        
+                            <div class="collapse" id="abstractshape_prior_melba">
+                                <div class="collapse-box">
+                                    <strong>Abstract:</strong> Deep neural networks (DNNs) frequently fail to generalize to out-of-distribution (OOD) medical images because of variations in scanners and acquisition protocols. Retraining DNN models to address these distribution shifts is often impractical due to the high cost of acquiring and annotating new medical datasets. To address this, we introduce VarDeepPCA, a novel lightweight variational DNN framework designed to restore/refine degraded segmentation maps by leveraging intrinsic geometric priors. Unlike existing approaches that require target-domain data or extensive pre-training, our VarDeepPCA explicitly learns a distribution of valid anatomical geometries using only small in-distribution (ID) datasets. Theoretically, our novel variational learning framework leverages a reinterpretation of the softmax mapping to implicitly perform exact distribution modeling, thereby enabling computationally efficient, sampling-free learning and inference. This also enables VarDeepPCA to provide uncertainty estimates associated with its restored segmentation maps. We empirically validate our framework across 4 distinct clinical applications, using 14 publicly available datasets, involving segmentation of the myocardium, neuroretinal rim, prostate, and fetal head. Comparisons against 15 existing methods demonstrate that VarDeepPCA consistently restores segmentation maps produced by the existing methods on OOD data to (i) significantly improve anatomical plausibility of geometries and clinical utility of the segmentations, and (ii) significantly reduce errors, without needing any more training data than that used by existing methods.
+                                </div>
+                            </div>
+                        
+
+                        
+                            <div class="collapse" id="bibshape_prior_melba">
+                                <div class="collapse-box">
+                                    <object data="../publications/MELBA_VARDEEP/melba_vardeep.txt" width="100%" height="200px" style="border:none;"></object>
+                                </div>
+                            </div>
+                        
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+        
+
+            <div class="pub-card">
+                <div class="row g-0 align-items-start">
+                    
+                    <div class="col-md-3 pub-img-col">
                         <img src="../publications/WACV_24/wacv_24.png" class="pub-thumbnail" alt="Reviving Poor Object Segmentations in OOD Medical Images using Variational-Deep-PCA Modeling on Segmentation Maps with Sampling-Free Learning" />
                     </div>
 
@@ -674,7 +759,7 @@
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractshape_prior_wacv" role="button" aria-expanded="false" aria-controls="abstractshape_prior_wacv">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#abstractshape_prior_wacv" href="#abstractshape_prior_wacv" role="button" aria-expanded="false" aria-controls="abstractshape_prior_wacv">
                                     <i class="fas fa-align-left"></i> Abstract
                                 </a>
                             
@@ -694,7 +779,7 @@
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibshape_prior_wacv" role="button" aria-expanded="false" aria-controls="bibshape_prior_wacv">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#bibshape_prior_wacv" href="#bibshape_prior_wacv" role="button" aria-expanded="false" aria-controls="bibshape_prior_wacv">
                                     <i class="fas fa-quote-right"></i> BibTeX
                                 </a>
                             
@@ -749,7 +834,7 @@
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractconvex_seg_miccai" role="button" aria-expanded="false" aria-controls="abstractconvex_seg_miccai">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#abstractconvex_seg_miccai" href="#abstractconvex_seg_miccai" role="button" aria-expanded="false" aria-controls="abstractconvex_seg_miccai">
                                     <i class="fas fa-align-left"></i> Abstract
                                 </a>
                             
@@ -769,7 +854,7 @@
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibconvex_seg_miccai" role="button" aria-expanded="false" aria-controls="bibconvex_seg_miccai">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#bibconvex_seg_miccai" href="#bibconvex_seg_miccai" role="button" aria-expanded="false" aria-controls="bibconvex_seg_miccai">
                                     <i class="fas fa-quote-right"></i> BibTeX
                                 </a>
                             
@@ -824,7 +909,7 @@
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractrv_pbs" role="button" aria-expanded="false" aria-controls="abstractrv_pbs">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#abstractrv_pbs" href="#abstractrv_pbs" role="button" aria-expanded="false" aria-controls="abstractrv_pbs">
                                     <i class="fas fa-align-left"></i> Abstract
                                 </a>
                             
@@ -852,7 +937,7 @@
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibrv_pbs" role="button" aria-expanded="false" aria-controls="bibrv_pbs">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#bibrv_pbs" href="#bibrv_pbs" role="button" aria-expanded="false" aria-controls="bibrv_pbs">
                                     <i class="fas fa-quote-right"></i> BibTeX
                                 </a>
                             
@@ -907,7 +992,7 @@
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractbmsan" role="button" aria-expanded="false" aria-controls="abstractbmsan">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#abstractbmsan" href="#abstractbmsan" role="button" aria-expanded="false" aria-controls="abstractbmsan">
                                     <i class="fas fa-align-left"></i> Abstract
                                 </a>
                             
@@ -931,7 +1016,7 @@
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibbmsan" role="button" aria-expanded="false" aria-controls="bibbmsan">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#bibbmsan" href="#bibbmsan" role="button" aria-expanded="false" aria-controls="bibbmsan">
                                     <i class="fas fa-quote-right"></i> BibTeX
                                 </a>
                             
@@ -984,13 +1069,13 @@
 
                         <div class="d-flex flex-wrap justify-content-start mt-2">
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#authors_list_bigbmic" role="button" aria-expanded="false" aria-controls="authors_list_bigbmic">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#authors_list_bigbmic" href="#authors_list_bigbmic" role="button" aria-expanded="false" aria-controls="authors_list_bigbmic">
                                     <i class="fas fa-users"></i> Authors
                                 </a>
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractbmic" role="button" aria-expanded="false" aria-controls="abstractbmic">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#abstractbmic" href="#abstractbmic" role="button" aria-expanded="false" aria-controls="abstractbmic">
                                     <i class="fas fa-align-left"></i> Abstract
                                 </a>
                             
@@ -1010,7 +1095,7 @@
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibbmic" role="button" aria-expanded="false" aria-controls="bibbmic">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#bibbmic" href="#bibbmic" role="button" aria-expanded="false" aria-controls="bibbmic">
                                     <i class="fas fa-quote-right"></i> BibTeX
                                 </a>
                             
@@ -1071,7 +1156,7 @@
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="abstractmiccai_qubiq_21">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#abstractmiccai_qubiq_21" href="#abstractmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="abstractmiccai_qubiq_21">
                                     <i class="fas fa-align-left"></i> Abstract
                                 </a>
                             
@@ -1103,7 +1188,7 @@
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="bibmiccai_qubiq_21">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#bibmiccai_qubiq_21" href="#bibmiccai_qubiq_21" role="button" aria-expanded="false" aria-controls="bibmiccai_qubiq_21">
                                     <i class="fas fa-quote-right"></i> BibTeX
                                 </a>
                             
@@ -1158,7 +1243,7 @@
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#abstractcxr_19" role="button" aria-expanded="false" aria-controls="abstractcxr_19">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#abstractcxr_19" href="#abstractcxr_19" role="button" aria-expanded="false" aria-controls="abstractcxr_19">
                                     <i class="fas fa-align-left"></i> Abstract
                                 </a>
                             
@@ -1190,7 +1275,7 @@
                             
 
                             
-                                <a class="btn btn-academic" data-bs-toggle="collapse" href="#bibcxr_19" role="button" aria-expanded="false" aria-controls="bibcxr_19">
+                                <a class="btn btn-academic" data-toggle="collapse" data-target="#bibcxr_19" href="#bibcxr_19" role="button" aria-expanded="false" aria-controls="bibcxr_19">
                                     <i class="fas fa-quote-right"></i> BibTeX
                                 </a>
                             
@@ -1222,6 +1307,29 @@
 
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-toggle="collapse"]').forEach(function (trigger) {
+        trigger.addEventListener('click', function (event) {
+            var targetSelector = this.getAttribute('data-target') || this.getAttribute('href');
+            if (!targetSelector) return;
+
+            var target = document.querySelector(targetSelector);
+            if (!target) return;
+
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            var isExpanded = target.classList.contains('show');
+            var shouldExpand = !isExpanded;
+
+            target.classList.toggle('show', shouldExpand);
+            this.setAttribute('aria-expanded', shouldExpand ? 'true' : 'false');
+        });
+    });
+});
+</script>
 
 <div class="container my-5">
     <div id="front-page-font" class="text-start text-muted small border-top pt-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
